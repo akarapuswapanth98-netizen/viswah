@@ -34,10 +34,20 @@ class ApiClient {
       });
 
       if (response.status === 401) {
-        localStorage.removeItem("viswah_token");
-        invalidateCache(null);
-        window.dispatchEvent(new CustomEvent("auth:expired"));
-        throw new ApiError("Session expired. Please log in again.", 401);
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch {
+          errorData = {};
+        }
+        if (token) {
+          localStorage.removeItem("viswah_token");
+          invalidateCache(null);
+          window.dispatchEvent(new CustomEvent("auth:expired"));
+          throw new ApiError("Session expired. Please log in again.", 401);
+        }
+        const message = errorData.detail || errorData.message || "Unauthorized";
+        throw new ApiError(message, 401);
       }
 
       if (!response.ok) {
