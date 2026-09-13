@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 from enum import Enum
 
-from pydantic import BaseModel, EmailStr, Field, field_validator
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
 
 # ============ Shared Enums ============
 
@@ -65,8 +65,7 @@ class UserResponse(BaseModel):
     email: str
     level: DifficultyLevel  # Fix #4: Use shared enum
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 # ============ Course Schemas ============
@@ -81,8 +80,7 @@ class CourseResponse(BaseModel):
     image_url: str | None = None
     lessons_count: int | None = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 # ============ Lesson Schemas ============
@@ -108,8 +106,7 @@ class LessonResponse(BaseModel):
                 return None
         return v
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 # ============ Progress Schemas ============
@@ -123,8 +120,7 @@ class ProgressResponse(BaseModel):
     time_spent_minutes: int
     completed_at: datetime | None = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ProgressUpdate(BaseModel):
@@ -156,8 +152,7 @@ class EnrolledCourseResponse(BaseModel):
     instrument: InstrumentType
     difficulty: DifficultyLevel
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 # ============ AI Schemas ============
@@ -232,8 +227,7 @@ class PracticeSessionResponse(BaseModel):
     metadata_json: str | None = None
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class PracticeStatsResponse(BaseModel):
@@ -251,8 +245,7 @@ class AchievementResponse(BaseModel):
     achievement_type: str
     achieved_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class PracticeHistoryItem(BaseModel):
@@ -265,8 +258,7 @@ class PracticeHistoryItem(BaseModel):
     metadata_json: str | None = None
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class TopicStats(BaseModel):
@@ -424,8 +416,7 @@ class PaymentTransactionResponse(BaseModel):
     provider: str | None = None
     created_at: str | None = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class EntitlementResponse(BaseModel):

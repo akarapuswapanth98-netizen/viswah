@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { memo, useState, useEffect, useMemo } from "react";
 import { onKeyDown } from "../utils/keyboard";
 
 const C = {
@@ -101,7 +101,7 @@ function SkillBar({ skill, mounted, index }) {
   );
 }
 
-export default function SkillMap({ skills = [], mounted = true }) {
+function SkillMap({ skills = [], mounted = true }) {
   if (!skills || skills.length === 0) {
     return (
       <div style={{
@@ -134,3 +134,5 @@ export default function SkillMap({ skills = [], mounted = true }) {
     </div>
   );
 }
+
+export default memo(SkillMap);

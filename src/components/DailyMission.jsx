@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { onKeyDown } from "../utils/keyboard";
 
@@ -16,7 +17,7 @@ const C = {
   success: "#6DBF73",
 };
 
-export default function DailyMission({ mission, mounted = true }) {
+function DailyMission({ mission, mounted = true }) {
   const navigate = useNavigate();
 
   if (!mission) return null;
@@ -97,3 +98,5 @@ export default function DailyMission({ mission, mounted = true }) {
     </div>
   );
 }
+
+export default memo(DailyMission);

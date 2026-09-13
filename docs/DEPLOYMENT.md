@@ -73,18 +73,14 @@ The backend automatically:
 GET /api/health
 ```
 
-Returns:
+Returns (never exposes credential config):
 ```json
 {
-  "message": "healthy",
-  "checks": {
-    "api": "ok",
-    "database": "ok",
-    "jwt": "ok",
-    "razorpay": "configured"
-  }
+  "status": "ok",
+  "database": "ok"
 }
 ```
+On DB failure: `{"status":"degraded","database":"unavailable"}` (503).
 
 ## Database
 
@@ -99,8 +95,27 @@ DATABASE_URL=postgresql://user:password@host:5432/viswah
 
 The SQLAlchemy models are compatible with both SQLite and PostgreSQL. All datetime handling accounts for naive/aware differences.
 
-### Migrations
-Currently handled via raw SQL in `main.py` for SQLite. For PostgreSQL production, consider adding Alembic migrations.
+### Migrations (Alembic)
+
+Alembic is initialized in `backend/alembic/` with baseline `b513f5a56795`.
+
+- `alembic.ini` `sqlalchemy.url` defaults to `sqlite:///./viswah.db` but `alembic/env.py` overrides it from `DATABASE_URL` env var (supports both SQLite and PostgreSQL).
+- Development (SQLite): `Base.metadata.create_all` in `main.py` still creates tables; Alembic tracks future changes.
+- Production (PostgreSQL): set `DATABASE_URL=postgresql://...` and run migrations.
+
+Workflow:
+
+```bash
+cd backend
+# After model changes
+python -m alembic revision --autogenerate -m "describe change"
+# Review alembic/versions/*.py
+python -m alembic upgrade head      # apply
+python -m alembic downgrade -1      # rollback
+python -m alembic current           # show head
+```
+
+Do not run destructive migrations on prod data without backup. Existing SQLite dev DB is auto-created; new prod PG should start from `upgrade head` on empty DB.
 
 ## Razorpay Webhooks
 
