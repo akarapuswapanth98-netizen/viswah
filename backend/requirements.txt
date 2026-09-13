@@ -33,5 +33,10 @@ numpy>=1.24.0,<2.0.0
 # Payments (optional for development)
 razorpay>=1.4.0,<2.0.0
 
+# Testing (required for CI)
+pytest>=8.0.0,<10.0.0
+httpx>=0.24.0
+anyio>=4.0.0
+
 # Utilities
 pydantic>=2.0.0,<3.0.0
