@@ -114,6 +114,12 @@ describe("Recommendations component", () => {
 describe("Home page personalization", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    vi.setSystemTime(new Date("2025-01-15T10:30:00"));
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it("renders personalized dashboard", async () => {
@@ -143,11 +149,11 @@ describe("Home page personalization", () => {
     );
 
     await waitFor(() => {
-      expect(screen.queryByText("Loading...")).toBeNull();
+      expect(screen.getByText("Making Progress")).toBeTruthy();
     });
 
-    expect(screen.getByText(/Good (morning|afternoon|evening)/)).toBeTruthy();
-    expect(screen.getByText("Making Progress")).toBeTruthy();
+    expect(screen.getByText(/Good morning/)).toBeTruthy();
+    expect(screen.getByText("testuser")).toBeTruthy();
     expect(screen.getByText("Today's Mission")).toBeTruthy();
     expect(screen.getByText("Practice Melody")).toBeTruthy();
     expect(screen.getByText("Recommended for you")).toBeTruthy();

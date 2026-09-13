@@ -8,6 +8,7 @@ python-multipart>=0.0.5
 # Database
 sqlalchemy>=2.0.0,<3.0.0
 alembic>=1.10.0,<2.0.0
+psycopg2-binary>=2.9.0  # PostgreSQL driver for production (Railway)
 
 # Authentication
 python-jose[cryptography]>=3.3.0,<4.0.0

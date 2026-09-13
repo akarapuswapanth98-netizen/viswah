@@ -10,6 +10,10 @@ load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL", "")
 
+# Normalize postgres:// → postgresql:// for SQLAlchemy + psycopg2 compatibility (e.g., Railway/Heroku)
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
 # Use in-memory SQLite for Vercel (ephemeral filesystem)
 if not DATABASE_URL or DATABASE_URL == "sqlite:///./viswah.db":
     if os.getenv("VERCEL"):
