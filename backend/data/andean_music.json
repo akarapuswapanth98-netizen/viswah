@@ -1,0 +1,31 @@
+{
+  "scales": [
+    {"id": "pentatonic_major", "name": "Major Pentatonic", "notes": ["C", "D", "E", "G", "A"], "description": "Common in huaynos and carnavalitos.", "mood": "Bright, open"},
+    {"id": "pentatonic_minor", "name": "Minor Pentatonic", "notes": ["A", "C", "D", "E", "G"], "description": "Used in yaravis and laments.", "mood": "Melancholic, vast"},
+    {"id": "mixolydian", "name": "Mixolydian", "notes": ["G", "A", "B", "C", "D", "E", "F"], "description": "Flat seventh mode. Sikuri music.", "mood": "Trance, communal"},
+    {"id": "dorian", "name": "Dorian", "notes": ["D", "E", "F", "G", "A", "B", "C"], "description": "Minor with raised sixth.", "mood": "Warm, folk"}
+  ],
+  "instruments": [
+    {"id": "quena", "name": "Quena", "type": "wind", "holes": 6, "range": "D4 - D6", "description": "Notched end-blown flute. Breath of the Andes.", "difficulty": "intermediate"},
+    {"id": "siku", "name": "Siku", "type": "wind", "tubes": 13, "range": "G4 - G6", "description": "Panpipe. Interlocking technique.", "difficulty": "beginner"},
+    {"id": "charango", "name": "Charango", "type": "plucked_string", "strings": 10, "range": "C4 - C6", "description": "Small lute. Armadillo shell body.", "difficulty": "intermediate"},
+    {"id": "zampoña", "name": "Zampoña", "type": "wind", "tubes": 16, "description": "Large panpipe ensemble instrument.", "difficulty": "beginner"},
+    {"id": "bombo", "name": "Bombo", "type": "percussion", "description": "Large drum with fur head. Deep bass.", "difficulty": "beginner"},
+    {"id": "tarka", "name": "Tarka", "type": "wind", "holes": 6, "range": "C4 - C6", "description": "Wooden duct flute.", "difficulty": "intermediate"}
+  ],
+  "genres": [
+    {"id": "huayno", "name": "Huayno", "origin": "Peru/Bolivia", "meter": "2/4", "description": "Popular dance with charango and quena.", "mood": "Lively, social"},
+    {"id": "carnavalito", "name": "Carnavalito", "origin": "Bolivia/Argentina", "meter": "2/4", "description": "Carnival dance. Fast and joyful.", "mood": "Festive, communal"},
+    {"id": "yaravi", "name": "Yaravi", "origin": "Peru", "meter": "3/4", "description": "Slow sentimental song.", "mood": "Melancholic, romantic"},
+    {"id": "sikuri", "name": "Sikuri", "origin": "Peru/Bolivia", "meter": "4/4", "description": "Panpipe ensemble music.", "mood": "Trance, ancient"},
+    {"id": "cueca", "name": "Cueca", "origin": "Chile", "meter": "6/8", "description": "National dance of Chile.", "mood": "Flirtatious, lively"},
+    {"id": "chacarera", "name": "Chacarera", "origin": "Argentina", "meter": "6/8", "description": "Folk dance from Santiago del Estero.", "mood": "Rustic, joyful"},
+    {"id": "zamba", "name": "Zamba", "origin": "Argentina", "meter": "6/8", "description": "Slow courtship dance with handkerchief.", "mood": "Romantic, graceful"}
+  ],
+  "techniques": [
+    {"name": "Interlocking", "description": "Ira and Antara panpipes alternate notes.", "difficulty": "intermediate"},
+    {"name": "Circular Breathing", "description": "Continuous tone on quena.", "difficulty": "advanced"},
+    {"name": "Tremolo", "description": "Rapid alternation on charango.", "difficulty": "intermediate"},
+    {"name": "Rasgueado", "description": "Strumming patterns on charango.", "difficulty": "beginner"}
+  ]
+}

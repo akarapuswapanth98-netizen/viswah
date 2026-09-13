@@ -1,0 +1,44 @@
+{
+  "maqamat": [
+    {"id": "bayati", "name": "Bayati", "notes": ["D", "E-half-flat", "F", "G", "A", "Bb", "C"], "description": "Most common maqam. Neutral second degree.", "mood": "Tender, emotional", "time": "Evening"},
+    {"id": "hijaz", "name": "Hijaz", "notes": ["D", "Eb", "F#", "G", "A", "Bb", "C#"], "description": "Augmented second interval. Dramatic.", "mood": "Dramatic, exotic", "time": "Night"},
+    {"id": "rast", "name": "Rast", "notes": ["C", "D-half-flat", "E-half-flat", "F", "G", "A-half-flat", "B-half-flat"], "description": "Quarter tones on 3rd and 7th. Fundamental.", "mood": "Grand, stable", "time": "Morning"},
+    {"id": "saba", "name": "Saba", "notes": ["D", "Eb", "F", "G-half-flat", "A", "Bb", "C"], "description": "Unique with diminished quality on 4th.", "mood": "Melancholic, yearning", "time": "Night"},
+    {"id": "kurd", "name": "Kurd", "notes": ["D", "Eb", "F", "G", "A", "Bb", "C"], "description": "Equivalent to natural minor on D.", "mood": "Somber, reflective", "time": "Evening"},
+    {"id": "nikriz", "name": "Nikriz", "notes": ["C", "D", "Eb", "F#", "G", "A", "Bb"], "description": "Raised 4th creates tritone tension.", "mood": "Tense, dramatic", "time": "Night"},
+    {"id": "hijazkar", "name": "Hijaz Kar", "notes": ["C", "Db", "E", "F", "G", "Ab", "B"], "description": "Hijaz on C. Very ornate.", "mood": "Ornate, majestic", "time": "Night"},
+    {"id": "sikah", "name": "Sikah", "notes": ["E-half-flat", "F", "G", "A", "B-half-flat", "C", "D"], "description": "Built on E-half-flat. Delicate.", "mood": "Delicate, intimate", "time": "Evening"},
+    {"id": "farahfaza", "name": "Farahfaza", "notes": ["C", "D", "Eb", "F", "G", "A", "Bb"], "description": "Joyful variant of Kurd.", "mood": "Joyful, flowing", "time": "Morning"},
+    {"id": "jiharkah", "name": "Jiharkah", "notes": ["C", "D", "E", "F#", "G", "A", "Bb"], "description": "Raised 4th. Bright and open.", "mood": "Bright, open", "time": "Morning"},
+    {"id": "suzzak", "name": "Suzzak", "notes": ["D", "Eb", "F", "G", "A", "B", "C"], "description": "Hijaz with natural 6th.", "mood": "Warm, mixed", "time": "Evening"},
+    {"id": "mukhalif", "name": "Mukhalif", "notes": ["C", "Db", "Eb", "F", "G", "A", "Bb"], "description": "All half steps in first tetrachord.", "mood": "Tense, chromatic", "time": "Night"}
+  ],
+  "iqaat": [
+    {"id": "maqsum", "name": "Maqsum", "beats": 4, "pattern": ["Dum", "Tek", "—", "Tek"], "description": "Most common Arabic rhythm."},
+    {"id": "saidi", "name": "Saidi", "beats": 4, "pattern": ["Dum", "Tek", "Dum-Dum", "Tek"], "description": "Upper Egyptian folk rhythm."},
+    {"id": "malfuf", "name": "Malfuf", "beats": 3, "pattern": ["Dum", "—", "Tek"], "description": "Fast 3-beat. Belly dance."},
+    {"id": "chiftetelli", "name": "Chiftetelli", "beats": 8, "pattern": ["Dum", "Tek", "—", "Tek", "Dum", "—", "Tek", "—"], "description": "Slow 8-beat. Turkish origin."},
+    {"id": "samai", "name": "Samai Thaqil", "beats": 10, "pattern": ["Dum", "—", "—", "Tek", "—", "Dum", "—", "Tek", "—", "—"], "description": "10-beat classical cycle."},
+    {"id": "iftah", "name": "Iftah Ya Simsim", "beats": 6, "pattern": ["Dum", "Tek", "Tek", "Dum", "Tek", "Tek"], "description": "6-beat children's song rhythm."},
+    {"id": "baladi", "name": "Baladi", "beats": 4, "pattern": ["Dum-Dum", "Tek", "Dum", "Tek"], "description": "Heavy belly dance rhythm."},
+    {"id": "dawr_hindi", "name": "Dawr Hindi", "beats": 8, "pattern": ["Dum", "Tek", "Tek", "Dum", "Tek", "Tek", "Dum", "Tek"], "description": "Indian-influenced 8-beat."}
+  ],
+  "instruments": [
+    {"id": "oud", "name": "Oud", "type": "plucked_string", "strings": 11, "range": "F2 - G5", "description": "Fretless short-necked lute. King of Arabic instruments.", "difficulty": "intermediate"},
+    {"id": "qanun", "name": "Qanun", "type": "plucked_string", "strings": 78, "range": "D2 - D6", "description": "Triangular zither with mandals for microtones.", "difficulty": "advanced"},
+    {"id": "ney", "name": "Ney", "type": "wind", "range": "D3 - D6", "description": "End-blown reed flute. Breath of the soul.", "difficulty": "intermediate"},
+    {"id": "rabab", "name": "Rabab", "type": "bowed_string", "strings": 3, "range": "G3 - G5", "description": "Short-necked spike fiddle.", "difficulty": "intermediate"},
+    {"id": "darbuka", "name": "Darbuka", "type": "percussion", "description": "Goblet drum. Sharp doum and tek sounds.", "difficulty": "beginner"},
+    {"id": "riq", "name": "Riq", "type": "percussion", "description": "Arabic tambourine with brass jingles.", "difficulty": "intermediate"},
+    {"id": "tablah", "name": "Tabla (Egyptian)", "type": "percussion", "description": "Goblet drum. Darbuka variant.", "difficulty": "beginner"},
+    {"id": "mijwiz", "name": "Mijwiz", "type": "wind", "description": "Double-pipe reed instrument. Continuous sound.", "difficulty": "advanced"}
+  ],
+  "forms": [
+    {"id": "taqsim", "name": "Taqsim", "description": "Free-rhythm instrumental improvisation."},
+    {"id": "longa", "name": "Longa", "description": "Fast instrumental piece in European form."},
+    {"id": "samai", "name": "Samai", "description": "Instrumental piece in 10/8 time."},
+    {"id": "mawwal", "name": "Mawwal", "description": "Vocal improvisation on a maqam."},
+    {"id": "wasla", "name": "Wasla", "description": "Suite of pieces in one maqam."},
+    {"id": "dulab", "name": "Dulab", "description": "Short instrumental piece in binary form."}
+  ]
+}

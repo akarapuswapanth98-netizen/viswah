@@ -1,0 +1,32 @@
+{
+  "genres": [
+    {"id": "samba", "name": "Samba", "origin": "Brazil", "meter": "2/4", "description": "Afro-Brazilian genre. Syncopated and lively.", "mood": "Joyful, energetic"},
+    {"id": "bossa_nova", "name": "Bossa Nova", "origin": "Brazil", "meter": "4/4", "description": "Cool jazz-influenced samba. Intimate.", "mood": "Cool, intimate, sophisticated"},
+    {"id": "tango", "name": "Tango", "origin": "Argentina/Uruguay", "meter": "4/4", "description": "Dramatic partner dance with bandoneon.", "mood": "Passionate, melancholic, dramatic"},
+    {"id": "salsa", "name": "Salsa", "origin": "Cuba/Puerto Rico", "meter": "4/4", "description": "Dance music with clave foundation.", "mood": "Hot, festive, social"},
+    {"id": "bachata", "name": "Bachata", "origin": "Dominican Republic", "meter": "4/4", "description": "Romantic guitar-based bolero derivative.", "mood": "Romantic, sensual, bittersweet"},
+    {"id": "cumbia", "name": "Cumbia", "origin": "Colombia", "meter": "4/4", "description": "Coastal folk dance with accordion.", "mood": "Folk, festive, communal"},
+    {"id": "merengue", "name": "Merengue", "origin": "Dominican Republic", "meter": "4/4", "description": "Fast dance with güira and tambora.", "mood": "Upbeat, party, fast"},
+    {"id": "reggaeton", "name": "Reggaeton", "origin": "Puerto Rico", "meter": "4/4", "description": "Dembow rhythm with rap and singing.", "mood": "Urban, party, sensual"},
+    {"id": "vallenato", "name": "Vallenato", "origin": "Colombia", "meter": "4/4", "description": "Accordion-led narrative folk.", "mood": "Folk, storytelling"},
+    {"id": "son", "name": "Son Cubano", "origin": "Cuba", "meter": "4/4", "description": "Root of salsa. Clave-based.", "mood": "Warm, rootsy, social"},
+    {"id": "mariachi", "name": "Mariachi", "origin": "Mexico", "meter": "3/4, 6/8", "description": "String ensemble with trumpets.", "mood": "Festive, patriotic, romantic"},
+    {"id": "huapango", "name": "Huapango", "origin": "Mexico", "meter": "6/8", "description": "Fast triple meter with falsetto singing.", "mood": "Energetic, virtuosic"}
+  ],
+  "clave_patterns": [
+    {"id": "son_clave", "name": "Son Clave", "pattern": "3-2", "notes": [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0], "description": "Fundamental 3-2 clave."},
+    {"id": "rumba_clave", "name": "Rumba Clave", "pattern": "3-2", "notes": [1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0], "description": "Slightly delayed third note."},
+    {"id": "bossa_clave", "name": "Bossa Nova Clave", "pattern": "2-3", "notes": [0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0], "description": "Reversed 2-3 feel."},
+    {"id": "tresillo", "name": "Tresillo", "pattern": "2", "notes": [1, 0, 0, 1, 0, 0, 1, 0], "description": "Basic 3+3+2 subdivision."}
+  ],
+  "instruments": [
+    {"id": "bandoneon", "name": "Bandoneon", "type": "free_reed", "range": "B2 - C6", "origin": "Argentina", "description": "Concertina-like. Soul of tango.", "difficulty": "advanced"},
+    {"id": "charango", "name": "Charango", "type": "plucked_string", "strings": 10, "range": "C4 - C6", "origin": "Andes", "description": "Small armadillo-shell lute. Bright.", "difficulty": "intermediate"},
+    {"id": "tres", "name": "Tres Cubano", "type": "plucked_string", "strings": 6, "range": "G3 - G5", "origin": "Cuba", "description": "Three-course guitar. Syncopated strumming.", "difficulty": "intermediate"},
+    {"id": "congas", "name": "Congas", "type": "percussion", "origin": "Cuba", "description": "Tall narrow drums. Three sizes.", "difficulty": "intermediate"},
+    {"id": "bongos", "name": "Bongos", "type": "percussion", "origin": "Cuba", "description": "Small paired drums.", "difficulty": "beginner"},
+    {"id": "timbales", "name": "Timbales", "type": "percussion", "origin": "Cuba", "description": "Metal shell drums with cymbals.", "difficulty": "intermediate"},
+    {"id": "pandeiro", "name": "Pandeiro", "type": "percussion", "origin": "Brazil", "description": "Tunable frame drum.", "difficulty": "intermediate"},
+    {"id": "surdo", "name": "Surdo", "type": "percussion", "origin": "Brazil", "description": "Large bass drum. Samba heartbeat.", "difficulty": "beginner"}
+  ]
+}

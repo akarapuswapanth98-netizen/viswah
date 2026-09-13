@@ -1,0 +1,31 @@
+{
+  "dastgahs": [
+    {"id": "shur", "name": "Shur", "notes": ["C", "D-half-flat", "E-half-flat", "F", "G", "A-half-flat", "B-half-flat"], "description": "Most fundamental dastgah. Rich and emotional.", "mood": "Profound, emotional, devotional", "time": "Morning"},
+    {"id": "homayun", "name": "Homayun", "notes": ["C", "D", "Eb", "F#", "G", "Ab", "B"], "description": "Royal dastgah with tritone. Majestic.", "mood": "Majestic, royal, complex", "time": "Evening"},
+    {"id": "segah", "name": "Segah", "notes": ["E-half-flat", "F", "G", "A", "B-half-flat", "C", "D"], "description": "Built on E-half-flat. Delicate and refined.", "mood": "Delicate, refined, tender", "time": "Evening"},
+    {"id": "chahargah", "name": "Chahargah", "notes": ["C", "D", "E-half-flat", "F#", "G", "A", "B"], "description": "Four-corner dastgah. Bright and active.", "mood": "Bright, active, joyful", "time": "Morning"},
+    {"id": "mahur", "name": "Mahur", "notes": ["C", "D", "E", "F#", "G", "A", "B"], "description": "Equivalent to Major with raised 4th. Cheerful.", "mood": "Cheerful, bright, grand", "time": "Morning"},
+    {"id": "nava", "name": "Nava", "notes": ["D", "E-half-flat", "F", "G", "A", "B-half-flat", "C"], "description": "Mellow dastgah on D. Meditative.", "mood": "Mellow, meditative, gentle", "time": "Evening"},
+    {"id": "rast_panjgah", "name": "Rast-Panjgah", "notes": ["C", "D", "E-half-flat", "F", "G", "A", "B-half-flat"], "description": "Extended Rast. Grand and stable.", "mood": "Grand, stable, ceremonial", "time": "Morning"},
+    {"id": "dashti", "name": "Dashti", "notes": ["D", "E-half-flat", "F", "G", "A", "Bb", "C"], "description": "Folk-derived dastgah. Plaintive.", "mood": "Plaintive, longing, folk", "time": "Evening"}
+  ],
+  "rhythms": [
+    {"id": "zarb_e_fath", "name": "Zarb-e Fath", "beats": 6, "pattern": ["Dum", "Tek", "Tek", "Dum", "Tek", "Tek"]},
+    {"id": "zarb_e_osul", "name": "Zarb-e Osul", "beats": 7, "pattern": ["Dum", "Tek", "Dum", "Tek", "Tek", "Dum", "Tek"]},
+    {"id": "zarb_e_wahid", "name": "Zarb-e Wahid", "beats": 4, "pattern": ["Dum", "Tek", "Dum", "Tek"]},
+    {"id": "zarb_e_masnavi", "name": "Zarb-e Masnavi", "beats": 8, "pattern": ["Dum", "Tek", "Tek", "Dum", "Tek", "Tek", "Dum", "Tek"]},
+    {"id": "zarb_e_reyhane", "name": "Zarb-e Reyhane", "beats": 5, "pattern": ["Dum", "Tek", "Dum", "Tek", "Tek"]},
+    {"id": "zarb_e_chahar_mezrab", "name": "Zarb-e Chahar Mezrab", "beats": 16, "pattern": ["Complex 16-beat"]},
+    {"id": "zarb_e_farang", "name": "Zarb-e Farang", "beats": 3, "pattern": ["Dum", "Tek", "Tek"]}
+  ],
+  "instruments": [
+    {"id": "setar", "name": "Setar", "type": "plucked_string", "strings": 4, "range": "C3 - C6", "description": "Small lute with sympathetic strings. Intimate and delicate.", "difficulty": "intermediate"},
+    {"id": "tar", "name": "Tar", "type": "plucked_string", "strings": 6, "range": "C3 - C6", "description": "Long-necked lute with double bowl. Powerful and resonant.", "difficulty": "intermediate"},
+    {"id": "santur", "name": "Santur", "type": "percussion_string", "strings": 72, "range": "G3 - G6", "description": "Hammered dulcimer with 9 bridges.", "difficulty": "advanced"},
+    {"id": "ney", "name": "Ney", "type": "wind", "range": "C3 - C6", "description": "End-blown reed flute. Sufi meditation instrument.", "difficulty": "intermediate"},
+    {"id": "tombak", "name": "Tombak / Zarb", "type": "percussion", "description": "Goblet drum played with fingers. Highly virtuosic.", "difficulty": "intermediate"},
+    {"id": "kamancheh", "name": "Kamancheh", "type": "bowed_string", "strings": 4, "range": "G3 - A6", "description": "Spike fiddle. Expressive and vocal-like.", "difficulty": "intermediate"},
+    {"id": "barbat", "name": "Barbat", "type": "plucked_string", "strings": 10, "range": "F2 - G5", "description": "Ancient ancestor of oud. Short-necked lute.", "difficulty": "advanced"},
+    {"id": "daf", "name": "Daf", "type": "percussion", "description": "Large frame drum with jingles. Sufi ritual.", "difficulty": "beginner"}
+  ]
+}

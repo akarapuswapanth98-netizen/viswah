@@ -33,5 +33,19 @@ dist-ssr
 *.sln
 *.sw?
 
+# Python / Backend
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+env/
+*.db
+*.sqlite
+*.sqlite3
+coverage/
+htmlcov/
+
 # OS
 Thumbs.db

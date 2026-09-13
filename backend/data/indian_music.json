@@ -1,0 +1,399 @@
+{
+  "sargam_map": {
+    "Sa": { "western": "C", "frequency_ratio": 1.0, "sharuti": 0 },
+    "Re": { "western": "D", "frequency_ratio": 1.122, "sharuti": 2 },
+    "Ga": { "western": "E", "frequency_ratio": 1.260, "sharuti": 4 },
+    "Ma": { "western": "F", "frequency_ratio": 1.335, "sharuti": 5 },
+    "Pa": { "western": "G", "frequency_ratio": 1.498, "sharuti": 7 },
+    "Dha": { "western": "A", "frequency_ratio": 1.682, "sharuti": 9 },
+    "Ni": { "western": "B", "frequency_ratio": 1.888, "sharuti": 11 },
+    "Sa_high": { "western": "C5", "frequency_ratio": 2.0, "sharuti": 12 }
+  },
+  "variations": {
+    "komal_re": { "sargam": "Re♭", "western": "D♭", "semitone": 1 },
+    "shuddha_re": { "sargam": "Re", "western": "D", "semitone": 2 },
+    "komal_ga": { "sargam": "Ga♭", "western": "E♭", "semitone": 3 },
+    "shuddha_ga": { "sargam": "Ga", "western": "E", "semitone": 4 },
+    "tivra_ma": { "sargam": "Ma♯", "western": "F♯", "semitone": 6 },
+    "komal_dha": { "sargam": "Dha♭", "western": "A♭", "semitone": 8 },
+    "shuddha_dha": { "sargam": "Dha", "western": "A", "semitone": 9 },
+    "komal_ni": { "sargam": "Ni♭", "western": "B♭", "semitone": 10 },
+    "shuddha_ni": { "sargam": "Ni", "western": "B", "semitone": 11 }
+  },
+  "thaat_system": [
+    { "id": "bilawal", "name": "Bilawal", "equivalent": "Ionian/Major", "notes": ["Sa", "Re", "Ga", "Ma", "Pa", "Dha", "Ni"], "description": "All shuddha swaras. Foundation thaat." },
+    { "id": "khamaj", "name": "Khamaj", "equivalent": "Mixolydian", "notes": ["Sa", "Re", "Ga", "Ma", "Pa", "Dha", "komal_Ni"], "description": "Flat Ni, rest shuddha. Used in lighter classical." },
+    { "id": "bhairav", "name": "Bhairav", "equivalent": "Phrygian", "notes": ["Sa", "komal_Re", "komal_Ga", "Ma", "Pa", "komal_Dha", "komal_Ni"], "description": "Morning raga thaat. Serious and devotional." },
+    { "id": "kafi", "name": "Kafi", "equivalent": "Dorian", "notes": ["Sa", "Re", "komal_Ga", "Ma", "Pa", "Dha", "komal_Ni"], "description": "Used in light classical, folk, and thumri." },
+    { "id": "asavari", "name": "Asavari", "equivalent": "Aeolian/Natural Minor", "notes": ["Sa", "Re", "komal_Ga", "Ma", "Pa", "komal_Dha", "komal_Ni"], "description": "Morning raga. Soothing and meditative." },
+    { "id": "bhairavi", "name": "Bhairavi", "equivalent": "Locrian (loose)", "notes": ["Sa", "komal_Re", "komal_Ga", "Ma", "Pa", "komal_Dha", "komal_Ni"], "description": "All komal swaras. Used as concluding raga." },
+    { "id": "marwa", "name": "Marwa", "equivalent": "No direct equivalent", "notes": ["Sa", "komal_Re", "Ga", "tivra_Ma", "Pa", "Dha", "Ni"], "description": "No Pa. Tension-filled, used at sunset." },
+    { "id": "purvi", "name": "Purvi", "equivalent": "No direct equivalent", "notes": ["Sa", "komal_Re", "Ga", "tivra_Ma", "Pa", "komal_Dha", "Ni"], "description": "No Pa variant. Evening raga." },
+    { "id": "todi", "name": "Todi", "equivalent": "No direct equivalent", "notes": ["Sa", "komal_Re", "komal_Ga", "tivra_Ma", "Pa", "Dha", "komal_Ni"], "description": "Morning raga. Deeply emotional." },
+    { "id": "kafi_kanada", "name": "Kafi Kanada", "equivalent": "Dorian b6", "notes": ["Sa", "komal_Re", "komal_Ga", "Ma", "Pa", "komal_Dha", "Ni"], "description": "Variant of Kafi with komal Dha." },
+    { "id": "yaman", "name": "Yaman", "equivalent": "Lydian", "notes": ["Sa", "Re", "Ga", "tivra_Ma", "Pa", "Dha", "Ni"], "description": "Evening raga. Royal and luminous." },
+    { "id": "bhoop", "name": "Bhoopali", "equivalent": "Major Pentatonic", "notes": ["Sa", "Re", "Ga", "Pa", "Dha"], "description": "Pentatonic evening raga. Joyful." }
+  ],
+  "ragas": [
+    {
+      "id": "yaman",
+      "name": "Yaman (Kalyan)",
+      "thaat": "yaman",
+      "time": "Evening (9 PM - 12 AM)",
+      "arohana": ["Sa", "Re", "Ga", "tivra_Ma", "Pa", "Dha", "Ni", "Sa_high"],
+      "avarohana": ["Sa_high", "Ni", "Dha", "Pa", "tivra_Ma", "Ga", "Re", "Sa"],
+      "vadi": "Ga",
+      "samvadi": "Ni",
+      "description": "One of the most popular ragas. Royal, luminous, and serene. Perfect for beginners to learn evening ragas.",
+      "mood": "Peaceful, devotional, romantic",
+      "phrases": ["Re Ga Ma Pa Dha Ni Sa", "Ni Dha Pa Ma Ga Re Sa", "Ga Re Sa Ni Dha Pa"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa Re Ga tivra_Ma Pa Dha Ni Sa_high", "difficulty": "beginner" },
+        { "type": "sargam", "pattern": "Sa_high Ni Dha Pa tivra_Ma Ga Re Sa", "difficulty": "beginner" },
+        { "type": "aalaap", "description": "Slow exploration starting from Sa, moving to Ga, then tivra_Ma", "difficulty": "intermediate" },
+        { "type": "taan", "pattern": "Re Ga Ma Pa Dha Ni Sa_high Ni Dha Pa Ma Ga Re Sa", "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": "bhairav",
+      "name": "Bhairav",
+      "thaat": "bhairav",
+      "time": "Morning (6 AM - 9 AM)",
+      "arohana": ["Sa", "komal_Re", "komal_Ga", "Ma", "Pa", "komal_Dha", "komal_Ni", "Sa_high"],
+      "avarohana": ["Sa_high", "komal_Ni", "komal_Dha", "Pa", "Ma", "komal_Ga", "komal_Re", "Sa"],
+      "vadi": "komal_Dha",
+      "samvadi": "komal_Re",
+      "description": "Ancient morning raga. Deeply devotional and solemn. Teaches komal swaras.",
+      "mood": "Devotional, serious, meditative",
+      "phrases": ["Sa komal_Re komal_Ga Ma Pa", "komal_Dha Pa Ma komal_Ga komal_Re Sa", "komal_Ga Ma Pa komal_Dha komal_Ni"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa komal_Re komal_Ga Ma Pa komal_Dha komal_Ni Sa_high", "difficulty": "beginner" },
+        { "type": "sargam", "pattern": "Sa_high komal_Ni komal_Dha Pa Ma komal_Ga komal_Re Sa", "difficulty": "beginner" },
+        { "type": "aalaap", "description": "Slow ascent focusing on komal_Re to komal_Ga meend", "difficulty": "intermediate" },
+        { "type": "taan", "pattern": "komal_Re komal_Ga Ma Pa komal_Dha komal_Ni Sa_high komal_Ni komal_Dha Pa Ma komal_Ga komal_Re Sa", "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": "bhoopali",
+      "name": "Bhoopali (Bhoop)",
+      "thaat": "bilawal",
+      "time": "Evening (6 PM - 9 PM)",
+      "arohana": ["Sa", "Re", "Ga", "Pa", "Dha", "Sa_high"],
+      "avarohana": ["Sa_high", "Dha", "Pa", "Ga", "Re", "Sa"],
+      "vadi": "Ga",
+      "samvadi": "Dha",
+      "description": "Pentatonic raga using only 5 notes. Perfect for beginners. No Ma or Ni.",
+      "mood": "Joyful, bright, celebratory",
+      "phrases": ["Sa Re Ga Pa Dha Sa_high", "Sa_high Dha Pa Ga Re Sa", "Ga Re Sa Dha Pa"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa Re Ga Pa Dha Sa_high", "difficulty": "beginner" },
+        { "type": "sargam", "pattern": "Sa_high Dha Pa Ga Re Sa", "difficulty": "beginner" },
+        { "type": "aalaap", "description": "Cheerful exploration of the pentatonic scale", "difficulty": "beginner" },
+        { "type": "taan", "pattern": "Re Ga Pa Dha Sa_high Dha Pa Ga Re Sa Ga Re Sa", "difficulty": "intermediate" }
+      ]
+    },
+    {
+      "id": "kafi",
+      "name": "Kafi",
+      "thaat": "kafi",
+      "time": "Night (9 PM - 12 AM)",
+      "arohana": ["Sa", "Re", "komal_Ga", "Ma", "Pa", "Dha", "komal_Ni", "Sa_high"],
+      "avarohana": ["Sa_high", "komal_Ni", "Dha", "Pa", "Ma", "komal_Ga", "Re", "Sa"],
+      "vadi": "Re",
+      "samvadi": "komal_Ni",
+      "description": "Versatile raga used in thumri, dadra, and light classical. Teaches komal Ga and Ni.",
+      "mood": "Romantic, playful, yearning",
+      "phrases": ["Sa Re komal_Ga Ma Pa", "Dha komal_Ni Sa_high komal_Ni Dha Pa", "komal_Ga Ma Pa Dha komal_Ni"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa Re komal_Ga Ma Pa Dha komal_Ni Sa_high", "difficulty": "beginner" },
+        { "type": "sargam", "pattern": "Sa_high komal_Ni Dha Pa Ma komal_Ga Re Sa", "difficulty": "beginner" },
+        { "type": "aalaap", "description": "Romantic exploration with emphasis on komal_Ga meend", "difficulty": "intermediate" },
+        { "type": "taan", "pattern": "Re komal_Ga Ma Pa Dha komal_Ni Sa_high komal_Ni Dha Pa Ma komal_Ga Re Sa", "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": "malkauns",
+      "name": "Malkauns",
+      "thaat": "asavari",
+      "time": "Late Night (12 AM - 3 AM)",
+      "arohana": ["Sa", "komal_Ga", "Ma", "komal_Dha", "komal_Ni", "Sa_high"],
+      "avarohana": ["Sa_high", "komal_Ni", "komal_Dha", "Ma", "komal_Ga", "Sa"],
+      "vadi": "komal_Dha",
+      "samvadi": "komal_Ga",
+      "description": "Pentatonic night raga. Deep, meditative, and introspective. No Re or Pa.",
+      "mood": "Meditative, introspective, profound",
+      "phrases": ["Sa komal_Ga Ma komal_Dha komal_Ni Sa_high", "Sa_high komal_Ni komal_Dha Ma komal_Ga Sa", "komal_Ga Ma komal_Dha komal_Ni"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa komal_Ga Ma komal_Dha komal_Ni Sa_high", "difficulty": "beginner" },
+        { "type": "sargam", "pattern": "Sa_high komal_Ni komal_Dha Ma komal_Ga Sa", "difficulty": "beginner" },
+        { "type": "aalaap", "description": "Slow, contemplative exploration of the pentatonic night scale", "difficulty": "intermediate" },
+        { "type": "taan", "pattern": "komal_Ga Ma komal_Dha komal_Ni Sa_high komal_Ni komal_Dha Ma komal_Ga Sa", "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": "darbari",
+      "name": "Darbari Kanada",
+      "thaat": "asavari",
+      "time": "Late Night (10 PM - 2 AM)",
+      "arohana": ["Sa", "Re", "komal_Ga", "Ma", "Pa", "komal_Dha", "komal_Ni", "Sa_high"],
+      "avarohana": ["Sa_high", "komal_Ni", "komal_Dha", "Pa", "Ma", "komal_Ga", "Re", "Sa"],
+      "vadi": "komal_Ga",
+      "samvadi": "komal_Dha",
+      "description": "Majestic night raga. Heavy and dignified. Teaches slow, deliberate phrasing.",
+      "mood": "Majestic, solemn, dignified",
+      "phrases": ["Re komal_Ga Ma Pa komal_Dha", "komal_Ni Sa_high komal_Ni komal_Dha Pa Ma komal_Ga Re Sa"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa Re komal_Ga Ma Pa komal_Dha komal_Ni Sa_high", "difficulty": "intermediate" },
+        { "type": "sargam", "pattern": "Sa_high komal_Ni komal_Dha Pa Ma komal_Ga Re Sa", "difficulty": "intermediate" },
+        { "type": "aalaap", "description": "Slow, weighted exploration with emphasis on komal_Ga and komal_Dha", "difficulty": "advanced" },
+        { "type": "taan", "pattern": "Re komal_Ga Ma Pa komal_Dha komal_Ni Sa_high komal_Ni komal_Dha Pa Ma komal_Ga Re Sa", "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": "khamaj",
+      "name": "Khamaj",
+      "thaat": "khamaj",
+      "time": "Evening/Night (8 PM - 12 AM)",
+      "arohana": ["Sa", "Re", "Ga", "Ma", "Pa", "Dha", "komal_Ni", "Sa_high"],
+      "avarohana": ["Sa_high", "Ni", "Dha", "Pa", "Ma", "Ga", "Re", "Sa"],
+      "vadi": "Dha",
+      "samvadi": "Ga",
+      "description": "Versatile raga used in thumri and light classical. Shuddha and komal Ni both used.",
+      "mood": "Romantic, playful, devotional",
+      "phrases": ["Sa Re Ga Ma Pa Dha komal_Ni Sa_high", "Sa_high Ni Dha Pa Ma Ga Re Sa"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa Re Ga Ma Pa Dha komal_Ni Sa_high", "difficulty": "beginner" },
+        { "type": "sargam", "pattern": "Sa_high Ni Dha Pa Ma Ga Re Sa", "difficulty": "beginner" },
+        { "type": "aalaap", "description": "Light, playful exploration with both Ni variations", "difficulty": "intermediate" },
+        { "type": "taan", "pattern": "Re Ga Ma Pa Dha komal_Ni Sa_high Ni Dha Pa Ma Ga Re Sa", "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": "bhimpaldi",
+      "name": "Bhimpaldi",
+      "thaat": "asavari",
+      "time": "Evening (6 PM - 9 PM)",
+      "arohana": ["Sa", "komal_Re", "komal_Ga", "Ma", "Pa", "komal_Dha", "komal_Ni", "Sa_high"],
+      "avarohana": ["Sa_high", "komal_Ni", "komal_Dha", "Pa", "Ma", "komal_Ga", "komal_Re", "Sa"],
+      "vadi": "komal_Re",
+      "samvadi": "komal_Dha",
+      "description": "Evening raga with a plaintive quality. All komal swaras except Ma.",
+      "mood": "Plaintive, longing, romantic",
+      "phrases": ["Sa komal_Re komal_Ga Ma Pa", "komal_Dha komal_Ni Sa_high komal_Ni komal_Dha Pa"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa komal_Re komal_Ga Ma Pa komal_Dha komal_Ni Sa_high", "difficulty": "beginner" },
+        { "type": "sargam", "pattern": "Sa_high komal_Ni komal_Dha Pa Ma komal_Ga komal_Re Sa", "difficulty": "beginner" },
+        { "type": "aalaap", "description": "Gentle, plaintive exploration", "difficulty": "intermediate" },
+        { "type": "taan", "pattern": "komal_Re komal_Ga Ma Pa komal_Dha komal_Ni Sa_high komal_Ni komal_Dha Pa Ma komal_Ga komal_Re Sa", "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": "marwa",
+      "name": "Marwa",
+      "thaat": "marwa",
+      "time": "Sunset (5 PM - 7 PM)",
+      "arohana": ["Sa", "komal_Re", "Ga", "tivra_Ma", "Pa", "Dha", "Ni", "Sa_high"],
+      "avarohana": ["Sa_high", "Ni", "Dha", "Pa", "tivra_Ma", "Ga", "komal_Re", "Sa"],
+      "vadi": "komal_Re",
+      "samvadi": "Dha",
+      "description": "Unique raga with no Pa. Tension-filled and dramatic. Teaches tivra Ma.",
+      "mood": "Dramatic, tense, yearning",
+      "phrases": ["Sa komal_Re Ga tivra_Ma Pa Dha Ni Sa_high"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa komal_Re Ga tivra_Ma Pa Dha Ni Sa_high", "difficulty": "intermediate" },
+        { "type": "sargam", "pattern": "Sa_high Ni Dha Pa tivra_Ma Ga komal_Re Sa", "difficulty": "intermediate" },
+        { "type": "aalaap", "description": "Tense, dramatic exploration without Pa", "difficulty": "advanced" },
+        { "type": "taan", "pattern": "komal_Re Ga tivra_Ma Pa Dha Ni Sa_high Ni Dha Pa tivra_Ma Ga komal_Re Sa", "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": "purvi",
+      "name": "Purvi",
+      "thaat": "purvi",
+      "time": "Sunset (5 PM - 8 PM)",
+      "arohana": ["Sa", "komal_Re", "Ga", "tivra_Ma", "Pa", "komal_Dha", "Ni", "Sa_high"],
+      "avarohana": ["Sa_high", "Ni", "komal_Dha", "Pa", "tivra_Ma", "Ga", "komal_Re", "Sa"],
+      "vadi": "komal_Re",
+      "samvadi": "komal_Dha",
+      "description": "Evening raga with tivra Ma and komal Dha. Rich and complex.",
+      "mood": "Rich, complex, devotional",
+      "phrases": ["Sa komal_Re Ga tivra_Ma Pa komal_Dha Ni Sa_high"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa komal_Re Ga tivra_Ma Pa komal_Dha Ni Sa_high", "difficulty": "intermediate" },
+        { "type": "sargam", "pattern": "Sa_high Ni komal_Dha Pa tivra_Ma Ga komal_Re Sa", "difficulty": "intermediate" },
+        { "type": "aalaap", "description": "Rich exploration combining tivra Ma with komal Dha", "difficulty": "advanced" },
+        { "type": "taan", "pattern": "komal_Re Ga tivra_Ma Pa komal_Dha Ni Sa_high Ni komal_Dha Pa tivra_Ma Ga komal_Re Sa", "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": "todi",
+      "name": "Miyan Ki Todi",
+      "thaat": "todi",
+      "time": "Morning (6 AM - 9 AM)",
+      "arohana": ["Sa", "komal_Re", "komal_Ga", "tivra_Ma", "Pa", "Dha", "komal_Ni", "Sa_high"],
+      "avarohana": ["Sa_high", "komal_Ni", "Dha", "Pa", "tivra_Ma", "komal_Ga", "komal_Re", "Sa"],
+      "vadi": "komal_Ga",
+      "samvadi": "Dha",
+      "description": "Deeply emotional morning raga. Complex with komal Re, komal Ga, tivra Ma, komal Ni.",
+      "mood": "Deeply emotional, pleading, devotional",
+      "phrases": ["Sa komal_Re komal_Ga tivra_Ma Pa Dha komal_Ni Sa_high"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa komal_Re komal_Ga tivra_Ma Pa Dha komal_Ni Sa_high", "difficulty": "advanced" },
+        { "type": "sargam", "pattern": "Sa_high komal_Ni Dha Pa tivra_Ma komal_Ga komal_Re Sa", "difficulty": "advanced" },
+        { "type": "aalaap", "description": "Deeply emotional exploration with all four altered swaras", "difficulty": "advanced" },
+        { "type": "taan", "pattern": "komal_Re komal_Ga tivra_Ma Pa Dha komal_Ni Sa_high komal_Ni Dha Pa tivra_Ma komal_Ga komal_Re Sa", "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": "jaijaiwanti",
+      "name": "Jaijaiwanti",
+      "thaat": "kafi",
+      "time": "Night (9 PM - 12 AM)",
+      "arohana": ["Sa", "Re", "komal_Ga", "Ma", "Pa", "Dha", "komal_Ni", "Sa_high"],
+      "avarohana": ["Sa_high", "Ni", "Dha", "Pa", "Ma", "komal_Ga", "Re", "Sa"],
+      "vadi": "komal_Ga",
+      "samvadi": "Ni",
+      "description": "Popular night raga. Romantic and expressive. Uses both Ni variants.",
+      "mood": "Romantic, expressive, devotional",
+      "phrases": ["Sa Re komal_Ga Ma Pa Dha komal_Ni Sa_high", "Sa_high Ni Dha Pa Ma komal_Ga Re Sa"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa Re komal_Ga Ma Pa Dha komal_Ni Sa_high", "difficulty": "intermediate" },
+        { "type": "sargam", "pattern": "Sa_high Ni Dha Pa Ma komal_Ga Re Sa", "difficulty": "intermediate" },
+        { "type": "aalaap", "description": "Romantic exploration with both Ni variations", "difficulty": "intermediate" },
+        { "type": "taan", "pattern": "Re komal_Ga Ma Pa Dha komal_Ni Sa_high Ni Dha Pa Ma komal_Ga Re Sa", "difficulty": "advanced" }
+      ]
+    },
+    {
+      "id": "bilaskhani",
+      "name": "Bilaskhani Todi",
+      "thaat": "todi",
+      "time": "Morning (6 AM - 9 AM)",
+      "arohana": ["Sa", "komal_Re", "komal_Ga", "Ma", "Pa", "Dha", "komal_Ni", "Sa_high"],
+      "avarohana": ["Sa_high", "komal_Ni", "Dha", "Pa", "Ma", "komal_Ga", "komal_Re", "Sa"],
+      "vadi": "komal_Re",
+      "samvadi": "Dha",
+      "description": "Variant of Todi with shuddha Ma. Melancholic and deeply moving.",
+      "mood": "Melancholic, deeply moving, devotional",
+      "phrases": ["Sa komal_Re komal_Ga Ma Pa Dha komal_Ni Sa_high"],
+      "lessons": [
+        { "type": "sargam", "pattern": "Sa komal_Re komal_Ga Ma Pa Dha komal_Ni Sa_high", "difficulty": "advanced" },
+        { "type": "sargam", "pattern": "Sa_high komal_Ni Dha Pa Ma komal_Ga komal_Re Sa", "difficulty": "advanced" },
+        { "type": "aalaap", "description": "Melancholic exploration with shuddha Ma", "difficulty": "advanced" },
+        { "type": "taan", "pattern": "komal_Re komal_Ga Ma Pa Dha komal_Ni Sa_high komal_Ni Dha Pa Ma komal_Ga komal_Re Sa", "difficulty": "advanced" }
+      ]
+    }
+  ],
+  "talas": [
+    {
+      "id": "teentaal",
+      "name": "Teentaal (Tintal)",
+      "beats": 16,
+      "divisions": 4,
+      "description": "Most common tala in Hindustani music. 16 matras in 4 vibhags of 4 each.",
+      "pattern": ["Dha", "Dhin", "Dhin", "Dha", "Dha", "Dhin", "Dhin", "Dha", "Dha", "Tin", "Tin", "Tat", "Ta", "Dhin", "Dhin", "Dha"],
+      "clap_pattern": ["Sam", "Clap", "Clap", "Khali"],
+      "clap_positions": [0, 4, 8, 12],
+      "vibhags": [
+        { "beats": 4, "clap": "Sam" },
+        { "beats": 4, "clap": "Clap" },
+        { "beats": 4, "clap": "Clap" },
+        { "beats": 4, "clap": "Khali" }
+      ]
+    },
+    {
+      "id": "jhaptaal",
+      "name": "Jhaptaal",
+      "beats": 10,
+      "divisions": 5,
+      "description": "Popular tala with asymmetric grouping. 10 matras in 5 vibhags of 2 each.",
+      "pattern": ["Dhi", "Dhi", "Dhi", "Dhi", "Dhi", "Tin", "Ta", "Ta", "Dhi", "Dhi"],
+      "clap_pattern": ["Sam", "Clap", "Clap", "Clap", "Khali"],
+      "clap_positions": [0, 2, 4, 6, 8],
+      "vibhags": [
+        { "beats": 2, "clap": "Sam" },
+        { "beats": 2, "clap": "Clap" },
+        { "beats": 2, "clap": "Clap" },
+        { "beats": 2, "clap": "Clap" },
+        { "beats": 2, "clap": "Khali" }
+      ]
+    },
+    {
+      "id": "rupak",
+      "name": "Rupak Tala",
+      "beats": 7,
+      "divisions": 3,
+      "description": "Unique tala with 7 matras. First vibhag is 3 beats, rest are 2.",
+      "pattern": ["Tin", "Ta", "Ka", "Dhi", "Na", "Dhi", "Na"],
+      "clap_pattern": ["Clap", "Clap", "Khali"],
+      "clap_positions": [0, 3, 5],
+      "vibhags": [
+        { "beats": 3, "clap": "Clap" },
+        { "beats": 2, "clap": "Clap" },
+        { "beats": 2, "clap": "Khali" }
+      ]
+    },
+    {
+      "id": "ektaal",
+      "name": "Ektaal",
+      "beats": 12,
+      "divisions": 6,
+      "description": "12 matra tala used in dhrupad and khayal. 6 vibhags of 2 each.",
+      "pattern": ["Dhin", "Dhin", "DhaGe", "TiRaKi", "Ta", "Dhi", "Dhom", "Ge", "TiRaKi", "Ta", "Dhi", "Dha"],
+      "clap_pattern": ["Sam", "Khali", "Clap", "Khali", "Clap", "Clap"],
+      "clap_positions": [0, 2, 4, 6, 8, 10],
+      "vibhags": [
+        { "beats": 2, "clap": "Sam" },
+        { "beats": 2, "clap": "Khali" },
+        { "beats": 2, "clap": "Clap" },
+        { "beats": 2, "clap": "Khali" },
+        { "beats": 2, "clap": "Clap" },
+        { "beats": 2, "clap": "Clap" }
+      ]
+    },
+    {
+      "id": "jherwa",
+      "name": "Jherwa",
+      "beats": 8,
+      "divisions": 4,
+      "description": "Common tala in light classical music. 8 matras in 4 vibhags of 2 each.",
+      "pattern": ["Dha", "Dhin", "Dha", "Dhin", "Dha", "Tin", "Ta", "Ta"],
+      "clap_pattern": ["Sam", "Clap", "Khali", "Clap"],
+      "clap_positions": [0, 2, 4, 6],
+      "vibhags": [
+        { "beats": 2, "clap": "Sam" },
+        { "beats": 2, "clap": "Clap" },
+        { "beats": 2, "clap": "Khali" },
+        { "beats": 2, "clap": "Clap" }
+      ]
+    },
+    {
+      "id": "dadratala",
+      "name": "Dadra Tala",
+      "beats": 6,
+      "divisions": 2,
+      "description": "Simple 6-beat tala used in light and semi-classical music.",
+      "pattern": ["Dha", "Dhi", "Na", "Dha", "Ti", "Na"],
+      "clap_pattern": ["Sam", "Khali"],
+      "clap_positions": [0, 3],
+      "vibhags": [
+        { "beats": 3, "clap": "Sam" },
+        { "beats": 3, "clap": "Khali" }
+      ]
+    },
+    {
+      "id": "rupak_vistaar",
+      "name": "Rupak Vistaar",
+      "beats": 14,
+      "divisions": 3,
+      "description": "Extended version of Rupak with doubled matras.",
+      "pattern": ["Tin", "Tin", "Ka", "Ka", "Dhi", "Dhi", "Na", "Na", "Dhi", "Dhi", "Na", "Na", "Dhi", "Na"],
+      "clap_pattern": ["Clap", "Clap", "Khali"],
+      "clap_positions": [0, 6, 10],
+      "vibhags": [
+        { "beats": 6, "clap": "Clap" },
+        { "beats": 4, "clap": "Clap" },
+        { "beats": 4, "clap": "Khali" }
+      ]
+    }
+  ]
+}

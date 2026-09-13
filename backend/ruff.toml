@@ -1,0 +1,21 @@
+line-length = 120
+target-version = "py313"
+
+[lint]
+ignore = [
+    "B008",    # FastAPI Depends() in function args - standard DI pattern
+    "BLE001",  # Broad Exception catches - intentional in init/TTS fallbacks
+    "S110",    # try-except-pass - intentional for migration idempotency
+    "E402",    # Module-level imports not at top - intentional for DB init
+    "E501",    # Line too long - cosmetic only
+    "E302",    # Blank line spacing - cosmetic only
+    "E305",    # Blank line after class/func - cosmetic only
+    "W291",    # Trailing whitespace - cosmetic only
+    "W292",    # No newline at end of file - cosmetic only
+    "W293",    # Blank line with whitespace - cosmetic only
+    "PERF402", # False positive on list building pattern
+]
+
+[lint.per-file-ignores]
+"seed_data.py" = ["E501"]
+"services/ai_lesson_generator.py" = ["E501"]

@@ -1,0 +1,40 @@
+{
+  "modes": [
+    {"id": "ionian", "name": "Ionian (Major)", "notes": ["C", "D", "E", "F", "G", "A", "B"], "description": "Bright and stable.", "mood": "Bright, joyful"},
+    {"id": "dorian", "name": "Dorian", "notes": ["D", "E", "F", "G", "A", "B", "C"], "description": "Minor with raised 6th. Most common traditional mode.", "mood": "Mellow, flowing"},
+    {"id": "mixolydian", "name": "Mixolydian", "notes": ["G", "A", "B", "C", "D", "E", "F"], "description": "Major with flat 7th. Dance tunes.", "mood": "Lively, earthy"},
+    {"id": "aeolian", "name": "Aeolian (Natural Minor)", "notes": ["A", "B", "C", "D", "E", "F", "G"], "description": "Pure minor. Slow airs and laments.", "mood": "Melancholic, profound"},
+    {"id": "pentatonic_major", "name": "Major Pentatonic", "notes": ["C", "D", "E", "G", "A"], "description": "Old Irish and Scottish scale.", "mood": "Open, ancient"},
+    {"id": "pentatonic_minor", "name": "Minor Pentatonic", "notes": ["A", "C", "D", "E", "G"], "description": "Highland pipe scale.", "mood": "Mournful, stark"}
+  ],
+  "forms": [
+    {"id": "jig", "name": "Jig", "meter": "6/8", "description": "Lively dance in compound duple meter.", "tempo": "fast"},
+    {"id": "reel", "name": "Reel", "meter": "4/4", "description": "Fast dance with continuous quaver motion.", "tempo": "very fast"},
+    {"id": "hornpipe", "name": "Hornpipe", "meter": "4/4", "description": "Dotted rhythm dance. Sailor's dance.", "tempo": "moderate"},
+    {"id": "slip_jig", "name": "Slip Jig", "meter": "9/8", "description": "Elegant dance in compound triple.", "tempo": "moderate"},
+    {"id": "waltz", "name": "Waltz", "meter": "3/4", "description": "Triple meter.", "tempo": "moderate"},
+    {"id": "march", "name": "March", "meter": "4/4", "description": "Processional tune. Pipe bands.", "tempo": "steady"},
+    {"id": "slow_air", "name": "Slow Air", "meter": "free", "description": "Vocal-inspired free rhythm melody.", "tempo": "slow rubato"},
+    {"id": "polka", "name": "Polka", "meter": "2/4", "description": "Lively couple dance. Sliabh Luachra style.", "tempo": "fast"},
+    {"id": "slide", "name": "Slide", "meter": "12/8", "description": "Fast Sliabh Luachra dance.", "tempo": "very fast"},
+    {"id": "strathspey", "name": "Strathspey", "meter": "4/4", "description": "Scottish dance with Scotch snap rhythm.", "tempo": "moderate"}
+  ],
+  "instruments": [
+    {"id": "fiddle", "name": "Fiddle", "type": "bowed_string", "strings": 4, "range": "G3 - A7", "description": "Violin played in folk style. Ornament-rich.", "difficulty": "intermediate"},
+    {"id": "tin_whistle", "name": "Tin Whistle", "type": "wind", "holes": 6, "range": "D5 - D7", "description": "Simple metal flute. Key of D most common.", "difficulty": "beginner"},
+    {"id": "bodhran", "name": "Bodhrán", "type": "percussion", "description": "Frame drum with stick. Tipper technique.", "difficulty": "beginner"},
+    {"id": "uilleann_pipes", "name": "Uilleann Pipes", "type": "wind", "range": "D4 - D6", "description": "Irish bellows-blown bagpipes. Sweet and mellow.", "difficulty": "advanced"},
+    {"id": "flute", "name": "Wooden Flute", "type": "wind", "holes": 6, "range": "D4 - D6", "description": "Simple system wooden flute. Breathy tone.", "difficulty": "intermediate"},
+    {"id": "bouzouki", "name": "Irish Bouzouki", "type": "plucked_string", "strings": 8, "range": "G2 - G5", "description": "Octave mandolin. Chordal accompaniment.", "difficulty": "intermediate"},
+    {"id": "concertina", "name": "Anglo Concertina", "type": "free_reed", "range": "G3 - C6", "description": "Bellows-driven button accordion. Fast melody.", "difficulty": "intermediate"},
+    {"id": "harp", "name": "Celtic Harp", "type": "plucked_string", "strings": 34, "range": "C1 - G7", "description": "Lever harp with metal strings. Ancient tradition.", "difficulty": "intermediate"}
+  ],
+  "ornaments": [
+    {"name": "Cut", "description": "Quick grace note above main note.", "difficulty": "beginner"},
+    {"name": "Strike", "description": "Quick grace note below main note.", "difficulty": "beginner"},
+    {"name": "Roll", "description": "Cut + main note + strike.", "difficulty": "intermediate"},
+    {"name": "Crann", "description": "Multiple cuts on sustained note.", "difficulty": "advanced"},
+    {"name": "Slide", "description": "Finger slide into note from below.", "difficulty": "beginner"},
+    {"name": "Bend", "description": "Pitch bend by embouchure or finger.", "difficulty": "intermediate"}
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "scales": [
+    {"id": "slendro", "name": "Slendro", "notes": ["1", "2", "3", "5", "6"], "description": "Pentatonic with roughly equal intervals.", "mood": "Balanced, flowing"},
+    {"id": "pelog", "name": "Pelog", "notes": ["1", "2", "3", "4", "5", "6", "7"], "description": "Heptatonic with unequal steps.", "mood": "Bright, varied"},
+    {"id": "degung", "name": "Degung", "notes": ["1", "2", "3", "5", "6"], "description": "Sundanese pentatonic variant. Softer.", "mood": "Gentle, refined"}
+  ],
+  "instruments": [
+    {"id": "gamelan", "name": "Gamelan Ensemble", "type": "ensemble", "description": "Bronze percussion orchestra. 20-40 instruments.", "difficulty": "intermediate"},
+    {"id": "saron", "name": "Saron", "type": "percussion", "keys": 7, "description": "Metallophone with thick bronze keys.", "difficulty": "beginner"},
+    {"id": "gender", "name": "Gender", "type": "percussion", "keys": 10, "description": "Metallophone with thin keys and resonators.", "difficulty": "intermediate"},
+    {"id": "gong", "name": "Gong Ageng", "type": "percussion", "description": "Large hanging gong. Deep and resonant.", "difficulty": "beginner"},
+    {"id": "bonang", "name": "Bonang", "type": "percussion", "pots": 10, "description": "Row of small kettle gongs.", "difficulty": "intermediate"},
+    {"id": "kendang", "name": "Kendang", "type": "percussion", "description": "Double-headed drum. Leader of ensemble.", "difficulty": "advanced"},
+    {"id": "suling", "name": "Suling", "type": "wind", "holes": 4, "description": "Ring-flute with circular breathing.", "difficulty": "intermediate"},
+    {"id": "rebab", "name": "Rebab", "type": "bowed_string", "strings": 2, "description": "Two-stringed fiddle. Melodic leader.", "difficulty": "advanced"}
+  ],
+  "forms": [
+    {"id": "ladrang", "name": "Ladrang", "description": "Medium tempo form. 32 beats."},
+    {"id": "ketawang", "name": "Ketawang", "description": "Slow tempo form. 16 beats."},
+    {"id": "lancaran", "name": "Lancaran", "description": "Fast tempo form. 16 beats."},
+    {"id": "gendhing", "name": "Gendhing", "description": "Large formal composition."}
+  ],
+  "techniques": [
+    {"name": "Balungan", "description": "Core melody played on saron.", "difficulty": "beginner"},
+    {"name": "Cengkok", "description": "Elaborate melodic figuration on gender.", "difficulty": "advanced"},
+    {"name": "Kotekan", "description": "Rapid interlocking figuration.", "difficulty": "advanced"},
+    {"name": "Colotomic", "description": "Cyclical punctuation by gongs.", "difficulty": "beginner"}
+  ]
+}

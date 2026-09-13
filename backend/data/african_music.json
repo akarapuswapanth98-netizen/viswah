@@ -1,0 +1,32 @@
+{
+  "scales": [
+    {"id": "pentatonic_major", "name": "Major Pentatonic", "notes": ["C", "D", "E", "G", "A"], "region": "West Africa", "description": "Common across West African traditions.", "mood": "Joyful, open"},
+    {"id": "pentatonic_minor", "name": "Minor Pentatonic", "notes": ["C", "Eb", "F", "G", "Bb"], "region": "West Africa", "description": "Blues scale ancestor.", "mood": "Earthy, grounded"},
+    {"id": "hexatonic", "name": "Hexatonic", "notes": ["C", "D", "E", "F", "G", "A"], "region": "Central Africa", "description": "Six-note scale without semitones.", "mood": "Balanced, flowing"},
+    {"id": "heptatonic", "name": "Heptatonic", "notes": ["C", "D", "E", "F", "G", "A", "Bb"], "region": "East Africa", "description": "Seven-note with flat seventh.", "mood": "Lively, dance"},
+    {"id": "mbira_scale", "name": "Mbira DzaVadzimu", "notes": ["B", "D", "E", "F#", "A"], "region": "Zimbabwe", "description": "Sacred mbira tuning.", "mood": "Spiritual, trance"},
+    {"id": "kora_scale", "name": "Kora Scale", "notes": ["F", "G", "A", "C", "D", "F"], "region": "Mali/Senegal", "description": "Kora tuning based on F major.", "mood": "Griot, narrative"}
+  ],
+  "rhythms": [
+    {"id": "djole", "name": "Djole", "beats": 12, "region": "Guinea", "description": "Mask dance rhythm. 12-pulse polyrhythm."},
+    {"id": "kuku", "name": "Kuku", "beats": 12, "region": "Guinea", "description": "Welcome rhythm from coastal region."},
+    {"id": "sunu", "name": "Sunu", "beats": 12, "region": "Mali", "description": "Bamana rhythm for young men's festival."},
+    {"id": "sorsornet", "name": "Sorsornet", "beats": 12, "region": "Guinea", "description": "Susu rhythm for women."},
+    {"id": "yankadi", "name": "Yankadi", "beats": 16, "region": "Guinea", "description": "Slow courtship dance rhythm."},
+    {"id": "makru", "name": "Makru", "beats": 12, "region": "Guinea", "description": "Fast rhythm following Yankadi."},
+    {"id": "fanga", "name": "Fanga", "beats": 12, "region": "Liberia/Guinea", "description": "Welcome rhythm."},
+    {"id": "kpanlogo", "name": "Kpanlogo", "beats": 12, "region": "Ghana", "description": "Ga people's recreational rhythm."},
+    {"id": "agbadza", "name": "Agbadza", "beats": 12, "region": "Ghana/Ewe", "description": "Ewe people's traditional rhythm."},
+    {"id": "sakara", "name": "Sakara", "beats": 8, "region": "Nigeria", "description": "Yoruba rhythm for Sakara drum."}
+  ],
+  "instruments": [
+    {"id": "kora", "name": "Kora", "type": "plucked_string", "strings": 21, "range": "F2 - F5", "region": "Mali/Senegal", "description": "21-string bridge harp. Griot instrument.", "difficulty": "advanced"},
+    {"id": "balafon", "name": "Balafon", "type": "percussion", "keys": 18, "region": "Mali/Burkina", "description": "Wooden xylophone with gourd resonators.", "difficulty": "intermediate"},
+    {"id": "djembe", "name": "Djembe", "type": "percussion", "region": "Guinea/Mali", "description": "Goblet drum with wide dynamic range.", "difficulty": "beginner"},
+    {"id": "talking_drum", "name": "Talking Drum", "type": "percussion", "region": "Nigeria/Ghana", "description": "Hourglass drum that mimics speech tones.", "difficulty": "intermediate"},
+    {"id": "ngoni", "name": "Ngoni", "type": "plucked_string", "strings": 4, "range": "C3 - C5", "region": "Mali", "description": "Ancestor of banjo. Small lute.", "difficulty": "beginner"},
+    {"id": "mbira", "name": "Mbira DzaVadzimu", "type": "plucked_string", "keys": 22, "region": "Zimbabwe", "description": "Thumb piano with bottle cap buzzers.", "difficulty": "intermediate"},
+    {"id": "shekere", "name": "Shekere", "type": "percussion", "region": "West Africa", "description": "Gourd with bead net. Shaker.", "difficulty": "beginner"},
+    {"id": "bolon", "name": "Bolon", "type": "bowed_string", "strings": 3, "region": "Mali", "description": "Hunter's harp with calabash body.", "difficulty": "intermediate"}
+  ]
+}

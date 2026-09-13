@@ -1,0 +1,30 @@
+{
+  "scales": [
+    {"id": "blues_minor", "name": "Blues Minor Pentatonic", "notes": ["A", "C", "D", "E", "G"], "description": "Most common blues scale.", "mood": "Gritty, soulful"},
+    {"id": "blues_hexatonic", "name": "Blues Hexatonic", "notes": ["A", "C", "D", "Eb", "E", "G"], "description": "Minor pentatonic with blue note.", "mood": "Classic blues"},
+    {"id": "mixolydian_blues", "name": "Mixolydian Blues", "notes": ["A", "B", "C", "D", "E", "F#", "G"], "description": "Dominant 7th scale with blues notes.", "mood": "Jazz-blues fusion"}
+  ],
+  "forms": [
+    {"id": "twelve_bar", "name": "12-Bar Blues", "chords": "I-IV-V", "description": "Standard 12-bar progression.", "difficulty": "beginner"},
+    {"id": "eight_bar", "name": "8-Bar Blues", "chords": "I-IV-V", "description": "Shortened form.", "difficulty": "beginner"},
+    {"id": "slow_blues", "name": "Slow Blues", "tempo": "slow", "description": "Emotional 12-bar at slow tempo.", "difficulty": "intermediate"},
+    {"id": "jump_blues", "name": "Jump Blues", "tempo": "fast", "description": "Up-tempo dance blues.", "difficulty": "intermediate"},
+    {"id": "delta_blues", "name": "Delta Blues", "style": "solo", "description": "Fingerpicked acoustic. Robert Johnson style.", "difficulty": "intermediate"},
+    {"id": "chicago_blues", "name": "Chicago Blues", "style": "electric", "description": "Amplified band format.", "difficulty": "intermediate"},
+    {"id": "texas_blues", "name": "Texas Blues", "style": "electric", "description": "Single-string lead. SRV style.", "difficulty": "advanced"}
+  ],
+  "techniques": [
+    {"name": "Bend", "description": "Pitch bend up to target note.", "difficulty": "beginner"},
+    {"name": "Slide Guitar", "description": "Bottleneck or metal tube on finger.", "difficulty": "intermediate"},
+    {"name": "Fingerpicking", "description": "Thumb alternating bass with melody.", "difficulty": "intermediate"},
+    {"name": "Hammer-On", "description": "Ascending legato articulation.", "difficulty": "beginner"},
+    {"name": "Pull-Off", "description": "Descending legato articulation.", "difficulty": "beginner"},
+    {"name": "Vibrato", "description": "Pitch modulation for expression.", "difficulty": "beginner"},
+    {"name": "Cross Harp", "description": "Second position harmonica playing.", "difficulty": "intermediate"}
+  ],
+  "instruments": [
+    {"id": "blues_guitar", "name": "Blues Guitar", "type": "plucked_string", "strings": 6, "range": "E2 - E5", "description": "Electric or acoustic. Bends and slides.", "difficulty": "intermediate"},
+    {"id": "harmonica", "name": "Blues Harmonica", "type": "free_reed", "range": "G3 - C7", "description": "10-hole diatonic. Cross harp position.", "difficulty": "intermediate"},
+    {"id": "piano", "name": "Blues Piano", "type": "keyboard", "range": "A1 - C8", "description": "Boogie-woogie and barrelhouse styles.", "difficulty": "intermediate"}
+  ]
+}

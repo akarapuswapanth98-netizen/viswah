@@ -1,0 +1,38 @@
+{
+  "scales": [
+    {"id": "major", "name": "Major (Ionian)", "notes": ["C", "D", "E", "F", "G", "A", "B"], "description": "Foundation scale.", "mood": "Bright, stable"},
+    {"id": "dorian", "name": "Dorian", "notes": ["D", "E", "F", "G", "A", "B", "C"], "description": "Minor with raised 6th. ii chord.", "mood": "Jazzy minor"},
+    {"id": "mixolydian", "name": "Mixolydian", "notes": ["G", "A", "B", "C", "D", "E", "F"], "description": "Dominant 7th scale. V chord.", "mood": "Dominant, funky"},
+    {"id": "melodic_minor", "name": "Jazz Melodic Minor", "notes": ["C", "D", "Eb", "F", "G", "A", "B"], "description": "Ascends with raised 6th and 7th.", "mood": "Sophisticated, complex"},
+    {"id": "harmonic_minor", "name": "Harmonic Minor", "notes": ["C", "D", "Eb", "F", "G", "Ab", "B"], "description": "Minor with raised 7th.", "mood": "Dramatic, exotic"},
+    {"id": "diminished_wh", "name": "Diminished (Whole-Half)", "notes": ["C", "D", "Eb", "F", "Gb", "Ab", "A", "B"], "description": "8-note symmetrical scale.", "mood": "Tense, symmetrical"},
+    {"id": "whole_tone", "name": "Whole Tone", "notes": ["C", "D", "E", "F#", "G#", "Bb"], "description": "6-note symmetrical. Dreamy.", "mood": "Floating, dreamlike"},
+    {"id": "altered", "name": "Altered Scale", "notes": ["C", "Db", "Eb", "E", "F#", "G#", "Bb"], "description": "Super-Locrian. All alterations.", "mood": "Extreme tension"},
+    {"id": "lydian_dominant", "name": "Lydian Dominant", "notes": ["C", "D", "E", "F#", "G", "A", "Bb"], "description": "Raised 4th, flat 7th.", "mood": "Bright dominant"}
+  ],
+  "styles": [
+    {"id": "swing", "name": "Swing", "era": "1930s-40s", "description": "Big band era. Danceable jazz.", "mood": "Energetic, danceable"},
+    {"id": "bebop", "name": "Bebop", "era": "1940s", "description": "Fast tempos, complex harmonies.", "mood": "Virtuosic, intellectual"},
+    {"id": "cool", "name": "Cool Jazz", "era": "1950s", "description": "Relaxed, restrained approach.", "mood": "Cool, understated"},
+    {"id": "hard_bop", "name": "Hard Bop", "era": "1950s-60s", "description": "Blues and gospel influenced.", "mood": "Soulful, gritty"},
+    {"id": "free", "name": "Free Jazz", "era": "1960s", "description": "Abandons fixed chord changes.", "mood": "Avant-garde, expressive"},
+    {"id": "fusion", "name": "Jazz Fusion", "era": "1970s", "description": "Jazz meets rock and funk.", "mood": "Electric, groove-oriented"},
+    {"id": "latin_jazz", "name": "Latin Jazz", "era": "1940s-present", "description": "Afro-Cuban and Brazilian rhythms.", "mood": "Rhythmic, passionate"}
+  ],
+  "instruments": [
+    {"id": "saxophone", "name": "Saxophone", "type": "woodwind", "range": "Bb3 - F6", "description": "Most iconic jazz instrument. Alto and tenor most common.", "difficulty": "intermediate"},
+    {"id": "trumpet", "name": "Trumpet", "type": "brass", "range": "F#3 - D6", "description": "Bright and powerful lead instrument.", "difficulty": "intermediate"},
+    {"id": "piano", "name": "Jazz Piano", "type": "keyboard", "range": "A1 - C8", "description": "Comping, soloing, and arranging.", "difficulty": "intermediate"},
+    {"id": "double_bass", "name": "Double Bass", "type": "bowed_string", "strings": 4, "range": "E1 - G4", "description": "Walking bass lines and pizzicato.", "difficulty": "advanced"},
+    {"id": "drums", "name": "Jazz Drums", "type": "percussion", "description": "Ride cymbal swing, comping.", "difficulty": "intermediate"},
+    {"id": "guitar", "name": "Jazz Guitar", "type": "plucked_string", "strings": 6, "range": "E2 - E5", "description": "Clean tone. Chord-melody style.", "difficulty": "advanced"}
+  ],
+  "techniques": [
+    {"name": "Walking Bass", "description": "Quarter note bass line connecting chords.", "difficulty": "intermediate"},
+    {"name": "Comping", "description": "Rhythmic chord accompaniment.", "difficulty": "intermediate"},
+    {"name": "Swing Feel", "description": "Triplet-based eighth note subdivision.", "difficulty": "beginner"},
+    {"name": "Chord Substitution", "description": "Tritone and approach chord substitutions.", "difficulty": "advanced"},
+    {"name": "II-V-I", "description": "Most common jazz chord progression.", "difficulty": "beginner"},
+    {"name": "Modal Improvisation", "description": "Playing over modes rather than changes.", "difficulty": "intermediate"}
+  ]
+}

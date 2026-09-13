@@ -1,0 +1,33 @@
+{
+  "palos": [
+    {"id": "solea", "name": "Soleá", "compas": 12, "accent": "3-6-8-10", "description": "Mother of flamenco. Slow and profound.", "mood": "Serious, profound, weighty"},
+    {"id": "bulerias", "name": "Bulerías", "compas": 12, "accent": "3-6-8-10", "description": "Fast and festive. Most popular palo.", "mood": "Joyful, playful, virtuosic"},
+    {"id": "alegrias", "name": "Alegrías", "compas": 12, "accent": "3-6-8-10", "description": "Bright and celebratory. From Cádiz.", "mood": "Bright, celebratory"},
+    {"id": "tangos", "name": "Tangos", "compas": 4, "accent": "2-4", "description": "4-beat palo. Not Argentine tango.", "mood": "Earthy, sensual"},
+    {"id": "tientos", "name": "Tientos", "compas": 4, "accent": "2-4", "description": "Slow 4-beat. Serious and measured.", "mood": "Serious, solemn"},
+    {"id": "fandango", "name": "Fandango", "compas": 12, "accent": "3-6-8-10", "description": "Folk-derived. Various regional forms.", "mood": "Varied, regional"},
+    {"id": "sevillanas", "name": "Sevillanas", "compas": 6, "accent": "1-3-5", "description": "Folk dance from Seville. 4 coplas.", "mood": "Festive, social"},
+    {"id": "granainas", "name": "Granainas", "compas": "free", "description": "Free-rhythm cante from Granada.", "mood": "Intimate, free"},
+    {"id": "malagueñas", "name": "Malagueñas", "compas": "free", "description": "Free-rhythm from Málaga.", "mood": "Lyrical, free"},
+    {"id": "siguiriyas", "name": "Siguiriyas", "compas": 12, "accent": "1-3-5-8-11", "description": "Most serious and ancient palo.", "mood": "Tragic, profound, extreme"},
+    {"id": "tarantos", "name": "Tarantos", "compas": 4, "accent": "2-4", "description": "Mining song from Almería.", "mood": "Heavy, tragic"},
+    {"id": "rumba", "name": "Rumba Flamenca", "compas": 4, "accent": "2-4", "description": "Pop-flamenco fusion.", "mood": "Party, accessible"}
+  ],
+  "techniques": [
+    {"name": "Rasgueado", "description": "Strumming with outward flick of fingers.", "instrument": "guitar", "difficulty": "beginner"},
+    {"name": "Alzapúa", "description": "Thumb technique combining downstroke and upstroke.", "instrument": "guitar", "difficulty": "intermediate"},
+    {"name": "Picado", "description": "Rest-stroke scale technique with alternating fingers.", "instrument": "guitar", "difficulty": "intermediate"},
+    {"name": "Tremolo", "description": "p-i-a-m-i pattern for sustained melody.", "instrument": "guitar", "difficulty": "advanced"},
+    {"name": "Golpe", "description": "Tapping soundboard for percussion.", "instrument": "guitar", "difficulty": "beginner"},
+    {"name": "Cante Jondo", "description": "Deep song. Guttural, emotional vocal style.", "instrument": "vocal", "difficulty": "advanced"},
+    {"name": "Palmas", "description": "Hand clapping. Sordas and Claras.", "instrument": "percussion", "difficulty": "beginner"},
+    {"name": "Zapateado", "description": "Footwork as percussion.", "instrument": "percussion", "difficulty": "advanced"}
+  ],
+  "instruments": [
+    {"id": "flamenco_guitar", "name": "Flamenco Guitar", "type": "plucked_string", "strings": 6, "range": "E2 - E5", "description": "Nylon-string guitar. Brighter than classical.", "difficulty": "intermediate"},
+    {"id": "cajon", "name": "Cajón", "type": "percussion", "description": "Box drum. Sitting percussion.", "difficulty": "beginner"},
+    {"id": "palmas", "name": "Palmas", "type": "percussion", "description": "Hand clapping as instrument.", "difficulty": "beginner"},
+    {"id": "bombo", "name": "Bombo", "type": "percussion", "description": "Large bass drum.", "difficulty": "beginner"},
+    {"id": "platillos", "name": "Platillos", "type": "percussion", "description": "Cymbals. Crash accents.", "difficulty": "beginner"}
+  ]
+}

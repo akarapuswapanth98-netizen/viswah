@@ -1,0 +1,103 @@
+{
+  "domains": [
+    {
+      "id": "modern-pop",
+      "name": "Modern Pop & Commercial",
+      "subgenres": ["Pop", "Synth-pop", "Indie Pop", "Electropop", "Dance-pop", "Art Pop", "K-pop", "J-pop", "Hyperpop", "Dream Pop", "Bedroom Pop", "Teen Pop", "Baroque Pop", "Ambient Pop", "Sunshine Pop", "Europop", "Latin Pop"],
+      "vocal_mechanics": {
+        "placement": "Forward pharyngeal and mask resonance",
+        "breath_support": "High-flow diaphragmatic compression with crisp glottal attacks",
+        "stylistic_traits": "Speech-level singing, bright belt, micro-pitch auto-tune aesthetics, polished consonants",
+        "reference_bpm": "110-128 BPM"
+      }
+    },
+    {
+      "id": "rock-metal",
+      "name": "Rock, Alternative & Metal",
+      "subgenres": ["Rock and Roll", "Classic Rock", "Hard Rock", "Alternative Rock", "Indie Rock", "Garage Rock", "Psychedelic Rock", "Progressive Rock", "Post-Rock", "Grunge", "Punk Rock", "Post-Punk", "Pop-Punk", "Emo", "Math Rock", "Shoegaze", "Heavy Metal", "Thrash Metal", "Death Metal", "Black Metal", "Doom Metal", "Nu-Metal", "Metalcore", "Sludge Metal", "Glam Rock", "Southern Rock", "Britpop"],
+      "vocal_mechanics": {
+        "placement": "Aryepiglottic funnel twang, false cord engagement",
+        "breath_support": "High subglottic pressure with supported intercostal release",
+        "stylistic_traits": "Vocal fry, raspy overdrive, belted chest-dominant mix, extreme screams/growls",
+        "reference_bpm": "90-160 BPM"
+      }
+    },
+    {
+      "id": "hiphop-rap",
+      "name": "Hip-Hop, Rap & Trap",
+      "subgenres": ["Hip-Hop", "Old School Hip-Hop", "Golden Age Hip-Hop", "Boom Bap", "Trap", "Drill", "UK Drill", "Grime", "Cloud Rap", "Conscious Hip-Hop", "Jazz Rap", "Gangsta Rap", "Hardcore Hip-Hop", "Southern Rap", "Chopped and Screwed", "Emo Rap", "Lo-fi Hip-Hop", "Instrumental Hip-Hop", "Phonk", "Bounce"],
+      "vocal_mechanics": {
+        "placement": "Direct oral cavity projection, hard palate consonance",
+        "breath_support": "Rapid shallow replenishment between syncopated bars",
+        "stylistic_traits": "Triplet cadence flows, micro-rhythmic pocket timing, percussive plosives, melodic trap warbles",
+        "reference_bpm": "70-140 BPM"
+      }
+    },
+    {
+      "id": "electronic-dance",
+      "name": "Electronic & Club Dance",
+      "subgenres": ["EDM", "House", "Deep House", "Tech House", "Acid House", "Progressive House", "Electro House", "Techno", "Minimal Techno", "Detroit Techno", "Industrial Techno", "Trance", "Psytrance", "Drum and Bass", "Jungle", "Liquid Funk", "Dubstep", "Brostep", "Future Bass", "Breakbeat", "Hardstyle", "UK Garage", "Ambient", "IDM", "Downtempo", "Vaporwave", "Synthwave", "Electro-swing", "Glitch Hop"],
+      "vocal_mechanics": {
+        "placement": "Airy head-voice register with dynamic low-pass formant balance",
+        "breath_support": "Extended legato sustain with controlled dynamic decay",
+        "stylistic_traits": "Side-chained vocal swells, gated staccato phrasing, vocoded octaves",
+        "reference_bpm": "120-174 BPM"
+      }
+    },
+    {
+      "id": "rnb-soul",
+      "name": "R&B, Soul & Funk",
+      "subgenres": ["Contemporary R&B", "Classic R&B", "Rhythm and Blues", "Soul", "Motown", "Neo-Soul", "Funk", "P-Funk", "Deep Funk", "Disco", "Nu-Disco", "Northern Soul", "Quiet Storm", "Gospel", "Contemporary Christian Music", "Urban Contemporary"],
+      "vocal_mechanics": {
+        "placement": "Soft palate elevation with rich pharyngeal warmth",
+        "breath_support": "Dynamic appoggio support facilitating rapid melismatic agility",
+        "stylistic_traits": "Complex vocal runs (riffs), emotional grit, late terminal vibrato, mixed falsetto",
+        "reference_bpm": "65-115 BPM"
+      }
+    },
+    {
+      "id": "jazz-blues",
+      "name": "Jazz, Blues & Roots",
+      "subgenres": ["Blues", "Delta Blues", "Chicago Blues", "Electric Blues", "Piedmont Blues", "Jump Blues", "Jazz", "Dixieland", "Big Band", "Swing", "Bebop", "Hard Bop", "Cool Jazz", "Free Jazz", "Modal Jazz", "Jazz Fusion", "Smooth Jazz", "Gypsy Jazz", "Acid Jazz", "Ragtime", "Boogie-Woogie"],
+      "vocal_mechanics": {
+        "placement": "Variable acoustic tract adjustment, larynx relaxation",
+        "breath_support": "Elastic diaphragmatic flexibility matching rubato phrasing",
+        "stylistic_traits": "Scat syllables, microtonal blue-note inflection, behind-the-beat phrasing",
+        "reference_bpm": "60-220 BPM"
+      }
+    },
+    {
+      "id": "folk-country",
+      "name": "Folk, Country & Americana",
+      "subgenres": ["Traditional Folk", "Contemporary Folk", "Indie Folk", "Anti-Folk", "Country", "Classic Country", "Outlaw Country", "Honky-Tonk", "Bluegrass", "Progressive Bluegrass", "Americana", "Western Swing", "Country Pop", "Alt-Country", "Celtic Folk", "Sea Shanties"],
+      "vocal_mechanics": {
+        "placement": "High nasal port coupling with bright forward twang",
+        "breath_support": "Steady, even subglottic pressure emphasizing diction",
+        "stylistic_traits": "Rapid registration breaks (yodel flips), straight-tone sustained vowels, narrative delivery",
+        "reference_bpm": "80-130 BPM"
+      }
+    },
+    {
+      "id": "global-traditional",
+      "name": "Global, Regional & Traditional",
+      "subgenres": ["Afrobeat", "Afrobeats", "Amapiano", "Highlife", "Reggae", "Dub", "Dancehall", "Ska", "Rocksteady", "Salsa", "Merengue", "Bachata", "Reggaeton", "Cumbia", "Samba", "Bossa Nova", "Tango", "Latin Trap", "Flamenco", "Mariachi", "Indian Classical (Hindustani)", "Indian Classical (Carnatic)", "Filmi/Bollywood", "Qawwali", "Bhangra", "Sufi", "Ghazal", "Arabic Pop", "Raï", "Klezmer", "Enka", "Gamelan"],
+      "vocal_mechanics": {
+        "placement": "Open-throat guttural grounding combined with micro-ornamental nasal agility",
+        "breath_support": "Stamina-focused cyclic breathing patterns",
+        "stylistic_traits": "Gamak and Meend slides, microtonal pitch inflections, polyrhythmic synchronization, spiritual projection",
+        "reference_bpm": "75-135 BPM"
+      }
+    },
+    {
+      "id": "classical-art",
+      "name": "Classical & Art Music",
+      "subgenres": ["Early Music", "Medieval", "Renaissance", "Baroque", "Classical Era", "Romantic Era", "Post-Romantic", "Impressionism", "Modernism", "Serialism", "Minimalism", "Neoclassical", "Avant-Garde", "Contemporary Classical", "Opera", "Choral", "Chamber Music", "Film Score", "Video Game Music"],
+      "vocal_mechanics": {
+        "placement": "Chiaroscuro balance (bright ping + dark pharyngeal space) with 3 kHz Singer's Formant",
+        "breath_support": "Strict appoggio technique, sustained lower intercostal expansion",
+        "stylistic_traits": "Pure Bel Canto vibrato, crisp consonant articulation, unamplified acoustic carrying power",
+        "reference_bpm": "40-180 BPM"
+      }
+    }
+  ]
+}

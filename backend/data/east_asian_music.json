@@ -1,0 +1,56 @@
+{
+  "chinese": {
+    "scales": [
+      {"id": "gong", "name": "Gong (宫)", "notes": ["C", "D", "E", "G", "A"], "description": "Major pentatonic. Royal and stable.", "mood": "Stable, dignified"},
+      {"id": "shang", "name": "Shang (商)", "notes": ["D", "E", "G", "A", "C"], "description": "Starting on 2nd degree. Metal element.", "mood": "Bright, heroic"},
+      {"id": "jue", "name": "Jue (角)", "notes": ["E", "G", "A", "C", "D"], "description": "Starting on 3rd degree. Wood element.", "mood": "Growing, spring-like"},
+      {"id": "zhi", "name": "Zhi (徵)", "notes": ["G", "A", "C", "D", "E"], "description": "Starting on 5th degree. Fire element.", "mood": "Joyful, festive"},
+      {"id": "yu", "name": "Yu (羽)", "notes": ["A", "C", "D", "E", "G"], "description": "Starting on 6th degree. Water element.", "mood": "Flowing, gentle"}
+    ],
+    "instruments": [
+      {"id": "guqin", "name": "Guqin (古琴)", "type": "plucked_string", "strings": 7, "range": "C2 - D5", "description": "7-string zither. Scholar's instrument. 3000+ years old.", "difficulty": "advanced"},
+      {"id": "erhu", "name": "Erhu (二胡)", "type": "bowed_string", "strings": 2, "range": "D4 - D7", "description": "Two-string spike fiddle. Voice-like quality.", "difficulty": "intermediate"},
+      {"id": "pipa", "name": "Pipa (琵琶)", "type": "plucked_string", "strings": 4, "range": "A3 - D6", "description": "Chinese lute. Plucked with finger picks.", "difficulty": "intermediate"},
+      {"id": "dizi", "name": "Dizi (笛子)", "type": "wind", "holes": 6, "range": "A4 - D7", "description": "Transverse bamboo flute with buzzing membrane.", "difficulty": "intermediate"},
+      {"id": "guzheng", "name": "Guzheng (古筝)", "type": "plucked_string", "strings": 21, "range": "D2 - D6", "description": "21-string plucked zither. Bright and resonant.", "difficulty": "intermediate"},
+      {"id": "sheng", "name": "Sheng (笙)", "type": "free_reed", "pipes": 17, "range": "D3 - D6", "description": "Mouth organ. Polyphonic capability.", "difficulty": "advanced"},
+      {"id": "suona", "name": "Suona (唢呐)", "type": "wind", "range": "A3 - A5", "description": "Double-reed horn. Loud and piercing.", "difficulty": "intermediate"},
+      {"id": "paigu", "name": "Paigu (排鼓)", "type": "percussion", "drums": 5, "description": "Set of five tuned drums.", "difficulty": "intermediate"}
+    ]
+  },
+  "japanese": {
+    "scales": [
+      {"id": "yonanuki", "name": "Yonanuki (四七抜き)", "notes": ["C", "D", "F", "G", "A"], "description": "Major pentatonic without 4th and 7th.", "mood": "Open, pentatonic"},
+      {"id": "in", "name": "In (陰)", "notes": ["C", "Db", "F", "G", "Ab"], "description": "Flattened 2nd and 6th. Japanese minor.", "mood": "Dark, introspective"},
+      {"id": "miyako", "name": "Miyako-bushi (都)", "notes": ["C", "Db", "F", "G", "Ab"], "description": "Palace scale. Most characteristically Japanese.", "mood": "Melancholic, elegant"},
+      {"id": "ritsu", "name": "Ritsu (律)", "notes": ["C", "D", "F", "G", "A"], "description": "Ancient scale used in gagaku.", "mood": "Noble, ancient"},
+      {"id": "okinhawan", "name": "Okinawan", "notes": ["C", "E", "F", "G", "B"], "description": "Ryukyuan scale. Bright and open.", "mood": "Tropical, bright"}
+    ],
+    "instruments": [
+      {"id": "shakuhachi", "name": "Shakuhachi (尺八)", "type": "wind", "holes": 5, "range": "D3 - D6", "description": "End-blown bamboo flute. Zen meditation.", "difficulty": "advanced"},
+      {"id": "koto", "name": "Koto (箏)", "type": "plucked_string", "strings": 13, "range": "D3 - D6", "description": "13-string zither. National instrument.", "difficulty": "intermediate"},
+      {"id": "shamisen", "name": "Shamisen (三味線)", "type": "plucked_string", "strings": 3, "range": "G3 - G5", "description": "Three-string lute with plectrum (bachi).", "difficulty": "intermediate"},
+      {"id": "sho", "name": "Sho (笙)", "type": "free_reed", "pipes": 17, "range": "D3 - D6", "description": "Mouth organ. Celestial sound.", "difficulty": "advanced"},
+      {"id": "taiko", "name": "Taiko (太鼓)", "type": "percussion", "description": "Large barrel drum. Powerful and ceremonial.", "difficulty": "beginner"},
+      {"id": "biwa", "name": "Biwa (琵琶)", "type": "plucked_string", "strings": 4, "range": "E3 - A5", "description": "Short-necked lute. Storytelling instrument.", "difficulty": "advanced"}
+    ]
+  },
+  "korean": {
+    "scales": [
+      {"id": "pyongjo", "name": "Pyongjo (平調)", "notes": ["C", "D", "E", "G", "A"], "description": "Major pentatonic. Cheerful and bright.", "mood": "Cheerful, bright"},
+      {"id": "gyemyeonjo", "name": "Gyemyeonjo (界面調)", "notes": ["C", "Db", "F", "G", "Ab"], "description": "Minor pentatonic with flat 2nd.", "mood": "Sorrowful, elegant"},
+      {"id": "hye", "name": "Hye (法治)", "notes": ["C", "D", "E", "F", "G", "A", "B"], "description": "Heptatonic scale. Western-influenced.", "mood": "Modern, bright"},
+      {"id": "ju", "name": "Ju (呪調)", "notes": ["C", "D", "Eb", "G", "Ab"], "description": "Minor with flat 3rd and 6th.", "mood": "Mystical, shamanistic"}
+    ],
+    "instruments": [
+      {"id": "gayageum", "name": "Gayageum (가야금)", "type": "plucked_string", "strings": 12, "range": "C3 - C5", "description": "12-string zither. National instrument.", "difficulty": "intermediate"},
+      {"id": "daegeum", "name": "Daegeum (대금)", "type": "wind", "holes": 6, "range": "A3 - A6", "description": "Large bamboo transverse flute. Buzzing membrane.", "difficulty": "intermediate"},
+      {"id": "ajaeng", "name": "Ajaeng (아쟁)", "type": "bowed_string", "strings": 8, "range": "C2 - C4", "description": "Bowed zither. Deep and mournful.", "difficulty": "advanced"},
+      {"id": "haegeum", "name": "Haegeum (해금)", "type": "bowed_string", "strings": 2, "range": "G3 - G6", "description": "Two-string fiddle. Bright and vocal.", "difficulty": "intermediate"},
+      {"id": "janggu", "name": "Janggu (장구)", "type": "percussion", "description": "Hourglass drum. Most representative Korean drum.", "difficulty": "beginner"},
+      {"id": "buk", "name": "Buk (북)", "type": "percussion", "description": "Barrel drum. Deep bass tone.", "difficulty": "beginner"},
+      {"id": "kkwaenggwari", "name": "Kkwaenggwari (꽹과리)", "type": "percussion", "description": "Small gong. High-pitched and sharp.", "difficulty": "beginner"},
+      {"id": "jing", "name": "Jing (징)", "type": "percussion", "description": "Large gong. Deep and resonant.", "difficulty": "beginner"}
+    ]
+  }
+}

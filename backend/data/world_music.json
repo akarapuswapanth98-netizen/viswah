@@ -1,0 +1,500 @@
+{
+  "regions": [
+    { "id": "south_asia", "name": "South Asia", "description": "A subcontinent of extraordinary musical diversity, home to some of the world's oldest and most sophisticated musical traditions.", "traditions_count": 3 },
+    { "id": "middle_east", "name": "Middle East", "description": "A crossroads of musical traditions spanning millennia, with intricate melodic and rhythmic systems.", "traditions_count": 2 },
+    { "id": "east_asia", "name": "East Asia", "description": "Musical traditions emphasizing subtlety, breath, and the relationship between sound and silence.", "traditions_count": 2 },
+    { "id": "southeast_asia", "name": "Southeast Asia", "description": "Rich traditions of gamelan, vocal arts, and cross-cultural musical exchange.", "traditions_count": 0 },
+    { "id": "africa", "name": "Africa", "description": "The birthplace of rhythm, with traditions that have shaped music across the globe.", "traditions_count": 1 },
+    { "id": "europe", "name": "Europe", "description": "Classical and folk traditions that have influenced music education worldwide.", "traditions_count": 2 },
+    { "id": "north_america", "name": "North America", "description": "A melting pot of traditions that gave birth to jazz, blues, and many popular forms.", "traditions_count": 1 },
+    { "id": "latin_america", "name": "Latin America", "description": "Vibrant traditions blending indigenous, African, and European influences.", "traditions_count": 1 }
+  ],
+  "traditions": [
+    {
+      "id": "hindustani",
+      "name": "Hindustani Classical",
+      "region": "south_asia",
+      "country_or_area": "North India, Pakistan, Bangladesh",
+      "description": "One of the world's most sophisticated melodic traditions, Hindustani classical music centers on raga (melodic framework) and tala (rhythmic cycle). Performances often begin with slow, contemplative improvisation and build to rhythmic complexity.",
+      "characteristics": [
+        "Raga-based melodic improvisation",
+        "Tala rhythmic cycle system",
+        "Extensive use of microtonal ornamentation (meend, gamak)",
+        "Gradual build from slow alap to fast gat",
+        "Emphasis on guru-shishya (teacher-student) lineage"
+      ],
+      "instruments": ["sitar", "tabla", "sarod", "harmonium", "bansuri", "tanpura"],
+      "scales_or_modes": ["raga_yaman", "raga_bhairav", "raga_kafi", "raga_bhoopali", "thaat_system"],
+      "rhythmic_concepts": ["teentaal", "jhaptaal", "rupak", "ektaal", "layakari"],
+      "vocal_concepts": ["dhrupad", "khayal", "thumri", "sargam", "aalaap", "taan"],
+      "terminology": [
+        { "term": "Raga", "definition": "A melodic framework defining specific notes, phrases, and emotional character" },
+        { "term": "Tala", "definition": "A rhythmic cycle with a specific number of beats and internal groupings" },
+        { "term": "Swar", "definition": "A musical note; the basic building block of melody" },
+        { "term": "Alap", "definition": "Slow, unmetered improvisation introducing the raga" },
+        { "term": "Gat", "definition": "A composed melody with rhythmic accompaniment" },
+        { "term": "Meend", "definition": "A smooth glide between notes" }
+      ],
+      "difficulty": "intermediate",
+      "related_traditions": ["carnatic", "persian"],
+      "learning_topics": ["raga_recognition", "tala_cycles", "improvisation_basics", "sargam_patterns"],
+      "available_practice_routes": ["/ragas", "/talas", "/sargam", "/vocal-guru"]
+    },
+    {
+      "id": "carnatic",
+      "name": "Carnatic Classical",
+      "region": "south_asia",
+      "country_or_area": "South India",
+      "description": "The classical music tradition of South India, Carnatic music is known for its intricate compositions, complex rhythmic patterns, and systematic approach to melody through the melakarta raga system.",
+      "characteristics": [
+        "72 melakarta raga system",
+        "Composition-centered performance",
+        "Complex rhythmic patterns (korvai, moranai)",
+        "Integration of singing with violin accompaniment",
+        "Rich tradition of devotional compositions"
+      ],
+      "instruments": ["veena", "mridangam", "violin", "ghatam", "kanjira", "flute"],
+      "scales_or_modes": ["melakarta_system", "raga_shankarabharanam", "raga_kharaharapriya"],
+      "rhythmic_concepts": ["aditala", "rupakatala", "misrachapu", "khandachapu", "korvai"],
+      "vocal_concepts": ["kriti", "varnam", "alapana", "neraval", "kalpanaswaram"],
+      "terminology": [
+        { "term": "Melakarta", "definition": "A system of 72 parent ragas covering all possible 7-note scales" },
+        { "term": "Kriti", "definition": "A composed piece with lyrics, typically in three sections" },
+        { "term": "Alapana", "definition": "Improvisational exploration of a raga without rhythmic accompaniment" },
+        { "term": "Neraval", "definition": "Improvisation on the lyrics of a composition at a specific point" },
+        { "term": "Mridangam", "definition": "The primary percussion instrument, a double-headed drum" }
+      ],
+      "difficulty": "intermediate",
+      "related_traditions": ["hindustani"],
+      "learning_topics": ["melakarta_system", "kriti_learning", "rhythmic_patterns", "voice_training"],
+      "available_practice_routes": ["/ragas", "/vocal-guru", "/metronome"]
+    },
+    {
+      "id": "arabic_maqam",
+      "name": "Arabic Maqam",
+      "region": "middle_east",
+      "country_or_area": "Arab world (Middle East, North Africa)",
+      "description": "Arabic maqam music is built on a system of melodic modes (maqamat) that use quarter tones and intricate intervallic relationships. The tradition emphasizes modal improvisation (taqsim) and complex rhythmic patterns (iqa).",
+      "characteristics": [
+        "Maqam modal system with quarter tones",
+        "Taqsim (modal improvisation)",
+        "Iqa rhythmic cycle system",
+        "Microtonal intervals (quarter tones)",
+        "Ornamental vocal and instrumental style"
+      ],
+      "instruments": ["oud", "qanun", "ney", "riq", "darbuka", "violin"],
+      "scales_or_modes": ["maqam_rast", "maqam_hijaz", "maqam_saba", "maqam_kurd", "maqam_bayati"],
+      "rhythmic_concepts": ["maqsum", "saidi", "falafi", "samai", "dawr"],
+      "vocal_concepts": ["mawwal", "nasheed", "ghazal", "taqsim", "layali"],
+      "terminology": [
+        { "term": "Maqam", "definition": "A melodic mode with specific intervals, characteristic phrases, and emotional quality" },
+        { "term": "Taqsim", "definition": "A free-rhythm improvisation exploring a maqam" },
+        { "term": "Iqa", "definition": "A rhythmic cycle pattern played on percussion" },
+        { "term": "Oud", "definition": "A fretless lute, central to Arabic music" },
+        { "term": "Quarter tone", "definition": "An interval approximately half a semitone, characteristic of Arabic tuning" }
+      ],
+      "difficulty": "intermediate",
+      "related_traditions": ["persian", "turkish"],
+      "learning_topics": ["maqam_basics", "taqsim_improvisation", "rhythmic_patterns", "oud_fingerings"],
+      "available_practice_routes": ["/piano", "/metronome"]
+    },
+    {
+      "id": "persian",
+      "name": "Persian Classical",
+      "region": "middle_east",
+      "country_or_area": "Iran",
+      "description": "Persian classical music (dastgah system) features intricate melodic modes, elaborate ornamentation, and a poetic tradition deeply intertwined with music. Performances follow a structured improvisational framework.",
+      "characteristics": [
+        "Dastgah modal system (12 principal modes)",
+        "Avaz (unmetered improvisation)",
+        "Radif (repertoire of melodic models)",
+        "Extensive use of tahrir (vocal ornamentation)",
+        "Deep connection to Persian poetry"
+      ],
+      "instruments": ["tar", "setar", "santur", "kamancheh", "tombak", "ney"],
+      "scales_or_modes": ["dastgah_shur", "dastgah_segah", "dastgah_chahargah", "dastgah_nava"],
+      "rhythmic_concepts": ["6_8_rhythms", "chahar_mezrab", "zarbi", "usul"],
+      "vocal_concepts": ["avaz", "tahrir", "radif_learning", "ghazal_singing"],
+      "terminology": [
+        { "term": "Dastgah", "definition": "A modal system comprising a hierarchy of melodic units (gusheh)" },
+        { "term": "Radif", "definition": "The complete repertoire of melodic models that forms the basis of learning" },
+        { "term": "Avaz", "definition": "Free-rhythm improvisation within a dastgah" },
+        { "term": "Tahrir", "definition": "A vocal ornament involving rapid alternation between registers" },
+        { "term": "Gusheh", "definition": "A melodic model or section within a dastgah" }
+      ],
+      "difficulty": "advanced",
+      "related_traditions": ["arabic_maqam", "hindustani"],
+      "learning_topics": ["dastgah_basics", "radif_study", "tahrir_technique", "poetry_and_music"],
+      "available_practice_routes": ["/piano", "/vocal-guru"]
+    },
+    {
+      "id": "japanese",
+      "name": "Japanese Traditional",
+      "region": "east_asia",
+      "country_or_area": "Japan",
+      "description": "Japanese traditional music emphasizes the beauty of silence, subtle pitch variations, and the concept of 'ma' (space between sounds). Traditions range from court music (gagaku) to intimate solo instrumental pieces.",
+      "characteristics": [
+        "Concept of 'ma' (meaningful silence)",
+        "Subtle pitch bending and ornamentation",
+        "Heterophonic texture (variations of same melody)",
+        "Connection to tea ceremony, martial arts, and Zen",
+        "Influence of shakuhachi flute meditation"
+      ],
+      "instruments": ["shakuhachi", "koto", "shamisen", "taiko", "sho", "biwa"],
+      "scales_or_modes": ["in_scale", "yo_scale", "miyako_bushi", "ryukyu_scale"],
+      "rhythmic_concepts": ["hyoshi_patterns", "ma_timing", "free_rhythm", "ji_uta_beat"],
+      "vocal_concepts": ["nagauta", "minyo", "shomyo", "kabuki_vocal"],
+      "terminology": [
+        { "term": "Ma", "definition": "The meaningful space or pause between sounds" },
+        { "term": "Shakuhachi", "definition": "An end-blown bamboo flute used in meditation and music" },
+        { "term": "Koto", "definition": "A 13-string zither, one of Japan's most iconic instruments" },
+        { "term": "Gagaku", "definition": "Ancient court music, one of the oldest orchestral traditions" },
+        { "term": "Jo-ha-kyu", "definition": "A structural concept of gradual acceleration" }
+      ],
+      "difficulty": "intermediate",
+      "related_traditions": ["chinese", "korean"],
+      "learning_topics": ["shakuhachi_basics", "koto_techniques", "ma_and_silence", "scale_systems"],
+      "available_practice_routes": ["/piano", "/metronome"]
+    },
+    {
+      "id": "chinese",
+      "name": "Chinese Traditional",
+      "region": "east_asia",
+      "country_or_area": "China",
+      "description": "One of the world's oldest continuous musical traditions, Chinese music is deeply connected to philosophy, medicine, and the natural world. The pentatonic scale forms the foundation of most Chinese music.",
+      "characteristics": [
+        "Pentatonic scale foundation",
+        "Connection to Confucian and Daoist philosophy",
+        "Guqin music as scholarly pursuit",
+        "Regional opera traditions",
+        "Association with five elements and seasons"
+      ],
+      "instruments": ["erhu", "pipa", "guzheng", "dizi", "suona", "guqin"],
+      "scales_or_modes": ["pentatonic_gong", "pentatonic_shang", "pentatonic_jue", "pentatonic_zhi", "pentatonic_yu"],
+      "rhythmic_concepts": ["ban_beat_system", "free_rhythm", "ban_yan_patterns"],
+      "vocal_concepts": ["peking_opera", "kunqu", "folk_song", "art_song"],
+      "terminology": [
+        { "term": "Gong", "definition": "The first and most important note of the pentatonic scale" },
+        { "term": "Erhu", "definition": "A two-stringed bowed instrument with a expressive, voice-like tone" },
+        { "term": "Pipa", "definition": "A four-stringed plucked lute with a bright, percussive sound" },
+        { "term": "Guqin", "definition": "A seven-stringed zither associated with scholars and contemplation" },
+        { "term": "Ban", "definition": "The beat or rhythmic accent in Chinese music" }
+      ],
+      "difficulty": "beginner",
+      "related_traditions": ["japanese", "korean"],
+      "learning_topics": ["pentatonic_basics", "erhu_techniques", "pipa_strumming", "philosophy_and_music"],
+      "available_practice_routes": ["/piano", "/sargam"]
+    },
+    {
+      "id": "west_african",
+      "name": "West African Rhythmic",
+      "region": "africa",
+      "country_or_area": "West Africa (Ghana, Mali, Senegal, Guinea, Nigeria)",
+      "description": "West African musical traditions are characterized by complex polyrhythmic structures, call-and-response patterns, and the centrality of drums in community life. These traditions have influenced music worldwide.",
+      "characteristics": [
+        "Polyrhythmic layering",
+        "Call-and-response vocal patterns",
+        "Drum ensemble playing",
+        "Griot (oral historian) tradition",
+        "Music as communal and social function"
+      ],
+      "instruments": ["djembe", "dunun", "kora", "balafon", "talking_drum", "mbira"],
+      "scales_or_modes": ["hexatonic_west_african", "heptatonic_west_african", "pentatonic_west_african"],
+      "rhythmic_concepts": ["polyrhythm", "cross_rhythm", "timeline_pattern", "bell_pattern", "compound_meter"],
+      "vocal_concepts": ["call_and_response", "griot_singing", "drum_language", "polyphonic_singing"],
+      "terminology": [
+        { "term": "Polyrhythm", "definition": "The simultaneous use of two or more conflicting rhythmic patterns" },
+        { "term": "Djembe", "definition": "A goblet-shaped hand drum capable of a wide range of sounds" },
+        { "term": "Griot", "definition": "A traditional storyteller, historian, and musician" },
+        { "term": "Timeline", "definition": "A repeating rhythmic pattern that serves as the foundation for ensemble playing" },
+        { "term": "Kora", "definition": "A 21-string bridge-harp combining features of lute and harp" }
+      ],
+      "difficulty": "beginner",
+      "related_traditions": ["latin_american", "jazz"],
+      "learning_topics": ["djembe_basics", "polyrhythm_introduction", "bell_patterns", "call_and_response"],
+      "available_practice_routes": ["/drums", "/metronome"]
+    },
+    {
+      "id": "celtic",
+      "name": "Celtic Traditions",
+      "region": "europe",
+      "country_or_area": "Ireland, Scotland, Wales, Brittany",
+      "description": "Celtic music encompasses the folk traditions of the Celtic nations, featuring distinctive ornamentation, dance rhythms, and a strong oral tradition. The music ranges from lively dance tunes to haunting airs.",
+      "characteristics": [
+        "Ornamentation (rolls, crans, trebles)",
+        "Dance tune forms (jigs, reels, hornpipes)",
+        "Modal melodies (Mixolydian, Dorian)",
+        "Strong oral tradition",
+        "Pub session culture"
+      ],
+      "instruments": ["tin_whistle", "uilleann_pipes", "fiddle", "bodhran", "bouzouki", "clarsach"],
+      "scales_or_modes": ["mixolydian", "dorian", "major_pentatonic", "aeolian"],
+      "rhythmic_concepts": ["jig_rhythm", "reel_rhythm", "hornpipe", "slip_jig", "polka"],
+      "vocal_concepts": ["sean_nos", "mouth_music", "ballad_tradition", "harmony_singing"],
+      "terminology": [
+        { "term": "Reel", "definition": "A lively dance tune in 4/4 time with even subdivision" },
+        { "term": "Jig", "definition": "A dance tune in 6/8 time with characteristic long-short rhythm" },
+        { "term": "Bodhran", "definition": "An Irish frame drum played with a tipper" },
+        { "term": "Sean nos", "definition": "Old-style unaccompanied singing with elaborate ornamentation" },
+        { "term": "Session", "definition": "Informal gathering of musicians playing traditional tunes together" }
+      ],
+      "difficulty": "beginner",
+      "related_traditions": ["western_classical", "flamenco"],
+      "learning_topics": ["tune_learning", "ornamentation", "dance_rhythms", "modal_melody"],
+      "available_practice_routes": ["/piano", "/metronome", "/drums"]
+    },
+    {
+      "id": "flamenco",
+      "name": "Flamenco",
+      "region": "europe",
+      "country_or_area": "Spain (Andalusia)",
+      "description": "Flamenco is a passionate and complex art form combining singing (cante), dance (baile), and guitar (toque). It draws from Romani, Moorish, Jewish, and Spanish folk traditions.",
+      "characteristics": [
+        "Compás (rhythmic cycle) as foundation",
+        "Deep emotional expression (duende)",
+        "Complex guitar rasgueado technique",
+        "Interplay between singer, dancer, and guitarist",
+        "Palos (styles) with distinct rhythmic patterns"
+      ],
+      "instruments": ["flamenco_guitar", "cajon", "palmas", "castanets", "bombo"],
+      "scales_or_modes": ["phrygian_mode", "flamenco_scale", "hijaz_flamenco"],
+      "rhythmic_concepts": ["buleria_compas", "solea_compas", "tangos_compas", "fandango", "alegrias"],
+      "vocal_concepts": ["cante_jondo", "cante_chico", "quejio", "melisma", "martinete"],
+      "terminology": [
+        { "term": "Compás", "definition": "The rhythmic cycle that forms the foundation of each palo" },
+        { "term": "Duende", "definition": "The heightened state of emotion and expression in performance" },
+        { "term": "Palo", "definition": "A style or form within flamenco with specific rhythm and mood" },
+        { "term": "Cante jondo", "definition": "Deep song, the most serious and emotional form of flamenco singing" },
+        { "term": "Rasgueado", "definition": "A guitar technique using rapid finger strumming" }
+      ],
+      "difficulty": "advanced",
+      "related_traditions": ["celtic", "latin_american", "arabic_maqam"],
+      "learning_topics": ["compas_basics", "palmas_rhythm", "phrygian_mode", "guitar_techniques"],
+      "available_practice_routes": ["/guitar", "/piano", "/metronome"]
+    },
+    {
+      "id": "latin_american",
+      "name": "Latin American",
+      "region": "latin_america",
+      "country_or_area": "Brazil, Cuba, Argentina, Colombia, Mexico",
+      "description": "Latin American music represents a rich fusion of indigenous, African, and European traditions. From Brazilian samba to Argentine tango, these traditions emphasize rhythm, dance, and communal celebration.",
+      "characteristics": [
+        "Afro-Caribbean rhythmic foundation",
+        "Clave-based rhythm patterns",
+        "Syncopation and polyrhythm",
+        "Strong dance connection",
+        "Regional diversity (samba, tango, son, cumbia)"
+      ],
+      "instruments": ["congas", "bongos", "timbales", "cuica", "berimbau", "bandoneon"],
+      "scales_or_modes": ["major_scale", "minor_scale", "dorian_mode", "mixolydian_mode"],
+      "rhythmic_concepts": ["clave", "son_clave", "rumba_clave", "bossa_nova_rhythm", "tango_rhythm"],
+      "vocal_concepts": ["sonero", "trova", "coro", "samba_de_roda"],
+      "terminology": [
+        { "term": "Clave", "definition": "A five-note rhythmic pattern that serves as the foundation of Afro-Cuban music" },
+        { "term": "Samba", "definition": "A Brazilian dance and music style with African rhythmic roots" },
+        { "term": "Tango", "definition": "An Argentine dance form characterized by dramatic pauses and sharp movements" },
+        { "term": "Son", "definition": "A Cuban musical genre combining Spanish and African elements" },
+        { "term": "Congas", "definition": "Tall, narrow drums central to Latin American and Caribbean music" }
+      ],
+      "difficulty": "beginner",
+      "related_traditions": ["west_african", "jazz", "flamenco"],
+      "learning_topics": ["clave_basics", "samba_rhythm", "tango_feel", "conga_techniques"],
+      "available_practice_routes": ["/drums", "/metronome", "/piano"]
+    },
+    {
+      "id": "jazz",
+      "name": "Jazz",
+      "region": "north_america",
+      "country_or_area": "United States",
+      "description": "Jazz emerged from the convergence of African rhythmic traditions, blues, and European harmony. It is characterized by improvisation, swing feel, and a tradition of individual expression within ensemble playing.",
+      "characteristics": [
+        "Improvisation as central practice",
+        "Swing rhythmic feel",
+        "Extended harmony (7th, 9th, 13th chords)",
+        "Call-and-response between instruments",
+        "Individual voice development"
+      ],
+      "instruments": ["saxophone", "trumpet", "piano", "double_bass", "drums", "guitar"],
+      "scales_or_modes": ["blues_scale", "bebop_scales", "lydian_mode", "mixolydian_mode", "dorian_mode"],
+      "rhythmic_concepts": ["swing_feel", "walking_bass", "comping", "trading_fours", "latin_jazz"],
+      "vocal_concepts": ["scat_singing", "jazz_vocal", "crooning", "vocalese"],
+      "terminology": [
+        { "term": "Swing", "definition": "A rhythmic feel where eighth notes are played with a long-short pattern" },
+        { "term": "Bebop", "definition": "A style emphasizing fast tempos, complex harmonies, and virtuosic improvisation" },
+        { "term": "Comping", "definition": "Accompaniment played by piano or guitar behind a soloist" },
+        { "term": "Walking bass", "definition": "A bass line playing steady quarter notes, outlining the harmony" },
+        { "term": "Changes", "definition": "The chord progression of a jazz standard" }
+      ],
+      "difficulty": "intermediate",
+      "related_traditions": ["western_classical", "west_african", "latin_american"],
+      "learning_topics": ["blues_form", "ii_v_i_progression", "swing_rhythm", "improvisation_basics"],
+      "available_practice_routes": ["/piano", "/metronome", "/drums"]
+    },
+    {
+      "id": "western_classical",
+      "name": "Western Classical",
+      "region": "europe",
+      "country_or_area": "Europe (broadly)",
+      "description": "Western classical music encompasses a vast tradition of composed music spanning from medieval chant to contemporary works. It developed systems of harmony, counterpoint, and notation that influenced music education globally.",
+      "characteristics": [
+        "Harmonic system (major/minor tonality)",
+        "Counterpoint and voice leading",
+        "Formal structures (sonata, symphony, concerto)",
+        "Notation-based transmission",
+        "Orchestral ensemble tradition"
+      ],
+      "instruments": ["violin", "cello", "piano", "flute", "clarinet", "french_horn"],
+      "scales_or_modes": ["major_scale", "minor_scale", "harmonic_minor", "melodic_minor", "chromatic_scale"],
+      "rhythmic_concepts": ["time_signatures", "syncopation", "polyrhythm", "tempo_markings"],
+      "vocal_concepts": ["opera", "art_song", "choral_singing", "bel_canto"],
+      "terminology": [
+        { "term": "Sonata form", "definition": "A musical form with exposition, development, and recapitulation" },
+        { "term": "Counterpoint", "definition": "The art of combining independent melodic lines" },
+        { "term": "Dynamics", "definition": "The variation of loudness in music (piano, forte, etc.)" },
+        { "term": "Timbre", "definition": "The quality or color of a musical sound" },
+        { "term": "Cadence", "definition": "A harmonic progression that provides a sense of resolution" }
+      ],
+      "difficulty": "beginner",
+      "related_traditions": ["jazz", "celtic"],
+      "learning_topics": ["major_scales", "basic_harmony", "sight_reading", "rhythm_basics"],
+      "available_practice_routes": ["/piano", "/metronome"]
+    }
+  ],
+  "instruments": [
+    { "id": "sitar", "name": "Sitar", "tradition": "hindustani", "region": "south_asia", "family": "strings", "description": "A long-necked plucked string instrument with movable frets and sympathetic strings, producing a distinctive resonant sound.", "role": "Melodic lead instrument" },
+    { "id": "tabla", "name": "Tabla", "tradition": "hindustani", "region": "south_asia", "family": "percussion", "description": "A pair of hand drums (dayan and bayan) capable of a remarkable range of tones and pitches.", "role": "Rhythmic accompaniment and solo" },
+    { "id": "oud", "name": "Oud", "tradition": "arabic_maqam", "region": "middle_east", "family": "strings", "description": "A fretless, short-necked lute with a deep, warm tone. Central to Arabic and Middle Eastern music.", "role": "Melodic lead and accompaniment" },
+    { "id": "shakuhachi", "name": "Shakuhachi", "tradition": "japanese", "region": "east_asia", "family": "winds", "description": "An end-blown bamboo flute with a haunting, breathy tone. Used in meditation and musical performance.", "role": "Solo melodic instrument" },
+    { "id": "koto", "name": "Koto", "tradition": "japanese", "region": "east_asia", "family": "strings", "description": "A 13-string zither with movable bridges. Japan's most iconic traditional instrument.", "role": "Solo and ensemble melodic instrument" },
+    { "id": "erhu", "name": "Erhu", "tradition": "chinese", "region": "east_asia", "family": "strings", "description": "A two-stringed bowed instrument with a voice-like quality. Often called the 'Chinese violin'.", "role": "Melodic lead instrument" },
+    { "id": "pipa", "name": "Pipa", "tradition": "chinese", "region": "east_asia", "family": "strings", "description": "A four-stringed plucked lute with a bright, percussive sound and rapid tremolo technique.", "role": "Solo and ensemble instrument" },
+    { "id": "djembe", "name": "Djembe", "tradition": "west_african", "region": "africa", "family": "percussion", "description": "A goblet-shaped hand drum capable of bass, tone, and slap sounds. Originating from West Africa.", "role": "Lead percussion and ensemble" },
+    { "id": "kora", "name": "Kora", "tradition": "west_african", "region": "africa", "family": "strings", "description": "A 21-string bridge-harp combining features of lute and harp. Central to griot tradition.", "role": "Solo melodic and accompaniment" },
+    { "id": "tin_whistle", "name": "Tin Whistle", "tradition": "celtic", "region": "europe", "family": "winds", "description": "A simple six-holed wind instrument with a bright, clear tone. Essential to Irish traditional music.", "role": "Melodic lead in sessions" },
+    { "id": "uilleann_pipes", "name": "Uilleann Pipes", "tradition": "celtic", "region": "europe", "family": "winds", "description": "Irish bellows-blown bagpipes with a complex, sweet tone and wide range.", "role": "Solo melodic instrument" },
+    { "id": "bodhran", "name": "Bodhran", "tradition": "celtic", "region": "europe", "family": "percussion", "description": "An Irish frame drum played with a double-headed stick (tipper).", "role": "Rhythmic accompaniment" },
+    { "id": "flamenco_guitar", "name": "Flamenco Guitar", "tradition": "flamenco", "region": "europe", "family": "strings", "description": "A nylon-string guitar played with distinctive rasgueado (strumming) and picado (picking) techniques.", "role": "Melodic and rhythmic lead" },
+    { "id": "cajon", "name": "Cajón", "tradition": "flamenco", "region": "europe", "family": "percussion", "description": "A box-shaped percussion instrument played by slapping the front face.", "role": "Rhythmic accompaniment" },
+    { "id": "congas", "name": "Congas", "tradition": "latin_american", "region": "latin_america", "family": "percussion", "description": "Tall, narrow single-headed drums played with hands. Central to Afro-Cuban music.", "role": "Rhythmic foundation" },
+    { "id": "bandoneon", "name": "Bandoneon", "tradition": "latin_american", "region": "latin_america", "family": "keyboards", "description": "A concertina-like instrument essential to Argentine tango music.", "role": "Melodic and harmonic lead" },
+    { "id": "saxophone", "name": "Saxophone", "tradition": "jazz", "region": "north_america", "family": "winds", "description": "A single-reed woodwind instrument with a rich, expressive tone. Iconic in jazz music.", "role": "Solo and ensemble melodic instrument" },
+    { "id": "piano", "name": "Piano", "tradition": "western_classical", "region": "europe", "family": "keyboards", "description": "A keyboard instrument capable of melody, harmony, and rhythm simultaneously.", "role": "Solo, accompaniment, and ensemble" },
+    { "id": "violin", "name": "Violin", "tradition": "western_classical", "region": "europe", "family": "strings", "description": "A four-stringed bowed instrument with a wide range and expressive capabilities.", "role": "Solo, ensemble, and orchestral" },
+    { "id": "veena", "name": "Veena", "tradition": "carnatic", "region": "south_asia", "family": "strings", "description": "A plucked string instrument with a deep, resonant tone. Central to Carnatic music.", "role": "Solo melodic instrument" },
+    { "id": "mridangam", "name": "Mridangam", "tradition": "carnatic", "region": "south_asia", "family": "percussion", "description": "A double-headed barrel drum providing rhythmic foundation in Carnatic music.", "role": "Primary rhythmic accompaniment" },
+    { "id": "tar", "name": "Tar", "tradition": "persian", "region": "middle_east", "family": "strings", "description": "A long-necked waisted lute with a skin-covered soundbox. Central to Persian classical music.", "role": "Melodic lead instrument" },
+    { "id": "ney", "name": "Ney", "tradition": "arabic_maqam", "region": "middle_east", "family": "winds", "description": "An end-blown flute with a breathy, soulful tone. One of the oldest instruments still in use.", "role": "Solo and accompaniment" },
+    { "id": "balafon", "name": "Balafon", "tradition": "west_african", "region": "africa", "family": "percussion", "description": "A wooden xylophone with gourd resonators. Used in West African orchestras.", "role": "Melodic percussion" },
+    { "id": "mbira", "name": "Mbira", "tradition": "west_african", "region": "africa", "family": "percussion", "description": "A thumb piano with metal tines mounted on a wooden board. Used in Shona music of Zimbabwe.", "role": "Solo and ceremonial instrument" }
+  ],
+  "scales_modes": [
+    { "id": "raga_yaman", "name": "Raga Yaman", "tradition": "hindustani", "equivalent": "Lydian mode", "notes": ["Sa", "Re", "Ga", "Tivra Ma", "Pa", "Dha", "Ni"], "description": "An evening raga with a raised fourth degree. Royal and luminous in character." },
+    { "id": "raga_bhairav", "name": "Raga Bhairav", "tradition": "hindustani", "equivalent": "Phrygian (loose)", "notes": ["Sa", "Komal Re", "Komal Ga", "Ma", "Pa", "Komal Dha", "Komal Ni"], "description": "A morning raga with flattened second and sixth degrees. Deeply devotional." },
+    { "id": "raga_kafi", "name": "Raga Kafi", "tradition": "hindustani", "equivalent": "Dorian mode", "notes": ["Sa", "Re", "Komal Ga", "Ma", "Pa", "Dha", "Komal Ni"], "description": "A versatile raga used in light classical and folk music." },
+    { "id": "raga_bhoopali", "name": "Raga Bhoopali", "tradition": "hindustani", "equivalent": "Major Pentatonic", "notes": ["Sa", "Re", "Ga", "Pa", "Dha"], "description": "A pentatonic evening raga. Joyful and bright." },
+    { "id": "thaat_system", "name": "Thaat System", "tradition": "hindustani", "equivalent": "Parent scale system", "notes": ["Bilawal", "Khamaj", "Bhairav", "Kafi", "Asavari", "Bhairavi", "Marwa", "Purvi", "Todi", "Kafi Kanada", "Yaman", "Bhoopali"], "description": "A system of 12 parent scales from which ragas are derived." },
+    { "id": "melakarta_system", "name": "Melakarta System", "tradition": "carnatic", "equivalent": "72 parent scales", "notes": ["Shankarabharanam", "Kharaharapriya", "Mechakalyani", "Karaharapriya", "Mayamalavagowla"], "description": "A systematic classification of 72 parent ragas covering all possible 7-note scales." },
+    { "id": "maqam_rast", "name": "Maqam Rast", "tradition": "arabic_maqam", "equivalent": "No direct equivalent", "notes": ["C", "D", "E half-flat", "F", "G", "A", "B half-flat"], "description": "The most important maqam in Arabic music. Contains characteristic quarter tones." },
+    { "id": "maqam_hijaz", "name": "Maqam Hijaz", "tradition": "arabic_maqam", "equivalent": "Phrygian dominant", "notes": ["D", "E half-flat", "F#", "G", "A", "B half-flat", "C"], "description": "A widely recognized mode with an augmented second interval." },
+    { "id": "maqam_bayati", "name": "Maqam Bayati", "tradition": "arabic_maqam", "equivalent": "No direct equivalent", "notes": ["D", "E half-flat", "F", "G", "A", "B half-flat", "C"], "description": "One of the most common maqamat, with a characteristic quarter tone on the second degree." },
+    { "id": "maqam_kurd", "name": "Maqam Kurd", "tradition": "arabic_maqam", "equivalent": "Phrygian mode", "notes": ["D", "Eb", "F", "G", "A", "Bb", "C"], "description": "A mode similar to the Western Phrygian, common in Kurdish and Arabic music." },
+    { "id": "dastgah_shur", "name": "Dastgah-e Shur", "tradition": "persian", "equivalent": "No direct equivalent", "notes": ["C", "D half-flat", "Eb", "F", "G", "Ab half-flat", "Bb"], "description": "The most common dastgah, the 'mother of Persian music'." },
+    { "id": "in_scale", "name": "In Scale (Minor Pentatonic)", "tradition": "japanese", "equivalent": "Minor pentatonic", "notes": ["A", "C", "D", "E", "G"], "description": "A traditional Japanese scale with a minor character. Used in folk and court music." },
+    { "id": "yo_scale", "name": "Yo Scale", "tradition": "japanese", "equivalent": "Major pentatonic variant", "notes": ["C", "D", "E", "G", "A"], "description": "A bright, open scale used in folk music and festivals." },
+    { "id": "pentatonic_gong", "name": "Pentatonic (Gong)", "tradition": "chinese", "equivalent": "Major pentatonic", "notes": ["C", "D", "E", "G", "A"], "description": "The most common Chinese pentatonic scale, associated with the earth element." },
+    { "id": "mixolydian", "name": "Mixolydian Mode", "tradition": "celtic", "equivalent": "Dominant scale", "notes": ["C", "D", "E", "F", "G", "A", "Bb"], "description": "A major scale with a lowered seventh degree. Common in Celtic and folk music." },
+    { "id": "dorian", "name": "Dorian Mode", "tradition": "celtic", "equivalent": "Minor with raised sixth", "notes": ["D", "E", "F", "G", "A", "B", "C"], "description": "A minor scale with a raised sixth degree. Used in Celtic, jazz, and folk traditions." },
+    { "id": "phrygian_mode", "name": "Phrygian Mode", "tradition": "flamenco", "equivalent": "Flamenco scale base", "notes": ["E", "F", "G", "A", "B", "C", "D"], "description": "A mode with a characteristic half-step between the first and second degrees. Core of flamenco." },
+    { "id": "blues_scale", "name": "Blues Scale", "tradition": "jazz", "equivalent": "Minor pentatonic + blue note", "notes": ["C", "Eb", "F", "F#", "G", "Bb"], "description": "A scale featuring the 'blue note' (flattened fifth). Foundation of blues and jazz." },
+    { "id": "major_scale", "name": "Major Scale", "tradition": "western_classical", "equivalent": "Ionian mode", "notes": ["C", "D", "E", "F", "G", "A", "B"], "description": "The foundational scale of Western music theory." },
+    { "id": "minor_scale", "name": "Natural Minor Scale", "tradition": "western_classical", "equivalent": "Aeolian mode", "notes": ["A", "B", "C", "D", "E", "F", "G"], "description": "The relative minor of the major scale. Foundation of minor key harmony." }
+  ],
+  "rhythms": [
+    { "id": "teentaal", "name": "Teentaal", "tradition": "hindustani", "beats": 16, "description": "The most common tala in Hindustani music. 16 beats divided into 4 groups of 4." },
+    { "id": "jhaptaal", "name": "Jhaptaal", "tradition": "hindustani", "beats": 10, "description": "An asymmetric tala with 10 beats divided into 5 groups of 2." },
+    { "id": "rupak", "name": "Rupak Tala", "tradition": "hindustani", "beats": 7, "description": "A 7-beat tala with an unusual first group of 3 beats." },
+    { "id": "aditala", "name": "Adi Tala", "tradition": "carnatic", "beats": 8, "description": "The most common tala in Carnatic music. 8 beats divided into 4 groups of 2." },
+    { "id": "maqsum", "name": "Maqsum", "tradition": "arabic_maqam", "beats": 4, "description": "A common Arabic rhythmic pattern used in popular and classical music." },
+    { "id": "samai", "name": "Samai", "tradition": "arabic_maqam", "beats": 8, "description": "A rhythmic pattern used in formal Arabic instrumental music." },
+    { "id": "polyrhythm_west_african", "name": "West African Polyrhythm", "tradition": "west_african", "beats": 12, "description": "Layered rhythmic patterns combining 3 against 4, creating complex textures." },
+    { "id": "bell_pattern", "name": "Bell Pattern (Standard)", "tradition": "west_african", "beats": 12, "description": "The standard bell pattern that serves as timeline for West African ensembles." },
+    { "id": "jig_rhythm", "name": "Jig Rhythm", "tradition": "celtic", "beats": 6, "description": "A compound meter pattern (6/8) characteristic of Irish jigs." },
+    { "id": "reel_rhythm", "name": "Reel Rhythm", "tradition": "celtic", "beats": 4, "description": "A simple meter pattern (4/4) with even subdivision, used in Irish reels." },
+    { "id": "buleria_compas", "name": "Bulería Compás", "tradition": "flamenco", "beats": 12, "description": "A fast, complex 12-beat cycle used in the most virtuosic flamenco style." },
+    { "id": "solea_compas", "name": "Soleá Compás", "tradition": "flamenco", "beats": 12, "description": "A slow, solemn 12-beat cycle. The 'mother of flamenco' palos." },
+    { "id": "clave", "name": "Son Clave", "tradition": "latin_american", "beats": 4, "description": "The fundamental rhythmic pattern of Afro-Cuban music (3-2 or 2-3)." },
+    { "id": "bossa_nova_rhythm", "name": "Bossa Nova Rhythm", "tradition": "latin_american", "beats": 4, "description": "A syncopated guitar pattern characteristic of Brazilian bossa nova." },
+    { "id": "swing_feel", "name": "Swing Feel", "tradition": "jazz", "beats": 4, "description": "The characteristic long-short eighth note feel of jazz." },
+    { "id": "walking_bass", "name": "Walking Bass", "tradition": "jazz", "beats": 4, "description": "Steady quarter-note bass line outlining harmony, foundation of jazz rhythm section." },
+    { "id": "time_signatures", "name": "Standard Time Signatures", "tradition": "western_classical", "beats": 4, "description": "The common time signatures: 4/4, 3/4, 2/4, 6/8." }
+  ],
+  "learning_paths": [
+    {
+      "id": "explore_india",
+      "name": "Explore India",
+      "description": "Discover the foundations of Indian classical music",
+      "steps": [
+        { "order": 1, "title": "Discover Indian Classical", "type": "explore", "tradition": "hindustani", "description": "Learn about the raga and tala systems" },
+        { "order": 2, "title": "Understand Raga", "type": "explore", "tradition": "hindustani", "route": "/ragas", "description": "Explore melodic frameworks" },
+        { "order": 3, "title": "Explore Tala", "type": "explore", "tradition": "hindustani", "route": "/talas", "description": "Learn rhythmic cycles" },
+        { "order": 4, "title": "Practice Sargam", "type": "practice", "route": "/sargam", "description": "Practice note names and patterns" },
+        { "order": 5, "title": "Vocal Exercises", "type": "practice", "route": "/vocal-guru", "description": "Develop your voice with Indian techniques" }
+      ]
+    },
+    {
+      "id": "explore_middle_east",
+      "name": "Explore the Middle East",
+      "description": "Discover maqam and the art of modal improvisation",
+      "steps": [
+        { "order": 1, "title": "Understand Maqam", "type": "explore", "tradition": "arabic_maqam", "description": "Learn about Arabic melodic modes" },
+        { "order": 2, "title": "Explore Instruments", "type": "explore", "tradition": "arabic_maqam", "description": "Discover oud, qanun, and ney" },
+        { "order": 3, "title": "Rhythmic Patterns", "type": "practice", "route": "/metronome", "description": "Learn Arabic rhythmic cycles" },
+        { "order": 4, "title": "Melodic Practice", "type": "practice", "route": "/piano", "description": "Practice maqam intervals on piano" }
+      ]
+    },
+    {
+      "id": "explore_africa",
+      "name": "Explore West Africa",
+      "description": "Discover the roots of rhythm and polyrhythm",
+      "steps": [
+        { "order": 1, "title": "Discover West African Music", "type": "explore", "tradition": "west_african", "description": "Learn about drum ensembles and griots" },
+        { "order": 2, "title": "Polyrhythm Basics", "type": "practice", "route": "/drums", "description": "Explore layered rhythmic patterns" },
+        { "order": 3, "title": "Bell Patterns", "type": "practice", "route": "/metronome", "description": "Practice timeline patterns" },
+        { "order": 4, "title": "Djembe Techniques", "type": "practice", "route": "/drums", "description": "Learn basic djembe sounds" }
+      ]
+    },
+    {
+      "id": "explore_europe",
+      "name": "Explore European Traditions",
+      "description": "From Celtic folk to flamenco passion",
+      "steps": [
+        { "order": 1, "title": "Celtic Traditions", "type": "explore", "tradition": "celtic", "description": "Discover Irish and Scottish music" },
+        { "order": 2, "title": "Flamenco", "type": "explore", "tradition": "flamenco", "description": "Explore the art of flamenco" },
+        { "order": 3, "title": "Modal Practice", "type": "practice", "route": "/piano", "description": "Practice Mixolydian and Dorian modes" },
+        { "order": 4, "title": "Rhythm Practice", "type": "practice", "route": "/metronome", "description": "Explore dance rhythms" }
+      ]
+    },
+    {
+      "id": "explore_americas",
+      "name": "Explore the Americas",
+      "description": "From Latin rhythms to jazz improvisation",
+      "steps": [
+        { "order": 1, "title": "Latin American Music", "type": "explore", "tradition": "latin_american", "description": "Discover samba, tango, and son" },
+        { "order": 2, "title": "Jazz Foundations", "type": "explore", "tradition": "jazz", "description": "Learn about swing and improvisation" },
+        { "order": 3, "title": "Clave Rhythm", "type": "practice", "route": "/metronome", "description": "Practice the clave pattern" },
+        { "order": 4, "title": "Blues Scale", "type": "practice", "route": "/piano", "description": "Practice the blues scale" }
+      ]
+    },
+    {
+      "id": "explore_east_asia",
+      "name": "Explore East Asia",
+      "description": "Discover the beauty of silence and subtlety",
+      "steps": [
+        { "order": 1, "title": "Japanese Traditional", "type": "explore", "tradition": "japanese", "description": "Learn about ma and shakuhachi" },
+        { "order": 2, "title": "Chinese Traditional", "type": "explore", "tradition": "chinese", "description": "Discover pentatonic traditions" },
+        { "order": 3, "title": "Pentatonic Practice", "type": "practice", "route": "/piano", "description": "Practice pentatonic scales" },
+        { "order": 4, "title": "Breath and Silence", "type": "practice", "route": "/vocal-guru", "description": "Explore breath-based music making" }
+      ]
+    }
+  ]
+}

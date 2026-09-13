@@ -1,0 +1,34 @@
+{
+  "makamlar": [
+    {"id": "hicaz", "name": "Hicaz", "notes": ["D", "Eb", "F#", "G", "A", "Bb", "C#"], "description": "Dramatic makam with augmented second. Most popular in Turkish music.", "mood": "Dramatic, majestic, mystical", "time": "Night"},
+    {"id": "ussak", "name": "Uşşak", "notes": ["D", "Eb", "F", "G", "A", "Bb", "C"], "description": "Equivalent to Bayati. Tender and intimate.", "mood": "Tender, intimate, loving", "time": "Evening"},
+    {"id": "rast", "name": "Rast", "notes": ["C", "D", "E-half-flat", "F", "G", "A", "B-half-flat"], "description": "Fundamental makam. Neutral third and seventh.", "mood": "Joyful, stable, grand", "time": "Morning"},
+    {"id": "saba", "name": "Saba", "notes": ["D", "Eb", "F", "G-half-flat", "A", "Bb", "C"], "description": "Melancholic with quarter-tone on G.", "mood": "Melancholic, sorrowful", "time": "Night"},
+    {"id": "kurdili_hicazkar", "name": "Kürdîli Hicazkâr", "notes": ["C", "Db", "E", "F", "G", "Ab", "B"], "description": "Complex makam combining Hicaz and Kürdî.", "mood": "Intense, profound", "time": "Night"},
+    {"id": "nihavent", "name": "Nihavent", "notes": ["C", "D", "Eb", "F", "G", "Ab", "Bb"], "description": "Equivalent to Minor. Western-influenced.", "mood": "Romantic, sad", "time": "Any time"},
+    {"id": "huseyni", "name": "Hüseyni", "notes": ["D", "E-half-flat", "F#", "G", "A", "B-half-flat", "C#"], "description": "Gentle variant of Hicaz with neutral second.", "mood": "Gentle, devotional", "time": "Evening"},
+    {"id": "segah", "name": "Segâh", "notes": ["E-half-flat", "F", "G", "A", "B-half-flat", "C", "D"], "description": "Built on E-half-flat. Delicate and refined.", "mood": "Delicate, refined, romantic", "time": "Evening"},
+    {"id": "hicaz_humayun", "name": "Hicaz Hümayun", "notes": ["D", "Eb", "F#", "G", "A", "B", "C#"], "description": "Variant with natural B. More uplifting.", "mood": "Uplifting, royal", "time": "Night"},
+    {"id": "evic", "name": "Eviç", "notes": ["A", "Bb", "C#", "D", "E", "F#", "G#"], "description": "Transposed Hicaz on A. Brilliant and high.", "mood": "Brilliant, festive", "time": "Morning"}
+  ],
+  "usuls": [
+    {"id": "sofyan", "name": "Sofyan", "beats": 4, "description": "Simple 4-beat. Most common.", "pattern": ["Düm", "Tek", "Düm", "Tek"]},
+    {"id": "aksak", "name": "Aksak", "beats": 9, "description": "Asymmetric 9-beat. 2+2+2+3.", "pattern": ["Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Tek"]},
+    {"id": "curcuna", "name": "Curcuna", "beats": 10, "description": "10-beat. 3+2+2+3.", "pattern": ["Düm", "Tek", "Tek", "Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Tek"]},
+    {"id": "nim_sofyan", "name": "Nim Sofyan", "beats": 2, "description": "Fast 2-beat.", "pattern": ["Düm", "Tek"]},
+    {"id": "yuruk_semai", "name": "Yürük Semai", "beats": 6, "description": "6-beat. 3+3.", "pattern": ["Düm", "Tek", "Tek", "Düm", "Tek", "Tek"]},
+    {"id": "devr_i_kebir", "name": "Devr-i Kebir", "beats": 28, "description": "Large 28-beat cycle. Used in peşrevs.", "pattern": ["Complex compound"]},
+    {"id": "fahte", "name": "Fahte", "beats": 8, "description": "8-beat with specific ornament pattern.", "pattern": ["Düm", "Tek", "Düm", "Tek", "Düm", "Tek", "Düm", "Tek"]},
+    {"id": "doyek", "name": "Döyek", "beats": 8, "description": "Folk rhythm.", "pattern": ["Düm", "Tek", "Düm", "Tek", "Tek", "Düm", "Tek", "Tek"]}
+  ],
+  "instruments": [
+    {"id": "saz", "name": "Saz / Bağlama", "type": "plucked_string", "strings": 7, "range": "D3 - D6", "description": "Long-necked lute. National instrument of Turkey.", "difficulty": "beginner"},
+    {"id": "ney", "name": "Ney", "type": "wind", "range": "C3 - C6", "description": "End-blown reed flute. Sufi instrument.", "difficulty": "intermediate"},
+    {"id": "kanun", "name": "Kanun", "type": "plucked_string", "strings": "75+", "range": "G2 - G6", "description": "Zither with levers for microtones.", "difficulty": "advanced"},
+    {"id": "kemence", "name": "Kemençe", "type": "bowed_string", "strings": 3, "range": "G3 - G6", "description": "Small bowed lyre.", "difficulty": "intermediate"},
+    {"id": "darbuka", "name": "Darbuka", "type": "percussion", "description": "Goblet drum. Sharp tones and deep bass.", "difficulty": "beginner"},
+    {"id": "ud", "name": "Ud", "type": "plucked_string", "strings": 11, "range": "F2 - G5", "description": "Fretless lute. Shared with Arabic tradition.", "difficulty": "intermediate"},
+    {"id": "cumbus", "name": "Cümbüş", "type": "plucked_string", "strings": 6, "range": "C3 - C6", "description": "Banjo-like instrument with metal resonator.", "difficulty": "beginner"},
+    {"id": "zurna", "name": "Zurna", "type": "wind", "range": "C4 - C6", "description": "Double-reed shawm. Loud and piercing.", "difficulty": "advanced"}
+  ]
+}
