@@ -21,7 +21,7 @@ const C = {
   teal: "#5BA8A0",
   text: "#F0EBE3",
   textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
+  textMuted: "#8075A0",
   border: "rgba(240, 235, 227, 0.06)",
   borderHover: "rgba(240, 235, 227, 0.12)",
   success: "#6DBF73",
@@ -159,7 +159,11 @@ export default function Home() {
     }
   };
 
-  useEffect(() => { fetchData(); }, [isAuthenticated]);
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchData();
+    return () => controller.abort();
+  }, [isAuthenticated]);
 
   const username = isAuthenticated ? (user?.name ?? user?.username ?? "User") : "Guest";
   const stats = dashboard?.practice_stats;
@@ -189,7 +193,7 @@ export default function Home() {
         <div style={{ maxWidth: 1200, margin: "0 auto", paddingTop: 40 }}>
           <SkeletonCard height={60} style={{ marginBottom: 24 }} />
           <SkeletonCard height={120} style={{ marginBottom: 24 }} />
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 32 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))", gap: 12, marginBottom: 32 }}>
             {[...Array(4)].map((_, i) => <SkeletonCard key={i} height={80} />)}
           </div>
           <SkeletonCard height={180} style={{ marginBottom: 32 }} />

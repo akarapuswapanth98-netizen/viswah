@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Toast from './ui/Toast';
@@ -104,6 +104,22 @@ export default function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { toasts, removeToast } = useToast();
 
+  useEffect(() => {
+    if (sidebarOpen) {
+      document.body.style.overflow = 'hidden';
+      const handleEscape = (e) => {
+        if (e.key === 'Escape') setSidebarOpen(false);
+      };
+      document.addEventListener('keydown', handleEscape);
+      return () => {
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', handleEscape);
+      };
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [sidebarOpen]);
+
   return (
     <div style={layoutStyle}>
       <style>{`
@@ -115,7 +131,26 @@ export default function Layout() {
           .layout-main-content { margin-left: 0 !important; }
           .layout-mobile-header { display: flex !important; }
         }
+        .skip-link {
+          position: absolute;
+          top: -100px;
+          left: 0;
+          background: #E8A838;
+          color: #0C0A14;
+          padding: 12px 24px;
+          z-index: 9999;
+          font-weight: 600;
+          font-size: 14px;
+          text-decoration: none;
+          border-radius: 0 0 8px 0;
+          transition: top 0.2s;
+        }
+        .skip-link:focus {
+          top: 0;
+        }
       `}</style>
+
+      <a href="#main-content" className="skip-link">Skip to main content</a>
 
       <div className="layout-sidebar-desktop" style={sidebarDesktopStyle}>
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -151,7 +186,7 @@ export default function Layout() {
         className="layout-overlay"
       />
 
-      <main style={mainContentStyle} className="layout-main-content">
+      <main id="main-content" style={mainContentStyle} className="layout-main-content">
         <Outlet />
       </main>
 

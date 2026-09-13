@@ -14,7 +14,7 @@ const C = {
   teal: "#5BA8A0",
   text: "#F0EBE3",
   textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
+  textMuted: "#8075A0",
   border: "rgba(240, 235, 227, 0.06)",
   borderHover: "rgba(240, 235, 227, 0.12)",
   borderActive: "rgba(232, 168, 56, 0.2)",
@@ -135,7 +135,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
   return (
     <>
-      <aside style={{
+      <aside aria-label="Main navigation" style={{
         width: 260,
         height: "100vh",
         position: "fixed",
@@ -199,7 +199,7 @@ export default function Sidebar({ isOpen, onClose }) {
         </div>
 
         {/* Nav */}
-        <nav style={{ flex: 1, position: "relative", zIndex: 1 }}>
+        <nav aria-label="Sidebar navigation" style={{ flex: 1, position: "relative", zIndex: 1 }}>
           {/* Main nav */}
           <div style={{ padding: "16px 12px 8px" }}>
             {navItems.map((item) => (
@@ -215,7 +215,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
           {/* Music Tools */}
           <div style={{ padding: "12px 12px 8px" }}>
-            <div style={{
+            <h3 style={{
               fontSize: 11,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -223,7 +223,8 @@ export default function Sidebar({ isOpen, onClose }) {
               color: C.textMuted,
               padding: "0 12px",
               marginBottom: 8,
-            }}>Music Tools</div>
+              margin: 0,
+            }}>Music Tools</h3>
             {musicTools.map((item) => (
               <NavLinkItem key={item.to} item={item} onClose={onClose} />
             ))}
@@ -237,7 +238,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
           {/* Indian Music */}
           <div style={{ padding: "12px 12px 8px" }}>
-            <div style={{
+            <h3 style={{
               fontSize: 11,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -245,7 +246,8 @@ export default function Sidebar({ isOpen, onClose }) {
               color: C.textMuted,
               padding: "0 12px",
               marginBottom: 8,
-            }}>Indian Classical</div>
+              margin: 0,
+            }}>Indian Classical</h3>
             {indianMusic.map((item) => (
               <NavLinkItem key={item.to} item={item} onClose={onClose} />
             ))}
@@ -259,7 +261,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
           {/* World Music */}
           <div style={{ padding: "12px 12px 8px" }}>
-            <div style={{
+            <h3 style={{
               fontSize: 11,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -267,7 +269,8 @@ export default function Sidebar({ isOpen, onClose }) {
               color: C.textMuted,
               padding: "0 12px",
               marginBottom: 8,
-            }}>Explore</div>
+              margin: 0,
+            }}>Explore</h3>
             {worldMusicItems.map((item) => (
               <NavLinkItem key={item.to} item={item} onClose={onClose} />
             ))}
@@ -281,7 +284,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
           {/* Music Lab */}
           <div style={{ padding: "12px 12px 8px" }}>
-            <div style={{
+            <h3 style={{
               fontSize: 11,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -289,7 +292,8 @@ export default function Sidebar({ isOpen, onClose }) {
               color: C.textMuted,
               padding: "0 12px",
               marginBottom: 8,
-            }}>Music Lab</div>
+              margin: 0,
+            }}>Music Lab</h3>
             {musicLabItems.map((item) => (
               <NavLinkItem key={item.to} item={item} onClose={onClose} />
             ))}
@@ -303,7 +307,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
           {/* AI */}
           <div style={{ padding: "12px 12px 8px" }}>
-            <div style={{
+            <h3 style={{
               fontSize: 11,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -311,7 +315,8 @@ export default function Sidebar({ isOpen, onClose }) {
               color: C.textMuted,
               padding: "0 12px",
               marginBottom: 8,
-            }}>AI</div>
+              margin: 0,
+            }}>AI</h3>
             {aiItems.map((item) => (
               <NavLinkItem key={item.to} item={item} onClose={onClose} />
             ))}
@@ -325,7 +330,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
           {/* Account */}
           <div style={{ padding: "12px 12px 8px" }}>
-            <div style={{
+            <h3 style={{
               fontSize: 11,
               fontWeight: 600,
               textTransform: "uppercase",
@@ -333,7 +338,8 @@ export default function Sidebar({ isOpen, onClose }) {
               color: C.textMuted,
               padding: "0 12px",
               marginBottom: 8,
-            }}>Account</div>
+              margin: 0,
+            }}>Account</h3>
             {accountItems.map((item) => (
               <NavLinkItem key={item.to} item={item} onClose={onClose} />
             ))}

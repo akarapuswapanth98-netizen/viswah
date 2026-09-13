@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel, Field
 
@@ -5,11 +7,13 @@ from database import SessionLocal
 from models.models import Course, Lesson
 from routes.auth import get_current_user
 
+logger = logging.getLogger("viswah.admin")
+
 router = APIRouter(prefix="/api/admin", tags=["Admin"])
 
 
 def require_admin(user=Depends(get_current_user)):
-    if user.get("role") != "admin":
+    if getattr(user, "role", None) != "admin":
         raise HTTPException(status_code=403, detail="Admin access required")
     return user
 
@@ -61,8 +65,9 @@ def create_course(data: AdminCourseCreate, admin=Depends(require_admin)):
         db.refresh(course)
         return {"id": course.id, "title": course.title, "status": "created"}
     except Exception as e:
+        logger.error("create_course failed: %s", e)
         db.rollback()
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail="Failed to create course")
     finally:
         db.close()
 

@@ -31,14 +31,7 @@ const INSTRUMENTS = ["vocal","piano","guitar","drums","violin","flute","saxophon
 const DIFFICULTIES = ["beginner","intermediate","advanced"];
 const LESSON_TYPES = ["theory","practice","ear-training","sight-reading","improvisation"];
 
-const injectKeyframes = () => {
-  if (!document.getElementById("ai-lessons-keyframes")) {
-    const s = document.createElement("style");
-    s.id = "ai-lessons-keyframes";
-    s.textContent = keyframes;
-    document.head.appendChild(s);
-  }
-};
+
 
 const AIAnimation = () => (
   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "60px 20px" }}>
@@ -171,7 +164,13 @@ export default function AiLessons() {
   const navigate = useNavigate();
   const { addToast } = useToast();
 
-  useEffect(() => { injectKeyframes(); }, []);
+  useEffect(() => {
+    const s = document.createElement("style");
+    s.id = "ai-lessons-keyframes";
+    s.textContent = keyframes;
+    document.head.appendChild(s);
+    return () => { s.remove(); };
+  }, []);
 
   const [activeTab, setActiveTab] = useState("lesson");
   const [generated, setGenerated] = useState(null);

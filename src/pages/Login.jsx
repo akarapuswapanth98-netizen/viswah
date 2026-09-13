@@ -15,7 +15,7 @@ const COLORS = {
   teal: "#5BA8A0",
   text: "#F0EBE3",
   textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
+  textMuted: "#8075A0",
   border: "rgba(240, 235, 227, 0.08)",
   borderHover: "rgba(240, 235, 227, 0.15)",
   error: "#D46A6A",
@@ -273,6 +273,7 @@ export default function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
+                autoComplete="email"
                 style={{
                   width: "100%",
                   padding: "13px 16px",
@@ -312,6 +313,7 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Min 6 characters"
+                autoComplete="current-password"
                 style={{
                   width: "100%",
                   padding: "13px 44px 13px 16px",
@@ -339,14 +341,19 @@ export default function Login() {
                 aria-label={showPassword ? "Hide password" : "Show password"}
                 style={{
                   position: "absolute",
-                  right: 12,
-                  top: 38,
+                  right: 8,
+                  top: 34,
                   background: "none",
                   border: "none",
                   color: COLORS.textMuted,
                   cursor: "pointer",
                   fontSize: 16,
-                  padding: 4,
+                  padding: "8px",
+                  minWidth: "44px",
+                  minHeight: "44px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >{showPassword ? "🙈" : "👁"}</button>
             </div>

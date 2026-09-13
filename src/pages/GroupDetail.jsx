@@ -131,7 +131,7 @@ export default function GroupDetail() {
             Members
           </div>
           {group.members.map((m, i) => (
-            <div key={i} style={{
+            <div key={m.user_id || i} style={{
               display: "flex", alignItems: "center", gap: 10,
               padding: "8px 0", borderBottom: i < group.members.length - 1 ? `1px solid ${C.border}` : "none",
             }}>

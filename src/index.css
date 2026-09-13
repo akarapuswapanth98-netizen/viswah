@@ -20,7 +20,7 @@
   /* Text */
   --vis-text: #F0EBE3;
   --vis-text-secondary: #A89FB8;
-  --vis-text-muted: #6B6080;
+  --vis-text-muted: #8075A0;
 
   /* Semantic */
   --vis-success: #6DBF73;
@@ -218,6 +218,19 @@ textarea:focus-visible {
     transform: none !important;
     box-shadow: none !important;
   }
+}
+
+/* Screen reader only — visually hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* Print styles */
