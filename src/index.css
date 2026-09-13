@@ -1,0 +1,233 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Core palette */
+  --vis-ink: #0C0A14;
+  --vis-surface: #161222;
+  --vis-elevated: #241E38;
+  --vis-floating: #2A2344;
+
+  /* Accents */
+  --vis-saffron: #E8A838;
+  --vis-saffron-muted: #C4893A;
+  --vis-raga: #C77DBA;
+  --vis-teal: #5BA8A0;
+
+  /* Text */
+  --vis-text: #F0EBE3;
+  --vis-text-secondary: #A89FB8;
+  --vis-text-muted: #6B6080;
+
+  /* Semantic */
+  --vis-success: #6DBF73;
+  --vis-error: #D46A6A;
+  --vis-warning: #D4A84A;
+
+  /* Legacy compat */
+  --primary: #6C63FF;
+  --primary-dark: #4A42D4;
+  --secondary: #4ECDC4;
+  --success: #34C759;
+  --warning: #FF9500;
+  --error: #FF3B30;
+  --neon: #00FF88;
+  --bg: #0F0F23;
+  --surface: rgba(255, 255, 255, 0.08);
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --text: #FFFFFF;
+  --text-secondary: #B0B0CC;
+  --text-muted: #6B6B8D;
+
+  /* Depth */
+  --vis-perspective: 1200px;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--vis-ink);
+  color: var(--vis-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--vis-saffron);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+button {
+  font-family: inherit;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}
+
+select {
+  appearance: auto !important;
+  -webkit-appearance: auto !important;
+  -moz-appearance: menulist !important;
+  color-scheme: dark;
+}
+
+[role="button"], button, a, input, select, textarea {
+  outline: none;
+}
+
+[role="button"]:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--vis-saffron);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+[role="button"] {
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px) translateZ(-10px); }
+  to { opacity: 1; transform: translateY(0) translateZ(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes gentlePulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes waveform {
+  0% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+  100% { transform: scaleY(0.3); }
+}
+
+/* Spatial perspective container */
+.vis-perspective {
+  perspective: var(--vis-perspective);
+  transform-style: preserve-3d;
+}
+
+/* Ambient light overlay */
+.vis-ambient {
+  position: relative;
+}
+
+.vis-ambient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(232, 168, 56, 0.05), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile responsive helpers */
+@media (max-width: 768px) {
+  .vis-perspective {
+    perspective: none;
+  }
+
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+  [role="button"]:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  aside, nav, button {
+    display: none !important;
+  }
+}
