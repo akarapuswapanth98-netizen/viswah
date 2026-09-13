@@ -78,7 +78,6 @@ class Progress(Base):
     __tablename__ = "progress"
     __table_args__ = (
         UniqueConstraint('user_id', 'lesson_id', name='uq_progress_user_lesson'),
-        CheckConstraint("completed IN (0, 1) OR completed IN ('true', 'false')", name='ck_progress_completed'),
     )
 
     id = Column(Integer, primary_key=True, index=True)
