@@ -46,6 +46,22 @@ if _jwt_secret in _known_dev:
 # Fix #1: Always create tables first, then run SQLite PRAGMA migration
 Base.metadata.create_all(bind=engine)
 
+# PostgreSQL safety: ensure role column exists on users table
+if engine.url.drivername.startswith("postgresql"):
+    try:
+        with engine.connect() as conn:
+            result = conn.execute(text(
+                "SELECT column_name FROM information_schema.columns "
+                "WHERE table_name = 'users' AND column_name = 'role'"
+            ))
+            if not result.fetchone():
+                conn.execute(text("ALTER TABLE users ADD COLUMN role VARCHAR(20) DEFAULT 'user'"))
+                conn.execute(text("UPDATE users SET role = 'user' WHERE role IS NULL"))
+                conn.commit()
+                logger.info("Added role column to users table")
+    except Exception as e:
+        logger.warning("Could not ensure role column: %s", e)
+
 # Only run SQLite PRAGMA for file-based databases
 if engine.url.drivername == "sqlite" and ":memory:" not in str(engine.url):
     try:

@@ -13,7 +13,11 @@ router = APIRouter(prefix="/api/admin", tags=["Admin"])
 
 
 def require_admin(user=Depends(get_current_user)):
-    if getattr(user, "role", None) != "admin":
+    try:
+        role = getattr(user, "role", None)
+    except Exception:
+        role = None
+    if role != "admin":
         raise HTTPException(status_code=403, detail="Admin access required")
     return user
 
