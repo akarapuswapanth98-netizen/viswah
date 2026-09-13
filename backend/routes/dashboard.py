@@ -97,6 +97,9 @@ def get_dashboard(
         "total_minutes": int(total_practice_secs // 60),
         "streak_days": streak,
         "today_minutes": int(today_secs // 60),
+        "favorite_activity": None,
+        "weekly_minutes": [0, 0, 0, 0, 0, 0, 0],
+        "activities_breakdown": {},
     }
 
     achievements = []

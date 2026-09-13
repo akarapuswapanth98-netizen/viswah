@@ -186,13 +186,6 @@ app.add_middleware(
 )
 
 
-@app.exception_handler(Exception)
-async def global_exception_handler(request, exc):
-    logger.error("Unhandled exception on %s %s: %s", request.method, request.url.path, exc, exc_info=True)
-    from fastapi.responses import JSONResponse
-    return JSONResponse(status_code=500, content={"detail": "Internal server error"})
-
-
 @app.middleware("http")
 async def add_security_headers(request, call_next):
     response = await call_next(request)
@@ -302,32 +295,6 @@ def get_sargam_map():
     with open(INDIAN_MUSIC_PATH) as f:
         data = json.load(f)
     return {"sargam_map": data.get("sargam_map", {}), "variations": data.get("variations", {})}
-
-
-@app.get("/api/debug/admin-test")
-def debug_admin_test():
-    """Temporary debug endpoint to diagnose admin 500 error."""
-    import traceback
-    results = {}
-    db = SessionLocal()
-    try:
-        results["course_count"] = db.query(Course).count()
-        results["lesson_count"] = db.query(Lesson).count()
-        from models.models import User
-        user = db.query(User).first()
-        if user:
-            results["user_email"] = user.email
-            try:
-                results["user_role"] = getattr(user, "role", "NO_ROLE_ATTR")
-            except Exception as e:
-                results["role_error"] = str(e)
-        results["status"] = "ok"
-    except Exception as e:
-        results["error"] = str(e)
-        results["traceback"] = traceback.format_exc()
-    finally:
-        db.close()
-    return results
 
 
 if __name__ == "__main__":

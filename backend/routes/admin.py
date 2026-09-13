@@ -13,15 +13,11 @@ router = APIRouter(prefix="/api/admin", tags=["Admin"])
 
 
 def require_admin(user=Depends(get_current_user)):
-    import traceback as _tb
     try:
         role = getattr(user, "role", None)
-        logger.info("require_admin: user=%s role=%s", user.email, role)
-    except Exception as e:
+    except Exception:
         role = None
-        logger.error("require_admin getattr failed: %s\n%s", e, _tb.format_exc())
     if role != "admin":
-        logger.info("require_admin: denying access for %s (role=%s)", user.email, role)
         raise HTTPException(status_code=403, detail="Admin access required")
     return user
 
@@ -46,18 +42,12 @@ class AdminCourseUpdate(BaseModel):
 
 @router.get("/stats")
 def get_stats(admin=Depends(require_admin)):
-    import traceback as _tb
     db = SessionLocal()
     try:
-        course_count = db.query(Course).count()
-        lesson_count = db.query(Lesson).count()
         return {
-            "total_courses": course_count,
-            "total_lessons": lesson_count,
+            "total_courses": db.query(Course).count(),
+            "total_lessons": db.query(Lesson).count(),
         }
-    except Exception as e:
-        logger.error("admin stats failed: %s\n%s", e, _tb.format_exc())
-        raise HTTPException(status_code=500, detail=f"Stats query failed: {type(e).__name__}")
     finally:
         db.close()
 
