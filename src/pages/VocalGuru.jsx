@@ -312,7 +312,7 @@ export default function VocalGuru() {
     setPhase(PHASES.EXERCISE);
     setAttemptNumber((n) => n + 1);
     setFeedback(null);
-    setAudioBlob(null);
+    recorder.setAudioBlob(null);
   };
 
   const handleComplete = () => {

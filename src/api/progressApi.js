@@ -1,6 +1,11 @@
 import api from './client.js';
 
 export const progressApi = {
+  getProgress: async () => {
+    const res = await api.get('/api/progress');
+    return res;
+  },
+
   getSummary: async () => {
     const res = await api.get('/api/progress/summary');
     return res;

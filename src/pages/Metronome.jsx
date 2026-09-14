@@ -117,8 +117,9 @@ export default function Metronome() {
 
     osc.type = "sine";
     osc.frequency.value = isAccent ? 1000 : 800;
-    gain.gain.value = volumeRef.current * (isAccent ? 1.0 : 0.6);
-    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.05);
+    const vol = volumeRef.current * (isAccent ? 1.0 : 0.6);
+    gain.gain.setValueAtTime(Math.max(vol, 0.001), time);
+    gain.gain.linearRampToValueAtTime(0.001, time + 0.05);
 
     osc.start(time);
     osc.stop(time + 0.05);
