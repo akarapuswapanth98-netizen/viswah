@@ -66,6 +66,7 @@ export default function Metronome() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentBeat, setCurrentBeat] = useState(0);
   const [volume, setVolume] = useState(0.5);
+  const [isMobile, setIsMobile] = useState(false);
 
   const audioCtxRef = useRef(null);
   const nextBeatTimeRef = useRef(0);
@@ -83,6 +84,13 @@ export default function Metronome() {
   useEffect(() => { bpmRef.current = bpm; }, [bpm]);
   useEffect(() => { volumeRef.current = volume; }, [volume]);
   useEffect(() => { beatsPerMeasureRef.current = beatsPerMeasure; }, [beatsPerMeasure]);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 480);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   // Fetch talas
   useEffect(() => {
@@ -347,16 +355,18 @@ export default function Metronome() {
           </div>
 
           {/* Beat Indicator */}
-          <div style={{ display: "flex", justifyContent: "center", gap: 16, marginBottom: 24 }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: isMobile ? 8 : 16, marginBottom: 24, flexWrap: "nowrap", overflowX: "auto" }}>
             {beatDots.map((i) => {
               const isActive = isPlaying && currentBeat === i + 1;
               const isAccent = i === 0;
+              const dotSize = isMobile ? (isAccent ? 36 : 28) : (isAccent ? 48 : 36);
               return (
                 <div
                   key={i}
                   style={{
-                    width: isAccent ? 48 : 36,
-                    height: isAccent ? 48 : 36,
+                    width: dotSize,
+                    height: dotSize,
+                    minWidth: dotSize,
                     borderRadius: "50%",
                     background: isActive
                       ? isAccent
@@ -367,7 +377,7 @@ export default function Metronome() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: isAccent ? 18 : 14,
+                    fontSize: isMobile ? (isAccent ? 14 : 11) : (isAccent ? 18 : 14),
                     fontWeight: 700,
                     color: isActive ? COLORS.bg : COLORS.mutedText,
                     transition: "all 0.05s ease-out",

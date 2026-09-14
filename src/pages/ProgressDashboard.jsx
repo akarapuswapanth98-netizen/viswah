@@ -187,6 +187,8 @@ const styles = {
     gap: '4px',
     borderBottom: '1px solid rgba(255,255,255,0.06)',
     marginBottom: '20px',
+    overflowX: 'auto',
+    WebkitOverflowScrolling: 'touch',
   },
   tab: {
     background: 'none',
@@ -197,6 +199,8 @@ const styles = {
     fontSize: '13px',
     fontWeight: '500',
     transition: 'all 0.2s',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
   },
   loading: {
     display: 'flex',
@@ -238,10 +242,11 @@ const styles = {
     display: 'flex',
     gap: '16px',
     alignItems: 'center',
+    flexWrap: 'wrap',
   },
   row2: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
     gap: '16px',
   },
   achievementsPreview: {

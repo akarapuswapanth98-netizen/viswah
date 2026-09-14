@@ -373,7 +373,8 @@ export default function WorldMusic() {
               fontSize: 13,
               outline: "none",
               cursor: "pointer",
-              minWidth: 140,
+              minWidth: 0,
+              flex: "1 1 120px",
             }}
           >
             <option value="">All Regions</option>
@@ -393,7 +394,8 @@ export default function WorldMusic() {
               fontSize: 13,
               outline: "none",
               cursor: "pointer",
-              minWidth: 120,
+              minWidth: 0,
+              flex: "1 1 100px",
             }}
           >
             <option value="">All Levels</option>

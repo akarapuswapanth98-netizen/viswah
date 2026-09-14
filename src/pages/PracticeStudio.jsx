@@ -308,7 +308,7 @@ export default function PracticeStudio() {
       <div style={{ minHeight: "100vh", background: C.ink, padding: "0 20px", paddingBottom: 60 }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", paddingTop: 40 }}>
           <SkeletonBlock height={60} style={{ marginBottom: 24 }} />
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 32 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12, marginBottom: 32 }}>
             {[...Array(4)].map((_, i) => <SkeletonBlock key={i} height={80} />)}
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 32 }}>

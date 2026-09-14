@@ -336,13 +336,13 @@ export default function Drums() {
     return (
       <div style={{ minHeight: "100vh", background: C.ink, padding: "20px", fontFamily: "system-ui, sans-serif" }}>
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
-          <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 20, padding: 40, textAlign: "center" }}>
+          <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 20, padding: "24px 16px", textAlign: "center" }}>
             <div style={{ width: 100, height: 100, borderRadius: "50%", margin: "0 auto 20px", background: `${grade.color}15`, border: `3px solid ${grade.color}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
               <span style={{ color: grade.color, fontSize: "2.5rem", fontWeight: 800 }}>{grade.letter}</span>
             </div>
             <h2 style={{ color: C.text, fontSize: "1.8rem", fontWeight: 700, margin: "0 0 8px" }}>{result.score}%</h2>
             <p style={{ color: grade.color, fontSize: "1rem", fontWeight: 600, margin: "0 0 24px" }}>{grade.label}</p>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 32 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: 16, marginBottom: 32 }}>
               <div style={{ background: C.elevated, borderRadius: 12, padding: 16 }}><p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase" }}>Accuracy</p><p style={{ color: C.teal, fontSize: "1.5rem", fontWeight: 700, margin: 0 }}>{result.accuracy}%</p></div>
               <div style={{ background: C.elevated, borderRadius: 12, padding: 16 }}><p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase" }}>Correct</p><p style={{ color: C.success, fontSize: "1.5rem", fontWeight: 700, margin: 0 }}>{result.correct}/{result.total}</p></div>
               <div style={{ background: C.elevated, borderRadius: 12, padding: 16 }}><p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase" }}>Mistakes</p><p style={{ color: C.error, fontSize: "1.5rem", fontWeight: 700, margin: 0 }}>{result.incorrect}</p></div>

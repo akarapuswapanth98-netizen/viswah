@@ -1184,6 +1184,8 @@ export default function VocalGuru() {
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
         @media (max-width: 768px) {
           .vocal-guru-grid { grid-template-columns: 1fr !important; }
+          .vocal-guru-sidebar { max-height: 200px; overflow-y: auto; }
+          .vocal-guru-content { padding: 16px !important; }
         }
       `}</style>
     </div>

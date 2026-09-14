@@ -50,7 +50,12 @@ export default function Register() {
       minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center",
       background: "linear-gradient(135deg, #0F0F23 0%, #1a1a3e 50%, #0F0F23 100%)", padding: 20,
     }}>
-      <div style={{
+      <style>{`
+        @media (max-width: 768px) {
+          .register-container { align-items: flex-start !important; padding-top: 40px !important; overflow-y: auto !important; }
+        }
+      `}</style>
+      <div className="register-container" style={{
         width: "100%", maxWidth: 420, background: "rgba(255,255,255,0.06)",
         backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.12)",
         borderRadius: 20, padding: "40px 32px",
@@ -94,7 +99,7 @@ export default function Register() {
             />
             <button type="button" onClick={() => setShowPassword(!showPassword)}
               aria-label={showPassword ? "Hide password" : "Show password"}
-              style={{ position: "absolute", right: 12, top: 36, background: "none", border: "none", color: "#6B6B8D", cursor: "pointer", fontSize: 18 }}>
+              style={{ position: "absolute", right: 4, top: 32, background: "none", border: "none", color: "#6B6B8D", cursor: "pointer", fontSize: 18, padding: "8px", minWidth: "44px", minHeight: "44px", display: "flex", alignItems: "center", justifyContent: "center" }}>
               {showPassword ? "🙈" : "👁"}
             </button>
           </div>

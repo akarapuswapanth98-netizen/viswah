@@ -55,8 +55,8 @@ export default function GroupCard({ group, onJoin, onNavigate }) {
               background: group.is_member ? "none" : C.teal,
               color: group.is_member ? C.textMuted : C.ink,
               border: group.is_member ? `1px solid ${C.border}` : "none",
-              borderRadius: 8, padding: "6px 12px", fontSize: 11,
-              fontWeight: 600, cursor: "pointer", flexShrink: 0,
+              borderRadius: 8, padding: "10px 16px", fontSize: 12,
+              fontWeight: 600, cursor: "pointer", flexShrink: 0, minHeight: 40,
             }}
           >
             {group.is_member ? "Joined" : "Join"}

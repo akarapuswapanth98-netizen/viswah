@@ -255,7 +255,7 @@ export default function Lyrics() {
         {/* Input Form */}
         <div style={cardStyle}>
           <SectionTitle>Generate Lyrics</SectionTitle>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16, marginBottom: 16 }}>
             <div style={{ gridColumn: "1 / -1" }}>
               <label style={{ color: C.textSecondary, fontSize: 13, display: "block", marginBottom: 6 }}>Topic</label>
               <input
@@ -351,7 +351,7 @@ export default function Lyrics() {
               }}>
                 {lyricsText}
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 8 }}>
                 {generatedLyrics.rhyme_scheme && <MetaTag label="Rhyme Scheme" value={generatedLyrics.rhyme_scheme} />}
                 {generatedLyrics.word_count != null && <MetaTag label="Word Count" value={generatedLyrics.word_count} />}
                 {generatedLyrics.suggested_tempo && <MetaTag label="Suggested Tempo" value={`${generatedLyrics.suggested_tempo} BPM`} color={C.teal} />}

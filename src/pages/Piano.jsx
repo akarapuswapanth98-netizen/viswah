@@ -153,6 +153,7 @@ export default function Piano() {
   const audioContextRef = useRef(null);
   const gainNodeRef = useRef(null);
   const sustainTimeouts = useRef({});
+  const [isMobile, setIsMobile] = useState(false);
 
   const [mode, setMode] = useState("free");
   const [selectedExercise, setSelectedExercise] = useState(null);
@@ -362,6 +363,14 @@ export default function Piano() {
     setResult(null);
   }, []);
 
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const octaveCount = isMobile ? 1 : 2;
   const keys = [];
   const notePattern = [
     { note: "C", isBlack: false }, { note: "C#", isBlack: true },
@@ -371,7 +380,7 @@ export default function Piano() {
     { note: "G#", isBlack: true }, { note: "A", isBlack: false },
     { note: "A#", isBlack: true }, { note: "B", isBlack: false },
   ];
-  for (let o = octave; o < octave + 2; o++) {
+  for (let o = octave; o < octave + octaveCount; o++) {
     notePattern.forEach(({ note, isBlack }) => keys.push({ note, octave: o, isBlack }));
   }
   const whiteKeys = keys.filter((k) => !k.isBlack);
@@ -569,7 +578,7 @@ export default function Piano() {
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
           <div style={{
             background: C.surface, border: `1px solid ${C.border}`,
-            borderRadius: 20, padding: 40, textAlign: "center",
+            borderRadius: 20, padding: "24px 16px", textAlign: "center",
           }}>
             <div style={{
               width: 100, height: 100, borderRadius: "50%", margin: "0 auto 20px",
@@ -585,7 +594,7 @@ export default function Piano() {
               {grade.label}
             </p>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 32 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: 16, marginBottom: 32 }}>
               <div style={{ background: C.elevated, borderRadius: 12, padding: 16 }}>
                 <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase" }}>Accuracy</p>
                 <p style={{ color: C.teal, fontSize: "1.5rem", fontWeight: 700, margin: 0 }}>{result.accuracy}%</p>

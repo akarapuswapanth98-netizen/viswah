@@ -138,7 +138,8 @@ export default function CourseDetail() {
       <div style={{ maxWidth: 800, margin: "0 auto" }}>
         <Link to="/courses" style={{
           color: "#6C63FF", textDecoration: "none", fontSize: 14, display: "inline-flex",
-          alignItems: "center", gap: 6, marginBottom: 24,
+          alignItems: "center", gap: 6, marginBottom: 24, padding: "8px 4px",
+          minHeight: 44,
         }}>
           ← Back to Courses
         </Link>
@@ -196,9 +197,9 @@ export default function CourseDetail() {
           <h2 style={{ fontSize: 20, fontWeight: 600, color: "#fff", margin: 0 }}>Lessons</h2>
           {!enrolled && (
             <button onClick={handleEnroll} disabled={enrolling} style={{
-              padding: "10px 24px", background: enrolling ? "#4A42D4" : "#6C63FF",
+              padding: "12px 24px", background: enrolling ? "#4A42D4" : "#6C63FF",
               color: "#fff", border: "none", borderRadius: 10, fontSize: 14, fontWeight: 600,
-              cursor: enrolling ? "not-allowed" : "pointer",
+              cursor: enrolling ? "not-allowed" : "pointer", minHeight: 44,
             }}>{enrolling ? "Enrolling..." : "Enroll in Course"}</button>
           )}
         </div>

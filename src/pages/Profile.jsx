@@ -264,7 +264,7 @@ export default function Profile() {
         <style>{skeletonKeyframes}</style>
         <div style={{ maxWidth: 800, margin: "0 auto", paddingTop: 40 }}>
           <SkeletonBlock height={160} style={{ marginBottom: 24 }} />
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 16, marginBottom: 32 }}>
             {[...Array(4)].map((_, i) => <SkeletonBlock key={i} height={100} />)}
           </div>
           <SkeletonBlock height={300} />

@@ -625,6 +625,9 @@ export default function RagaLearning() {
         <div style={{
           display: "flex", gap: 4, marginBottom: 28, overflowX: "auto",
           paddingBottom: 4, scrollbarWidth: "thin",
+          WebkitOverflowScrolling: "touch",
+          maskImage: "linear-gradient(to right, black 85%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, black 85%, transparent 100%)",
         }}>
           {PHASE_ORDER.map((p, i) => {
             const isActive = p === phase;

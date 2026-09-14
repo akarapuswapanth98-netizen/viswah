@@ -331,7 +331,7 @@ export default function AICoach() {
       <div style={{ minHeight: "100vh", background: C.ink }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "40px 20px" }}>
           <SkeletonBlock height={80} style={{ marginBottom: 24 }} />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, marginBottom: 24 }}>
             <SkeletonBlock height={200} />
             <SkeletonBlock height={200} />
           </div>
@@ -402,7 +402,7 @@ export default function AICoach() {
         </div>
 
         {/* Main Grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 24 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, marginBottom: 24 }}>
           {/* Skill Health */}
           <div style={{
             background: C.surface, border: `1px solid ${C.border}`,
@@ -428,7 +428,7 @@ export default function AICoach() {
             transition: "opacity 0.5s ease-out 150ms, transform 0.5s ease-out 150ms",
           }}>
             <h3 style={{ color: C.text, fontSize: 16, fontWeight: 600, margin: "0 0 16px" }}>Your Progress</h3>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 12 }}>
               <div style={{ background: C.elevated, borderRadius: 12, padding: 14 }}>
                 <span style={{ color: C.textMuted, fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.5px" }}>Sessions</span>
                 <p style={{ color: C.saffron, fontSize: 22, fontWeight: 700, margin: "4px 0 0" }}>{summary?.total_sessions || 0}</p>
@@ -458,7 +458,7 @@ export default function AICoach() {
         </div>
 
         {/* Recommendation + Insight */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 24 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, marginBottom: 24 }}>
           <div style={{
             opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(12px)",
             transition: "opacity 0.5s ease-out 250ms, transform 0.5s ease-out 250ms",

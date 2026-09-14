@@ -145,6 +145,11 @@ export default function Login() {
       overflow: "hidden",
       padding: "20px",
     }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .login-container { align-items: flex-start !important; padding-top: 40px !important; overflow-y: auto !important; }
+        }
+      `}</style>
       {/* Ambient lighting layers */}
       <div style={{
         position: "absolute",
@@ -174,6 +179,7 @@ export default function Login() {
 
       {/* Login panel */}
       <div
+        className="login-container"
         style={{
           width: "100%",
           maxWidth: 420,

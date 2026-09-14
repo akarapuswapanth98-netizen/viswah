@@ -184,7 +184,7 @@ export default function Community() {
         }}>{error}</div>
       )}
 
-      <div style={{ display: "flex", gap: 6, marginBottom: 24, flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: 6, marginBottom: 24, overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: 4 }}>
         {TABS.map((tab) => (
           <button
             key={tab}
@@ -194,7 +194,7 @@ export default function Community() {
               color: activeTab === tab ? C.ink : C.textSecondary,
               border: "none", borderRadius: 8, padding: "8px 14px",
               fontSize: 13, fontWeight: 600, cursor: "pointer",
-              position: "relative",
+              position: "relative", whiteSpace: "nowrap", flexShrink: 0,
             }}
           >
             {tab}

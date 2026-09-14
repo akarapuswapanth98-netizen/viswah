@@ -9,6 +9,7 @@ const layoutStyle = {
   minHeight: '100vh',
   background: '#0F0F23',
   fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+  overflowX: 'hidden',
 };
 
 const sidebarDesktopStyle = {
@@ -18,9 +19,9 @@ const sidebarDesktopStyle = {
 
 const mainContentStyle = {
   flex: 1,
-  marginLeft: '260px',
   minHeight: '100vh',
   overflow: 'auto',
+  minWidth: 0,
 };
 
 const headerStyle = {
@@ -125,6 +126,9 @@ export default function Layout() {
       <style>{`
         @keyframes spin {
           to { transform: rotate(360deg); }
+        }
+        .layout-main-content {
+          margin-left: 260px;
         }
         @media (max-width: 768px) {
           .layout-sidebar-desktop { display: none !important; }

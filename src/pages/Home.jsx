@@ -233,7 +233,7 @@ export default function Home() {
           transform: mounted ? "translateY(0)" : "translateY(12px)",
           transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
         }}>
-          <h1 style={{ color: C.text, fontSize: 32, fontWeight: 700, margin: 0, lineHeight: 1.3 }}>
+          <h1 style={{ color: C.text, fontSize: 32, fontWeight: 700, margin: 0, lineHeight: 1.3, overflowWrap: "break-word", wordBreak: "break-word" }}>
             {getGreeting()}, <span style={{ color: C.saffron }}>{username}</span>
           </h1>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 8 }}>

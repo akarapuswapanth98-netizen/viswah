@@ -262,7 +262,7 @@ function FeedbackToast({ feedback }) {
 
 function DifficultySelector({ value, onChange }) {
   return (
-    <div style={{ display: "flex", gap: 8 }}>
+    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
       {["beginner", "intermediate", "advanced"].map((d) => (
         <button
           key={d}

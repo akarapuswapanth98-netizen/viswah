@@ -499,8 +499,9 @@ export default function Quiz() {
                 >
                   <div
                     style={{
-                      width: 32,
-                      height: 32,
+                      width: 40,
+                      height: 40,
+                      minWidth: 40,
                       borderRadius: "50%",
                       border: `2px solid ${isSelected ? COLORS.primary : COLORS.mutedText}`,
                       background: isSelected ? COLORS.primary : "transparent",
@@ -522,7 +523,7 @@ export default function Quiz() {
           </div>
         </div>
 
-        <div style={{ display: "flex", gap: 12, justifyContent: "space-between" }}>
+        <div style={{ display: "flex", gap: 12, justifyContent: "space-between", flexWrap: "wrap" }}>
           <button
             onClick={handlePrev}
             disabled={currentIndex === 0}

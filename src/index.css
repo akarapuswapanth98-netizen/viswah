@@ -218,6 +218,11 @@ textarea:focus-visible {
     transform: none !important;
     box-shadow: none !important;
   }
+  button:active,
+  [role="button"]:active,
+  a:active {
+    opacity: 0.8;
+  }
 }
 
 /* Screen reader only — visually hidden but accessible */
