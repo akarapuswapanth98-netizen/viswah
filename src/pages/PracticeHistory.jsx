@@ -220,7 +220,7 @@ function TopicCard({ topic }) {
         </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 12 }}>
         <div>
           <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 2px" }}>Latest</p>
           <p style={{ color: C.text, fontSize: 18, fontWeight: 700, margin: 0 }}>

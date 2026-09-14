@@ -238,6 +238,25 @@ textarea:focus-visible {
   border-width: 0;
 }
 
+/* Skip link (a11y) */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #E8A838;
+  color: #0C0A14;
+  padding: 12px 24px;
+  z-index: 9999;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 /* Print styles */
 @media print {
   body {

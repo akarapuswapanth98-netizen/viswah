@@ -464,7 +464,7 @@ export default function VocalGuru() {
                       onClick={() => handleSelectGuru(guru)}
                       onKeyDown={(e) => onKeyDown(e, () => handleSelectGuru(guru))}
                       style={{
-                        minWidth: 220, background: isSelected
+                        minWidth: 0, background: isSelected
                           ? `linear-gradient(135deg, rgba(232, 168, 56, 0.1), rgba(199, 125, 186, 0.06))`
                           : C.surface,
                         border: `1px solid ${isSelected ? C.saffron + "40" : C.border}`,
@@ -1184,8 +1184,6 @@ export default function VocalGuru() {
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
         @media (max-width: 768px) {
           .vocal-guru-grid { grid-template-columns: 1fr !important; }
-          .vocal-guru-sidebar { max-height: 200px; overflow-y: auto; }
-          .vocal-guru-content { padding: 16px !important; }
         }
       `}</style>
     </div>

@@ -4,38 +4,27 @@ import Sidebar from './Sidebar';
 import Toast from './ui/Toast';
 import { useToast } from '../context/ToastContext';
 
+const MOBILE_BREAKPOINT = 768;
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth <= MOBILE_BREAKPOINT : false
+  );
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    window.addEventListener('resize', check);
+    check();
+    return () => window.removeEventListener('resize', check);
+  }, []);
+  return isMobile;
+}
+
 const layoutStyle = {
   display: 'flex',
   minHeight: '100vh',
   background: '#0F0F23',
   fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   overflowX: 'hidden',
-};
-
-const sidebarDesktopStyle = {
-  width: '260px',
-  flexShrink: 0,
-};
-
-const mainContentStyle = {
-  flex: 1,
-  minHeight: '100vh',
-  overflow: 'auto',
-  minWidth: 0,
-};
-
-const headerStyle = {
-  display: 'none',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: '16px 20px',
-  background: 'linear-gradient(180deg, rgba(15,15,35,0.98), rgba(15,15,35,0.95))',
-  backdropFilter: 'blur(20px)',
-  WebkitBackdropFilter: 'blur(20px)',
-  borderBottom: '1px solid rgba(255,255,255,0.12)',
-  position: 'sticky',
-  top: 0,
-  zIndex: 50,
 };
 
 const hamburgerStyle = {
@@ -104,6 +93,7 @@ const overlayOpenStyle = {
 export default function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { toasts, removeToast } = useToast();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (sidebarOpen) {
@@ -121,39 +111,38 @@ export default function Layout() {
     }
   }, [sidebarOpen]);
 
+  useEffect(() => {
+    if (!isMobile && sidebarOpen) setSidebarOpen(false);
+  }, [isMobile, sidebarOpen]);
+
+  const sidebarDesktopStyle = isMobile
+    ? { display: 'none' }
+    : { width: '260px', flexShrink: 0 };
+
+  const mainContentStyle = {
+    flex: 1,
+    minHeight: '100vh',
+    overflow: 'auto',
+    minWidth: 0,
+    marginLeft: isMobile ? 0 : 260,
+  };
+
+  const headerStyle = {
+    display: isMobile ? 'flex' : 'none',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '16px 20px',
+    background: 'linear-gradient(180deg, rgba(15,15,35,0.98), rgba(15,15,35,0.95))',
+    backdropFilter: 'blur(20px)',
+    WebkitBackdropFilter: 'blur(20px)',
+    borderBottom: '1px solid rgba(255,255,255,0.12)',
+    position: 'sticky',
+    top: 0,
+    zIndex: 50,
+  };
+
   return (
     <div style={layoutStyle}>
-      <style>{`
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-        .layout-main-content {
-          margin-left: 260px;
-        }
-        @media (max-width: 768px) {
-          .layout-sidebar-desktop { display: none !important; }
-          .layout-main-content { margin-left: 0 !important; }
-          .layout-mobile-header { display: flex !important; }
-        }
-        .skip-link {
-          position: absolute;
-          top: -100px;
-          left: 0;
-          background: #E8A838;
-          color: #0C0A14;
-          padding: 12px 24px;
-          z-index: 9999;
-          font-weight: 600;
-          font-size: 14px;
-          text-decoration: none;
-          border-radius: 0 0 8px 0;
-          transition: top 0.2s;
-        }
-        .skip-link:focus {
-          top: 0;
-        }
-      `}</style>
-
       <a href="#main-content" className="skip-link">Skip to main content</a>
 
       <div className="layout-sidebar-desktop" style={sidebarDesktopStyle}>

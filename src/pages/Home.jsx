@@ -687,7 +687,7 @@ export default function Home() {
               <p style={{ color: C.textSecondary, fontSize: 15, margin: 0 }}>No courses found</p>
             </div>
           ) : (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 14 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(260px, 100%), 1fr))", gap: 14, overflow: "hidden" }}>
               {filteredCourses.map((course) => (
                 <div
                   key={course.id}
@@ -712,7 +712,8 @@ export default function Home() {
                 >
                   {course.image_url && (
                     <img src={course.image_url} alt={course.title}
-                      style={{ width: "100%", height: 140, objectFit: "cover", display: "block" }} />
+                      style={{ width: "100%", height: 140, objectFit: "cover", display: "block", maxWidth: "100%" }}
+                      onError={(e) => { e.target.style.display = 'none'; }} />
                   )}
                   <div style={{ padding: 16 }}>
                     <p style={{ color: C.text, fontWeight: 600, fontSize: 14, margin: "0 0 8px" }}>{course.title}</p>

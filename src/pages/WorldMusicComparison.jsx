@@ -24,7 +24,8 @@ function ComparisonColumn({ tradition, index }) {
   return (
     <div style={{
       flex: "1 1 0",
-      minWidth: 260,
+      minWidth: 0,
+      maxWidth: "100%",
       background: C.surface,
       border: `1px solid ${C.border}`,
       borderRadius: 18,

@@ -125,8 +125,9 @@ function SkillMap({ skills = [], mounted = true }) {
   return (
     <div role="list" aria-label="Music Skill Map" style={{
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+      gridTemplateColumns: "repeat(auto-fill, minmax(min(260px, 100%), 1fr))",
       gap: 12,
+      overflow: "hidden",
     }}>
       {skills.map((skill, i) => (
         <SkillBar key={skill.id} skill={skill} mounted={mounted} index={i} />
