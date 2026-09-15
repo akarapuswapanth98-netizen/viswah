@@ -386,12 +386,7 @@ export default function Piano() {
   };
 
   const renderPianoKeys = () => (
-    <div style={{
-      background: C.elevated, border: `1px solid ${C.border}`,
-      borderRadius: 16, padding: "24px 16px", position: "relative",
-      height: "220px", overflow: "hidden",
-      boxShadow: "0 8px 32px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2)",
-    }}>
+    <div className="console-panel" style={{ padding: "24px 16px", position: "relative", height: "220px", overflow: "hidden" }}>
       {whiteKeys.map((k, i) => {
         const keyId = `${k.note}${k.octave}`;
         const isPressed = pressedKeys.has(keyId);
@@ -400,6 +395,7 @@ export default function Piano() {
         return (
           <div
             key={keyId}
+            className={`instrument-key instrument-key--white${isPressed ? " pressed" : ""}`}
             data-testid={`piano-key-${k.note}${k.octave}`}
             onMouseDown={() => handleNoteClick(k.note, k.octave)}
             onMouseUp={() => stopNote(k.note, k.octave)}
@@ -418,18 +414,13 @@ export default function Piano() {
                 ? `linear-gradient(180deg, ${C.primary} 0%, ${C.primaryMuted} 100%)`
                 : isTarget
                 ? `linear-gradient(180deg, ${C.teal}40 0%, ${C.teal}20 100%)`
-                : "linear-gradient(180deg, #f0f0f0 0%, #e0e0e0 100%)",
-              borderRadius: "0 0 6px 6px",
+                : undefined,
               border: `1px solid ${isPressed ? C.primary : isTarget ? C.teal : "#ccc"}`,
               borderRight: "1px solid #aaa",
-              cursor: "pointer",
-              display: "flex", flexDirection: "column", alignItems: "center",
-              justifyContent: "flex-end", paddingBottom: "12px",
-              transition: "background 0.08s, transform 0.05s, border-color 0.15s",
               transform: isPressed ? "scaleY(0.97)" : "scaleY(1)",
               transformOrigin: "top",
               boxShadow: isPressed ? `0 0 20px ${C.primary}66` : isTarget ? `0 0 16px ${C.teal}33` : "0 4px 8px rgba(0,0,0,0.15)",
-              userSelect: "none", zIndex: 1,
+              zIndex: 1,
             }}
           >
             <span style={{ fontSize: "0.7rem", color: isTarget ? C.teal : "#555", fontWeight: 600 }}>
@@ -446,6 +437,7 @@ export default function Piano() {
         return (
           <div
             key={keyId}
+            className={`instrument-key instrument-key--black${isPressed ? " pressed" : ""}`}
             data-testid={`piano-key-${k.note}${k.octave}`}
             onMouseDown={() => handleNoteClick(k.note, k.octave)}
             onMouseUp={() => stopNote(k.note, k.octave)}
@@ -462,7 +454,7 @@ export default function Piano() {
                 ? `linear-gradient(180deg, ${C.primary} 0%, ${C.primaryMuted} 100%)`
                 : isTarget
                 ? `linear-gradient(180deg, ${C.teal} 0%, ${C.teal}aa 100%)`
-                : "linear-gradient(180deg, #1a1a2e 0%, #111 100%)",
+                : undefined,
               border: `1px solid ${isPressed ? C.primary : isTarget ? C.teal : C.border}`,
               transform: isPressed ? "scaleY(0.96)" : "scaleY(1)",
               transformOrigin: "top",
@@ -482,7 +474,7 @@ export default function Piano() {
     const target = currentIdx < targets.length ? targets[currentIdx] : null;
     const progress = targets.length > 0 ? (currentIdx / targets.length) * 100 : 0;
     return (
-      <div style={{ minHeight: "100vh", background: C.ink, padding: "20px", fontFamily: "system-ui, sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: C.ink, padding: "20px" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -558,7 +550,7 @@ export default function Piano() {
   if (mode === "practice" && result) {
     const grade = scoreToGrade(result.score);
     return (
-      <div style={{ minHeight: "100vh", background: C.ink, padding: "20px", fontFamily: "system-ui, sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: C.ink, padding: "20px" }}>
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
           <div style={{
             background: C.surface, border: `1px solid ${C.border}`,
@@ -633,7 +625,7 @@ export default function Piano() {
 
   if (mode === "practice" && !selectedExercise) {
     return (
-      <div style={{ minHeight: "100vh", background: C.ink, padding: "20px", fontFamily: "system-ui, sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: C.ink, padding: "20px" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
             <button onClick={() => setMode("free")} style={{
@@ -704,7 +696,7 @@ export default function Piano() {
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: C.ink, padding: "20px", fontFamily: "system-ui, sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: C.ink, padding: "20px" }}>
       <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8, flexWrap: "wrap", gap: 12 }}>
           <div>

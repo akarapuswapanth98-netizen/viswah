@@ -261,11 +261,33 @@ export default function Drums() {
   const exitPractice = useCallback(() => { setMode("free"); setSelectedExercise(null); setResult(null); }, []);
 
   const renderPads = (onPadClick) => (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "repeat(2, 160px)", gap: "16px", marginBottom: "28px" }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "repeat(2, 180px)", gap: "16px", marginBottom: "28px" }}>
       {PADS.map((pad) => {
         const isActive = activePads.has(pad.id);
         return (
-          <div key={pad.id} data-testid={`drum-pad-${pad.id}`} onMouseDown={() => onPadClick(pad.id)} onTouchStart={(e) => { e.preventDefault(); onPadClick(pad.id); }} role="button" aria-label={`${pad.label} drum pad`} tabIndex={0} onKeyDown={(e) => onKeyDown(e, () => onPadClick(pad.id))} style={{ ...pad.layout, position: "relative", background: isActive ? `linear-gradient(135deg, ${pad.color}44 0%, ${pad.color}22 100%)` : C.elevated, border: `2px solid ${isActive ? pad.color : C.border}`, borderRadius: "16px", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "8px", transition: "all 0.1s ease", transform: isActive ? "scale(0.95)" : "scale(1)", boxShadow: isActive ? `0 0 30px ${pad.color}66, inset 0 0 20px ${pad.color}22` : "0 4px 12px rgba(0,0,0,0.3)", userSelect: "none", WebkitTapHighlightColor: "transparent" }}>
+          <div
+            key={pad.id}
+            data-testid={`drum-pad-${pad.id}`}
+            onMouseDown={() => onPadClick(pad.id)}
+            onTouchStart={(e) => { e.preventDefault(); onPadClick(pad.id); }}
+            role="button"
+            aria-label={`${pad.label} drum pad`}
+            tabIndex={0}
+            onKeyDown={(e) => onKeyDown(e, () => onPadClick(pad.id))}
+            className={`drum-pad ${isActive ? 'pressed' : ''}`}
+            style={{
+              ...pad.layout,
+              background: isActive
+                ? `linear-gradient(135deg, ${pad.color}44 0%, ${pad.color}22 100%)`
+                : `linear-gradient(145deg, rgba(36, 30, 56, 0.95), rgba(22, 18, 34, 0.98))`,
+              border: `2px solid ${isActive ? pad.color : 'rgba(240, 235, 227, 0.08)'}`,
+              boxShadow: isActive
+                ? `0 0 30px ${pad.color}66, inset 0 0 20px ${pad.color}22`
+                : '0 4px 16px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.03) inset',
+              userSelect: 'none',
+              WebkitTapHighlightColor: 'transparent',
+            }}
+          >
             <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: isActive ? pad.color : C.surface, border: `2px solid ${isActive ? pad.color : C.border}`, display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.1s", boxShadow: isActive ? `0 0 24px ${pad.color}88` : "none" }}>
               <div style={{ width: "28px", height: "28px", borderRadius: "50%", background: isActive ? `${C.text}33` : `${pad.color}33`, border: `1px solid ${isActive ? C.text : pad.color}`, transition: "all 0.1s" }} />
             </div>
@@ -376,7 +398,7 @@ export default function Drums() {
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: C.ink, padding: "20px", fontFamily: "system-ui, sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: C.ink, padding: "20px", fontFamily: "system-ui, sans-serif" }} className="studio-surface">
       <div style={{ maxWidth: "800px", margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8, flexWrap: "wrap", gap: 12 }}>
           <div>

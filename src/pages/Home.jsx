@@ -256,15 +256,18 @@ export default function Home() {
               { label: "Total Practice", value: `${(pStats || stats).total_minutes ?? stats?.total_minutes ?? 0}m`, sub: `${(pStats || stats).total_sessions ?? stats?.total_sessions ?? 0} sessions`, icon: "🎵", color: C.raga },
               { label: "Courses", value: enrolled.length, sub: "enrolled", icon: "📚", color: C.primary },
             ].map((s, i) => (
-              <div key={s.label} style={{
-                background: C.surface,
-                border: `1px solid ${C.border}`,
-                borderRadius: 14,
-                padding: "16px 18px",
+              <div key={s.label} className="studio-surface--elevated" style={{
+                padding: "18px 20px",
                 opacity: mounted ? 1 : 0,
                 transform: mounted ? "translateY(0)" : "translateY(12px)",
                 transition: `opacity 0.5s ease-out ${i * 80}ms, transform 0.5s ease-out ${i * 80}ms`,
               }}>
+                <div style={{
+                  width: 32, height: 3,
+                  borderRadius: 2,
+                  background: `linear-gradient(90deg, ${s.color}, ${s.color}88)`,
+                  marginBottom: 12,
+                }} />
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
                   <span style={{ fontSize: 16 }}>{s.icon}</span>
                   <span style={{ color: C.textMuted, fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>{s.label}</span>
@@ -279,7 +282,8 @@ export default function Home() {
         {/* Recommendations — Priority 2 */}
         {isAuthenticated && recommendations && recommendations.length > 0 && (
           <section style={{ marginBottom: 40 }} data-testid="recommendations">
-            <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, marginBottom: 14 }}>
+            <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, marginBottom: 14, position: "relative", paddingLeft: 14 }}>
+              <span style={{ position: "absolute", left: 0, top: 2, width: 3, height: 16, borderRadius: 2, background: C.primary }} />
               Recommended for you
             </h2>
             <Recommendations recommendations={recommendations} />
@@ -290,7 +294,10 @@ export default function Home() {
         {isAuthenticated && skillMap && skillMap.length > 0 && (
           <section style={{ marginBottom: 40 }} data-testid="skill-map">
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
-              <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, margin: 0 }}>Music Skill Map</h2>
+              <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, margin: 0, position: "relative", paddingLeft: 14 }}>
+                <span style={{ position: "absolute", left: 0, top: 2, width: 3, height: 16, borderRadius: 2, background: C.primary }} />
+                Music Skill Map
+              </h2>
               <button
                 onClick={() => navigate("/ai-coach")}
                 style={{
@@ -308,7 +315,10 @@ export default function Home() {
         {/* Continue Learning — enrolled courses with progress */}
         {isAuthenticated && enrolled.length > 0 && (
           <section style={{ marginBottom: 40 }}>
-            <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, marginBottom: 14 }}>Continue Learning</h2>
+            <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, marginBottom: 14, position: "relative", paddingLeft: 14 }}>
+              <span style={{ position: "absolute", left: 0, top: 2, width: 3, height: 16, borderRadius: 2, background: C.primary }} />
+              Continue Learning
+            </h2>
             <div style={{ display: "flex", gap: 14, overflowX: "auto", paddingBottom: 8 }}>
               {enrolled.map((course) => (
                 <div
@@ -317,10 +327,8 @@ export default function Home() {
                   role="button"
                   onClick={() => { buttonClick(); navigate(`/courses/${course.id}`); }}
                   onKeyDown={(e) => onKeyDown(e, () => navigate(`/courses/${course.id}`))}
-                  style={{
-                    minWidth: 260, background: C.surface, border: `1px solid ${C.border}`,
-                    borderRadius: 14, padding: 18, cursor: "pointer", transition: "all 0.25s ease-out", flexShrink: 0,
-                  }}
+                  className="studio-surface depth-card"
+                  style={{ minWidth: 260, padding: 18, cursor: "pointer", transition: "all 0.25s ease-out", flexShrink: 0 }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-3px)";
                     e.currentTarget.style.borderColor = C.primary + "40";
@@ -360,14 +368,16 @@ export default function Home() {
         {/* Achievements */}
         {isAuthenticated && achievements.length > 0 && (
           <section style={{ marginBottom: 40 }}>
-            <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, marginBottom: 14 }}>Achievements</h2>
+            <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, marginBottom: 14, position: "relative", paddingLeft: 14 }}>
+              <span style={{ position: "absolute", left: 0, top: 2, width: 3, height: 16, borderRadius: 2, background: C.primary }} />
+              Achievements
+            </h2>
             <div style={{ display: "flex", gap: 10, overflowX: "auto", paddingBottom: 8 }}>
               {achievements.map((a, i) => {
                 const def = ACHIEVEMENT_DEFS[a.type] || { icon: "🏅", label: a.type, desc: "" };
                 return (
-                  <div key={i} style={{
-                    background: C.surface, border: `1px solid ${C.border}`,
-                    borderRadius: 12, padding: "14px 16px", minWidth: 160, flexShrink: 0,
+                  <div key={i} className="studio-surface" style={{
+                    padding: "16px 18px", minWidth: 160, flexShrink: 0,
                     display: "flex", flexDirection: "column", alignItems: "center", gap: 6,
                   }}>
                     <span style={{ fontSize: 28 }}>{def.icon}</span>
@@ -383,10 +393,12 @@ export default function Home() {
         {/* Recent Activity */}
         {isAuthenticated && recent.length > 0 && (
           <section style={{ marginBottom: 40 }}>
-            <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, marginBottom: 14 }}>Recent Activity</h2>
-            <div style={{
-              background: C.surface, border: `1px solid ${C.border}`,
-              borderRadius: 14, overflow: "hidden",
+            <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, marginBottom: 14, position: "relative", paddingLeft: 14 }}>
+              <span style={{ position: "absolute", left: 0, top: 2, width: 3, height: 16, borderRadius: 2, background: C.primary }} />
+              Recent Activity
+            </h2>
+            <div className="studio-surface" style={{
+              overflow: "hidden",
             }}>
               {recent.slice(0, 5).map((item, i) => (
                 <div key={i} style={{
@@ -463,7 +475,10 @@ export default function Home() {
 
         {/* Practice Studio */}
         <section style={{ marginBottom: 40 }}>
-          <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, marginBottom: 14 }}>Practice Studio</h2>
+          <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, marginBottom: 14, position: "relative", paddingLeft: 14 }}>
+            <span style={{ position: "absolute", left: 0, top: 2, width: 3, height: 16, borderRadius: 2, background: C.primary }} />
+            Practice Studio
+          </h2>
           <div
             tabIndex={0}
             role="button"
@@ -577,7 +592,10 @@ export default function Home() {
 
         {/* Indian Classical */}
         <section style={{ marginBottom: 40 }}>
-          <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, marginBottom: 14 }}>Indian Classical</h2>
+          <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, marginBottom: 14, position: "relative", paddingLeft: 14 }}>
+            <span style={{ position: "absolute", left: 0, top: 2, width: 3, height: 16, borderRadius: 2, background: C.primary }} />
+            Indian Classical
+          </h2>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             {[
               { label: "Ragas", path: "/ragas", icon: "🎵" },
@@ -646,7 +664,10 @@ export default function Home() {
         {/* Browse Courses */}
         <section>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14, flexWrap: "wrap", gap: 10 }}>
-            <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, margin: 0 }}>Courses</h2>
+            <h2 style={{ color: C.text, fontSize: 18, fontWeight: 600, margin: 0, position: "relative", paddingLeft: 14 }}>
+              <span style={{ position: "absolute", left: 0, top: 2, width: 3, height: 16, borderRadius: 2, background: C.primary }} />
+              Courses
+            </h2>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               <select value={filter.difficulty} onChange={(e) => setFilter((f) => ({ ...f, difficulty: e.target.value }))}
                 style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 8, color: C.text, padding: "6px 10px", fontSize: 12, outline: "none" }}>

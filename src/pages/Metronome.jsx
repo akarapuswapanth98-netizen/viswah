@@ -40,6 +40,11 @@ const beatKeyframes = `
   0% { transform: scale(0.5); opacity: 0.8; }
   100% { transform: scale(2.5); opacity: 0; }
 }
+@keyframes beatPulse {
+  0% { filter: drop-shadow(0 0 6px ${C.primary}44); }
+  50% { filter: drop-shadow(0 0 18px ${C.primary}88); }
+  100% { filter: drop-shadow(0 0 6px ${C.primary}44); }
+}
 `;
 
 export default function Metronome() {
@@ -239,6 +244,10 @@ export default function Metronome() {
   };
 
   const beatDots = Array.from({ length: beatsPerMeasure }, (_, i) => i);
+  const ringSize = isMobile ? 220 : 280;
+  const ringCx = ringSize / 2;
+  const ringCy = ringSize / 2;
+  const ringR = isMobile ? 90 : 120;
 
   return (
     <div style={{ minHeight: "100vh", background: C.ink, paddingBottom: 80 }}>
@@ -254,164 +263,91 @@ export default function Metronome() {
           </p>
         </div>
 
-        {/* BPM Display */}
-        <div
-          style={{
-            ...cardStyle,
-            textAlign: "center",
-            padding: "40px 24px",
-          }}
-        >
-          <div style={{ color: C.textMuted, fontSize: 13, textTransform: "uppercase", letterSpacing: 2, marginBottom: 8 }}>
-            Tempo
-          </div>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 24 }}>
-            <button
-              onClick={() => setBpm((b) => Math.max(40, b - 1))}
-              aria-label="Decrease BPM"
-              style={{
-                ...btnBase,
-                background: C.surfaceGlass,
-                width: 44,
-                height: 44,
-                padding: 0,
-                fontSize: 22,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              -
-            </button>
-            <div style={{ position: "relative" }}>
-              <span
-                style={{
-                  fontSize: 72,
-                  fontWeight: 800,
-                  color: C.text,
-                  lineHeight: 1,
-                  fontFamily: "'SF Mono', 'Fira Code', monospace",
-                }}
-              >
-                {bpm}
-              </span>
-              <span style={{ fontSize: 20, color: C.textMuted, marginLeft: 4 }}>BPM</span>
-            </div>
-            <button
-              onClick={() => setBpm((b) => Math.min(240, b + 1))}
-              aria-label="Increase BPM"
-              style={{
-                ...btnBase,
-                background: C.surfaceGlass,
-                width: 44,
-                height: 44,
-                padding: 0,
-                fontSize: 22,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              +
-            </button>
-          </div>
-
-          {/* Slider */}
-          <div style={{ padding: "0 16px", marginBottom: 24 }}>
-            <input
-              type="range"
-              min={40}
-              max={240}
-              value={bpm}
-              onChange={(e) => handleBpmChange(e.target.value)}
-              aria-label="BPM"
-              style={{
-                width: "100%",
-                height: 6,
-                borderRadius: 3,
-                appearance: "none",
-                background: `linear-gradient(to right, ${C.primary}, ${C.secondary})`,
-                outline: "none",
-                cursor: "pointer",
-              }}
-            />
-            <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
-              <span style={{ color: C.textMuted, fontSize: 11 }}>40</span>
-              <span style={{ color: C.textMuted, fontSize: 11 }}>240</span>
-            </div>
-          </div>
-
-          {/* Beat Indicator */}
-          <div style={{ display: "flex", justifyContent: "center", gap: isMobile ? 8 : 16, marginBottom: 24, flexWrap: "nowrap", overflowX: "auto" }}>
+        {/* Premium BPM Ring */}
+        <div className="metronome-ring" style={{ textAlign: "center", padding: "40px 24px", marginBottom: 20 }}>
+          <svg
+            key={`ring-${currentBeat}`}
+            width={ringSize}
+            height={ringSize}
+            viewBox={`0 0 ${ringSize} ${ringSize}`}
+            style={{
+              display: "block",
+              margin: "0 auto",
+              animation: isPlaying ? "beatPulse 0.3s ease-out" : "none",
+            }}
+          >
+            <defs>
+              <radialGradient id="ringInner" cx="50%" cy="35%" r="60%">
+                <stop offset="0%" stopColor={C.elevated || C.surfaceGlass} />
+                <stop offset="100%" stopColor={C.surface || C.ink} />
+              </radialGradient>
+              <filter id="glowNeon">
+                <feDropShadow dx="0" dy="0" stdDeviation="4" floodColor={C.neon} floodOpacity="0.8" />
+              </filter>
+              <filter id="glowPrimary">
+                <feDropShadow dx="0" dy="0" stdDeviation="4" floodColor={C.primary} floodOpacity="0.8" />
+              </filter>
+            </defs>
+            <circle cx={ringCx} cy={ringCy} r={ringR} fill="none" stroke={C.glassBorder} strokeWidth="2" />
+            <circle cx={ringCx} cy={ringCy} r={ringR - 2} fill="url(#ringInner)" />
+            <ellipse cx={ringCx} cy={ringCy - ringR * 0.3} rx={ringR * 0.5} ry={ringR * 0.15} fill="white" opacity="0.03" />
             {beatDots.map((i) => {
+              const angle = (i / beatsPerMeasure) * 2 * Math.PI - Math.PI / 2;
+              const dx = ringCx + ringR * Math.cos(angle);
+              const dy = ringCy + ringR * Math.sin(angle);
               const isActive = isPlaying && currentBeat === i + 1;
               const isAccent = i === 0;
-              const dotSize = isMobile ? (isAccent ? 36 : 28) : (isAccent ? 48 : 36);
               return (
-                <div
+                <circle
                   key={i}
-                  style={{
-                    width: dotSize,
-                    height: dotSize,
-                    minWidth: dotSize,
-                    borderRadius: "50%",
-                    background: isActive
-                      ? isAccent
-                        ? C.neon
-                        : C.primary
-                      : `${C.surfaceGlass}`,
-                    border: `2px solid ${isActive ? (isAccent ? C.neon : C.primary) : C.glassBorder}`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: isMobile ? (isAccent ? 14 : 11) : (isAccent ? 18 : 14),
-                    fontWeight: 700,
-                    color: isActive ? C.ink : C.textMuted,
-                    transition: "all 0.05s ease-out",
-                    animation: isActive ? "pulse 0.15s ease-out" : "none",
-                    boxShadow: isActive ? `0 0 20px ${isAccent ? C.neon : C.primary}66` : "none",
-                  }}
-                >
-                  {i + 1}
-                </div>
+                  cx={dx}
+                  cy={dy}
+                  r={isAccent ? 10 : 7}
+                  fill={isActive ? (isAccent ? C.neon : C.primary) : C.glassBorder}
+                  filter={isActive ? (isAccent ? "url(#glowNeon)" : "url(#glowPrimary)") : "none"}
+                  style={{ transition: "all 0.05s ease-out" }}
+                />
               );
             })}
-          </div>
+            <text x={ringCx} y={ringCy - 8} textAnchor="middle" dominantBaseline="central" fill={C.text} fontSize="72" fontWeight="800" fontFamily="'SF Mono', 'Fira Code', monospace">
+              {bpm}
+            </text>
+            <text x={ringCx} y={ringCy + 36} textAnchor="middle" dominantBaseline="central" fill={C.textMuted} fontSize="18">
+              BPM
+            </text>
+          </svg>
+        </div>
 
-          {/* Beat counter text */}
-          <div style={{ color: C.textSecondary, fontSize: 14, marginBottom: 24 }}>
-            {isPlaying ? `${currentBeat} of ${beatsPerMeasure}` : `Ready — ${beatsPerMeasure} beats per measure`}
-          </div>
-
-          {/* Control Buttons */}
-          <div style={{ display: "flex", justifyContent: "center", gap: 12 }}>
-            <button
-              onClick={toggleMetronome}
-              style={{
-                ...btnBase,
-                background: isPlaying ? C.error : C.neon,
-                color: isPlaying ? C.text : C.ink,
-                padding: "16px 48px",
-                fontSize: 18,
-              }}
-            >
-              {isPlaying ? "Stop" : "Start"}
-            </button>
-            <button
-              onClick={handleTapTempo}
-              style={{
-                ...btnBase,
-                background: C.surfaceGlass,
-                border: `1px solid ${C.glassBorder}`,
-              }}
-            >
-              Tap Tempo
-            </button>
-          </div>
+        {/* Controls */}
+        <div style={{ display: "flex", justifyContent: "center", gap: 12, marginBottom: 20 }}>
+          <button
+            onClick={toggleMetronome}
+            className="btn-depth btn-depth--primary"
+            style={{
+              ...btnBase,
+              padding: "16px 48px",
+              fontSize: 18,
+              background: isPlaying ? C.error : C.neon,
+              color: isPlaying ? C.text : C.ink,
+            }}
+          >
+            {isPlaying ? "Stop" : "Start"}
+          </button>
+          <button
+            onClick={handleTapTempo}
+            className="btn-depth"
+            style={{
+              ...btnBase,
+              background: C.surfaceGlass,
+              border: `1px solid ${C.glassBorder}`,
+            }}
+          >
+            Tap Tempo
+          </button>
         </div>
 
         {/* Volume */}
-        <div style={cardStyle}>
+        <div className="studio-surface">
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <span style={{ color: C.textSecondary, fontSize: 14, minWidth: 60 }}>Volume</span>
             <input
@@ -439,7 +375,7 @@ export default function Metronome() {
         </div>
 
         {/* Time Signature */}
-        <div style={cardStyle}>
+        <div className="studio-surface">
           <h3 style={{ color: C.text, fontSize: 16, fontWeight: 600, margin: "0 0 16px" }}>Time Signature</h3>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             {timeSignatures.map((ts) => {
@@ -471,7 +407,7 @@ export default function Metronome() {
         </div>
 
         {/* Indian Tala */}
-        <div style={cardStyle}>
+        <div className="studio-surface">
           <h3 style={{ color: C.text, fontSize: 16, fontWeight: 600, margin: "0 0 4px" }}>
             Indian Tala
           </h3>
