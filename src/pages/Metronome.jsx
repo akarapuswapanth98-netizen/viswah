@@ -72,6 +72,8 @@ export default function Metronome() {
   const volumeRef = useRef(volume);
   const beatsPerMeasureRef = useRef(beatsPerMeasure);
   const startTimeoutRef = useRef(null);
+  const beatVisualTimersRef = useRef([]);
+  const mountedRef = useRef(true);
 
   useEffect(() => { bpmRef.current = bpm; }, [bpm]);
   useEffect(() => { volumeRef.current = volume; }, [volume]);
@@ -107,7 +109,13 @@ export default function Metronome() {
     return audioCtxRef.current;
   };
 
+  const clearBeatVisualTimers = () => {
+    beatVisualTimersRef.current.forEach(clearTimeout);
+    beatVisualTimersRef.current = [];
+  };
+
   const playClick = (time, isAccent) => {
+    if (volumeRef.current === 0) return;
     const ctx = getAudioCtx();
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
@@ -118,8 +126,8 @@ export default function Metronome() {
     osc.type = "sine";
     osc.frequency.value = isAccent ? 1000 : 800;
     const vol = volumeRef.current * (isAccent ? 1.0 : 0.6);
-    gain.gain.setValueAtTime(Math.max(vol, 0.001), time);
-    gain.gain.linearRampToValueAtTime(0.001, time + 0.05);
+    gain.gain.setValueAtTime(vol, time);
+    gain.gain.linearRampToValueAtTime(0.0001, time + 0.05);
 
     osc.start(time);
     osc.stop(time + 0.05);
@@ -138,9 +146,13 @@ export default function Metronome() {
     playClick(time, isAccent);
 
     const delay = Math.max(0, (time - getAudioCtx().currentTime) * 1000);
-    setTimeout(() => {
-      setCurrentBeat(isAccent ? 1 : beat + 1);
+    const timerId = setTimeout(() => {
+      beatVisualTimersRef.current = beatVisualTimersRef.current.filter((id) => id !== timerId);
+      if (mountedRef.current) {
+        setCurrentBeat(isAccent ? 1 : beat + 1);
+      }
     }, delay);
+    beatVisualTimersRef.current.push(timerId);
 
     beatCountRef.current++;
   };
@@ -158,6 +170,7 @@ export default function Metronome() {
   };
 
   const startMetronome = () => {
+    if (timerRef.current) return;
     const ctx = getAudioCtx();
     beatCountRef.current = 0;
     beatCountRefForReset.current = 0;
@@ -172,6 +185,7 @@ export default function Metronome() {
       cancelAnimationFrame(timerRef.current);
       timerRef.current = null;
     }
+    clearBeatVisualTimers();
     activeNodesRef.current.forEach(({ osc, gain }) => {
       try { osc.stop(); } catch {}
       try { gain.disconnect(); } catch {}
@@ -185,8 +199,11 @@ export default function Metronome() {
 
   // Cleanup on unmount
   useEffect(() => {
+    mountedRef.current = true;
     return () => {
+      mountedRef.current = false;
       if (startTimeoutRef.current) clearTimeout(startTimeoutRef.current);
+      clearBeatVisualTimers();
       stopMetronome();
       if (audioCtxRef.current && audioCtxRef.current.state !== "closed") {
         audioCtxRef.current.close().catch(() => {});
@@ -238,6 +255,7 @@ export default function Metronome() {
     }
     if (isPlaying) {
       stopMetronome();
+      if (startTimeoutRef.current) clearTimeout(startTimeoutRef.current);
       startTimeoutRef.current = setTimeout(startMetronome, 50);
     }
     addToast({ type: "info", message: `${tala.name || tala.tala_name} selected — ${beats} beats` });
@@ -388,6 +406,7 @@ export default function Metronome() {
                     setBeatsPerMeasure(ts.beats);
                     if (isPlaying) {
                       stopMetronome();
+                      if (startTimeoutRef.current) clearTimeout(startTimeoutRef.current);
                       startTimeoutRef.current = setTimeout(startMetronome, 50);
                     }
                   }}
