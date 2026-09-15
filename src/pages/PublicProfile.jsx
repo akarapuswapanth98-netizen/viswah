@@ -3,12 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import communityApi from "../api/communityApi";
 import FollowButton from "../components/community/FollowButton";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../components/ui/colors";
 
 export default function PublicProfile() {
   const { username } = useParams();
@@ -63,7 +58,7 @@ export default function PublicProfile() {
         <button
           onClick={() => navigate(-1)}
           style={{
-            background: "none", border: "none", color: C.teal,
+            background: "none", border: "none", color: C.secondary,
             fontSize: 13, cursor: "pointer", marginTop: 12,
           }}
         >{"\u{2190}"} Back</button>
@@ -76,7 +71,7 @@ export default function PublicProfile() {
       <button
         onClick={() => navigate(-1)}
         style={{
-          background: "none", border: "none", color: C.teal,
+          background: "none", border: "none", color: C.secondary,
           fontSize: 13, cursor: "pointer", marginBottom: 20,
         }}
         >{"\u{2190}"} Back</button>
@@ -88,9 +83,9 @@ export default function PublicProfile() {
         <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
           <div style={{
             width: 64, height: 64, borderRadius: 16,
-            background: `linear-gradient(135deg, ${C.saffron}22, ${C.teal}22)`,
+            background: `linear-gradient(135deg, ${C.primary}22, ${C.secondary}22)`,
             display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: 26, fontWeight: 700, color: C.saffron,
+            fontSize: 26, fontWeight: 700, color: C.primary,
           }}>
             {(profile.display_name || profile.username || "?")[0].toUpperCase()}
           </div>
@@ -114,19 +109,19 @@ export default function PublicProfile() {
 
         <div style={{ display: "flex", gap: 20, flexWrap: "wrap", fontSize: 13 }}>
           <div style={{ textAlign: "center" }}>
-            <div style={{ color: C.saffron, fontSize: 20, fontWeight: 700 }}>Level {profile.level}</div>
+            <div style={{ color: C.primary, fontSize: 20, fontWeight: 700 }}>Level {profile.level}</div>
             <div style={{ color: C.textMuted, fontSize: 11 }}>{profile.level_title}</div>
           </div>
           <div style={{ textAlign: "center" }}>
-            <div style={{ color: C.teal, fontSize: 20, fontWeight: 700 }}>{profile.xp}</div>
+            <div style={{ color: C.secondary, fontSize: 20, fontWeight: 700 }}>{profile.xp}</div>
             <div style={{ color: C.textMuted, fontSize: 11 }}>XP</div>
           </div>
           <div style={{ textAlign: "center" }}>
-            <div style={{ color: C.saffron, fontSize: 20, fontWeight: 700 }}>{profile.achievements_count}</div>
+            <div style={{ color: C.primary, fontSize: 20, fontWeight: 700 }}>{profile.achievements_count}</div>
             <div style={{ color: C.textMuted, fontSize: 11 }}>Achievements</div>
           </div>
           <div style={{ textAlign: "center" }}>
-            <div style={{ color: C.teal, fontSize: 20, fontWeight: 700 }}>{profile.practice_hours}h</div>
+            <div style={{ color: C.secondary, fontSize: 20, fontWeight: 700 }}>{profile.practice_hours}h</div>
             <div style={{ color: C.textMuted, fontSize: 11 }}>Practice</div>
           </div>
         </div>
@@ -161,7 +156,7 @@ export default function PublicProfile() {
               }}>
                 <div style={{
                   width: `${skill.score}%`, height: "100%", borderRadius: 3,
-                  background: skill.score >= 60 ? C.teal : C.saffron,
+                  background: skill.score >= 60 ? C.secondary : C.primary,
                 }} />
               </div>
               <div style={{ color: C.textMuted, fontSize: 12, width: 35, textAlign: "right" }}>

@@ -1,9 +1,4 @@
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../ui/colors";
 
 const NOTIF_ICONS = {
   like: "\u{2764}\u{FE0F}", comment: "\u{1F4AC}", follow: "\u{1F44D}",
@@ -24,7 +19,7 @@ export default function NotificationCenter({ notifications, onMarkRead, unreadCo
         <div style={{ color: C.text, fontSize: 15, fontWeight: 600 }}>
           Notifications {unreadCount > 0 && (
             <span style={{
-              background: C.saffron, color: C.ink, borderRadius: 10,
+              background: C.primary, color: C.ink, borderRadius: 10,
               padding: "1px 7px", fontSize: 11, fontWeight: 700, marginLeft: 6,
             }}>{unreadCount}</span>
           )}
@@ -33,7 +28,7 @@ export default function NotificationCenter({ notifications, onMarkRead, unreadCo
           <button
             onClick={onMarkRead}
             style={{
-              background: "none", border: "none", color: C.teal,
+              background: "none", border: "none", color: C.secondary,
               fontSize: 12, cursor: "pointer",
             }}
           >Mark all read</button>
@@ -63,7 +58,7 @@ export default function NotificationCenter({ notifications, onMarkRead, unreadCo
             {!n.is_read && (
               <div style={{
                 width: 8, height: 8, borderRadius: 4,
-                background: C.saffron, flexShrink: 0, marginTop: 4,
+                background: C.primary, flexShrink: 0, marginTop: 4,
               }} />
             )}
           </div>

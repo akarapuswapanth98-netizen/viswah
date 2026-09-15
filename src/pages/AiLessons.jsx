@@ -3,25 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useToast } from "../context/ToastContext";
 import { aiApi } from "../api/aiApi";
 
-const C = {
-  primary: "#6C63FF",
-  secondary: "#4ECDC4",
-  neon: "#00FF88",
-  bg: "#0F0F23",
-  surface: "rgba(255,255,255,0.08)",
-  glass: "rgba(255,255,255,0.06)",
-  glassBorder: "rgba(255,255,255,0.12)",
-  text: "#FFFFFF",
-  secText: "#B0B0CC",
-  mutedText: "#6B6B8D",
-  success: "#34C759",
-};
+import C from "../components/ui/colors";
 
 const keyframes = `
 @keyframes aiLessonsSpin { to { transform: rotate(360deg); } }
 @keyframes aiLessonsFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes aiLessonsPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
-@keyframes aiLessonsGlow { 0%,100% { box-shadow: 0 0 20px rgba(108,99,255,0.3); } 50% { box-shadow: 0 0 40px rgba(108,99,255,0.6); } }
+@keyframes aiLessonsGlow { 0%,100% { box-shadow: 0 0 20px ${C.primary}4D; } 50% { box-shadow: 0 0 40px ${C.primary}99; } }
 @keyframes aiLessonsTyping { 0% { width: 0; } 100% { width: 100%; } }
 @keyframes aiLessonsOrbit { 0% { transform: rotate(0deg) translateX(30px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(30px) rotate(-360deg); } }
 @keyframes aiLessonsGradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
@@ -55,19 +43,19 @@ const AIAnimation = () => (
     <p style={{ color: C.text, fontSize: 16, fontWeight: 600, marginBottom: 8, animation: "aiLessonsPulse 2s ease-in-out infinite" }}>
       AI is creating your lesson...
     </p>
-    <p style={{ color: C.mutedText, fontSize: 13 }}>This usually takes a few seconds</p>
+    <p style={{ color: C.textMuted, fontSize: 13 }}>This usually takes a few seconds</p>
   </div>
 );
 
 const TopicChip = ({ topic, onClick }) => (
   <button onClick={onClick} style={{
     padding: "8px 16px", borderRadius: 20,
-    background: "rgba(108,99,255,0.15)", border: "1px solid rgba(108,99,255,0.3)",
+    background: `${C.primary}26`, border: `1px solid ${C.primary}4D`,
     color: C.primary, fontSize: 13, fontWeight: 500, cursor: "pointer",
     transition: "all 0.2s", whiteSpace: "nowrap",
   }}
-  onMouseEnter={e => { e.target.style.background = "rgba(108,99,255,0.3)"; e.target.style.transform = "scale(1.05)"; }}
-  onMouseLeave={e => { e.target.style.background = "rgba(108,99,255,0.15)"; e.target.style.transform = "scale(1)"; }}
+  onMouseEnter={e => { e.target.style.background = `${C.primary}4D`; e.target.style.transform = "scale(1.05)"; }}
+  onMouseLeave={e => { e.target.style.background = `${C.primary}26`; e.target.style.transform = "scale(1)"; }}
   >
     {topic}
   </button>
@@ -97,7 +85,7 @@ const ContentRenderer = ({ content }) => {
         if (t === "list" || s.items) return (
           <ul key={i} style={{ margin: "0 0 16px", paddingLeft: 0, listStyle: "none" }}>
             {(s.items || []).map((item, j) => (
-              <li key={j} style={{ fontSize: 14, color: C.secText, lineHeight: 1.8, marginBottom: 6, paddingLeft: 20, position: "relative" }}>
+              <li key={j} style={{ fontSize: 14, color: C.textSecondary, lineHeight: 1.8, marginBottom: 6, paddingLeft: 20, position: "relative" }}>
                 <span style={{ position: "absolute", left: 0, color: C.neon }}>▸</span>
                 {item}
               </li>
@@ -108,7 +96,7 @@ const ContentRenderer = ({ content }) => {
           <p key={i} style={{ fontSize: 15, color: C.text, fontWeight: 600, margin: "12px 0" }}>{s.text || s.content}</p>
         );
         return (
-          <p key={i} style={{ fontSize: 14, color: C.secText, lineHeight: 1.8, margin: "0 0 12px" }}>
+          <p key={i} style={{ fontSize: 14, color: C.textSecondary, lineHeight: 1.8, margin: "0 0 12px" }}>
             {s.text || s.content || JSON.stringify(s)}
           </p>
         );
@@ -125,7 +113,7 @@ const StepsRenderer = ({ steps }) => {
       {steps.map((step, i) => (
         <div key={i} style={{
           display: "flex", gap: 12, marginBottom: 12, padding: "12px 16px",
-          background: C.glass, border: `1px solid ${C.glassBorder}`, borderRadius: 12,
+          background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`, borderRadius: 12,
           animation: `aiLessonsFadeIn 0.3s ease ${i * 0.1}s both`,
         }}>
           <div style={{
@@ -136,7 +124,7 @@ const StepsRenderer = ({ steps }) => {
           }}>{i + 1}</div>
           <div style={{ flex: 1 }}>
             <p style={{ fontSize: 14, color: C.text, fontWeight: 500, margin: 0 }}>{typeof step === "string" ? step : step.text || step.instruction || JSON.stringify(step)}</p>
-            {step.detail && <p style={{ fontSize: 13, color: C.mutedText, margin: "4px 0 0" }}>{step.detail}</p>}
+            {step.detail && <p style={{ fontSize: 13, color: C.textMuted, margin: "4px 0 0" }}>{step.detail}</p>}
           </div>
         </div>
       ))}
@@ -147,10 +135,10 @@ const StepsRenderer = ({ steps }) => {
 const TipsRenderer = ({ tips }) => {
   if (!tips || !tips.length) return null;
   return (
-    <div style={{ marginTop: 20, padding: "16px 20px", background: "rgba(0,255,136,0.06)", border: "1px solid rgba(0,255,136,0.15)", borderRadius: 14 }}>
+    <div style={{ marginTop: 20, padding: "16px 20px", background: `${C.neon}0F`, border: `1px solid ${C.neon}26`, borderRadius: 14 }}>
       <h4 style={{ fontSize: 14, fontWeight: 700, color: C.neon, marginBottom: 10, textTransform: "uppercase", letterSpacing: 1 }}>Pro Tips</h4>
       {tips.map((tip, i) => (
-        <p key={i} style={{ fontSize: 13, color: C.secText, lineHeight: 1.7, margin: "0 0 8px", paddingLeft: 16, position: "relative" }}>
+        <p key={i} style={{ fontSize: 13, color: C.textSecondary, lineHeight: 1.7, margin: "0 0 8px", paddingLeft: 16, position: "relative" }}>
           <span style={{ position: "absolute", left: 0, color: C.neon }}>✦</span>
           {typeof tip === "string" ? tip : tip.text || tip.tip || JSON.stringify(tip)}
         </p>
@@ -243,7 +231,7 @@ export default function AiLessons() {
     boxSizing: "border-box",
   };
 
-  const labelStyle = { fontSize: 13, fontWeight: 600, color: C.secText, marginBottom: 6, display: "block" };
+  const labelStyle = { fontSize: 13, fontWeight: 600, color: C.textSecondary, marginBottom: 6, display: "block" };
 
   const selectStyle = {
     ...inputStyle, appearance: "none", cursor: "pointer",
@@ -255,11 +243,11 @@ export default function AiLessons() {
     width: "100%", padding: "14px 24px", borderRadius: 12, border: "none",
     background: `linear-gradient(135deg, ${C.primary}, #8B5CF6)`,
     color: C.text, fontSize: 15, fontWeight: 700, cursor: "pointer",
-    transition: "all 0.3s", boxShadow: "0 4px 20px rgba(108,99,255,0.3)",
+    transition: "all 0.3s", boxShadow: `0 4px 20px ${C.primary}4D`,
   };
 
   const cardStyle = {
-    background: C.glass, backdropFilter: "blur(20px)",
+    background: C.surfaceGlass, backdropFilter: "blur(20px)",
     border: `1px solid ${C.glassBorder}`, borderRadius: 20, padding: 28,
     marginBottom: 24,
   };
@@ -273,7 +261,7 @@ export default function AiLessons() {
   return (
     <div style={{
       minHeight: "100vh",
-      background: `linear-gradient(135deg, ${C.bg} 0%, #1a1a3e 50%, ${C.bg} 100%)`,
+      background: `linear-gradient(135deg, ${C.ink} 0%, #1a1a3e 50%, ${C.ink} 100%)`,
       padding: "20px 24px 100px",
     }}>
       <div style={{ maxWidth: 780, margin: "0 auto" }}>
@@ -283,18 +271,18 @@ export default function AiLessons() {
             display: "inline-flex", alignItems: "center", justifyContent: "center",
             width: 56, height: 56, borderRadius: 16,
             background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})`,
-            marginBottom: 16, boxShadow: "0 0 30px rgba(108,99,255,0.3)",
+            marginBottom: 16, boxShadow: `0 0 30px ${C.primary}4D`,
           }}>
             <span style={{ fontSize: 28 }}>🤖</span>
           </div>
           <h1 style={{ fontSize: 28, fontWeight: 800, color: C.text, margin: "0 0 8px" }}>
             AI <span style={{ background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Lessons</span>
           </h1>
-          <p style={{ color: C.mutedText, fontSize: 14 }}>Personalized music lessons powered by AI</p>
+          <p style={{ color: C.textMuted, fontSize: 14 }}>Personalized music lessons powered by AI</p>
         </div>
 
         {/* Tabs */}
-        <div style={{ display: "flex", gap: 4, marginBottom: 28, background: C.glass, border: `1px solid ${C.glassBorder}`, borderRadius: 14, padding: 4 }}>
+        <div style={{ display: "flex", gap: 4, marginBottom: 28, background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`, borderRadius: 14, padding: 4 }}>
           {[
             { key: "lesson", label: "Generate Lesson", icon: "📖" },
             { key: "exercise", label: "Generate Exercise", icon: "✏️" },
@@ -305,7 +293,7 @@ export default function AiLessons() {
               background: activeTab === tab.key
                 ? `linear-gradient(135deg, ${C.primary}, #8B5CF6)`
                 : "transparent",
-              color: activeTab === tab.key ? C.text : C.mutedText,
+              color: activeTab === tab.key ? C.text : C.textMuted,
               display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
             }}>
               <span>{tab.icon}</span> {tab.label}
@@ -319,7 +307,7 @@ export default function AiLessons() {
             <span style={{ fontSize: 18 }}>💡</span>
             <h3 style={{ fontSize: 15, fontWeight: 700, color: C.text, margin: 0 }}>Discover Topics</h3>
           </div>
-          <p style={{ fontSize: 13, color: C.mutedText, margin: "0 0 16px" }}>Not sure what to learn? Get AI-suggested topics for your instrument and level.</p>
+          <p style={{ fontSize: 13, color: C.textMuted, margin: "0 0 16px" }}>Not sure what to learn? Get AI-suggested topics for your instrument and level.</p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 16 }}>
             <div style={{ flex: 1, minWidth: 140 }}>
               <label style={labelStyle}>Instrument</label>
@@ -336,7 +324,7 @@ export default function AiLessons() {
             <div style={{ display: "flex", alignItems: "flex-end" }}>
               <button onClick={handleFetchTopics} disabled={loadingTopics} style={{
                 padding: "12px 20px", borderRadius: 12, border: `1px solid ${C.secondary}`,
-                background: "rgba(78,205,196,0.15)", color: C.secondary,
+                background: `${C.secondary}26`, color: C.secondary,
                 fontSize: 14, fontWeight: 600, cursor: loadingTopics ? "wait" : "pointer",
                 whiteSpace: "nowrap",
               }}>
@@ -464,10 +452,10 @@ export default function AiLessons() {
               <span style={{ fontSize: 20 }}>⚠️</span>
               <p style={{ fontSize: 15, fontWeight: 600, color: "#FF3B30", margin: 0 }}>Generation Failed</p>
             </div>
-            <p style={{ fontSize: 13, color: C.secText, margin: "0 0 16px" }}>{error}</p>
+            <p style={{ fontSize: 13, color: C.textSecondary, margin: "0 0 16px" }}>{error}</p>
             <button onClick={() => activeTab === "lesson" ? handleGenerateLesson() : handleGenerateExercise()} style={{
               padding: "10px 20px", borderRadius: 10, border: `1px solid ${C.primary}`,
-              background: "rgba(108,99,255,0.15)", color: C.primary,
+              background: `${C.primary}26`, color: C.primary,
               fontSize: 14, fontWeight: 600, cursor: "pointer",
             }}>🔄 Retry</button>
           </div>
@@ -480,15 +468,15 @@ export default function AiLessons() {
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <div style={{
                   width: 36, height: 36, borderRadius: 10,
-                  background: "linear-gradient(135deg, rgba(52,199,89,0.2), rgba(0,255,136,0.2))",
-                  border: "1px solid rgba(52,199,89,0.3)",
+                  background: `linear-gradient(135deg, ${C.success}33, ${C.neon}33)`,
+                  border: `1px solid ${C.success}4D`,
                   display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18,
                 }}>✅</div>
                 <span style={{ fontSize: 14, fontWeight: 600, color: C.success }}>Generated Successfully</span>
               </div>
               <button onClick={handleCopy} style={{
                 padding: "8px 16px", borderRadius: 10, border: `1px solid ${C.glassBorder}`,
-                background: C.surface, color: C.secText, fontSize: 13, fontWeight: 500,
+                background: C.surface, color: C.textSecondary, fontSize: 13, fontWeight: 500,
                 cursor: "pointer", transition: "all 0.2s",
               }}>
                 {copied ? "✓ Copied" : "📋 Copy"}
@@ -517,7 +505,7 @@ export default function AiLessons() {
 
             {!content && !steps && !tips && (
               <pre style={{
-                fontSize: 13, color: C.secText, background: "rgba(0,0,0,0.3)",
+                fontSize: 13, color: C.textSecondary, background: "rgba(0,0,0,0.3)",
                 padding: 16, borderRadius: 12, overflow: "auto", margin: 0, lineHeight: 1.6,
                 whiteSpace: "pre-wrap", wordBreak: "break-word",
               }}>
@@ -529,7 +517,7 @@ export default function AiLessons() {
               <button onClick={() => navigate(`/courses/${courseId}`)} style={{
                 marginTop: 20, padding: "10px 20px", borderRadius: 10,
                 border: `1px solid ${C.glassBorder}`, background: C.surface,
-                color: C.secText, fontSize: 13, fontWeight: 500, cursor: "pointer",
+                color: C.textSecondary, fontSize: 13, fontWeight: 500, cursor: "pointer",
               }}>← Back to Course</button>
             )}
           </div>

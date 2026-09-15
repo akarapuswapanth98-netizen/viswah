@@ -1,20 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-
-const colors = {
-  primary: '#6C63FF',
-  secondary: '#4ECDC4',
-  success: '#34C759',
-  warning: '#FF9500',
-  error: '#FF3B30',
-  neon: '#00FF88',
-  background: '#0F0F23',
-  surface: 'rgba(255,255,255,0.08)',
-  glass: 'rgba(255,255,255,0.06)',
-  glassBorder: 'rgba(255,255,255,0.12)',
-  text: '#FFFFFF',
-  secondaryText: '#B0B0CC',
-  mutedText: '#6B6B8D',
-};
+import C from './colors';
 
 function Tabs({
   tabs = [],
@@ -53,9 +38,9 @@ function Tabs({
     display: 'flex',
     gap: '4px',
     padding: '4px',
-    background: colors.surface,
+    background: C.surfaceTint,
     borderRadius: '12px',
-    border: `1px solid ${colors.glassBorder}`,
+    border: `1px solid ${C.glassBorder}`,
     ...(fullWidth ? { width: '100%' } : {}),
     ...style,
   };
@@ -64,10 +49,10 @@ function Tabs({
     position: 'absolute',
     top: '4px',
     height: 'calc(100% - 8px)',
-    background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+    background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
     borderRadius: '8px',
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-    boxShadow: `0 4px 12px ${colors.primary}30`,
+    boxShadow: `0 4px 12px ${C.primary}25`,
     zIndex: 0,
   };
 
@@ -77,7 +62,7 @@ function Tabs({
     flex: fullWidth ? 1 : 'none',
     padding: '10px 20px',
     background: 'transparent',
-    color: isActive ? colors.text : colors.mutedText,
+    color: isActive ? C.text : C.textMuted,
     border: 'none',
     borderRadius: '8px',
     fontSize: '14px',
@@ -170,7 +155,7 @@ function Tabs({
             <span
               style={{
                 padding: '2px 8px',
-                background: active === tab.id ? 'rgba(255,255,255,0.2)' : colors.glass,
+                background: active === tab.id ? 'rgba(255,255,255,0.15)' : C.surfaceGlass,
                 borderRadius: '12px',
                 fontSize: '11px',
                 fontWeight: 600,

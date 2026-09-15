@@ -3,19 +3,7 @@ import { indianMusicApi } from "../api/indianMusicApi";
 import { useToast } from "../context/ToastContext";
 import { onKeyDown } from "../utils/keyboard";
 
-const COLORS = {
-  primary: "#6C63FF",
-  secondary: "#4ECDC4",
-  neon: "#00FF88",
-  background: "#0F0F23",
-  surface: "rgba(255,255,255,0.08)",
-  glass: "rgba(255,255,255,0.06)",
-  glassBorder: "rgba(255,255,255,0.12)",
-  text: "#FFFFFF",
-  secondaryText: "#B0B0CC",
-  mutedText: "#6B6B8D",
-  success: "#34C759",
-};
+import C from "../components/ui/colors";
 
 const NOTE_FREQS = {
   Sa: 261.63,
@@ -52,7 +40,7 @@ const WESTERN_MAP = {
 const styles = {
   page: {
     minHeight: "100vh",
-    background: COLORS.background,
+    background: C.ink,
     padding: "20px",
     fontFamily: "system-ui, sans-serif",
   },
@@ -61,13 +49,13 @@ const styles = {
     margin: "0 auto",
   },
   title: {
-    color: COLORS.text,
+    color: C.text,
     fontSize: "2rem",
     marginBottom: "4px",
     fontWeight: 700,
   },
   subtitle: {
-    color: COLORS.secondaryText,
+    color: C.textSecondary,
     marginBottom: "24px",
     fontSize: "0.95rem",
   },
@@ -78,14 +66,14 @@ const styles = {
     marginBottom: "24px",
   },
   panel: {
-    background: COLORS.glass,
-    border: `1px solid ${COLORS.glassBorder}`,
+    background: C.surfaceGlass,
+    border: `1px solid ${C.glassBorder}`,
     borderRadius: "16px",
     padding: "24px",
     boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
   },
   panelTitle: {
-    color: COLORS.neon,
+    color: C.neon,
     fontSize: "0.85rem",
     fontWeight: 700,
     textTransform: "uppercase",
@@ -100,9 +88,9 @@ const styles = {
   noteBtn: {
     padding: "16px 8px",
     borderRadius: "12px",
-    border: `2px solid ${COLORS.glassBorder}`,
-    background: COLORS.surface,
-    color: COLORS.text,
+    border: `2px solid ${C.glassBorder}`,
+    background: C.surfaceGlass,
+    color: C.text,
     cursor: "pointer",
     textAlign: "center",
     transition: "all 0.2s ease",
@@ -110,14 +98,14 @@ const styles = {
     overflow: "hidden",
   },
   noteBtnActive: {
-    background: `${COLORS.primary}33`,
-    borderColor: COLORS.primary,
-    boxShadow: `0 0 24px ${COLORS.primary}44`,
+    background: `${C.primary}33`,
+    borderColor: C.primary,
+    boxShadow: `0 0 24px ${C.primary}44`,
     transform: "scale(1.05)",
   },
   noteBtnHover: {
-    borderColor: COLORS.primary,
-    background: `${COLORS.primary}15`,
+    borderColor: C.primary,
+    background: `${C.primary}15`,
   },
   noteSargam: {
     fontSize: "1.3rem",
@@ -127,15 +115,15 @@ const styles = {
   },
   noteWestern: {
     fontSize: "0.75rem",
-    color: COLORS.mutedText,
+    color: C.textMuted,
     fontWeight: 600,
   },
   scaleContainer: {
     position: "relative",
     height: "80px",
-    background: COLORS.surface,
+    background: C.surfaceGlass,
     borderRadius: "12px",
-    border: `1px solid ${COLORS.glassBorder}`,
+    border: `1px solid ${C.glassBorder}`,
     marginBottom: "16px",
     overflow: "hidden",
   },
@@ -145,7 +133,7 @@ const styles = {
     left: "20px",
     right: "20px",
     height: "2px",
-    background: COLORS.glassBorder,
+    background: C.glassBorder,
     transform: "translateY(-50%)",
   },
   scaleNote: {
@@ -160,30 +148,30 @@ const styles = {
     justifyContent: "center",
     fontSize: "0.7rem",
     fontWeight: 700,
-    background: COLORS.surface,
-    border: `2px solid ${COLORS.glassBorder}`,
-    color: COLORS.secondaryText,
+    background: C.surfaceGlass,
+    border: `2px solid ${C.glassBorder}`,
+    color: C.textSecondary,
     cursor: "pointer",
     transition: "all 0.2s",
     zIndex: 1,
   },
   scaleNoteActive: {
-    background: `${COLORS.primary}44`,
-    borderColor: COLORS.primary,
-    color: COLORS.primary,
-    boxShadow: `0 0 16px ${COLORS.primary}44`,
+    background: `${C.primary}44`,
+    borderColor: C.primary,
+    color: C.primary,
+    boxShadow: `0 0 16px ${C.primary}44`,
     transform: "translate(-50%, -50%) scale(1.2)",
   },
   scaleLabel: {
     position: "absolute",
     bottom: "6px",
     fontSize: "0.6rem",
-    color: COLORS.mutedText,
+    color: C.textMuted,
     transform: "translateX(-50%)",
   },
   patternSection: {
-    background: COLORS.glass,
-    border: `1px solid ${COLORS.glassBorder}`,
+    background: C.surfaceGlass,
+    border: `1px solid ${C.glassBorder}`,
     borderRadius: "16px",
     padding: "24px",
     boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
@@ -194,13 +182,13 @@ const styles = {
     gap: "20px",
   },
   patternCard: {
-    background: COLORS.surface,
-    border: `1px solid ${COLORS.glassBorder}`,
+    background: C.surfaceGlass,
+    border: `1px solid ${C.glassBorder}`,
     borderRadius: "12px",
     padding: "16px",
   },
   patternLabel: {
-    color: COLORS.neon,
+    color: C.neon,
     fontSize: "0.78rem",
     fontWeight: 700,
     textTransform: "uppercase",
@@ -215,22 +203,22 @@ const styles = {
   patternNote: {
     padding: "5px 12px",
     borderRadius: "8px",
-    background: COLORS.glass,
-    border: `1px solid ${COLORS.glassBorder}`,
-    color: COLORS.text,
+    background: C.surfaceGlass,
+    border: `1px solid ${C.glassBorder}`,
+    color: C.text,
     fontSize: "0.85rem",
     fontWeight: 600,
     cursor: "pointer",
     transition: "all 0.15s",
   },
   patternNoteActive: {
-    background: `${COLORS.secondary}33`,
-    borderColor: COLORS.secondary,
-    color: COLORS.secondary,
+    background: `${C.secondary}33`,
+    borderColor: C.secondary,
+    color: C.secondary,
   },
   infoPanel: {
-    background: COLORS.glass,
-    border: `1px solid ${COLORS.glassBorder}`,
+    background: C.surfaceGlass,
+    border: `1px solid ${C.glassBorder}`,
     borderRadius: "16px",
     padding: "24px",
     boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
@@ -241,8 +229,8 @@ const styles = {
     gap: "12px",
   },
   infoCard: {
-    background: COLORS.surface,
-    border: `1px solid ${COLORS.glassBorder}`,
+    background: C.surfaceGlass,
+    border: `1px solid ${C.glassBorder}`,
     borderRadius: "10px",
     padding: "14px",
     display: "flex",
@@ -253,26 +241,26 @@ const styles = {
     fontSize: "1.5rem",
   },
   infoName: {
-    color: COLORS.text,
+    color: C.text,
     fontWeight: 700,
     fontSize: "0.9rem",
   },
   infoDetail: {
-    color: COLORS.mutedText,
+    color: C.textMuted,
     fontSize: "0.78rem",
   },
   skeleton: {
-    background: `linear-gradient(90deg, ${COLORS.surface} 25%, ${COLORS.glass} 50%, ${COLORS.surface} 75%)`,
+    background: `linear-gradient(90deg, ${C.surfaceGlass} 25%, ${C.surfaceGlass} 50%, ${C.surfaceGlass} 75%)`,
     backgroundSize: "200% 100%",
     borderRadius: "10px",
     animation: "shimmer 1.5s infinite",
   },
   errorBox: {
-    background: "rgba(255,69,58,0.1)",
-    border: "1px solid rgba(255,69,58,0.3)",
+    background: `${C.error}1A`,
+    border: `1px solid ${C.error}4D`,
     borderRadius: "12px",
     padding: "20px",
-    color: "#FF453A",
+    color: C.error,
     textAlign: "center",
   },
   retryBtn: {
@@ -280,8 +268,8 @@ const styles = {
     padding: "8px 20px",
     borderRadius: "8px",
     border: "none",
-    background: COLORS.primary,
-    color: COLORS.text,
+    background: C.primary,
+    color: C.text,
     cursor: "pointer",
     fontWeight: 600,
     fontSize: "0.85rem",
@@ -289,7 +277,7 @@ const styles = {
   emptyState: {
     textAlign: "center",
     padding: "60px 20px",
-    color: COLORS.mutedText,
+    color: C.textMuted,
   },
   emptyIcon: {
     fontSize: "3rem",
@@ -297,20 +285,20 @@ const styles = {
   },
   emptyText: {
     fontSize: "1rem",
-    color: COLORS.secondaryText,
+    color: C.textSecondary,
   },
   volumeRow: {
     display: "flex",
     alignItems: "center",
     gap: "10px",
-    background: COLORS.glass,
-    border: `1px solid ${COLORS.glassBorder}`,
+    background: C.surfaceGlass,
+    border: `1px solid ${C.glassBorder}`,
     borderRadius: "10px",
     padding: "10px 16px",
     marginBottom: "20px",
   },
   volumeLabel: {
-    color: COLORS.secondaryText,
+    color: C.textSecondary,
     fontSize: "0.85rem",
   },
 };
@@ -489,9 +477,9 @@ export default function Sargam() {
             value={volume}
             onChange={(e) => setVolume(parseFloat(e.target.value))}
             aria-label="Volume"
-            style={{ width: "120px", accentColor: COLORS.primary }}
+            style={{ width: "120px", accentColor: C.primary }}
           />
-          <span style={{ color: COLORS.mutedText, fontSize: "0.8rem", minWidth: "32px" }}>
+          <span style={{ color: C.textMuted, fontSize: "0.8rem", minWidth: "32px" }}>
             {Math.round(volume * 100)}%
           </span>
         </div>
@@ -545,14 +533,14 @@ export default function Sargam() {
                         }}
                         onMouseEnter={(e) => {
                           if (!isActive) {
-                            e.currentTarget.style.borderColor = COLORS.primary;
-                            e.currentTarget.style.background = `${COLORS.primary}15`;
+                            e.currentTarget.style.borderColor = C.primary;
+                            e.currentTarget.style.background = `${C.primary}15`;
                           }
                         }}
                         onMouseLeave={(e) => {
                           if (!isActive) {
-                            e.currentTarget.style.borderColor = COLORS.glassBorder;
-                            e.currentTarget.style.background = COLORS.surface;
+                            e.currentTarget.style.borderColor = C.glassBorder;
+                            e.currentTarget.style.background = C.surfaceGlass;
                           }
                         }}
                       >
@@ -573,9 +561,9 @@ export default function Sargam() {
                     style={{
                       padding: "8px 16px",
                       borderRadius: "8px",
-                      border: `1px solid ${COLORS.neon}44`,
-                      background: `${COLORS.neon}15`,
-                      color: COLORS.neon,
+                      border: `1px solid ${C.neon}44`,
+                      background: `${C.neon}15`,
+                      color: C.neon,
                       cursor: "pointer",
                       fontWeight: 600,
                       fontSize: "0.82rem",
@@ -589,9 +577,9 @@ export default function Sargam() {
                     style={{
                       padding: "8px 16px",
                       borderRadius: "8px",
-                      border: `1px solid ${COLORS.secondary}44`,
-                      background: `${COLORS.secondary}15`,
-                      color: COLORS.secondary,
+                      border: `1px solid ${C.secondary}44`,
+                      background: `${C.secondary}15`,
+                      color: C.secondary,
                       cursor: "pointer",
                       fontWeight: 600,
                       fontSize: "0.82rem",

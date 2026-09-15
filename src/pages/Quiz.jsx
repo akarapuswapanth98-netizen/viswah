@@ -4,21 +4,7 @@ import { courseApi } from "../api/courseApi";
 import { progressApi } from "../api/progressApi";
 import { useToast } from "../context/ToastContext";
 
-const COLORS = {
-  primary: "#6C63FF",
-  secondary: "#4ECDC4",
-  neon: "#00FF88",
-  bg: "#0F0F23",
-  surface: "rgba(255,255,255,0.08)",
-  glass: "rgba(255,255,255,0.06)",
-  glassBorder: "rgba(255,255,255,0.12)",
-  text: "#FFFFFF",
-  secondaryText: "#B0B0CC",
-  mutedText: "#6B6B8D",
-  success: "#34C759",
-  warning: "#FF9500",
-  error: "#FF3B30",
-};
+import C from "../components/ui/colors";
 
 const skeletonKeyframes = `
 @keyframes shimmer {
@@ -58,11 +44,11 @@ function parseQuizQuestions(quizData) {
 }
 
 function getLetterGrade(score) {
-  if (score >= 90) return { letter: "A", color: COLORS.neon };
-  if (score >= 80) return { letter: "B", color: COLORS.success };
-  if (score >= 70) return { letter: "C", color: COLORS.secondary };
-  if (score >= 60) return { letter: "D", color: COLORS.warning };
-  return { letter: "F", color: COLORS.error };
+  if (score >= 90) return { letter: "A", color: C.neon };
+  if (score >= 80) return { letter: "B", color: C.success };
+  if (score >= 70) return { letter: "C", color: C.secondary };
+  if (score >= 60) return { letter: "D", color: C.warning };
+  return { letter: "F", color: C.error };
 }
 
 const SkeletonBlock = ({ height = 200, style = {} }) => (
@@ -70,7 +56,7 @@ const SkeletonBlock = ({ height = 200, style = {} }) => (
     style={{
       height,
       borderRadius: 16,
-      background: `linear-gradient(110deg, ${COLORS.surface} 30%, rgba(255,255,255,0.12) 50%, ${COLORS.surface} 70%)`,
+      background: `linear-gradient(110deg, ${C.surfaceHover} 30%, ${C.glassBorder} 50%, ${C.surfaceHover} 70%)`,
       backgroundSize: "200% 100%",
       animation: "shimmer 1.5s infinite",
       ...style,
@@ -198,7 +184,7 @@ export default function Quiz() {
 
   if (loading) {
     return (
-      <div style={{ minHeight: "100vh", background: COLORS.bg, padding: "0 20px" }}>
+      <div style={{ minHeight: "100vh", background: C.ink, padding: "0 20px" }}>
         <style>{skeletonKeyframes}</style>
         <div style={{ maxWidth: 720, margin: "0 auto", paddingTop: 40 }}>
           <SkeletonBlock height={40} style={{ marginBottom: 20 }} />
@@ -215,20 +201,20 @@ export default function Quiz() {
 
   if (error) {
     return (
-      <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ minHeight: "100vh", background: C.ink, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <style>{skeletonKeyframes}</style>
         <div style={{ textAlign: "center", padding: 40, maxWidth: 400 }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>⚠️</div>
-          <p style={{ color: COLORS.secondaryText, fontSize: 18, marginBottom: 8 }}>Quiz Unavailable</p>
-          <p style={{ color: COLORS.mutedText, marginBottom: 24, fontSize: 14 }}>{error}</p>
+          <p style={{ color: C.textSecondary, fontSize: 18, marginBottom: 8 }}>Quiz Unavailable</p>
+          <p style={{ color: C.textMuted, marginBottom: 24, fontSize: 14 }}>{error}</p>
           <button
             onClick={() => navigate(-1)}
             style={{
               padding: "12px 32px",
               borderRadius: 12,
               border: "none",
-              background: COLORS.primary,
-              color: COLORS.text,
+              background: C.primary,
+              color: C.text,
               fontSize: 16,
               fontWeight: 600,
               cursor: "pointer",
@@ -243,7 +229,7 @@ export default function Quiz() {
 
   if (submitted && result) {
     return (
-      <div style={{ minHeight: "100vh", background: COLORS.bg, padding: "0 20px 80px" }}>
+      <div style={{ minHeight: "100vh", background: C.ink, padding: "0 20px 80px" }}>
         <style>{skeletonKeyframes}</style>
         <div style={{ maxWidth: 720, margin: "0 auto", paddingTop: 40 }}>
           <div style={{ animation: "scaleIn 0.4s ease", textAlign: "center", marginBottom: 40 }}>
@@ -265,17 +251,17 @@ export default function Quiz() {
             >
               {result.grade.letter}
             </div>
-            <h1 style={{ color: COLORS.text, fontSize: 32, fontWeight: 700, margin: "0 0 8px" }}>
+            <h1 style={{ color: C.text, fontSize: 32, fontWeight: 700, margin: "0 0 8px" }}>
               {result.score}%
             </h1>
-            <p style={{ color: COLORS.secondaryText, fontSize: 16, margin: "0 0 24px" }}>
+            <p style={{ color: C.textSecondary, fontSize: 16, margin: "0 0 24px" }}>
               {result.correct} out of {result.total} correct
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <span
                 style={{
-                  background: `${COLORS.success}22`,
-                  color: COLORS.success,
+                  background: `${C.success}22`,
+                  color: C.success,
                   padding: "6px 16px",
                   borderRadius: 20,
                   fontSize: 14,
@@ -286,8 +272,8 @@ export default function Quiz() {
               </span>
               <span
                 style={{
-                  background: `${COLORS.error}22`,
-                  color: COLORS.error,
+                  background: `${C.error}22`,
+                  color: C.error,
                   padding: "6px 16px",
                   borderRadius: 20,
                   fontSize: 14,
@@ -299,7 +285,7 @@ export default function Quiz() {
             </div>
           </div>
 
-          <h2 style={{ color: COLORS.text, fontSize: 20, fontWeight: 600, marginBottom: 20 }}>
+          <h2 style={{ color: C.text, fontSize: 20, fontWeight: 600, marginBottom: 20 }}>
             Review Answers
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 32 }}>
@@ -311,8 +297,8 @@ export default function Quiz() {
                 <div
                   key={i}
                   style={{
-                    background: COLORS.glass,
-                    border: `1px solid ${isCorrect ? `${COLORS.success}44` : `${COLORS.error}44`}`,
+                    background: C.surfaceGlass,
+                    border: `1px solid ${isCorrect ? `${C.success}44` : `${C.error}44`}`,
                     borderRadius: 16,
                     padding: 20,
                     animation: `fadeIn 0.3s ease ${i * 0.05}s both`,
@@ -321,8 +307,8 @@ export default function Quiz() {
                   <div style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 12 }}>
                     <span
                       style={{
-                        background: isCorrect ? COLORS.success : COLORS.error,
-                        color: COLORS.text,
+                        background: isCorrect ? C.success : C.error,
+                        color: C.text,
                         width: 24,
                         height: 24,
                         borderRadius: "50%",
@@ -336,7 +322,7 @@ export default function Quiz() {
                     >
                       {isCorrect ? "✓" : "✗"}
                     </span>
-                    <p style={{ color: COLORS.text, fontSize: 15, fontWeight: 500, margin: 0, lineHeight: 1.5 }}>
+                    <p style={{ color: C.text, fontSize: 15, fontWeight: 500, margin: 0, lineHeight: 1.5 }}>
                       {i + 1}. {q.question}
                     </p>
                   </div>
@@ -345,16 +331,16 @@ export default function Quiz() {
                       const isUserChoice = userAnswer === j;
                       const isCorrectOpt = opt === q.correct_answer;
                       let bg = "transparent";
-                      let border = `1px solid ${COLORS.glassBorder}`;
-                      let textColor = COLORS.secondaryText;
+                      let border = `1px solid ${C.surfaceGlassBorder}`;
+                      let textColor = C.textSecondary;
                       if (isCorrectOpt) {
-                        bg = `${COLORS.success}22`;
-                        border = `1px solid ${COLORS.success}44`;
-                        textColor = COLORS.success;
+                        bg = `${C.success}22`;
+                        border = `1px solid ${C.success}44`;
+                        textColor = C.success;
                       } else if (isUserChoice && !isCorrect) {
-                        bg = `${COLORS.error}22`;
-                        border = `1px solid ${COLORS.error}44`;
-                        textColor = COLORS.error;
+                        bg = `${C.error}22`;
+                        border = `1px solid ${C.error}44`;
+                        textColor = C.error;
                       }
                       return (
                         <div
@@ -391,16 +377,16 @@ export default function Quiz() {
               style={{
                 padding: "14px 32px",
                 borderRadius: 12,
-                border: `1px solid ${COLORS.glassBorder}`,
-                background: COLORS.glass,
-                color: COLORS.text,
+                border: `1px solid ${C.surfaceGlassBorder}`,
+                background: C.surfaceGlass,
+                color: C.text,
                 fontSize: 16,
                 fontWeight: 600,
                 cursor: "pointer",
                 transition: "background 0.2s",
               }}
-              onMouseEnter={(e) => (e.target.style.background = COLORS.surface)}
-              onMouseLeave={(e) => (e.target.style.background = COLORS.glass)}
+              onMouseEnter={(e) => (e.target.style.background = C.surfaceHover)}
+              onMouseLeave={(e) => (e.target.style.background = C.surfaceGlass)}
             >
               Back to Lesson
             </button>
@@ -415,15 +401,15 @@ export default function Quiz() {
   const isLastQuestion = currentIndex === questions.length - 1;
 
   return (
-    <div style={{ minHeight: "100vh", background: COLORS.bg, padding: "0 20px 80px" }}>
+    <div style={{ minHeight: "100vh", background: C.ink, padding: "0 20px 80px" }}>
       <style>{skeletonKeyframes}</style>
       <div style={{ maxWidth: 720, margin: "0 auto", paddingTop: 40 }}>
         <div style={{ marginBottom: 24 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-            <span style={{ color: COLORS.mutedText, fontSize: 14 }}>
+            <span style={{ color: C.textMuted, fontSize: 14 }}>
               Question {currentIndex + 1} of {questions.length}
             </span>
-            <span style={{ color: COLORS.mutedText, fontSize: 14 }}>
+            <span style={{ color: C.textMuted, fontSize: 14 }}>
               {Math.round(progress)}%
             </span>
           </div>
@@ -432,7 +418,7 @@ export default function Quiz() {
               width: "100%",
               height: 6,
               borderRadius: 3,
-              background: COLORS.surface,
+              background: C.surfaceHover,
               overflow: "hidden",
             }}
           >
@@ -441,7 +427,7 @@ export default function Quiz() {
                 width: `${progress}%`,
                 height: "100%",
                 borderRadius: 3,
-                background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.neon})`,
+                background: `linear-gradient(90deg, ${C.primary}, ${C.neon})`,
                 transition: "width 0.4s ease",
               }}
             />
@@ -452,14 +438,14 @@ export default function Quiz() {
           key={currentIndex}
           style={{
             animation: "fadeIn 0.3s ease",
-            background: COLORS.glass,
-            border: `1px solid ${COLORS.glassBorder}`,
+            background: C.surfaceGlass,
+            border: `1px solid ${C.surfaceGlassBorder}`,
             borderRadius: 20,
             padding: 32,
             marginBottom: 24,
           }}
         >
-          <h2 style={{ color: COLORS.text, fontSize: 20, fontWeight: 600, margin: "0 0 24px", lineHeight: 1.5 }}>
+          <h2 style={{ color: C.text, fontSize: 20, fontWeight: 600, margin: "0 0 24px", lineHeight: 1.5 }}>
             {currentQuestion.question}
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -475,9 +461,9 @@ export default function Quiz() {
                     gap: 14,
                     padding: "16px 20px",
                     borderRadius: 14,
-                    border: `2px solid ${isSelected ? COLORS.primary : COLORS.glassBorder}`,
-                    background: isSelected ? `${COLORS.primary}22` : "transparent",
-                    color: COLORS.text,
+                    border: `2px solid ${isSelected ? C.primary : C.surfaceGlassBorder}`,
+                    background: isSelected ? `${C.primary}22` : "transparent",
+                    color: C.text,
                     fontSize: 15,
                     textAlign: "left",
                     cursor: "pointer",
@@ -486,13 +472,13 @@ export default function Quiz() {
                   }}
                   onMouseEnter={(e) => {
                     if (!isSelected) {
-                      e.currentTarget.style.borderColor = `${COLORS.primary}88`;
-                      e.currentTarget.style.background = `${COLORS.primary}11`;
+                      e.currentTarget.style.borderColor = `${C.primary}88`;
+                      e.currentTarget.style.background = `${C.primary}11`;
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isSelected) {
-                      e.currentTarget.style.borderColor = COLORS.glassBorder;
+                      e.currentTarget.style.borderColor = C.surfaceGlassBorder;
                       e.currentTarget.style.background = "transparent";
                     }
                   }}
@@ -503,8 +489,8 @@ export default function Quiz() {
                       height: 40,
                       minWidth: 40,
                       borderRadius: "50%",
-                      border: `2px solid ${isSelected ? COLORS.primary : COLORS.mutedText}`,
-                      background: isSelected ? COLORS.primary : "transparent",
+                      border: `2px solid ${isSelected ? C.primary : C.textMuted}`,
+                      background: isSelected ? C.primary : "transparent",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -530,9 +516,9 @@ export default function Quiz() {
             style={{
               padding: "14px 28px",
               borderRadius: 12,
-              border: `1px solid ${COLORS.glassBorder}`,
-              background: COLORS.glass,
-              color: currentIndex === 0 ? COLORS.mutedText : COLORS.text,
+              border: `1px solid ${C.surfaceGlassBorder}`,
+              background: C.surfaceGlass,
+              color: currentIndex === 0 ? C.textMuted : C.text,
               fontSize: 15,
               fontWeight: 600,
               cursor: currentIndex === 0 ? "not-allowed" : "pointer",
@@ -552,9 +538,9 @@ export default function Quiz() {
                 borderRadius: 12,
                 border: "none",
                 background: submitting
-                  ? COLORS.mutedText
-                  : `linear-gradient(135deg, ${COLORS.neon}, ${COLORS.secondary})`,
-                color: COLORS.text,
+                  ? C.textMuted
+                  : `linear-gradient(135deg, ${C.neon}, ${C.secondary})`,
+                color: C.text,
                 fontSize: 15,
                 fontWeight: 600,
                 cursor: submitting ? "not-allowed" : "pointer",
@@ -570,8 +556,8 @@ export default function Quiz() {
                 padding: "14px 28px",
                 borderRadius: 12,
                 border: "none",
-                background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.secondary})`,
-                color: COLORS.text,
+                background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})`,
+                color: C.text,
                 fontSize: 15,
                 fontWeight: 600,
                 cursor: "pointer",

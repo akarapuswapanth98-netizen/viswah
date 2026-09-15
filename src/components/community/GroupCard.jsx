@@ -1,9 +1,4 @@
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../ui/colors";
 
 const CATEGORY_ICONS = {
   classical: "\u{1F3BB}", jazz: "\u{1F3B7}", beginner: "\u{1F331}",
@@ -52,7 +47,7 @@ export default function GroupCard({ group, onJoin, onNavigate }) {
           <button
             onClick={(e) => { e.stopPropagation(); onJoin(group.id); }}
             style={{
-              background: group.is_member ? "none" : C.teal,
+              background: group.is_member ? "none" : C.secondary,
               color: group.is_member ? C.textMuted : C.ink,
               border: group.is_member ? `1px solid ${C.border}` : "none",
               borderRadius: 8, padding: "10px 16px", fontSize: 12,

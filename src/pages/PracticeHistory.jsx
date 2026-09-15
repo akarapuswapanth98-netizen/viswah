@@ -4,24 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { practiceApi } from "../api/practiceApi";
 import { onKeyDown } from "../utils/keyboard";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const ACTIVITY_ICONS = {
   vocal_guru: "🎤",
@@ -149,8 +132,8 @@ function ScoreTrendChart({ sessions }) {
         {/* Gradient fill under line */}
         <defs>
           <linearGradient id="trendFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={C.saffron} stopOpacity={0.15} />
-            <stop offset="100%" stopColor={C.saffron} stopOpacity={0.02} />
+            <stop offset="0%" stopColor={C.primary} stopOpacity={0.15} />
+            <stop offset="100%" stopColor={C.primary} stopOpacity={0.02} />
           </linearGradient>
         </defs>
         <path
@@ -159,7 +142,7 @@ function ScoreTrendChart({ sessions }) {
         />
 
         {/* Line */}
-        <path d={pathD} fill="none" stroke={C.saffron} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+        <path d={pathD} fill="none" stroke={C.primary} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
 
         {/* Points */}
         {points.map((p, i) => (
@@ -169,7 +152,7 @@ function ScoreTrendChart({ sessions }) {
             cy={p.y}
             r={4}
             fill={C.ink}
-            stroke={C.saffron}
+            stroke={C.primary}
             strokeWidth={2}
           />
         ))}
@@ -229,7 +212,7 @@ function TopicCard({ topic }) {
         </div>
         <div>
           <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 2px" }}>Best</p>
-          <p style={{ color: C.saffron, fontSize: 18, fontWeight: 700, margin: 0 }}>
+          <p style={{ color: C.primary, fontSize: 18, fontWeight: 700, margin: 0 }}>
             {topic.best_score != null ? Math.round(topic.best_score) : "–"}
           </p>
         </div>
@@ -291,7 +274,7 @@ function HistoryItem({ item, onClick }) {
     >
       <div style={{
         width: 40, height: 40, borderRadius: 10, flexShrink: 0,
-        background: `${C.saffron}10`, display: "flex", alignItems: "center", justifyContent: "center",
+        background: `${C.primary}10`, display: "flex", alignItems: "center", justifyContent: "center",
         fontSize: 18,
       }}>
         {icon}
@@ -373,7 +356,7 @@ export default function PracticeHistory() {
           <p style={{ color: C.textSecondary, fontSize: 18, marginBottom: 8 }}>Sign in to view your practice history</p>
           <button onClick={() => navigate("/login")} style={{
             padding: "12px 32px", borderRadius: 10, border: "none",
-            background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+            background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
             color: C.ink, fontSize: 15, fontWeight: 600, cursor: "pointer",
           }}>Sign In</button>
         </div>
@@ -404,7 +387,7 @@ export default function PracticeHistory() {
           <p style={{ color: C.textMuted, fontSize: 14, marginBottom: 24 }}>{error}</p>
           <button onClick={() => window.location.reload()} style={{
             padding: "12px 32px", borderRadius: 10, border: "none",
-            background: C.saffron, color: C.ink, fontSize: 15, fontWeight: 600, cursor: "pointer",
+            background: C.primary, color: C.ink, fontSize: 15, fontWeight: 600, cursor: "pointer",
           }}>Retry</button>
         </div>
       </div>
@@ -430,7 +413,7 @@ export default function PracticeHistory() {
           transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
         }}>
           <h1 style={{ color: C.text, fontSize: 28, fontWeight: 700, margin: 0 }}>
-            Your <span style={{ color: C.saffron }}>Practice</span>
+            Your <span style={{ color: C.primary }}>Practice</span>
           </h1>
           <p style={{ color: C.textMuted, fontSize: 15, marginTop: 6 }}>
             See what you've learned, practiced, and improved.
@@ -455,7 +438,7 @@ export default function PracticeHistory() {
                 onClick={() => navigate("/vocal-guru")}
                 style={{
                   padding: "14px 28px", borderRadius: 12,
-                  background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+                  background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
                   border: "none", color: C.ink, fontSize: 15, fontWeight: 700,
                   cursor: "pointer",
                 }}
@@ -499,7 +482,7 @@ export default function PracticeHistory() {
                   <span style={{ fontSize: 14 }}>{s.icon}</span>
                   <span style={{ color: C.textMuted, fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>{s.label}</span>
                 </div>
-                <p style={{ color: C.saffron, fontSize: 24, fontWeight: 700, margin: 0 }}>{s.value}</p>
+                <p style={{ color: C.primary, fontSize: 24, fontWeight: 700, margin: 0 }}>{s.value}</p>
               </div>
             ))}
           </div>
@@ -530,9 +513,9 @@ export default function PracticeHistory() {
                 <button
                   onClick={() => setActivityFilter("")}
                   style={{
-                    padding: "6px 14px", borderRadius: 8, border: `1px solid ${!activityFilter ? C.saffron + "40" : C.border}`,
-                    background: !activityFilter ? `${C.saffron}12` : "transparent",
-                    color: !activityFilter ? C.saffron : C.textMuted, fontSize: 12, fontWeight: 500, cursor: "pointer",
+                    padding: "6px 14px", borderRadius: 8, border: `1px solid ${!activityFilter ? C.primary + "40" : C.border}`,
+                    background: !activityFilter ? `${C.primary}12` : "transparent",
+                    color: !activityFilter ? C.primary : C.textMuted, fontSize: 12, fontWeight: 500, cursor: "pointer",
                   }}
                 >All</button>
                 {availableActivities.map((act) => (
@@ -540,9 +523,9 @@ export default function PracticeHistory() {
                     key={act}
                     onClick={() => setActivityFilter(act)}
                     style={{
-                      padding: "6px 14px", borderRadius: 8, border: `1px solid ${activityFilter === act ? C.saffron + "40" : C.border}`,
-                      background: activityFilter === act ? `${C.saffron}12` : "transparent",
-                      color: activityFilter === act ? C.saffron : C.textMuted, fontSize: 12, fontWeight: 500, cursor: "pointer",
+                      padding: "6px 14px", borderRadius: 8, border: `1px solid ${activityFilter === act ? C.primary + "40" : C.border}`,
+                      background: activityFilter === act ? `${C.primary}12` : "transparent",
+                      color: activityFilter === act ? C.primary : C.textMuted, fontSize: 12, fontWeight: 500, cursor: "pointer",
                     }}
                   >{ACTIVITY_LABELS[act] || act}</button>
                 ))}

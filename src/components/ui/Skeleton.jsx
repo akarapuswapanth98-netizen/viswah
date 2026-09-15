@@ -1,7 +1,3 @@
-const colors = {
-  surface: 'rgba(255,255,255,0.08)',
-};
-
 let skeletonStylesInjected = false;
 function injectSkeletonStyles() {
   if (skeletonStylesInjected) return;
@@ -35,7 +31,7 @@ function Skeleton({
   const variantStyle = variantMap[variant] || variantMap.text;
 
   const skeletonItemStyle = {
-    background: `linear-gradient(90deg, ${colors.surface}, rgba(255,255,255,0.12), ${colors.surface})`,
+    background: `linear-gradient(90deg, #161222, #241E38, #161222)`,
     backgroundSize: '200% 100%',
     animation: 'skeleton-shimmer 2s ease-in-out infinite',
     borderRadius: borderRadius || variantStyle.borderRadius,

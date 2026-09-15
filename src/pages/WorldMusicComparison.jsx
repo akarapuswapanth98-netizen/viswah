@@ -2,22 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { worldMusicApi } from "../api/worldMusicApi";
 import { onKeyDown } from "../utils/keyboard";
-
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-};
+import C from "../components/ui/colors";
 
 function ComparisonColumn({ tradition, index }) {
   if (!tradition) return null;
@@ -50,8 +35,8 @@ function ComparisonColumn({ tradition, index }) {
           <p style={{ color: C.textMuted, fontSize: 11, textTransform: "uppercase", letterSpacing: 0.5, margin: "0 0 6px" }}>Difficulty</p>
           <span style={{
             fontSize: 13, fontWeight: 500, padding: "3px 10px", borderRadius: 8,
-            background: tradition.difficulty === "beginner" ? `${C.success}15` : tradition.difficulty === "advanced" ? `${C.warning}15` : `${C.teal}15`,
-            color: tradition.difficulty === "beginner" ? C.success : tradition.difficulty === "advanced" ? C.warning : C.teal,
+            background: tradition.difficulty === "beginner" ? `${C.success}15` : tradition.difficulty === "advanced" ? `${C.warning}15` : `${C.secondary}15`,
+            color: tradition.difficulty === "beginner" ? C.success : tradition.difficulty === "advanced" ? C.warning : C.secondary,
           }}>
             {tradition.difficulty}
           </span>
@@ -64,7 +49,7 @@ function ComparisonColumn({ tradition, index }) {
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
               {tradition.instruments.map((inst, i) => (
                 <span key={i} style={{
-                  fontSize: 12, color: C.textSecondary, background: `${C.saffron}10`,
+                  fontSize: 12, color: C.textSecondary, background: `${C.primary}10`,
                   padding: "3px 10px", borderRadius: 6,
                 }}>{inst}</span>
               ))}
@@ -94,7 +79,7 @@ function ComparisonColumn({ tradition, index }) {
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
               {tradition.rhythmic_concepts.map((r, i) => (
                 <span key={i} style={{
-                  fontSize: 12, color: C.textSecondary, background: `${C.teal}10`,
+                  fontSize: 12, color: C.textSecondary, background: `${C.secondary}10`,
                   padding: "3px 10px", borderRadius: 6,
                 }}>{r}</span>
               ))}
@@ -136,11 +121,11 @@ function ComparisonColumn({ tradition, index }) {
           onClick={() => navigate(`/world-music/${tradition.id}`)}
           onKeyDown={(e) => onKeyDown(e, () => navigate(`/world-music/${tradition.id}`))}
           style={{
-            width: "100%", padding: "10px 16px", borderRadius: 10, border: `1px solid ${C.teal}30`,
-            background: "transparent", color: C.teal, fontSize: 13, fontWeight: 600,
+            width: "100%", padding: "10px 16px", borderRadius: 10, border: `1px solid ${C.secondary}30`,
+            background: "transparent", color: C.secondary, fontSize: 13, fontWeight: 600,
             cursor: "pointer", transition: "all 0.2s",
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = `${C.teal}12`; }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = `${C.secondary}12`; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
         >
           Explore {tradition.name} →
@@ -221,7 +206,7 @@ export default function WorldMusicComparison() {
           transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
         }}>
           <h1 style={{ color: C.text, fontSize: 28, fontWeight: 700, margin: "0 0 6px" }}>
-            Compare <span style={{ color: C.teal }}>Traditions</span>
+            Compare <span style={{ color: C.secondary }}>Traditions</span>
           </h1>
           <p style={{ color: C.textMuted, fontSize: 15, margin: 0 }}>
             Select 2–4 traditions to compare side by side
@@ -239,9 +224,9 @@ export default function WorldMusicComparison() {
                   onClick={() => toggleTradition(t.id)}
                   style={{
                     padding: "8px 16px", borderRadius: 10,
-                    border: `1px solid ${isSelected ? C.teal : C.border}`,
-                    background: isSelected ? `${C.teal}15` : C.surface,
-                    color: isSelected ? C.teal : C.textSecondary,
+                    border: `1px solid ${isSelected ? C.secondary : C.border}`,
+                    background: isSelected ? `${C.secondary}15` : C.surface,
+                    color: isSelected ? C.secondary : C.textSecondary,
                     fontSize: 13, fontWeight: 500, cursor: "pointer",
                     transition: "all 0.2s",
                   }}
@@ -256,7 +241,7 @@ export default function WorldMusicComparison() {
               onClick={handleCompare}
               style={{
                 marginTop: 12, padding: "10px 24px", borderRadius: 10, border: "none",
-                background: `linear-gradient(135deg, ${C.teal}, ${C.teal}CC)`,
+                background: `linear-gradient(135deg, ${C.secondary}, ${C.secondary}CC)`,
                 color: C.ink, fontSize: 14, fontWeight: 600, cursor: "pointer",
               }}
             >

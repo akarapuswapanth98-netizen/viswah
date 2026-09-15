@@ -1,23 +1,13 @@
-const colors = {
-  primary: '#6C63FF',
-  secondary: '#4ECDC4',
-  success: '#34C759',
-  warning: '#FF9500',
-  error: '#FF3B30',
-  neon: '#00FF88',
-  surface: 'rgba(255,255,255,0.08)',
-  glassBorder: 'rgba(255,255,255,0.12)',
-  secondaryText: '#B0B0CC',
-};
+import C from './colors';
 
 const variantStyles = {
-  primary: { background: `${colors.primary}25`, color: colors.primary, border: `1px solid ${colors.primary}40` },
-  secondary: { background: `${colors.secondary}25`, color: colors.secondary, border: `1px solid ${colors.secondary}40` },
-  success: { background: `${colors.success}25`, color: colors.success, border: `1px solid ${colors.success}40` },
-  warning: { background: `${colors.warning}25`, color: colors.warning, border: `1px solid ${colors.warning}40` },
-  error: { background: `${colors.error}25`, color: colors.error, border: `1px solid ${colors.error}40` },
-  neon: { background: `${colors.neon}25`, color: colors.neon, border: `1px solid ${colors.neon}40` },
-  neutral: { background: colors.surface, color: colors.secondaryText, border: `1px solid ${colors.glassBorder}` },
+  primary: { background: `${C.primary}20`, color: C.primary, border: `1px solid ${C.primary}35` },
+  secondary: { background: `${C.secondary}20`, color: C.secondary, border: `1px solid ${C.secondary}35` },
+  success: { background: `${C.success}20`, color: C.success, border: `1px solid ${C.success}35` },
+  warning: { background: `${C.warning}20`, color: C.warning, border: `1px solid ${C.warning}35` },
+  error: { background: `${C.error}20`, color: C.error, border: `1px solid ${C.error}35` },
+  raga: { background: `${C.raga}20`, color: C.raga, border: `1px solid ${C.raga}35` },
+  neutral: { background: C.surfaceTint, color: C.textSecondary, border: `1px solid ${C.glassBorder}` },
 };
 
 const sizes = {

@@ -2,20 +2,7 @@ import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { onKeyDown } from "../utils/keyboard";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  success: "#6DBF73",
-};
+import C from "./ui/colors";
 
 function DailyMission({ mission, mounted = true }) {
   const navigate = useNavigate();
@@ -38,7 +25,7 @@ function DailyMission({ mission, mounted = true }) {
       }}
       style={{
         background: `linear-gradient(135deg, ${C.elevated}, ${C.surface})`,
-        border: `1px solid ${C.saffron}30`,
+        border: `1px solid ${C.primary}30`,
         borderRadius: 18,
         padding: 24,
         cursor: "pointer",
@@ -47,12 +34,12 @@ function DailyMission({ mission, mounted = true }) {
         transform: mounted ? "translateY(0)" : "translateY(12px)",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = C.saffron + "60";
+        e.currentTarget.style.borderColor = C.primary + "60";
         e.currentTarget.style.transform = "translateY(-2px)";
         e.currentTarget.style.boxShadow = "0 12px 40px rgba(232, 168, 56, 0.1)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = C.saffron + "30";
+        e.currentTarget.style.borderColor = C.primary + "30";
         e.currentTarget.style.transform = "translateY(0)";
         e.currentTarget.style.boxShadow = "none";
       }}
@@ -60,7 +47,7 @@ function DailyMission({ mission, mounted = true }) {
       <div style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
         <div style={{
           width: 52, height: 52, borderRadius: 14, flexShrink: 0,
-          background: `${C.saffron}15`,
+          background: `${C.primary}15`,
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 26,
         }}>
@@ -70,7 +57,7 @@ function DailyMission({ mission, mounted = true }) {
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
             <span style={{
               fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1,
-              color: C.saffron, background: `${C.saffron}15`,
+              color: C.primary, background: `${C.primary}15`,
               padding: "2px 8px", borderRadius: 6,
             }}>
               Today's Mission
@@ -93,7 +80,7 @@ function DailyMission({ mission, mounted = true }) {
             </p>
           )}
         </div>
-        <span style={{ color: C.saffron, fontSize: 18, flexShrink: 0, marginTop: 4 }}>→</span>
+        <span style={{ color: C.primary, fontSize: 18, flexShrink: 0, marginTop: 4 }}>→</span>
       </div>
     </div>
   );

@@ -13,24 +13,7 @@ import {
   getGradeColor,
 } from "../utils/practiceRecommendations";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const ACTIVITIES = [
   { id: "vocal_guru", label: "Vocal Guru", icon: "🎤", purpose: "Train pitch, control and technique", difficulty: "All levels", route: "/vocal-guru" },
@@ -77,7 +60,7 @@ function ActivityCard({ activity, stats, navigate, buttonClick }) {
         transition: "all 0.25s ease-out",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = C.saffron + "40";
+        e.currentTarget.style.borderColor = C.primary + "40";
         e.currentTarget.style.transform = "translateY(-4px)";
         e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,0,0,0.3)";
       }}
@@ -90,7 +73,7 @@ function ActivityCard({ activity, stats, navigate, buttonClick }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
         <div style={{
           width: 44, height: 44, borderRadius: 12,
-          background: `${C.saffron}12`, display: "flex", alignItems: "center", justifyContent: "center",
+          background: `${C.primary}12`, display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 22,
         }}>
           {activity.icon}
@@ -108,7 +91,7 @@ function ActivityCard({ activity, stats, navigate, buttonClick }) {
       <p style={{ color: C.textMuted, fontSize: 13, margin: "0 0 10px", lineHeight: 1.4 }}>{activity.purpose}</p>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <span style={{ color: C.textMuted, fontSize: 12 }}>{sessions} session{sessions !== 1 ? "s" : ""}</span>
-        <span style={{ color: C.saffron, fontSize: 13, fontWeight: 600 }}>Open →</span>
+        <span style={{ color: C.primary, fontSize: 13, fontWeight: 600 }}>Open →</span>
       </div>
     </div>
   );
@@ -161,7 +144,7 @@ function SkillProgress({ activityStats, recentSessions }) {
                 </div>
                 <div>
                   <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 2px" }}>Best</p>
-                  <p style={{ color: C.saffron, fontSize: 18, fontWeight: 700, margin: 0 }}>{bestScore != null ? `${bestScore}%` : "–"}</p>
+                  <p style={{ color: C.primary, fontSize: 18, fontWeight: 700, margin: 0 }}>{bestScore != null ? `${bestScore}%` : "–"}</p>
                 </div>
                 <div>
                   <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 2px" }}>Sessions</p>
@@ -207,7 +190,7 @@ function RecentPractice({ sessions, navigate }) {
             >
               <div style={{
                 width: 40, height: 40, borderRadius: 10, flexShrink: 0,
-                background: `${C.saffron}10`, display: "flex", alignItems: "center", justifyContent: "center",
+                background: `${C.primary}10`, display: "flex", alignItems: "center", justifyContent: "center",
                 fontSize: 18,
               }}>
                 {ACTIVITY_ICONS[s.activity] || "🎵"}
@@ -295,7 +278,7 @@ export default function PracticeStudio() {
           <p style={{ color: C.textSecondary, fontSize: 18, marginBottom: 8 }}>Sign in to access Practice Studio</p>
           <button onClick={() => navigate("/login")} style={{
             padding: "12px 32px", borderRadius: 10, border: "none",
-            background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+            background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
             color: C.ink, fontSize: 15, fontWeight: 600, cursor: "pointer",
           }}>Sign In</button>
         </div>
@@ -327,7 +310,7 @@ export default function PracticeStudio() {
           <p style={{ color: C.textMuted, fontSize: 14, marginBottom: 24 }}>{error}</p>
           <button onClick={() => window.location.reload()} style={{
             padding: "12px 32px", borderRadius: 10, border: "none",
-            background: C.saffron, color: C.ink, fontSize: 15, fontWeight: 600, cursor: "pointer",
+            background: C.primary, color: C.ink, fontSize: 15, fontWeight: 600, cursor: "pointer",
           }}>Retry</button>
         </div>
       </div>
@@ -361,7 +344,7 @@ export default function PracticeStudio() {
           transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
         }}>
           <h1 style={{ color: C.text, fontSize: 28, fontWeight: 700, margin: 0 }}>
-            Practice <span style={{ color: C.saffron }}>Studio</span>
+            Practice <span style={{ color: C.primary }}>Studio</span>
           </h1>
           <p style={{ color: C.textMuted, fontSize: 15, marginTop: 6 }}>
             Build your musical skills one session at a time.
@@ -378,7 +361,7 @@ export default function PracticeStudio() {
           }}>
             {[
               { label: "Today", value: `${stats.today_minutes}m`, icon: "⏱", color: C.teal },
-              { label: "Sessions", value: summary.total_sessions, icon: "🎵", color: C.saffron },
+              { label: "Sessions", value: summary.total_sessions, icon: "🎵", color: C.primary },
               { label: "Streak", value: `${summary.current_streak}d`, icon: "🔥", color: C.warning },
               { label: "Best Score", value: summary.best_score != null ? `${Math.round(summary.best_score)}%` : "–", icon: "🏆", color: C.success },
             ].map((s, i) => (
@@ -404,8 +387,8 @@ export default function PracticeStudio() {
           <section style={{ marginBottom: 32 }}>
             <div
               style={{
-                background: `linear-gradient(135deg, ${C.saffron}12, ${C.raga}12)`,
-                border: `1px solid ${C.saffron}25`,
+                background: `linear-gradient(135deg, ${C.primary}12, ${C.raga}12)`,
+                border: `1px solid ${C.primary}25`,
                 borderRadius: 16,
                 padding: "20px 24px",
                 display: "flex",
@@ -415,7 +398,7 @@ export default function PracticeStudio() {
             >
               <div style={{
                 width: 48, height: 48, borderRadius: 14,
-                background: `${C.saffron}18`,
+                background: `${C.primary}18`,
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontSize: 24, flexShrink: 0,
               }}>
@@ -437,7 +420,7 @@ export default function PracticeStudio() {
                   onClick={() => navigate(personalization.daily_mission.route)}
                   style={{
                     padding: "8px 18px", borderRadius: 10, border: "none",
-                    background: C.saffron, color: C.ink,
+                    background: C.primary, color: C.ink,
                     fontSize: 13, fontWeight: 600, cursor: "pointer",
                     flexShrink: 0,
                   }}
@@ -510,25 +493,25 @@ export default function PracticeStudio() {
               onKeyDown={(e) => onKeyDown(e, () => {})}
               style={{
                 background: `linear-gradient(135deg, ${C.elevated}, ${C.surface})`,
-                border: `1px solid ${C.saffron}25`,
+                border: `1px solid ${C.primary}25`,
                 borderRadius: 16, padding: 20, cursor: "pointer",
                 transition: "all 0.25s ease-out",
                 display: "flex", alignItems: "center", gap: 16,
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = C.saffron + "50";
+                e.currentTarget.style.borderColor = C.primary + "50";
                 e.currentTarget.style.transform = "translateY(-2px)";
                 e.currentTarget.style.boxShadow = "0 8px 32px rgba(232, 168, 56, 0.08)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = C.saffron + "25";
+                e.currentTarget.style.borderColor = C.primary + "25";
                 e.currentTarget.style.transform = "translateY(0)";
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
               <div style={{
                 width: 48, height: 48, borderRadius: 12,
-                background: `${C.saffron}15`, display: "flex", alignItems: "center", justifyContent: "center",
+                background: `${C.primary}15`, display: "flex", alignItems: "center", justifyContent: "center",
                 fontSize: 24, flexShrink: 0,
               }}>
                 {ACTIVITIES.find((a) => a.id === continueSession.activity)?.icon || "🎵"}
@@ -542,7 +525,7 @@ export default function PracticeStudio() {
                   {continueSession.created_at ? ` · ${formatDate(continueSession.created_at)}` : ""}
                 </p>
               </div>
-              <span style={{ color: C.saffron, fontSize: 14, fontWeight: 600 }}>Resume →</span>
+              <span style={{ color: C.primary, fontSize: 14, fontWeight: 600 }}>Resume →</span>
             </div>
           </section>
         )}
@@ -583,7 +566,7 @@ export default function PracticeStudio() {
                     transition: "all 0.2s ease-out",
                   }}
                   onMouseEnter={(e) => {
-                    if (rec.path) { e.currentTarget.style.borderColor = C.saffron + "30"; e.currentTarget.style.transform = "translateX(4px)"; }
+                    if (rec.path) { e.currentTarget.style.borderColor = C.primary + "30"; e.currentTarget.style.transform = "translateX(4px)"; }
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = "translateX(0)";
@@ -591,7 +574,7 @@ export default function PracticeStudio() {
                 >
                   <div style={{
                     width: 36, height: 36, borderRadius: 10, flexShrink: 0,
-                    background: `${C.saffron}12`, display: "flex", alignItems: "center", justifyContent: "center",
+                    background: `${C.primary}12`, display: "flex", alignItems: "center", justifyContent: "center",
                     fontSize: 16,
                   }}>
                     {rec.type === "repeat_exercise" ? "🔄" : rec.type === "try_activity" ? "✨" : rec.type === "maintain_streak" ? "🔥" : rec.type === "great_work" ? "⭐" : "🎵"}
@@ -618,9 +601,9 @@ export default function PracticeStudio() {
                   onClick={() => setFilter(cat.key)}
                   style={{
                     padding: "6px 14px", borderRadius: 8,
-                    border: `1px solid ${filter === cat.key ? C.saffron + "40" : C.border}`,
-                    background: filter === cat.key ? `${C.saffron}12` : "transparent",
-                    color: filter === cat.key ? C.saffron : C.textMuted,
+                    border: `1px solid ${filter === cat.key ? C.primary + "40" : C.border}`,
+                    background: filter === cat.key ? `${C.primary}12` : "transparent",
+                    color: filter === cat.key ? C.primary : C.textMuted,
                     fontSize: 12, fontWeight: 500, cursor: "pointer",
                     transition: "all 0.2s",
                   }}
@@ -661,7 +644,7 @@ export default function PracticeStudio() {
                 display: "flex", alignItems: "center", justifyContent: "space-between",
                 transition: "all 0.2s",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.saffron + "30"; }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.primary + "30"; }}
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.border; }}
             >
               <span style={{ display: "flex", alignItems: "center", gap: 10 }}>

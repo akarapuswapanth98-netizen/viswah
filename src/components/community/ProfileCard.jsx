@@ -1,9 +1,4 @@
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../ui/colors";
 
 export default function ProfileCard({ profile, onNavigate, compact = false }) {
   if (!profile) return null;
@@ -20,9 +15,9 @@ export default function ProfileCard({ profile, onNavigate, compact = false }) {
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: compact ? 0 : 12 }}>
         <div style={{
           width: compact ? 36 : 48, height: compact ? 36 : 48, borderRadius: 12,
-          background: `linear-gradient(135deg, ${C.saffron}22, ${C.teal}22)`,
+          background: `linear-gradient(135deg, ${C.primary}22, ${C.secondary}22)`,
           display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: compact ? 14 : 18, fontWeight: 700, color: C.saffron,
+          fontSize: compact ? 14 : 18, fontWeight: 700, color: C.primary,
         }}>
           {(profile.display_name || profile.username || "?")[0].toUpperCase()}
         </div>

@@ -6,24 +6,7 @@ import { onKeyDown } from "../utils/keyboard";
 import { useAudioFeedback } from "../hooks/useAudioFeedback";
 import UsageLimitBanner from "../components/subscription/UsageLimitBanner";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const ACTIVITY_ICONS = {
   vocal_guru: "🎤", piano: "🎹", drums: "🥁",
@@ -41,12 +24,12 @@ const COACHING_STATE_LABELS = {
 
 const SKILL_BAR_COLORS = {
   pitch: C.raga,
-  melody: C.saffron,
-  rhythm: C.teal,
+  melody: C.primary,
+  rhythm: C.secondary,
 };
 
 function SkillBar({ name, label, score, trend }) {
-  const color = SKILL_BAR_COLORS[name] || C.saffron;
+  const color = SKILL_BAR_COLORS[name] || C.primary;
   const width = Math.min(100, Math.max(0, score || 0));
 
   return (
@@ -108,13 +91,13 @@ function TodayPlan({ plan, navigate, buttonClick }) {
               transition: "all 0.2s",
               border: `1px solid transparent`,
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.saffron + "40"; e.currentTarget.style.transform = "translateX(2px)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.primary + "40"; e.currentTarget.style.transform = "translateX(2px)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.borderColor = "transparent"; e.currentTarget.style.transform = "translateX(0)"; }}
           >
             <div style={{
               width: 28, height: 28, borderRadius: 8,
-              background: `${C.saffron}15`, display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 14, fontWeight: 700, color: C.saffron, flexShrink: 0,
+              background: `${C.primary}15`, display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: 14, fontWeight: 700, color: C.primary, flexShrink: 0,
             }}>
               {step.step}
             </div>
@@ -140,25 +123,25 @@ function RecommendationCard({ recommendation, navigate, buttonClick }) {
 
   return (
     <div style={{
-      background: `linear-gradient(135deg, ${C.saffron}08, ${C.raga}05)`,
-      border: `1px solid ${C.saffron}20`,
+      background: `linear-gradient(135deg, ${C.primary}08, ${C.raga}05)`,
+      border: `1px solid ${C.primary}20`,
       borderRadius: 16, padding: 24, marginBottom: 24,
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
         <span style={{ fontSize: 20 }}>{recommendation.icon || "✨"}</span>
         <h3 style={{ color: C.text, fontSize: 16, fontWeight: 600, margin: 0 }}>Recommended Next</h3>
       </div>
-      <h4 style={{ color: C.saffron, fontSize: 14, fontWeight: 600, margin: "0 0 6px" }}>{recommendation.title}</h4>
+      <h4 style={{ color: C.primary, fontSize: 14, fontWeight: 600, margin: "0 0 6px" }}>{recommendation.title}</h4>
       <p style={{ color: C.textSecondary, fontSize: 13, margin: "0 0 6px", lineHeight: 1.5 }}>{recommendation.description}</p>
       <p style={{ color: C.textMuted, fontSize: 12, margin: "0 0 16px", fontStyle: "italic" }}>{recommendation.reason}</p>
       <button
         onClick={() => { buttonClick(); navigate(recommendation.route); }}
         style={{
-          background: C.saffron, color: C.ink, border: "none", borderRadius: 10,
+          background: C.primary, color: C.ink, border: "none", borderRadius: 10,
           padding: "10px 20px", fontSize: 13, fontWeight: 600, cursor: "pointer",
           transition: "all 0.2s",
         }}
-        onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = `0 4px 16px ${C.saffron}30`; }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = `0 4px 16px ${C.primary}30`; }}
         onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
       >
         Practice Now →
@@ -221,11 +204,11 @@ function CoachChat({ onSend, loading }) {
             }}>
               <div style={{
                 maxWidth: "80%", padding: "10px 14px", borderRadius: 12,
-                background: msg.role === "user" ? `${C.saffron}15` : C.elevated,
-                border: `1px solid ${msg.role === "user" ? C.saffron + "30" : C.border}`,
+                background: msg.role === "user" ? `${C.primary}15` : C.elevated,
+                border: `1px solid ${msg.role === "user" ? C.primary + "30" : C.border}`,
               }}>
                 <p style={{
-                  color: msg.role === "user" ? C.saffron : C.textSecondary,
+                  color: msg.role === "user" ? C.primary : C.textSecondary,
                   fontSize: 13, lineHeight: 1.5, margin: 0,
                 }}>{msg.content}</p>
               </div>
@@ -247,14 +230,14 @@ function CoachChat({ onSend, loading }) {
             borderRadius: 10, padding: "10px 14px", color: C.text, fontSize: 13,
             outline: "none", transition: "border-color 0.2s",
           }}
-          onFocus={(e) => { e.target.style.borderColor = C.saffron + "40"; }}
+          onFocus={(e) => { e.target.style.borderColor = C.primary + "40"; }}
           onBlur={(e) => { e.target.style.borderColor = C.border; }}
         />
         <button
           onClick={handleSubmit}
           disabled={!input.trim() || loading}
           style={{
-            background: input.trim() ? C.saffron : C.elevated,
+            background: input.trim() ? C.primary : C.elevated,
             color: input.trim() ? C.ink : C.textMuted,
             border: "none", borderRadius: 10,
             padding: "10px 16px", fontSize: 13, fontWeight: 600,
@@ -349,7 +332,7 @@ export default function AICoach() {
           <button
             onClick={fetchData}
             style={{
-              background: C.saffron, color: C.ink, border: "none", borderRadius: 10,
+              background: C.primary, color: C.ink, border: "none", borderRadius: 10,
               padding: "10px 20px", fontSize: 13, fontWeight: 600, cursor: "pointer",
             }}
           >
@@ -368,7 +351,7 @@ export default function AICoach() {
     <div style={{ minHeight: "100vh", background: C.ink, paddingBottom: 80 }}>
       <div style={{
         position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0,
-        background: `radial-gradient(80% 40% at 50% -10%, ${C.saffron}08, transparent 70%), radial-gradient(50% 30% at 80% 20%, ${C.raga}05, transparent 70%)`,
+        background: `radial-gradient(80% 40% at 50% -10%, ${C.primary}08, transparent 70%), radial-gradient(50% 30% at 80% 20%, ${C.raga}05, transparent 70%)`,
       }} />
 
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "40px 20px 0", position: "relative", zIndex: 1 }}>
@@ -384,17 +367,17 @@ export default function AICoach() {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
             <div>
               <h1 style={{ color: C.text, fontSize: 28, fontWeight: 700, margin: 0 }}>
-                AI Music <span style={{ color: C.saffron }}>Coach</span>
+                AI Music <span style={{ color: C.primary }}>Coach</span>
               </h1>
               <p style={{ color: C.textMuted, fontSize: 15, margin: "6px 0 0" }}>
                 {summary?.greeting || "Personalized guidance for your musical growth."}
               </p>
             </div>
             <div style={{
-              background: `${C.saffron}12`, border: `1px solid ${C.saffron}25`,
+              background: `${C.primary}12`, border: `1px solid ${C.primary}25`,
               borderRadius: 10, padding: "6px 14px",
             }}>
-              <span style={{ color: C.saffron, fontSize: 12, fontWeight: 600 }}>
+              <span style={{ color: C.primary, fontSize: 12, fontWeight: 600 }}>
                 {COACHING_STATE_LABELS[coachingState] || coachingState}
               </span>
             </div>
@@ -431,11 +414,11 @@ export default function AICoach() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 12 }}>
               <div style={{ background: C.elevated, borderRadius: 12, padding: 14 }}>
                 <span style={{ color: C.textMuted, fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.5px" }}>Sessions</span>
-                <p style={{ color: C.saffron, fontSize: 22, fontWeight: 700, margin: "4px 0 0" }}>{summary?.total_sessions || 0}</p>
+                <p style={{ color: C.primary, fontSize: 22, fontWeight: 700, margin: "4px 0 0" }}>{summary?.total_sessions || 0}</p>
               </div>
               <div style={{ background: C.elevated, borderRadius: 12, padding: 14 }}>
                 <span style={{ color: C.textMuted, fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.5px" }}>Streak</span>
-                <p style={{ color: C.teal, fontSize: 22, fontWeight: 700, margin: "4px 0 0" }}>{summary?.current_streak || 0}d</p>
+                <p style={{ color: C.secondary, fontSize: 22, fontWeight: 700, margin: "4px 0 0" }}>{summary?.current_streak || 0}d</p>
               </div>
               <div style={{ background: C.elevated, borderRadius: 12, padding: 14 }}>
                 <span style={{ color: C.textMuted, fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.5px" }}>Average</span>

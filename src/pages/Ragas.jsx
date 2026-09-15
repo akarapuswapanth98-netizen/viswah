@@ -4,25 +4,7 @@ import { indianMusicApi } from "../api/indianMusicApi";
 import { useToast } from "../context/ToastContext";
 import { onKeyDown } from "../utils/keyboard";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  borderFocus: "rgba(232, 168, 56, 0.3)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const styles = {
   page: {
@@ -143,7 +125,7 @@ const styles = {
     marginBottom: 20,
   },
   sectionTitle: {
-    color: C.saffron,
+    color: C.primary,
     fontSize: "0.85rem",
     fontWeight: 700,
     textTransform: "uppercase",
@@ -169,9 +151,9 @@ const styles = {
   noteChipRoot: {
     padding: "5px 12px",
     borderRadius: 8,
-    background: `${C.saffron}18`,
-    border: `1px solid ${C.saffron}35`,
-    color: C.saffron,
+    background: `${C.primary}18`,
+    border: `1px solid ${C.primary}35`,
+    color: C.primary,
     fontSize: "0.85rem",
     fontWeight: 700,
   },
@@ -185,9 +167,9 @@ const styles = {
     display: "inline-block",
     padding: "5px 12px",
     borderRadius: 8,
-    background: `${C.teal}10`,
-    border: `1px solid ${C.teal}25`,
-    color: C.teal,
+    background: `${C.secondary}10`,
+    border: `1px solid ${C.secondary}25`,
+    color: C.secondary,
     fontSize: "0.85rem",
     fontWeight: 600,
     marginRight: 6,
@@ -226,7 +208,7 @@ const styles = {
     padding: "8px 20px",
     borderRadius: 8,
     border: "none",
-    background: C.saffron,
+    background: C.primary,
     color: C.ink,
     cursor: "pointer",
     fontWeight: 600,
@@ -247,9 +229,9 @@ function SkeletonCard() {
 
 const getTimeBadgeStyle = (time) => {
   const t = (time || "").toLowerCase();
-  if (t === "day" || t === "morning") return { background: `${C.saffron}15`, color: C.saffron };
+  if (t === "day" || t === "morning") return { background: `${C.primary}15`, color: C.primary };
   if (t === "night" || t === "evening") return { background: `${C.raga}15`, color: C.raga };
-  return { background: `${C.teal}15`, color: C.teal };
+  return { background: `${C.secondary}15`, color: C.secondary };
 };
 
 export default function Ragas() {
@@ -369,7 +351,7 @@ export default function Ragas() {
             {/* Top accent */}
             <div style={{
               position: "absolute", top: 0, left: 0, right: 0, height: 3,
-              background: `linear-gradient(90deg, ${C.raga}, ${C.saffron})`,
+              background: `linear-gradient(90deg, ${C.raga}, ${C.primary})`,
             }} />
 
             <div style={styles.detailName}>{detail.name}</div>
@@ -382,7 +364,7 @@ export default function Ragas() {
             {(detail.vadi || detail.samvadi) && (
               <div style={{ display: "flex", gap: 12, marginBottom: 16, flexWrap: "wrap" }}>
                 {detail.vadi && (
-                  <span style={{ ...styles.badge, background: `${C.saffron}18`, color: C.saffron, border: `1px solid ${C.saffron}35` }}>
+                  <span style={{ ...styles.badge, background: `${C.primary}18`, color: C.primary, border: `1px solid ${C.primary}35` }}>
                     Vadi: {detail.vadi}
                   </span>
                 )}
@@ -535,7 +517,7 @@ export default function Ragas() {
                 onChange={(e) => setSearch(e.target.value)}
                 style={styles.searchBox}
                 onFocus={(e) => {
-                  e.target.style.borderColor = C.borderFocus;
+                  e.target.style.borderColor = C.borderActive;
                   e.target.style.boxShadow = "0 0 0 3px rgba(232, 168, 56, 0.06)";
                 }}
                 onBlur={(e) => {
@@ -552,9 +534,9 @@ export default function Ragas() {
                   onClick={() => setThaatFilter("")}
                   style={{
                     ...styles.backBtn,
-                    background: !thaatFilter ? `${C.saffron}20` : C.surface,
-                    borderColor: !thaatFilter ? C.saffron + "40" : C.border,
-                    color: !thaatFilter ? C.saffron : C.textSecondary,
+                    background: !thaatFilter ? `${C.primary}20` : C.surface,
+                    borderColor: !thaatFilter ? C.primary + "40" : C.border,
+                    color: !thaatFilter ? C.primary : C.textSecondary,
                     padding: "6px 14px",
                     fontSize: 12,
                   }}
@@ -565,9 +547,9 @@ export default function Ragas() {
                     onClick={() => setThaatFilter(thaatFilter === t ? "" : t)}
                     style={{
                       ...styles.backBtn,
-                      background: thaatFilter === t ? `${C.saffron}20` : C.surface,
-                      borderColor: thaatFilter === t ? C.saffron + "40" : C.border,
-                      color: thaatFilter === t ? C.saffron : C.textSecondary,
+                      background: thaatFilter === t ? `${C.primary}20` : C.surface,
+                      borderColor: thaatFilter === t ? C.primary + "40" : C.border,
+                      color: thaatFilter === t ? C.primary : C.textSecondary,
                       padding: "6px 14px",
                       fontSize: 12,
                     }}
@@ -672,7 +654,7 @@ export default function Ragas() {
                       {notesCount !== null && (
                         <div style={{ ...styles.cardRow, marginTop: 8 }}>
                           <span style={styles.cardLabel}>Notes</span>
-                          <span style={{ color: C.teal, fontWeight: 700, fontSize: "0.85rem" }}>{notesCount}</span>
+                          <span style={{ color: C.secondary, fontWeight: 700, fontSize: "0.85rem" }}>{notesCount}</span>
                         </div>
                       )}
                     </div>

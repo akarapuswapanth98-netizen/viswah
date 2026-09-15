@@ -1,11 +1,6 @@
 import { useState } from "react";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../ui/colors";
 
 const BOARD_TYPES = [
   { value: "weekly", label: "Weekly" },
@@ -39,7 +34,7 @@ export default function CommunityLeaderboard({ entries, onTypeChange }) {
             key={t.value}
             onClick={() => handleType(t.value)}
             style={{
-              background: activeType === t.value ? C.saffron : C.elevated,
+              background: activeType === t.value ? C.primary : C.elevated,
               color: activeType === t.value ? C.ink : C.textSecondary,
               border: "none", borderRadius: 6, padding: "5px 10px",
               fontSize: 11, fontWeight: 600, cursor: "pointer",
@@ -62,14 +57,14 @@ export default function CommunityLeaderboard({ entries, onTypeChange }) {
           >
             <div style={{
               width: 28, textAlign: "center", fontSize: entry.rank <= 3 ? 16 : 13,
-              color: entry.rank <= 3 ? C.saffron : C.textMuted, fontWeight: 600,
+              color: entry.rank <= 3 ? C.primary : C.textMuted, fontWeight: 600,
             }}>
               {entry.rank <= 3 ? MEDALS[entry.rank - 1] : `#${entry.rank}`}
             </div>
             <div style={{
               width: 32, height: 32, borderRadius: 8, background: C.elevated,
               display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 13, fontWeight: 700, color: C.saffron,
+              fontSize: 13, fontWeight: 700, color: C.primary,
             }}>
               {(entry.username || "?")[0].toUpperCase()}
             </div>
@@ -79,7 +74,7 @@ export default function CommunityLeaderboard({ entries, onTypeChange }) {
               </div>
             </div>
             <div style={{
-              color: C.teal, fontSize: 13, fontWeight: 600,
+              color: C.secondary, fontSize: 13, fontWeight: 600,
             }}>
               {entry.score} <span style={{ fontSize: 10, color: C.textMuted }}>{entry.metric}</span>
             </div>

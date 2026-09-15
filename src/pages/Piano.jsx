@@ -3,23 +3,7 @@ import { usePracticeSession } from "../hooks/usePracticeSession";
 import { useAudioFeedback } from "../hooks/useAudioFeedback";
 import { onKeyDown } from "../utils/keyboard";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const BASE_FREQUENCIES = {
   C: 261.63, "C#": 277.18, D: 293.66, "D#": 311.13, E: 329.63, F: 349.23,
@@ -431,12 +415,12 @@ export default function Piano() {
               width: `${100 / whiteKeys.length}%`,
               height: "100%",
               background: isPressed
-                ? `linear-gradient(180deg, ${C.saffron} 0%, ${C.saffronMuted} 100%)`
+                ? `linear-gradient(180deg, ${C.primary} 0%, ${C.primaryMuted} 100%)`
                 : isTarget
                 ? `linear-gradient(180deg, ${C.teal}40 0%, ${C.teal}20 100%)`
                 : "linear-gradient(180deg, #f0f0f0 0%, #e0e0e0 100%)",
               borderRadius: "0 0 6px 6px",
-              border: `1px solid ${isPressed ? C.saffron : isTarget ? C.teal : "#ccc"}`,
+              border: `1px solid ${isPressed ? C.primary : isTarget ? C.teal : "#ccc"}`,
               borderRight: "1px solid #aaa",
               cursor: "pointer",
               display: "flex", flexDirection: "column", alignItems: "center",
@@ -444,7 +428,7 @@ export default function Piano() {
               transition: "background 0.08s, transform 0.05s, border-color 0.15s",
               transform: isPressed ? "scaleY(0.97)" : "scaleY(1)",
               transformOrigin: "top",
-              boxShadow: isPressed ? `0 0 20px ${C.saffron}66` : isTarget ? `0 0 16px ${C.teal}33` : "0 4px 8px rgba(0,0,0,0.15)",
+              boxShadow: isPressed ? `0 0 20px ${C.primary}66` : isTarget ? `0 0 16px ${C.teal}33` : "0 4px 8px rgba(0,0,0,0.15)",
               userSelect: "none", zIndex: 1,
             }}
           >
@@ -475,14 +459,14 @@ export default function Piano() {
               ...blackKeyStyle,
               left: getBlackKeyPosition(i),
               background: isPressed
-                ? `linear-gradient(180deg, ${C.saffron} 0%, ${C.saffronMuted} 100%)`
+                ? `linear-gradient(180deg, ${C.primary} 0%, ${C.primaryMuted} 100%)`
                 : isTarget
                 ? `linear-gradient(180deg, ${C.teal} 0%, ${C.teal}aa 100%)`
                 : "linear-gradient(180deg, #1a1a2e 0%, #111 100%)",
-              border: `1px solid ${isPressed ? C.saffron : isTarget ? C.teal : C.border}`,
+              border: `1px solid ${isPressed ? C.primary : isTarget ? C.teal : C.border}`,
               transform: isPressed ? "scaleY(0.96)" : "scaleY(1)",
               transformOrigin: "top",
-              boxShadow: isPressed ? `0 0 20px ${C.saffron}88` : isTarget ? `0 0 16px ${C.teal}44` : "0 4px 6px rgba(0,0,0,0.4)",
+              boxShadow: isPressed ? `0 0 20px ${C.primary}88` : isTarget ? `0 0 16px ${C.teal}44` : "0 4px 6px rgba(0,0,0,0.4)",
             }}
           >
             <span style={{ fontSize: "0.6rem", color: isPressed ? C.text : isTarget ? C.teal : C.textMuted, fontWeight: 600 }}>
@@ -530,7 +514,7 @@ export default function Piano() {
           <div style={{ height: 4, borderRadius: 2, background: C.elevated, marginBottom: 24, overflow: "hidden" }}>
             <div style={{
               height: "100%", borderRadius: 2,
-              background: `linear-gradient(90deg, ${C.teal}, ${C.saffron})`,
+              background: `linear-gradient(90deg, ${C.teal}, ${C.primary})`,
               width: `${progress}%`, transition: "width 0.3s ease",
             }} />
           </div>
@@ -543,7 +527,7 @@ export default function Piano() {
               <p style={{ color: C.textMuted, fontSize: "0.85rem", fontWeight: 600, margin: "0 0 8px", textTransform: "uppercase", letterSpacing: 1 }}>
                 Play this note
               </p>
-              <p style={{ color: C.saffron, fontSize: "4rem", fontWeight: 800, margin: "0 0 4px", lineHeight: 1 }}>
+              <p style={{ color: C.primary, fontSize: "4rem", fontWeight: 800, margin: "0 0 4px", lineHeight: 1 }}>
                 {noteLabel(target.note, target.octave)}
               </p>
               {showHint && (
@@ -628,7 +612,7 @@ export default function Piano() {
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <button onClick={practiceAgain} style={{
                 padding: "14px 28px", borderRadius: 12,
-                background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+                background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
                 border: "none", color: C.ink, fontSize: "0.95rem", fontWeight: 700, cursor: "pointer",
               }} onKeyDown={(e) => onKeyDown(e, practiceAgain)}>
                 Practice Again
@@ -661,7 +645,7 @@ export default function Piano() {
             </button>
             <div>
               <h1 style={{ color: C.text, fontSize: "2rem", fontWeight: 700, margin: 0 }}>
-                Piano <span style={{ color: C.saffron }}>Practice</span>
+                Piano <span style={{ color: C.primary }}>Practice</span>
               </h1>
               <p style={{ color: C.textMuted, fontSize: "0.95rem", margin: 0 }}>
                 Choose an exercise to improve your skills
@@ -684,7 +668,7 @@ export default function Piano() {
                   transition: "all 0.25s ease-out",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = C.saffron + "40";
+                  e.currentTarget.style.borderColor = C.primary + "40";
                   e.currentTarget.style.transform = "translateY(-3px)";
                   e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.3)";
                 }}
@@ -707,7 +691,7 @@ export default function Piano() {
                 <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   {ex.instructions.map((inst, i) => (
                     <p key={i} style={{ color: C.textMuted, fontSize: "0.78rem", margin: 0, display: "flex", gap: 6 }}>
-                      <span style={{ color: C.saffron }}>{i + 1}.</span> {inst}
+                      <span style={{ color: C.primary }}>{i + 1}.</span> {inst}
                     </p>
                   ))}
                 </div>
@@ -731,7 +715,7 @@ export default function Piano() {
           </div>
           <button onClick={() => { setMode("practice"); buttonClick(); }} style={{
             padding: "10px 20px", borderRadius: 10,
-            background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+            background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
             border: "none", color: C.ink, fontWeight: 700, fontSize: "0.85rem",
             cursor: "pointer",
           }} onKeyDown={(e) => onKeyDown(e, () => { setMode("practice"); buttonClick(); })}>
@@ -743,17 +727,17 @@ export default function Piano() {
           <div style={{ display: "flex", alignItems: "center", gap: "8px", background: C.elevated, border: `1px solid ${C.border}`, borderRadius: "10px", padding: "10px 16px" }}>
             <span style={{ color: C.textSecondary, fontSize: "0.85rem", marginRight: "4px" }}>Octave</span>
             <button onClick={() => setOctave((o) => Math.max(2, o - 1))} style={{ width: "32px", height: "32px", borderRadius: "8px", border: `1px solid ${C.border}`, background: C.surface, color: C.text, cursor: "pointer", fontSize: "1.1rem", display: "flex", alignItems: "center", justifyContent: "center" }}>{"\u2212"}</button>
-            <span style={{ color: C.saffron, fontWeight: 700, fontSize: "1.1rem", minWidth: "48px", textAlign: "center" }}>{octave}\u2013{octave + 1}</span>
+            <span style={{ color: C.primary, fontWeight: 700, fontSize: "1.1rem", minWidth: "48px", textAlign: "center" }}>{octave}\u2013{octave + 1}</span>
             <button onClick={() => setOctave((o) => Math.min(6, o + 1))} style={{ width: "32px", height: "32px", borderRadius: "8px", border: `1px solid ${C.border}`, background: C.surface, color: C.text, cursor: "pointer", fontSize: "1.1rem", display: "flex", alignItems: "center", justifyContent: "center" }}>+</button>
           </div>
 
-          <button onClick={() => setSustain((s) => !s)} style={{ padding: "10px 18px", borderRadius: "10px", border: `1px solid ${sustain ? C.saffron : C.border}`, background: sustain ? `${C.saffron}22` : C.elevated, color: sustain ? C.saffron : C.textSecondary, cursor: "pointer", fontSize: "0.85rem", fontWeight: 600, transition: "all 0.2s" }}>
+          <button onClick={() => setSustain((s) => !s)} style={{ padding: "10px 18px", borderRadius: "10px", border: `1px solid ${sustain ? C.primary : C.border}`, background: sustain ? `${C.primary}22` : C.elevated, color: sustain ? C.primary : C.textSecondary, cursor: "pointer", fontSize: "0.85rem", fontWeight: 600, transition: "all 0.2s" }}>
             Sustain {sustain ? "ON" : "OFF"}
           </button>
 
           <div style={{ display: "flex", alignItems: "center", gap: "10px", background: C.elevated, border: `1px solid ${C.border}`, borderRadius: "10px", padding: "10px 16px" }}>
             <span style={{ color: C.textSecondary, fontSize: "0.85rem" }}>Vol</span>
-            <input type="range" min="0" max="1" step="0.01" value={volume} onChange={(e) => setVolume(parseFloat(e.target.value))} aria-label="Volume" style={{ width: "100px", accentColor: C.saffron }} />
+            <input type="range" min="0" max="1" step="0.01" value={volume} onChange={(e) => setVolume(parseFloat(e.target.value))} aria-label="Volume" style={{ width: "100px", accentColor: C.primary }} />
             <span style={{ color: C.textMuted, fontSize: "0.8rem", minWidth: "32px" }}>{Math.round(volume * 100)}%</span>
           </div>
         </div>
@@ -769,7 +753,7 @@ export default function Piano() {
               ["K", "C (oct+1)"], ["O", "C# (oct+1)"], ["L", "D (oct+1)"], ["P", "D# (oct+1)"], [";", "E (oct+1)"],
             ].map(([key, note]) => (
               <div key={key} style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-                <span style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: "4px", padding: "2px 8px", color: C.saffron, fontSize: "0.75rem", fontWeight: 700, fontFamily: "monospace" }}>{key}</span>
+                <span style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: "4px", padding: "2px 8px", color: C.primary, fontSize: "0.75rem", fontWeight: 700, fontFamily: "monospace" }}>{key}</span>
                 <span style={{ color: C.textSecondary, fontSize: "0.8rem" }}>{note}</span>
               </div>
             ))}

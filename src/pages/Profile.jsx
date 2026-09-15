@@ -8,21 +8,7 @@ import { personalizationApi } from "../api/personalizationApi";
 import { onKeyDown } from "../utils/keyboard";
 import { useToast } from "../context/ToastContext";
 
-const COLORS = {
-  primary: "#6C63FF",
-  secondary: "#4ECDC4",
-  neon: "#00FF88",
-  bg: "#0F0F23",
-  surface: "rgba(255,255,255,0.08)",
-  glass: "rgba(255,255,255,0.06)",
-  glassBorder: "rgba(255,255,255,0.12)",
-  text: "#FFFFFF",
-  secondaryText: "#B0B0CC",
-  mutedText: "#6B6B8D",
-  success: "#34C759",
-  warning: "#FF9500",
-  error: "#FF3B30",
-};
+import C from "../components/ui/colors";
 
 const skeletonKeyframes = `
 @keyframes shimmer {
@@ -40,7 +26,7 @@ const SkeletonBlock = ({ height = 200, style = {} }) => (
     style={{
       height,
       borderRadius: 16,
-      background: `linear-gradient(110deg, ${COLORS.surface} 30%, rgba(255,255,255,0.12) 50%, ${COLORS.surface} 70%)`,
+      background: `linear-gradient(110deg, ${C.surfaceTint} 30%, rgba(255,255,255,0.12) 50%, ${C.surfaceTint} 70%)`,
       backgroundSize: "200% 100%",
       animation: "shimmer 1.5s infinite",
       ...style,
@@ -169,12 +155,12 @@ export default function Profile() {
 
   if (!isAuthenticated) {
     return (
-      <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
+      <div style={{ minHeight: "100vh", background: C.ink, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
         <style>{skeletonKeyframes}</style>
         <div
           style={{
-            background: COLORS.glass,
-            border: `1px solid ${COLORS.glassBorder}`,
+            background: C.surfaceGlass,
+            border: `1px solid ${C.glassBorder}`,
             borderRadius: 24,
             padding: "48px 40px",
             textAlign: "center",
@@ -188,8 +174,8 @@ export default function Profile() {
               width: 80,
               height: 80,
               borderRadius: "50%",
-              background: `${COLORS.primary}22`,
-              border: `2px solid ${COLORS.primary}44`,
+              background: `${C.primary}22`,
+              border: `2px solid ${C.primary}44`,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -199,10 +185,10 @@ export default function Profile() {
           >
             👤
           </div>
-          <h2 style={{ color: COLORS.text, fontSize: 24, fontWeight: 700, margin: "0 0 12px" }}>
+          <h2 style={{ color: C.text, fontSize: 24, fontWeight: 700, margin: "0 0 12px" }}>
             Welcome, Guest
           </h2>
-          <p style={{ color: COLORS.secondaryText, fontSize: 16, marginBottom: 32, lineHeight: 1.5 }}>
+          <p style={{ color: C.textSecondary, fontSize: 16, marginBottom: 32, lineHeight: 1.5 }}>
             Sign in to track your progress, view stats, and manage your profile.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
@@ -212,8 +198,8 @@ export default function Profile() {
                 padding: "14px 32px",
                 borderRadius: 12,
                 border: "none",
-                background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.secondary})`,
-                color: COLORS.text,
+                background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})`,
+                color: C.text,
                 fontSize: 16,
                 fontWeight: 600,
                 cursor: "pointer",
@@ -229,16 +215,16 @@ export default function Profile() {
               style={{
                 padding: "14px 32px",
                 borderRadius: 12,
-                border: `1px solid ${COLORS.glassBorder}`,
-                background: COLORS.glass,
-                color: COLORS.text,
+                border: `1px solid ${C.glassBorder}`,
+                background: C.surfaceGlass,
+                color: C.text,
                 fontSize: 16,
                 fontWeight: 600,
                 cursor: "pointer",
                 transition: "background 0.2s",
               }}
-              onMouseEnter={(e) => (e.target.style.background = COLORS.surface)}
-              onMouseLeave={(e) => (e.target.style.background = COLORS.glass)}
+              onMouseEnter={(e) => (e.target.style.background = C.surfaceTint)}
+              onMouseLeave={(e) => (e.target.style.background = C.surfaceGlass)}
             >
               Create Account
             </button>
@@ -260,7 +246,7 @@ export default function Profile() {
 
   if (loading) {
     return (
-      <div style={{ minHeight: "100vh", background: COLORS.bg, padding: "0 20px" }}>
+      <div style={{ minHeight: "100vh", background: C.ink, padding: "0 20px" }}>
         <style>{skeletonKeyframes}</style>
         <div style={{ maxWidth: 800, margin: "0 auto", paddingTop: 40 }}>
           <SkeletonBlock height={160} style={{ marginBottom: 24 }} />
@@ -274,14 +260,14 @@ export default function Profile() {
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: COLORS.bg, padding: "0 20px 80px" }}>
+    <div style={{ minHeight: "100vh", background: C.ink, padding: "0 20px 80px" }}>
       <style>{skeletonKeyframes}</style>
       <div style={{ maxWidth: 800, margin: "0 auto", paddingTop: 40 }}>
         {/* User Info Card */}
         <div
           style={{
-            background: COLORS.glass,
-            border: `1px solid ${COLORS.glassBorder}`,
+            background: C.surfaceGlass,
+            border: `1px solid ${C.glassBorder}`,
             borderRadius: 24,
             padding: 32,
             marginBottom: 24,
@@ -297,29 +283,29 @@ export default function Profile() {
               width: 80,
               height: 80,
               borderRadius: "50%",
-              background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.secondary})`,
+              background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})`,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontSize: 28,
               fontWeight: 700,
-              color: COLORS.text,
+              color: C.text,
               flexShrink: 0,
             }}
           >
             {initials}
           </div>
           <div style={{ flex: 1, minWidth: 200 }}>
-            <h1 style={{ color: COLORS.text, fontSize: 24, fontWeight: 700, margin: "0 0 4px" }}>
+            <h1 style={{ color: C.text, fontSize: 24, fontWeight: 700, margin: "0 0 4px" }}>
               {username}
             </h1>
-            <p style={{ color: COLORS.secondaryText, fontSize: 15, margin: "0 0 8px" }}>{email}</p>
+            <p style={{ color: C.textSecondary, fontSize: 15, margin: "0 0 8px" }}>{email}</p>
             <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
               {level && (
                 <span
                   style={{
-                    background: `${COLORS.neon}22`,
-                    color: COLORS.neon,
+                    background: `${C.neon}22`,
+                    color: C.neon,
                     padding: "4px 12px",
                     borderRadius: 8,
                     fontSize: 13,
@@ -332,8 +318,8 @@ export default function Profile() {
               {personalization?.coaching_state && (
                 <span
                   style={{
-                    background: `${COLORS.primary}22`,
-                    color: COLORS.primary,
+                    background: `${C.primary}22`,
+                    color: C.primary,
                     padding: "4px 12px",
                     borderRadius: 8,
                     fontSize: 13,
@@ -362,21 +348,21 @@ export default function Profile() {
           }}
         >
           {[
-            { label: "Courses Enrolled", value: stats.coursesEnrolled, icon: "📚", color: COLORS.primary },
-            { label: "Lessons Completed", value: stats.lessonsCompleted, icon: "✅", color: COLORS.success },
-            { label: "Average Score", value: `${stats.averageScore}%`, icon: "📊", color: COLORS.secondary },
-            { label: "Quizzes Passed", value: stats.quizzesPassed, icon: "🏆", color: COLORS.neon },
+            { label: "Courses Enrolled", value: stats.coursesEnrolled, icon: "📚", color: C.primary },
+            { label: "Lessons Completed", value: stats.lessonsCompleted, icon: "✅", color: C.success },
+            { label: "Average Score", value: `${stats.averageScore}%`, icon: "📊", color: C.secondary },
+            { label: "Quizzes Passed", value: stats.quizzesPassed, icon: "🏆", color: C.neon },
             ...(stats.practiceSessions > 0 ? [
-              { label: "Practice Sessions", value: stats.practiceSessions, icon: "🎵", color: COLORS.primary },
-              { label: "Total Practice", value: `${stats.practiceMinutes}m`, icon: "⏱", color: COLORS.secondary },
-              { label: "Streak", value: `${stats.streakDays}d`, icon: "🔥", color: COLORS.warning },
+              { label: "Practice Sessions", value: stats.practiceSessions, icon: "🎵", color: C.primary },
+              { label: "Total Practice", value: `${stats.practiceMinutes}m`, icon: "⏱", color: C.secondary },
+              { label: "Streak", value: `${stats.streakDays}d`, icon: "🔥", color: C.warning },
             ] : []),
           ].map((stat, i) => (
             <div
               key={stat.label}
               style={{
-                background: COLORS.glass,
-                border: `1px solid ${COLORS.glassBorder}`,
+                background: C.surfaceGlass,
+                border: `1px solid ${C.glassBorder}`,
                 borderRadius: 16,
                 padding: "24px 20px",
                 animation: `fadeIn 0.3s ease ${i * 0.08}s both`,
@@ -393,7 +379,7 @@ export default function Profile() {
               >
                 {stat.value}
               </p>
-              <p style={{ color: COLORS.mutedText, fontSize: 13, margin: 0 }}>{stat.label}</p>
+              <p style={{ color: C.textMuted, fontSize: 13, margin: 0 }}>{stat.label}</p>
             </div>
           ))}
         </div>
@@ -401,13 +387,13 @@ export default function Profile() {
         {/* Skill Map */}
         {personalization?.skill_map && personalization.skill_map.length > 0 && (
           <section style={{ marginBottom: 32 }}>
-            <h2 style={{ color: COLORS.text, fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
+            <h2 style={{ color: C.text, fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
               Music Skill Map
             </h2>
             <div
               style={{
-                background: COLORS.glass,
-                border: `1px solid ${COLORS.glassBorder}`,
+                background: C.surfaceGlass,
+                border: `1px solid ${C.glassBorder}`,
                 borderRadius: 16,
                 padding: 24,
               }}
@@ -418,21 +404,21 @@ export default function Profile() {
                     <span style={{ fontSize: 18, width: 28, textAlign: "center" }}>{skill.icon}</span>
                     <div style={{ flex: 1 }}>
                       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                        <span style={{ color: COLORS.text, fontSize: 14, fontWeight: 500 }}>{skill.label}</span>
+                        <span style={{ color: C.text, fontSize: 14, fontWeight: 500 }}>{skill.label}</span>
                         {skill.score !== null ? (
-                          <span style={{ color: COLORS.mutedText, fontSize: 13 }}>{skill.score}%</span>
+                          <span style={{ color: C.textMuted, fontSize: 13 }}>{skill.score}%</span>
                         ) : (
-                          <span style={{ color: COLORS.mutedText, fontSize: 12, fontStyle: "italic" }}>No data yet</span>
+                          <span style={{ color: C.textMuted, fontSize: 12, fontStyle: "italic" }}>No data yet</span>
                         )}
                       </div>
                       {skill.score !== null && (
                         <div style={{
-                          height: 6, borderRadius: 3, background: COLORS.surface, overflow: "hidden",
+                          height: 6, borderRadius: 3, background: C.surfaceTint, overflow: "hidden",
                         }}>
                           <div style={{
                             height: "100%", borderRadius: 3,
                             width: `${skill.score}%`,
-                            background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.secondary})`,
+                            background: `linear-gradient(90deg, ${C.primary}, ${C.secondary})`,
                             transition: "width 0.5s ease",
                           }} />
                         </div>
@@ -448,7 +434,7 @@ export default function Profile() {
         {/* Achievements */}
         {achievements.length > 0 && (
           <section style={{ marginBottom: 32 }}>
-            <h2 style={{ color: COLORS.text, fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
+            <h2 style={{ color: C.text, fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
               Achievements
             </h2>
             <div style={{ display: "flex", gap: 12, overflowX: "auto", paddingBottom: 8 }}>
@@ -475,13 +461,13 @@ export default function Profile() {
                 const def = defs[a.type] || { icon: "🏅", label: a.type };
                 return (
                   <div key={i} style={{
-                    background: COLORS.glass,
-                    border: `1px solid ${COLORS.glassBorder}`,
+                    background: C.surfaceGlass,
+                    border: `1px solid ${C.glassBorder}`,
                     borderRadius: 12, padding: "16px 18px", minWidth: 140,
                     textAlign: "center", flexShrink: 0,
                   }}>
                     <div style={{ fontSize: 28, marginBottom: 4 }}>{def.icon}</div>
-                    <div style={{ color: COLORS.text, fontSize: 13, fontWeight: 600 }}>{def.label}</div>
+                    <div style={{ color: C.text, fontSize: 13, fontWeight: 600 }}>{def.label}</div>
                   </div>
                 );
               })}
@@ -494,8 +480,8 @@ export default function Profile() {
           <section style={{ marginBottom: 32 }}>
             <div
               style={{
-                background: `linear-gradient(135deg, ${COLORS.primary}15, ${COLORS.secondary}15)`,
-                border: `1px solid ${COLORS.primary}30`,
+                background: `linear-gradient(135deg, ${C.primary}15, ${C.secondary}15)`,
+                border: `1px solid ${C.primary}30`,
                 borderRadius: 16,
                 padding: "20px 24px",
                 display: "flex",
@@ -508,16 +494,16 @@ export default function Profile() {
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <span style={{ fontSize: 28 }}>🔥</span>
                 <div>
-                  <p style={{ color: COLORS.text, fontSize: 16, fontWeight: 600, margin: 0 }}>
+                  <p style={{ color: C.text, fontSize: 16, fontWeight: 600, margin: 0 }}>
                     {personalization.streak_data.current_streak} Day Streak
                   </p>
-                  <p style={{ color: COLORS.mutedText, fontSize: 13, margin: "2px 0 0" }}>
+                  <p style={{ color: C.textMuted, fontSize: 13, margin: "2px 0 0" }}>
                     {personalization.streak_data.total_minutes} minutes total practice
                   </p>
                 </div>
               </div>
               {personalization.streak_data.longest_streak > 0 && (
-                <span style={{ color: COLORS.mutedText, fontSize: 13 }}>
+                <span style={{ color: C.textMuted, fontSize: 13 }}>
                   Best: {personalization.streak_data.longest_streak} days
                 </span>
               )}
@@ -527,28 +513,28 @@ export default function Profile() {
 
         {/* Recent Activity */}
         <section style={{ marginBottom: 32 }}>
-          <h2 style={{ color: COLORS.text, fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
+          <h2 style={{ color: C.text, fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
             Recent Activity
           </h2>
           {recentActivity.length === 0 ? (
             <div
               style={{
-                background: COLORS.glass,
-                border: `1px solid ${COLORS.glassBorder}`,
+                background: C.surfaceGlass,
+                border: `1px solid ${C.glassBorder}`,
                 borderRadius: 16,
                 padding: "40px 24px",
                 textAlign: "center",
               }}
             >
-              <p style={{ color: COLORS.secondaryText, fontSize: 16, margin: 0 }}>
+              <p style={{ color: C.textSecondary, fontSize: 16, margin: 0 }}>
                 No activity yet. Start a course to see your progress here!
               </p>
             </div>
           ) : (
             <div
               style={{
-                background: COLORS.glass,
-                border: `1px solid ${COLORS.glassBorder}`,
+                background: C.surfaceGlass,
+                border: `1px solid ${C.glassBorder}`,
                 borderRadius: 16,
                 overflow: "hidden",
               }}
@@ -558,7 +544,7 @@ export default function Profile() {
                   key={item.id || i}
                   style={{
                     padding: "16px 20px",
-                    borderBottom: i < recentActivity.length - 1 ? `1px solid ${COLORS.glassBorder}` : "none",
+                    borderBottom: i < recentActivity.length - 1 ? `1px solid ${C.glassBorder}` : "none",
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
@@ -567,10 +553,10 @@ export default function Profile() {
                   }}
                 >
                   <div>
-                    <p style={{ color: COLORS.text, fontSize: 15, fontWeight: 500, margin: "0 0 4px" }}>
+                    <p style={{ color: C.text, fontSize: 15, fontWeight: 500, margin: "0 0 4px" }}>
                       {item.lesson_title ?? item.lessonTitle ?? item.title ?? `Lesson ${item.lesson_id ?? item.lessonId ?? ""}`}
                     </p>
-                    <p style={{ color: COLORS.mutedText, fontSize: 13, margin: 0 }}>
+                    <p style={{ color: C.textMuted, fontSize: 13, margin: 0 }}>
                       {formatDate(item.updated_at || item.updatedAt || item.created_at)}
                     </p>
                   </div>
@@ -578,8 +564,8 @@ export default function Profile() {
                     {item.completed && (
                       <span
                         style={{
-                          background: `${COLORS.success}22`,
-                          color: COLORS.success,
+                          background: `${C.success}22`,
+                          color: C.success,
                           padding: "4px 10px",
                           borderRadius: 8,
                           fontSize: 12,
@@ -594,9 +580,9 @@ export default function Profile() {
                         style={{
                           background:
                             Number(item.score) >= 70
-                              ? `${COLORS.neon}22`
-                              : `${COLORS.warning}22`,
-                          color: Number(item.score) >= 70 ? COLORS.neon : COLORS.warning,
+                              ? `${C.neon}22`
+                              : `${C.warning}22`,
+                          color: Number(item.score) >= 70 ? C.neon : C.warning,
                           padding: "4px 10px",
                           borderRadius: 8,
                           fontSize: 12,
@@ -619,19 +605,19 @@ export default function Profile() {
             onClick={() => navigate("/practice")}
             style={{
               width: "100%", padding: "16px 20px", borderRadius: 14,
-              background: COLORS.glass, border: `1px solid ${COLORS.primary}25`,
-              color: COLORS.text, fontSize: 14, fontWeight: 500, cursor: "pointer",
+              background: C.surfaceGlass, border: `1px solid ${C.primary}25`,
+              color: C.text, fontSize: 14, fontWeight: 500, cursor: "pointer",
               display: "flex", alignItems: "center", justifyContent: "space-between",
               transition: "border-color 0.2s",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = COLORS.primary; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${COLORS.primary}25`; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.primary; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${C.primary}25`; }}
           >
             <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <span style={{ fontSize: 16 }}>🎵</span>
               Open Practice Studio
             </span>
-            <span style={{ color: COLORS.mutedText }}>→</span>
+            <span style={{ color: C.textMuted }}>→</span>
           </button>
         </section>
 
@@ -641,19 +627,19 @@ export default function Profile() {
             onClick={() => navigate("/ai-coach")}
             style={{
               width: "100%", padding: "16px 20px", borderRadius: 14,
-              background: COLORS.glass, border: `1px solid ${COLORS.secondary}25`,
-              color: COLORS.text, fontSize: 14, fontWeight: 500, cursor: "pointer",
+              background: C.surfaceGlass, border: `1px solid ${C.secondary}25`,
+              color: C.text, fontSize: 14, fontWeight: 500, cursor: "pointer",
               display: "flex", alignItems: "center", justifyContent: "space-between",
               transition: "border-color 0.2s",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = COLORS.secondary; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${COLORS.secondary}25`; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.secondary; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${C.secondary}25`; }}
           >
             <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <span style={{ fontSize: 16 }}>🎯</span>
               AI Music Coach
             </span>
-            <span style={{ color: COLORS.mutedText }}>→</span>
+            <span style={{ color: C.textMuted }}>→</span>
           </button>
         </section>
 
@@ -663,19 +649,19 @@ export default function Profile() {
             onClick={() => navigate("/world-music")}
             style={{
               width: "100%", padding: "16px 20px", borderRadius: 14,
-              background: COLORS.glass, border: `1px solid ${COLORS.secondary}25`,
-              color: COLORS.text, fontSize: 14, fontWeight: 500, cursor: "pointer",
+              background: C.surfaceGlass, border: `1px solid ${C.secondary}25`,
+              color: C.text, fontSize: 14, fontWeight: 500, cursor: "pointer",
               display: "flex", alignItems: "center", justifyContent: "space-between",
               transition: "border-color 0.2s",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = COLORS.secondary; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${COLORS.secondary}25`; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.secondary; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${C.secondary}25`; }}
           >
             <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <span style={{ fontSize: 16 }}>🌍</span>
               World Music
             </span>
-            <span style={{ color: COLORS.mutedText }}>→</span>
+            <span style={{ color: C.textMuted }}>→</span>
           </button>
         </section>
 
@@ -685,26 +671,26 @@ export default function Profile() {
             onClick={() => navigate("/practice-history")}
             style={{
               width: "100%", padding: "16px 20px", borderRadius: 14,
-              background: COLORS.glass, border: `1px solid ${COLORS.glassBorder}`,
-              color: COLORS.text, fontSize: 14, fontWeight: 500, cursor: "pointer",
+              background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`,
+              color: C.text, fontSize: 14, fontWeight: 500, cursor: "pointer",
               display: "flex", alignItems: "center", justifyContent: "space-between",
               transition: "border-color 0.2s",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = COLORS.primary; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = COLORS.glassBorder; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.primary; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.glassBorder; }}
           >
             <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <span style={{ fontSize: 16 }}>📊</span>
               View Practice History
             </span>
-            <span style={{ color: COLORS.mutedText }}>→</span>
+            <span style={{ color: C.textMuted }}>→</span>
           </button>
         </section>
 
         {/* Enrolled Courses */}
         {enrolled.length > 0 && (
           <section style={{ marginBottom: 32 }}>
-            <h2 style={{ color: COLORS.text, fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
+            <h2 style={{ color: C.text, fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
               Enrolled Courses
             </h2>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -716,8 +702,8 @@ export default function Profile() {
                   onClick={() => navigate(`/courses/${course.id}`)}
                   onKeyDown={(e) => onKeyDown(e, () => navigate(`/courses/${course.id}`))}
                   style={{
-                    background: COLORS.glass,
-                    border: `1px solid ${COLORS.glassBorder}`,
+                    background: C.surfaceGlass,
+                    border: `1px solid ${C.glassBorder}`,
                     borderRadius: 16,
                     padding: "16px 20px",
                     cursor: "pointer",
@@ -729,25 +715,25 @@ export default function Profile() {
                     gap: 8,
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = COLORS.primary;
+                    e.currentTarget.style.borderColor = C.primary;
                     e.currentTarget.style.transform = "translateY(-2px)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = COLORS.glassBorder;
+                    e.currentTarget.style.borderColor = C.glassBorder;
                     e.currentTarget.style.transform = "translateY(0)";
                   }}
                 >
                   <div>
-                    <p style={{ color: COLORS.text, fontSize: 16, fontWeight: 600, margin: "0 0 4px" }}>
+                    <p style={{ color: C.text, fontSize: 16, fontWeight: 600, margin: "0 0 4px" }}>
                       {course.title}
                     </p>
-                    <p style={{ color: COLORS.mutedText, fontSize: 13, margin: 0 }}>
+                    <p style={{ color: C.textMuted, fontSize: 13, margin: 0 }}>
                       {course.instrument || "Music"} • {course.difficulty || "All levels"}
                     </p>
                   </div>
                   <span
                     style={{
-                      color: COLORS.primary,
+                      color: C.primary,
                       fontSize: 14,
                       fontWeight: 500,
                     }}
@@ -762,13 +748,13 @@ export default function Profile() {
 
         {/* Settings */}
         <section>
-          <h2 style={{ color: COLORS.text, fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
+          <h2 style={{ color: C.text, fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
             Settings
           </h2>
           <div
             style={{
-              background: COLORS.glass,
-              border: `1px solid ${COLORS.glassBorder}`,
+              background: C.surfaceGlass,
+              border: `1px solid ${C.glassBorder}`,
               borderRadius: 16,
               padding: "8px 20px",
             }}
@@ -781,7 +767,7 @@ export default function Profile() {
                 padding: "16px 0",
                 border: "none",
                 background: "transparent",
-                color: COLORS.error,
+                color: C.error,
                 fontSize: 16,
                 fontWeight: 600,
                 cursor: loggingOut ? "not-allowed" : "pointer",

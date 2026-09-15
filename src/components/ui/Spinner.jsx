@@ -1,7 +1,4 @@
-const colors = {
-  primary: '#6C63FF',
-  glassBorder: 'rgba(255,255,255,0.12)',
-};
+import C from './colors';
 
 let spinnerStylesInjected = false;
 function injectSpinnerStyles() {
@@ -19,7 +16,7 @@ function injectSpinnerStyles() {
 function Spinner({
   size = 32,
   variant = 'circular',
-  color = colors.primary,
+  color = C.primary,
   label = 'Loading',
   className = '',
   style = {},
@@ -67,7 +64,7 @@ function Spinner({
       default:
         return (
           <svg style={{ width: `${size}px`, height: `${size}px`, animation: 'spinner-rotate 1.4s linear infinite' }} viewBox="0 0 50 50">
-            <circle cx="25" cy="25" r="20" fill="none" stroke={colors.glassBorder} strokeWidth="4" />
+            <circle cx="25" cy="25" r="20" fill="none" stroke={C.glassBorder} strokeWidth="4" />
             <circle cx="25" cy="25" r="20" fill="none" stroke={color} strokeWidth="4" strokeLinecap="round" style={{ animation: 'spinner-dash 1.4s ease-in-out infinite' }} />
           </svg>
         );

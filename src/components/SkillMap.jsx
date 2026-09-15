@@ -1,26 +1,11 @@
 import { memo, useState, useEffect, useMemo } from "react";
 import { onKeyDown } from "../utils/keyboard";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "./ui/colors";
 
 const TREND_COLORS = {
   improving: C.success,
-  stable: C.teal,
+  stable: C.secondary,
   declining: C.warning,
   insufficient_data: C.textMuted,
 };
@@ -36,7 +21,7 @@ function SkillBar({ skill, mounted, index }) {
   const hasScore = skill.score != null;
   const score = hasScore ? Math.round(skill.score) : 0;
   const barColor = hasScore
-    ? score >= 70 ? C.success : score >= 50 ? C.teal : score >= 30 ? C.warning : C.error
+    ? score >= 70 ? C.success : score >= 50 ? C.secondary : score >= 30 ? C.warning : C.error
     : C.textMuted;
 
   return (

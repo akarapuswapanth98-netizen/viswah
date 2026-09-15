@@ -2,35 +2,16 @@ import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { worldMusicApi } from "../api/worldMusicApi";
 import { onKeyDown } from "../utils/keyboard";
-
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  borderFocus: "rgba(232, 168, 56, 0.3)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const REGION_COLORS = {
-  south_asia: C.saffron,
+  south_asia: C.primary,
   middle_east: C.raga,
-  east_asia: C.teal,
+  east_asia: C.secondary,
   southeast_asia: "#6DBF73",
   africa: "#D4A84A",
   europe: "#5B8EC7",
-  north_america: C.saffronMuted,
+  north_america: C.primaryMuted,
   latin_america: C.error,
 };
 
@@ -102,14 +83,14 @@ export default function TraditionDetail() {
           <p style={{ color: C.textSecondary, fontSize: 18, marginBottom: 8 }}>{error || "Tradition not found"}</p>
           <button onClick={() => navigate("/world-music")} style={{
             padding: "10px 24px", borderRadius: 10, border: "none",
-            background: C.saffron, color: C.ink, fontWeight: 600, cursor: "pointer", fontSize: 14,
+            background: C.primary, color: C.ink, fontWeight: 600, cursor: "pointer", fontSize: 14,
           }}>Back to World Music</button>
         </div>
       </div>
     );
   }
 
-  const regionColor = REGION_COLORS[tradition.region] || C.saffron;
+  const regionColor = REGION_COLORS[tradition.region] || C.primary;
 
   return (
     <div style={{ minHeight: "100vh", background: C.ink, paddingBottom: 80 }}>
@@ -148,8 +129,8 @@ export default function TraditionDetail() {
               fontWeight: 600,
             }}>{tradition.region?.replace(/_/g, " ")}</span>
             <span style={{
-              background: tradition.difficulty === "beginner" ? `${C.success}15` : tradition.difficulty === "advanced" ? `${C.warning}15` : `${C.teal}15`,
-              color: tradition.difficulty === "beginner" ? C.success : tradition.difficulty === "advanced" ? C.warning : C.teal,
+              background: tradition.difficulty === "beginner" ? `${C.success}15` : tradition.difficulty === "advanced" ? `${C.warning}15` : `${C.secondary}15`,
+              color: tradition.difficulty === "beginner" ? C.success : tradition.difficulty === "advanced" ? C.warning : C.secondary,
               borderRadius: 8,
               padding: "4px 12px",
               fontSize: 12,
@@ -376,7 +357,7 @@ export default function TraditionDetail() {
             <h2 style={{ color: regionColor, fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>Related Traditions</h2>
             <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
               {tradition.related_traditions_detail.map((rel) => {
-                const relColor = REGION_COLORS[rel.region] || C.saffron;
+                const relColor = REGION_COLORS[rel.region] || C.primary;
                 return (
                   <div
                     key={rel.id}
@@ -500,7 +481,7 @@ export default function TraditionDetail() {
         {/* AI Coach CTA */}
         <section style={{
           background: `linear-gradient(135deg, ${C.elevated}, ${C.surface})`,
-          border: `1px solid ${C.teal}25`,
+          border: `1px solid ${C.secondary}25`,
           borderRadius: 16,
           padding: 24,
           textAlign: "center",
@@ -511,7 +492,7 @@ export default function TraditionDetail() {
             onClick={() => navigate("/ai-coach")}
             style={{
               padding: "10px 24px", borderRadius: 10, border: "none",
-              background: `linear-gradient(135deg, ${C.teal}, ${C.teal}CC)`,
+              background: `linear-gradient(135deg, ${C.secondary}, ${C.secondary}CC)`,
               color: "#fff", fontSize: 14, fontWeight: 600, cursor: "pointer",
               boxShadow: "0 4px 16px rgba(91, 168, 160, 0.2)",
             }}

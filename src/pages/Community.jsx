@@ -9,12 +9,7 @@ import PartnerCard from "../components/community/PartnerCard";
 import CommunityLeaderboard from "../components/community/CommunityLeaderboard";
 import NotificationCenter from "../components/community/NotificationCenter";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../components/ui/colors";
 
 const TABS = ["Feed", "Groups", "Challenges", "Partners", "Leaderboard", "Notifications"];
 
@@ -190,7 +185,7 @@ export default function Community() {
             key={tab}
             onClick={() => setActiveTab(tab)}
             style={{
-              background: activeTab === tab ? C.saffron : C.surface,
+              background: activeTab === tab ? C.primary : C.surface,
               color: activeTab === tab ? C.ink : C.textSecondary,
               border: "none", borderRadius: 8, padding: "8px 14px",
               fontSize: 13, fontWeight: 600, cursor: "pointer",
@@ -201,7 +196,7 @@ export default function Community() {
             {tab === "Notifications" && unreadCount > 0 && (
               <span style={{
                 position: "absolute", top: -4, right: -4,
-                background: C.saffron, color: C.ink, borderRadius: 8,
+                background: C.primary, color: C.ink, borderRadius: 8,
                 width: 18, height: 18, fontSize: 10, fontWeight: 700,
                 display: "flex", alignItems: "center", justifyContent: "center",
               }}>{unreadCount}</span>

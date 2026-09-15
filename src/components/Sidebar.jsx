@@ -2,23 +2,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useState, useEffect } from 'react';
 import { useAudioFeedback } from '../hooks/useAudioFeedback';
-
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#8075A0",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  borderActive: "rgba(232, 168, 56, 0.2)",
-};
+import C from './ui/colors';
 
 const navItems = [
   { to: '/home', label: 'Home', icon: '🏠' },
@@ -31,42 +15,42 @@ const navItems = [
 ];
 
 const musicTools = [
-  { to: '/vocal-guru', label: 'Vocal Guru', icon: '🎤', accent: C.saffron },
-  { to: '/speech-analysis', label: 'Speech Analysis', icon: '🗣', accent: C.teal },
+  { to: '/vocal-guru', label: 'Vocal Guru', icon: '🎤', accent: C.primary },
+  { to: '/speech-analysis', label: 'Speech Analysis', icon: '🗣', accent: C.secondary },
   { to: '/lyrics', label: 'Lyrics', icon: '✍', accent: C.raga },
-  { to: '/metronome', label: 'Metronome', icon: '⏱', accent: C.saffronMuted },
-  { to: '/piano', label: 'Piano', icon: '🎹', accent: C.teal },
+  { to: '/metronome', label: 'Metronome', icon: '⏱', accent: C.primaryMuted },
+  { to: '/piano', label: 'Piano', icon: '🎹', accent: C.secondary },
   { to: '/drums', label: 'Drums', icon: '🥁', accent: C.raga },
 ];
 
 const indianMusic = [
-  { to: '/ragas', label: 'Ragas', icon: '🎵', accent: C.saffron },
+  { to: '/ragas', label: 'Ragas', icon: '🎵', accent: C.primary },
   { to: '/talas', label: 'Talas', icon: '🪘', accent: C.raga },
-  { to: '/sargam', label: 'Sargam', icon: '🎼', accent: C.teal },
+  { to: '/sargam', label: 'Sargam', icon: '🎼', accent: C.secondary },
 ];
 
 const worldMusicItems = [
-  { to: '/world-music', label: 'World Music', icon: '🌍', accent: C.teal },
-  { to: '/world-music/compare', label: 'Compare', icon: '⚖', accent: C.teal },
+  { to: '/world-music', label: 'World Music', icon: '🌍', accent: C.secondary },
+  { to: '/world-music/compare', label: 'Compare', icon: '⚖', accent: C.secondary },
 ];
 
 const musicLabItems = [
-  { to: '/music-lab/notes', label: 'Note Recognition', icon: '👂', accent: C.saffron },
-  { to: '/music-lab/intervals', label: 'Intervals', icon: '🎵', accent: C.teal },
+  { to: '/music-lab/notes', label: 'Note Recognition', icon: '👂', accent: C.primary },
+  { to: '/music-lab/intervals', label: 'Intervals', icon: '🎵', accent: C.secondary },
   { to: '/music-lab/rhythm', label: 'Rhythm', icon: '🥁', accent: C.raga },
-  { to: '/music-lab/melody', label: 'Melody', icon: '🎼', accent: C.saffron },
+  { to: '/music-lab/melody', label: 'Melody', icon: '🎼', accent: C.primary },
   { to: '/music-lab/memory', label: 'Memory', icon: '🧠', accent: C.raga },
-  { to: '/music-lab/world', label: 'World Listening', icon: '🌍', accent: C.teal },
+  { to: '/music-lab/world', label: 'World Listening', icon: '🌍', accent: C.secondary },
 ];
 
 const aiItems = [
-  { to: '/ai-coach', label: 'AI Coach', icon: '🎯', accent: C.saffron },
-  { to: '/ai-lessons', label: 'AI Lessons', icon: '🤖', accent: C.saffron },
+  { to: '/ai-coach', label: 'AI Coach', icon: '🎯', accent: C.primary },
+  { to: '/ai-lessons', label: 'AI Lessons', icon: '🤖', accent: C.primary },
 ];
 
 const accountItems = [
-  { to: '/pricing', label: 'Pricing', icon: '💎', accent: C.saffron },
-  { to: '/subscription', label: 'Subscription', icon: '⭐', accent: C.teal },
+  { to: '/pricing', label: 'Pricing', icon: '💎', accent: C.primary },
+  { to: '/subscription', label: 'Subscription', icon: '⭐', accent: C.secondary },
 ];
 
 function NavLinkItem({ item, onClose }) {
@@ -90,9 +74,9 @@ function NavLinkItem({ item, onClose }) {
         transition: "all 0.2s ease-out",
         marginBottom: 2,
         background: isActive
-          ? `linear-gradient(135deg, rgba(232, 168, 56, 0.1), rgba(232, 168, 56, 0.04))`
+          ? `linear-gradient(135deg, ${C.primary}18, ${C.primary}08)`
           : hovered
-            ? "rgba(255,255,255,0.04)"
+            ? C.surfaceGlass
             : "transparent",
         border: isActive
           ? `1px solid ${C.borderActive}`
@@ -116,6 +100,35 @@ function NavLinkItem({ item, onClose }) {
       }}>{item.icon}</span>
       <span>{item.label}</span>
     </NavLink>
+  );
+}
+
+const sectionLabelStyle = {
+  fontSize: 11,
+  fontWeight: 600,
+  textTransform: "uppercase",
+  letterSpacing: 1.5,
+  color: C.textMuted,
+  padding: "0 12px",
+  marginBottom: 8,
+  margin: 0,
+  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+};
+
+const dividerStyle = {
+  height: 1,
+  background: `linear-gradient(90deg, transparent, ${C.borderHover}, transparent)`,
+  margin: "4px 20px",
+};
+
+function SidebarSection({ title, items, onClose }) {
+  return (
+    <div style={{ padding: "12px 12px 8px" }}>
+      <h3 style={sectionLabelStyle}>{title}</h3>
+      {items.map((item) => (
+        <NavLinkItem key={item.to} item={item} onClose={onClose} />
+      ))}
+    </div>
   );
 }
 
@@ -143,7 +156,7 @@ export default function Sidebar({ isOpen, onClose }) {
         left: 0,
         display: "flex",
         flexDirection: "column",
-        background: `linear-gradient(180deg, rgba(12, 10, 20, 0.97), rgba(22, 18, 34, 0.97))`,
+        background: `linear-gradient(180deg, ${C.ink}f8, ${C.surface}f8)`,
         backdropFilter: "blur(24px)",
         WebkitBackdropFilter: "blur(24px)",
         borderRight: `1px solid ${C.border}`,
@@ -161,7 +174,7 @@ export default function Sidebar({ isOpen, onClose }) {
           left: 0,
           right: 0,
           height: 120,
-          background: "radial-gradient(ellipse 120% 100% at 50% -20%, rgba(232, 168, 56, 0.06), transparent 70%)",
+          background: `radial-gradient(ellipse 120% 100% at 50% -20%, ${C.primary}10, transparent 70%)`,
           pointerEvents: "none",
           zIndex: 0,
         }} />
@@ -180,170 +193,55 @@ export default function Sidebar({ isOpen, onClose }) {
             width: 32,
             height: 32,
             borderRadius: 10,
-            background: `linear-gradient(135deg, ${C.saffron}20, ${C.raga}15)`,
-            border: `1px solid ${C.saffron}30`,
+            background: `linear-gradient(135deg, ${C.primary}20, ${C.raga}15)`,
+            border: `1px solid ${C.primary}30`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             fontSize: 16,
-            boxShadow: `0 0 16px rgba(232, 168, 56, 0.08)`,
+            boxShadow: `0 0 16px ${C.primary}12`,
           }}>♪</div>
           <span style={{
             fontSize: 20,
             fontWeight: 800,
             letterSpacing: 2,
           }}>
-            <span style={{ color: C.saffron }}>VIS</span>
-            <span style={{ color: C.teal }}>WAH</span>
+            <span style={{ color: C.primary }}>VIS</span>
+            <span style={{ color: C.secondary }}>WAH</span>
           </span>
         </div>
 
         {/* Nav */}
         <nav aria-label="Sidebar navigation" style={{ flex: 1, position: "relative", zIndex: 1 }}>
-          {/* Main nav */}
           <div style={{ padding: "16px 12px 8px" }}>
             {navItems.map((item) => (
               <NavLinkItem key={item.to} item={item} onClose={onClose} />
             ))}
           </div>
 
-          <div style={{
-            height: 1,
-            background: `linear-gradient(90deg, transparent, ${C.borderHover}, transparent)`,
-            margin: "4px 20px",
-          }} />
+          <div style={dividerStyle} />
 
-          {/* Music Tools */}
-          <div style={{ padding: "12px 12px 8px" }}>
-            <h3 style={{
-              fontSize: 11,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: 1.5,
-              color: C.textMuted,
-              padding: "0 12px",
-              marginBottom: 8,
-              margin: 0,
-            }}>Music Tools</h3>
-            {musicTools.map((item) => (
-              <NavLinkItem key={item.to} item={item} onClose={onClose} />
-            ))}
-          </div>
+          <SidebarSection title="Music Tools" items={musicTools} onClose={onClose} />
 
-          <div style={{
-            height: 1,
-            background: `linear-gradient(90deg, transparent, ${C.borderHover}, transparent)`,
-            margin: "4px 20px",
-          }} />
+          <div style={dividerStyle} />
 
-          {/* Indian Music */}
-          <div style={{ padding: "12px 12px 8px" }}>
-            <h3 style={{
-              fontSize: 11,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: 1.5,
-              color: C.textMuted,
-              padding: "0 12px",
-              marginBottom: 8,
-              margin: 0,
-            }}>Indian Classical</h3>
-            {indianMusic.map((item) => (
-              <NavLinkItem key={item.to} item={item} onClose={onClose} />
-            ))}
-          </div>
+          <SidebarSection title="Indian Classical" items={indianMusic} onClose={onClose} />
 
-          <div style={{
-            height: 1,
-            background: `linear-gradient(90deg, transparent, ${C.borderHover}, transparent)`,
-            margin: "4px 20px",
-          }} />
+          <div style={dividerStyle} />
 
-          {/* World Music */}
-          <div style={{ padding: "12px 12px 8px" }}>
-            <h3 style={{
-              fontSize: 11,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: 1.5,
-              color: C.textMuted,
-              padding: "0 12px",
-              marginBottom: 8,
-              margin: 0,
-            }}>Explore</h3>
-            {worldMusicItems.map((item) => (
-              <NavLinkItem key={item.to} item={item} onClose={onClose} />
-            ))}
-          </div>
+          <SidebarSection title="Explore" items={worldMusicItems} onClose={onClose} />
 
-          <div style={{
-            height: 1,
-            background: `linear-gradient(90deg, transparent, ${C.borderHover}, transparent)`,
-            margin: "4px 20px",
-          }} />
+          <div style={dividerStyle} />
 
-          {/* Music Lab */}
-          <div style={{ padding: "12px 12px 8px" }}>
-            <h3 style={{
-              fontSize: 11,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: 1.5,
-              color: C.textMuted,
-              padding: "0 12px",
-              marginBottom: 8,
-              margin: 0,
-            }}>Music Lab</h3>
-            {musicLabItems.map((item) => (
-              <NavLinkItem key={item.to} item={item} onClose={onClose} />
-            ))}
-          </div>
+          <SidebarSection title="Music Lab" items={musicLabItems} onClose={onClose} />
 
-          <div style={{
-            height: 1,
-            background: `linear-gradient(90deg, transparent, ${C.borderHover}, transparent)`,
-            margin: "4px 20px",
-          }} />
+          <div style={dividerStyle} />
 
-          {/* AI */}
-          <div style={{ padding: "12px 12px 8px" }}>
-            <h3 style={{
-              fontSize: 11,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: 1.5,
-              color: C.textMuted,
-              padding: "0 12px",
-              marginBottom: 8,
-              margin: 0,
-            }}>AI</h3>
-            {aiItems.map((item) => (
-              <NavLinkItem key={item.to} item={item} onClose={onClose} />
-            ))}
-          </div>
+          <SidebarSection title="AI" items={aiItems} onClose={onClose} />
 
-          <div style={{
-            height: 1,
-            background: `linear-gradient(90deg, transparent, ${C.borderHover}, transparent)`,
-            margin: "4px 20px",
-          }} />
+          <div style={dividerStyle} />
 
-          {/* Account */}
-          <div style={{ padding: "12px 12px 8px" }}>
-            <h3 style={{
-              fontSize: 11,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: 1.5,
-              color: C.textMuted,
-              padding: "0 12px",
-              marginBottom: 8,
-              margin: 0,
-            }}>Account</h3>
-            {accountItems.map((item) => (
-              <NavLinkItem key={item.to} item={item} onClose={onClose} />
-            ))}
-          </div>
+          <SidebarSection title="Account" items={accountItems} onClose={onClose} />
         </nav>
 
         {/* User section */}
@@ -360,15 +258,15 @@ export default function Sidebar({ isOpen, onClose }) {
             position: "relative",
             zIndex: 1,
           }}
-          onMouseEnter={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.03)"}
+          onMouseEnter={(e) => e.currentTarget.style.background = C.surfaceGlass}
           onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
           >
             <div style={{
               width: 36,
               height: 36,
               borderRadius: "50%",
-              background: `linear-gradient(135deg, ${C.saffron}30, ${C.raga}20)`,
-              border: `1px solid ${C.saffron}25`,
+              background: `linear-gradient(135deg, ${C.primary}30, ${C.raga}20)`,
+              border: `1px solid ${C.primary}25`,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -405,15 +303,15 @@ export default function Sidebar({ isOpen, onClose }) {
             position: "relative",
             zIndex: 1,
           }}
-          onMouseEnter={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.03)"}
+          onMouseEnter={(e) => e.currentTarget.style.background = C.surfaceGlass}
           onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
           >
             <div style={{
               width: 36,
               height: 36,
               borderRadius: "50%",
-              background: `${C.teal}15`,
-              border: `1px solid ${C.teal}20`,
+              background: `${C.secondary}15`,
+              border: `1px solid ${C.secondary}20`,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

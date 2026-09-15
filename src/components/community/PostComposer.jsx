@@ -1,11 +1,6 @@
 import { useState } from "react";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../ui/colors";
 
 const POST_TYPES = [
   { value: "achievement", label: "Achievement" },
@@ -47,7 +42,7 @@ export default function PostComposer({ onSubmit }) {
 
   return (
     <div style={{
-      background: C.surface, border: `1px solid ${C.saffron}33`,
+      background: C.surface, border: `1px solid ${C.primary}33`,
       borderRadius: 14, padding: 20, marginBottom: 16,
     }}>
       <div style={{ display: "flex", gap: 10, marginBottom: 12 }}>
@@ -103,7 +98,7 @@ export default function PostComposer({ onSubmit }) {
           onClick={handleSubmit}
           disabled={!content.trim()}
           style={{
-            background: content.trim() ? C.saffron : C.elevated,
+            background: content.trim() ? C.primary : C.elevated,
             color: content.trim() ? C.ink : C.textMuted,
             border: "none", borderRadius: 8, padding: "8px 16px",
             fontSize: 13, fontWeight: 600, cursor: content.trim() ? "pointer" : "default",

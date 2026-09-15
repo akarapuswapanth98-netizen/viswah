@@ -1,12 +1,7 @@
 import { useState } from "react";
 import subscriptionApi from "../../api/subscriptionApi";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../ui/colors";
 
 export default function PaymentButton({ planId, planName, priceInr, onSuccess, onError }) {
   const [loading, setLoading] = useState(false);
@@ -46,7 +41,7 @@ export default function PaymentButton({ planId, planName, priceInr, onSuccess, o
             }
           },
           prefill: { name: "", email: "" },
-          theme: { color: C.saffron },
+          theme: { color: C.primary },
         };
         const rzp = new window.Razorpay(options);
         rzp.on("payment.failed", (response) => onError?.(response.error));
@@ -67,8 +62,8 @@ export default function PaymentButton({ planId, planName, priceInr, onSuccess, o
       disabled={loading || priceInr === 0}
       style={{
         width: "100%", padding: "14px 0", borderRadius: 12,
-        background: priceInr === 0 ? `${C.teal}20` : `linear-gradient(135deg, ${C.saffron}, ${C.saffron}CC)`,
-        color: priceInr === 0 ? C.teal : "#0C0A14",
+        background: priceInr === 0 ? `${C.secondary}20` : `linear-gradient(135deg, ${C.primary}, ${C.primary}CC)`,
+        color: priceInr === 0 ? C.secondary : "#0C0A14",
         border: "none", fontSize: 15, fontWeight: 700,
         cursor: loading ? "wait" : "pointer",
         opacity: loading ? 0.7 : 1,

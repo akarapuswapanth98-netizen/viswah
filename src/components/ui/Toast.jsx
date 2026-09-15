@@ -1,16 +1,5 @@
 import { useEffect, useState } from 'react';
-
-const colors = {
-  primary: '#6C63FF',
-  secondary: '#4ECDC4',
-  success: '#34C759',
-  warning: '#FF9500',
-  error: '#FF3B30',
-  background: '#0F0F23',
-  glassBorder: 'rgba(255,255,255,0.12)',
-  text: '#FFFFFF',
-  mutedText: '#6B6B8D',
-};
+import C from './colors';
 
 const toastKeyframes = `
 @keyframes toast-slide-in {
@@ -48,10 +37,10 @@ function ToastItem({ toast, onRemove }) {
   const [isRemoving, setIsRemoving] = useState(false);
 
   const typeColors = {
-    success: colors.success,
-    error: colors.error,
-    warning: colors.warning,
-    info: colors.primary,
+    success: C.success,
+    error: C.error,
+    warning: C.warning,
+    info: C.primary,
   };
 
   const accentColor = typeColors[type] || typeColors.info;
@@ -67,10 +56,10 @@ function ToastItem({ toast, onRemove }) {
   return (
     <div
       style={{
-        background: 'linear-gradient(135deg, rgba(15, 15, 35, 0.98), rgba(20, 20, 45, 0.98))',
+        background: `linear-gradient(135deg, ${C.ink}f8, ${C.surface}f8)`,
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        border: `1px solid ${colors.glassBorder}`,
+        border: `1px solid ${C.glassBorder}`,
         borderLeft: `4px solid ${accentColor}`,
         borderRadius: '12px',
         padding: '16px',
@@ -96,13 +85,13 @@ function ToastItem({ toast, onRemove }) {
         {iconMap[type] || iconMap.info}
       </div>
       <div style={{
-        color: colors.text, fontSize: '14px',
+        color: C.text, fontSize: '14px',
         fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         lineHeight: 1.5, flex: 1,
       }}>{message}</div>
       <button
         style={{
-          background: 'transparent', border: 'none', color: colors.mutedText,
+          background: 'transparent', border: 'none', color: C.textMuted,
           cursor: 'pointer', padding: '4px', fontSize: '16px', lineHeight: 1, flexShrink: 0,
         }}
         onClick={handleClose}

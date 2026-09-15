@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useToast } from "../context/ToastContext";
+import C from "../components/ui/colors";
 
 export default function Register() {
   const [form, setForm] = useState({ username: "", email: "", password: "", confirmPassword: "" });
@@ -48,7 +49,7 @@ export default function Register() {
   return (
     <div style={{
       minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center",
-      background: "linear-gradient(135deg, #0F0F23 0%, #1a1a3e 50%, #0F0F23 100%)", padding: 20,
+      background: "linear-gradient(135deg, C.ink 0%, #1a1a3e 50%, C.ink 100%)", padding: 20,
     }}>
       <style>{`
         @media (max-width: 768px) {
@@ -62,7 +63,7 @@ export default function Register() {
       }}>
         <div style={{ textAlign: "center", marginBottom: 32 }}>
           <h1 style={{ fontSize: 28, fontWeight: 700, margin: "0 0 8px" }}>
-            <span style={{ color: "#6C63FF" }}>VIS</span><span style={{ color: "#4ECDC4" }}>WAH</span>
+            <span style={{ color: "C.primary" }}>VIS</span><span style={{ color: "C.secondary" }}>WAH</span>
           </h1>
           <p style={{ color: "#B0B0CC", fontSize: 14 }}>Create your learning account</p>
         </div>
@@ -83,7 +84,7 @@ export default function Register() {
               <label htmlFor={id} style={{ display: "block", color: "#B0B0CC", fontSize: 13, marginBottom: 6 }}>{label}</label>
               <input id={id} type={type} value={form[key]} onChange={(e) => update(key, e.target.value)}
                 placeholder={placeholder} style={inputStyle}
-                onFocus={(e) => e.target.style.borderColor = "#6C63FF"}
+                onFocus={(e) => e.target.style.borderColor = "C.primary"}
                 onBlur={(e) => e.target.style.borderColor = "rgba(255,255,255,0.12)"}
               />
             </div>
@@ -94,7 +95,7 @@ export default function Register() {
             <input id="reg-password" type={showPassword ? "text" : "password"} value={form.password}
               onChange={(e) => update("password", e.target.value)} placeholder="Min 6 characters"
               style={{ ...inputStyle, paddingRight: 44 }}
-              onFocus={(e) => e.target.style.borderColor = "#6C63FF"}
+              onFocus={(e) => e.target.style.borderColor = "C.primary"}
               onBlur={(e) => e.target.style.borderColor = "rgba(255,255,255,0.12)"}
             />
             <button type="button" onClick={() => setShowPassword(!showPassword)}
@@ -109,13 +110,13 @@ export default function Register() {
             <input id="reg-confirm" type={showPassword ? "text" : "password"} value={form.confirmPassword}
               onChange={(e) => update("confirmPassword", e.target.value)} placeholder="Repeat password"
               style={inputStyle}
-              onFocus={(e) => e.target.style.borderColor = "#6C63FF"}
+              onFocus={(e) => e.target.style.borderColor = "C.primary"}
               onBlur={(e) => e.target.style.borderColor = "rgba(255,255,255,0.12)"}
             />
           </div>
 
           <button type="submit" disabled={loading} style={{
-            width: "100%", padding: "13px 0", background: loading ? "#4A42D4" : "#6C63FF",
+            width: "100%", padding: "13px 0", background: loading ? "#4A42D4" : "C.primary",
             color: "#fff", border: "none", borderRadius: 10, fontSize: 15, fontWeight: 600,
             cursor: loading ? "not-allowed" : "pointer",
           }}>
@@ -125,7 +126,7 @@ export default function Register() {
 
         <p style={{ textAlign: "center", marginTop: 20, color: "#6B6B8D", fontSize: 13 }}>
           Already have an account?{" "}
-          <Link to="/login" style={{ color: "#6C63FF", textDecoration: "none" }}>Sign in</Link>
+          <Link to="/login" style={{ color: "C.primary", textDecoration: "none" }}>Sign in</Link>
         </p>
       </div>
     </div>

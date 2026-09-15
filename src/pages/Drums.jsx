@@ -3,26 +3,10 @@ import { usePracticeSession } from "../hooks/usePracticeSession";
 import { useAudioFeedback } from "../hooks/useAudioFeedback";
 import { onKeyDown } from "../utils/keyboard";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const PADS = [
-  { id: "kick", label: "Kick", keys: [" ", "z"], color: C.saffron, layout: { gridRow: "2/3", gridColumn: "2/3" } },
+  { id: "kick", label: "Kick", keys: [" ", "z"], color: C.primary, layout: { gridRow: "2/3", gridColumn: "2/3" } },
   { id: "snare", label: "Snare", keys: ["x", "k"], color: C.teal, layout: { gridRow: "1/2", gridColumn: "2/3" } },
   { id: "hihat", label: "Hi-Hat", keys: ["c", "j"], color: C.textSecondary, layout: { gridRow: "1/2", gridColumn: "1/2" } },
   { id: "tom", label: "Tom", keys: ["v", "l"], color: C.error, layout: { gridRow: "2/3", gridColumn: "1/2" } },
@@ -310,13 +294,13 @@ export default function Drums() {
             </div>
           </div>
           <div style={{ height: 4, borderRadius: 2, background: C.elevated, marginBottom: 24, overflow: "hidden" }}>
-            <div style={{ height: "100%", borderRadius: 2, background: `linear-gradient(90deg, ${C.teal}, ${C.saffron})`, width: `${progress}%`, transition: "width 0.3s ease" }} />
+            <div style={{ height: "100%", borderRadius: 2, background: `linear-gradient(90deg, ${C.teal}, ${C.primary})`, width: `${progress}%`, transition: "width 0.3s ease" }} />
           </div>
           {currentTarget && (
             <div style={{ textAlign: "center", padding: "24px 20px", marginBottom: 24, background: C.surface, border: `1px solid ${C.border}`, borderRadius: 16 }}>
               <p style={{ color: C.textMuted, fontSize: "0.85rem", fontWeight: 600, margin: "0 0 12px", textTransform: "uppercase", letterSpacing: 1 }}>Play {currentTarget.length > 1 ? "together" : "this pad"}</p>
               <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-                {currentTarget.map((padId) => { const pad = PADS.find((p) => p.id === padId); return (<span key={padId} style={{ padding: "12px 24px", borderRadius: 12, background: `${pad?.color || C.saffron}20`, border: `2px solid ${pad?.color || C.saffron}60`, color: pad?.color || C.saffron, fontSize: "1.2rem", fontWeight: 700 }}>{pad?.label || padId}</span>); })}
+                {currentTarget.map((padId) => { const pad = PADS.find((p) => p.id === padId); return (<span key={padId} style={{ padding: "12px 24px", borderRadius: 12, background: `${pad?.color || C.primary}20`, border: `2px solid ${pad?.color || C.primary}60`, color: pad?.color || C.primary, fontSize: "1.2rem", fontWeight: 700 }}>{pad?.label || padId}</span>); })}
               </div>
               {lastHitCorrect !== null && (<p style={{ color: lastHitCorrect ? C.success : C.error, fontSize: "0.85rem", fontWeight: 600, margin: "12px 0 0" }}>{lastHitCorrect ? "\u2713 Correct!" : "\u2717 Wrong pad"}</p>)}
             </div>
@@ -352,7 +336,7 @@ export default function Drums() {
               <p style={{ color: C.textSecondary, fontSize: "0.9rem", margin: 0, lineHeight: 1.6 }}>{result.accuracy >= 90 ? "Excellent timing! Your rhythm is solid." : result.accuracy >= 70 ? "Good rhythm! Focus on hitting the correct pads more precisely." : "Keep practicing! Pay attention to which pad to hit next."}</p>
             </div>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <button onClick={practiceAgain} style={{ padding: "14px 28px", borderRadius: 12, background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`, border: "none", color: C.ink, fontSize: "0.95rem", fontWeight: 700, cursor: "pointer" }} onKeyDown={(e) => onKeyDown(e, practiceAgain)}>Practice Again</button>
+              <button onClick={practiceAgain} style={{ padding: "14px 28px", borderRadius: 12, background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`, border: "none", color: C.ink, fontSize: "0.95rem", fontWeight: 700, cursor: "pointer" }} onKeyDown={(e) => onKeyDown(e, practiceAgain)}>Practice Again</button>
               <button onClick={saveAndReturn} style={{ padding: "14px 28px", borderRadius: 12, background: C.elevated, border: `1px solid ${C.border}`, color: C.textSecondary, fontSize: "0.9rem", fontWeight: 500, cursor: "pointer" }} onKeyDown={(e) => onKeyDown(e, saveAndReturn)}>Save & Return</button>
             </div>
           </div>
@@ -368,20 +352,20 @@ export default function Drums() {
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
             <button onClick={() => setMode("free")} style={{ padding: "8px 16px", borderRadius: 8, background: C.surface, border: `1px solid ${C.border}`, color: C.textSecondary, cursor: "pointer", fontSize: "0.85rem", fontWeight: 600 }} onKeyDown={(e) => onKeyDown(e, () => setMode("free"))}>{"\u2190"} Free Play</button>
             <div>
-              <h1 style={{ color: C.text, fontSize: "2rem", fontWeight: 700, margin: 0 }}>Drum <span style={{ color: C.saffron }}>Practice</span></h1>
+              <h1 style={{ color: C.text, fontSize: "2rem", fontWeight: 700, margin: 0 }}>Drum <span style={{ color: C.primary }}>Practice</span></h1>
               <p style={{ color: C.textMuted, fontSize: "0.95rem", margin: 0 }}>Choose a rhythm exercise to improve your timing</p>
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
             {EXERCISES.map((ex) => (
-              <div key={ex.id} data-testid={`exercise-${ex.id}`} tabIndex={0} role="button" onClick={() => startExercise(ex)} onKeyDown={(e) => onKeyDown(e, () => startExercise(ex))} style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 14, padding: 20, cursor: "pointer", transition: "all 0.25s ease-out" }} onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.saffron + "40"; e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.3)"; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
+              <div key={ex.id} data-testid={`exercise-${ex.id}`} tabIndex={0} role="button" onClick={() => startExercise(ex)} onKeyDown={(e) => onKeyDown(e, () => startExercise(ex))} style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 14, padding: 20, cursor: "pointer", transition: "all 0.25s ease-out" }} onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.primary + "40"; e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.3)"; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
                   <h3 style={{ color: C.text, fontSize: "1rem", fontWeight: 600, margin: 0 }}>{ex.title}</h3>
                   <span style={{ fontSize: 11, fontWeight: 600, padding: "3px 10px", borderRadius: 8, background: `${C.teal}15`, color: C.teal }}>{ex.difficulty}</span>
                 </div>
                 <p style={{ color: C.textSecondary, fontSize: "0.85rem", margin: "0 0 12px", lineHeight: 1.5 }}>{ex.description}</p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                  {ex.instructions.map((inst, i) => (<p key={i} style={{ color: C.textMuted, fontSize: "0.78rem", margin: 0, display: "flex", gap: 6 }}><span style={{ color: C.saffron }}>{i + 1}.</span> {inst}</p>))}
+                  {ex.instructions.map((inst, i) => (<p key={i} style={{ color: C.textMuted, fontSize: "0.78rem", margin: 0, display: "flex", gap: 6 }}><span style={{ color: C.primary }}>{i + 1}.</span> {inst}</p>))}
                 </div>
               </div>
             ))}
@@ -399,12 +383,12 @@ export default function Drums() {
             <h1 style={{ color: C.text, fontSize: "2rem", marginBottom: "8px", fontWeight: 700 }}>Drums</h1>
             <p style={{ color: C.textSecondary, marginBottom: "16px", fontSize: "0.95rem" }}>Click the pads or use your keyboard to play.</p>
           </div>
-          <button onClick={() => { setMode("practice"); buttonClick(); }} style={{ padding: "10px 20px", borderRadius: 10, background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`, border: "none", color: C.ink, fontWeight: 700, fontSize: "0.85rem", cursor: "pointer" }} onKeyDown={(e) => onKeyDown(e, () => { setMode("practice"); buttonClick(); })}>Start Practice</button>
+          <button onClick={() => { setMode("practice"); buttonClick(); }} style={{ padding: "10px 20px", borderRadius: 10, background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`, border: "none", color: C.ink, fontWeight: 700, fontSize: "0.85rem", cursor: "pointer" }} onKeyDown={(e) => onKeyDown(e, () => { setMode("practice"); buttonClick(); })}>Start Practice</button>
         </div>
         <div style={{ display: "flex", gap: "16px", marginBottom: "24px", flexWrap: "wrap", alignItems: "center" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px", background: C.elevated, border: `1px solid ${C.border}`, borderRadius: "10px", padding: "10px 16px" }}>
             <span style={{ color: C.textSecondary, fontSize: "0.85rem" }}>Vol</span>
-            <input type="range" min="0" max="1" step="0.01" value={volume} onChange={(e) => setVolume(parseFloat(e.target.value))} aria-label="Volume" style={{ width: "100px", accentColor: C.saffron }} />
+            <input type="range" min="0" max="1" step="0.01" value={volume} onChange={(e) => setVolume(parseFloat(e.target.value))} aria-label="Volume" style={{ width: "100px", accentColor: C.primary }} />
             <span style={{ color: C.textMuted, fontSize: "0.8rem", minWidth: "32px" }}>{Math.round(volume * 100)}%</span>
           </div>
         </div>
@@ -414,7 +398,7 @@ export default function Drums() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "8px" }}>
             {[["Kick", "60Hz sine sweep + noise burst"], ["Snare", "Triangle + noise with bandpass"], ["Hi-Hat", "High-pass filtered noise"], ["Tom", "150Hz sine sweep"], ["Crash", "Bandpass noise with long decay"], ["Ride", "High-pass noise, medium decay"]].map(([name, desc]) => (
               <div key={name} style={{ display: "flex", gap: "8px", alignItems: "baseline" }}>
-                <span style={{ color: C.saffron, fontSize: "0.8rem", fontWeight: 700, minWidth: "52px" }}>{name}</span>
+                <span style={{ color: C.primary, fontSize: "0.8rem", fontWeight: 700, minWidth: "52px" }}>{name}</span>
                 <span style={{ color: C.textMuted, fontSize: "0.75rem" }}>{desc}</span>
               </div>
             ))}

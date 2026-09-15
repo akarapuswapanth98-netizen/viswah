@@ -1,20 +1,5 @@
 import React from 'react';
-
-const colors = {
-  primary: '#6C63FF',
-  secondary: '#4ECDC4',
-  success: '#34C759',
-  warning: '#FF9500',
-  error: '#FF3B30',
-  neon: '#00FF88',
-  background: '#0F0F23',
-  surface: 'rgba(255,255,255,0.08)',
-  glass: 'rgba(255,255,255,0.06)',
-  glassBorder: 'rgba(255,255,255,0.12)',
-  text: '#FFFFFF',
-  secondaryText: '#B0B0CC',
-  mutedText: '#6B6B8D',
-};
+import C from './colors';
 
 function GlassCard({
   children,
@@ -28,13 +13,13 @@ function GlassCard({
   ...props
 }) {
   const cardStyle = {
-    background: colors.glass,
+    background: C.surfaceGlass,
     backdropFilter: 'blur(20px)',
     WebkitBackdropFilter: 'blur(20px)',
-    border: `1px solid ${colors.glassBorder}`,
+    border: `1px solid ${C.glassBorder}`,
     borderRadius,
     padding,
-    color: colors.text,
+    color: C.text,
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
     cursor: clickable ? 'pointer' : 'default',
     position: 'relative',
@@ -46,8 +31,8 @@ function GlassCard({
 
   const hoverStyle = hoverable && isHovered ? {
     transform: 'translateY(-2px)',
-    boxShadow: '0 8px 32px rgba(108, 99, 255, 0.15)',
-    border: `1px solid ${colors.primary}40`,
+    boxShadow: `0 8px 32px rgba(232, 168, 56, 0.1)`,
+    border: `1px solid ${C.primary}35`,
   } : {};
 
   const clickStyle = clickable ? {

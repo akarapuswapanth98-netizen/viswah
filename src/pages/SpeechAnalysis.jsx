@@ -4,19 +4,7 @@ import { speechApi } from "../api/speechApi";
 import { onKeyDown } from "../utils/keyboard";
 import { usePracticeSession } from "../hooks/usePracticeSession";
 
-const COLORS = {
-  primary: "#6C63FF",
-  secondary: "#4ECDC4",
-  neon: "#00FF88",
-  bg: "#0F0F23",
-  surface: "rgba(255,255,255,0.08)",
-  glass: "rgba(255,255,255,0.06)",
-  glassBorder: "rgba(255,255,255,0.12)",
-  text: "#FFFFFF",
-  secondaryText: "#B0B0CC",
-  mutedText: "#6B6B8D",
-  success: "#34C759",
-};
+import C from "../components/ui/colors";
 
 const shimmerKeyframes = `
 @keyframes shimmer {
@@ -38,7 +26,7 @@ const SkeletonCard = ({ height = 200, style = {} }) => (
     style={{
       height,
       borderRadius: 16,
-      background: `linear-gradient(110deg, ${COLORS.surface} 30%, rgba(255,255,255,0.12) 50%, ${COLORS.surface} 70%)`,
+      background: `linear-gradient(110deg, ${C.surface} 30%, ${C.glassBorder} 50%, ${C.surface} 70%)`,
       backgroundSize: "200% 100%",
       animation: "shimmer 1.5s infinite",
       ...style,
@@ -53,8 +41,8 @@ const formatTime = (seconds) => {
 };
 
 const DIFFICULTY_COLORS = {
-  beginner: { bg: `${COLORS.success}22`, color: COLORS.success, border: `${COLORS.success}44` },
-  intermediate: { bg: `${COLORS.secondary}22`, color: COLORS.secondary, border: `${COLORS.secondary}44` },
+  beginner: { bg: `${C.success}22`, color: C.success, border: `${C.success}44` },
+  intermediate: { bg: `${C.secondary}22`, color: C.secondary, border: `${C.secondary}44` },
   advanced: { bg: `rgba(255,149,0,0.15)`, color: "#FF9500", border: `rgba(255,149,0,0.3)` },
 };
 
@@ -154,9 +142,9 @@ export default function SpeechAnalysis() {
     for (let i = 0; i < bufferLength; i++) {
       const barHeight = (dataArray[i] / 255) * height;
       const gradient = ctx.createLinearGradient(0, height, 0, height - barHeight);
-      gradient.addColorStop(0, COLORS.primary);
-      gradient.addColorStop(0.5, COLORS.secondary);
-      gradient.addColorStop(1, COLORS.neon);
+      gradient.addColorStop(0, C.primary);
+      gradient.addColorStop(0.5, C.secondary);
+      gradient.addColorStop(1, C.neon);
       ctx.fillStyle = gradient;
       ctx.fillRect(x, height - barHeight, barWidth, barHeight);
       x += barWidth + 1;
@@ -364,24 +352,24 @@ export default function SpeechAnalysis() {
   };
 
   const getScoreColor = (score) => {
-    if (score >= 80) return COLORS.success;
-    if (score >= 60) return COLORS.secondary;
+    if (score >= 80) return C.success;
+    if (score >= 60) return C.secondary;
     if (score >= 40) return "#FF9500";
     return "#FF3B30";
   };
 
   if (!browserSupported) {
     return (
-      <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
+      <div style={{ minHeight: "100vh", background: C.ink, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
         <div style={{
-          background: COLORS.glass, border: `1px solid ${COLORS.glassBorder}`,
+          background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`,
           borderRadius: 20, padding: 40, textAlign: "center", maxWidth: 420,
         }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>🎙️</div>
-          <h2 style={{ color: COLORS.text, fontSize: 20, fontWeight: 700, margin: "0 0 12px" }}>
+          <h2 style={{ color: C.text, fontSize: 20, fontWeight: 700, margin: "0 0 12px" }}>
             Browser Not Supported
           </h2>
-          <p style={{ color: COLORS.secondaryText, fontSize: 14, margin: 0, lineHeight: 1.7 }}>
+          <p style={{ color: C.textSecondary, fontSize: 14, margin: 0, lineHeight: 1.7 }}>
             Your browser does not support the MediaRecorder API needed for speech analysis.
             Please use a modern browser like Chrome, Firefox, or Edge.
           </p>
@@ -392,20 +380,20 @@ export default function SpeechAnalysis() {
 
   if (micDenied) {
     return (
-      <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
+      <div style={{ minHeight: "100vh", background: C.ink, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
         <div style={{
-          background: COLORS.glass, border: `1px solid ${COLORS.glassBorder}`,
+          background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`,
           borderRadius: 20, padding: 40, textAlign: "center", maxWidth: 460,
         }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
-          <h2 style={{ color: COLORS.text, fontSize: 20, fontWeight: 700, margin: "0 0 12px" }}>
+          <h2 style={{ color: C.text, fontSize: 20, fontWeight: 700, margin: "0 0 12px" }}>
             Microphone Access Required
           </h2>
-          <p style={{ color: COLORS.secondaryText, fontSize: 14, margin: "0 0 12px", lineHeight: 1.7 }}>
+          <p style={{ color: C.textSecondary, fontSize: 14, margin: "0 0 12px", lineHeight: 1.7 }}>
             Speech Analysis needs your microphone to record and analyze your vocal performance.
             Your audio is processed locally and is never stored or shared.
           </p>
-          <p style={{ color: COLORS.mutedText, fontSize: 13, margin: "0 0 24px", lineHeight: 1.6 }}>
+          <p style={{ color: C.textMuted, fontSize: 13, margin: "0 0 24px", lineHeight: 1.6 }}>
             To enable: click the lock icon in your browser's address bar and allow microphone access,
             or check your system's privacy settings.
           </p>
@@ -414,8 +402,8 @@ export default function SpeechAnalysis() {
               onClick={() => { setMicDenied(false); setSelectedExercise(null); }}
               style={{
                 padding: "12px 28px", borderRadius: 10,
-                background: COLORS.surface, border: `1px solid ${COLORS.glassBorder}`,
-                color: COLORS.text, fontSize: 14, fontWeight: 500, cursor: "pointer",
+                background: C.surface, border: `1px solid ${C.glassBorder}`,
+                color: C.text, fontSize: 14, fontWeight: 500, cursor: "pointer",
               }}
             >
               Go Back
@@ -424,8 +412,8 @@ export default function SpeechAnalysis() {
               onClick={() => { setMicDenied(false); if (selectedExercise) startRecording(selectedExercise); }}
               style={{
                 padding: "12px 28px", borderRadius: 10,
-                background: COLORS.primary, border: "none",
-                color: COLORS.text, fontSize: 14, fontWeight: 600, cursor: "pointer",
+                background: C.primary, border: "none",
+                color: C.text, fontSize: 14, fontWeight: 600, cursor: "pointer",
               }}
             >
               Try Again
@@ -437,14 +425,14 @@ export default function SpeechAnalysis() {
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: COLORS.bg, paddingBottom: 80 }}>
+    <div style={{ minHeight: "100vh", background: C.ink, paddingBottom: 80 }}>
       <style>{shimmerKeyframes}</style>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 20px 0" }}>
         <div style={{ marginBottom: 32 }}>
-          <h1 style={{ color: COLORS.text, fontSize: 28, fontWeight: 700, margin: 0 }}>
-            Speech <span style={{ color: COLORS.secondary }}>Analysis</span>
+          <h1 style={{ color: C.text, fontSize: 28, fontWeight: 700, margin: 0 }}>
+            Speech <span style={{ color: C.secondary }}>Analysis</span>
           </h1>
-          <p style={{ color: COLORS.mutedText, fontSize: 15, marginTop: 6 }}>
+          <p style={{ color: C.textMuted, fontSize: 15, marginTop: 6 }}>
             Record your voice and get instant AI-powered feedback on pitch, volume, and timing
           </p>
         </div>
@@ -458,7 +446,7 @@ export default function SpeechAnalysis() {
             <span style={{ fontSize: 16 }}>⚠</span>
             <span style={{ color: "#FF3B30", fontSize: 14, flex: 1 }}>{error}</span>
             <button onClick={() => { setError(null); fetchExercises(); }} style={{
-              background: "none", border: "none", color: COLORS.primary, fontSize: 14,
+              background: "none", border: "none", color: C.primary, fontSize: 14,
               fontWeight: 600, cursor: "pointer", textDecoration: "underline",
             }}>Retry</button>
           </div>
@@ -467,7 +455,7 @@ export default function SpeechAnalysis() {
         {/* Exercise List */}
         {!isRecording && !selectedExercise && (
           <section>
-            <h2 style={{ color: COLORS.text, fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
+            <h2 style={{ color: C.text, fontSize: 20, fontWeight: 600, marginBottom: 16 }}>
               Choose an Exercise
             </h2>
             {loadingExercises ? (
@@ -476,10 +464,10 @@ export default function SpeechAnalysis() {
               </div>
             ) : exercises.length === 0 ? (
               <div style={{
-                background: COLORS.glass, border: `1px solid ${COLORS.glassBorder}`,
+                background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`,
                 borderRadius: 16, padding: "40px 24px", textAlign: "center",
               }}>
-                <p style={{ color: COLORS.secondaryText, fontSize: 16, margin: 0 }}>No exercises available</p>
+                <p style={{ color: C.textSecondary, fontSize: 16, margin: 0 }}>No exercises available</p>
               </div>
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
@@ -493,23 +481,23 @@ export default function SpeechAnalysis() {
                       onClick={() => startRecording(exercise)}
                       onKeyDown={(e) => onKeyDown(e, () => startRecording(exercise))}
                       style={{
-                        background: COLORS.glass, border: `1px solid ${COLORS.glassBorder}`,
+                        background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`,
                         borderRadius: 16, padding: 20, cursor: "pointer",
                         transition: "all 0.2s",
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.transform = "translateY(-4px)";
-                        e.currentTarget.style.borderColor = COLORS.secondary;
+                        e.currentTarget.style.borderColor = C.secondary;
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.transform = "translateY(0)";
-                        e.currentTarget.style.borderColor = COLORS.glassBorder;
+                        e.currentTarget.style.borderColor = C.glassBorder;
                       }}
                     >
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
                         <div style={{
                           width: 40, height: 40, borderRadius: 10,
-                          background: `${COLORS.secondary}15`, display: "flex",
+                          background: `${C.secondary}15`, display: "flex",
                           alignItems: "center", justifyContent: "center", fontSize: 20,
                         }}>🎙️</div>
                         {exercise.difficulty && (
@@ -523,10 +511,10 @@ export default function SpeechAnalysis() {
                           </span>
                         )}
                       </div>
-                      <h3 style={{ color: COLORS.text, fontSize: 16, fontWeight: 600, margin: "0 0 6px" }}>
+                      <h3 style={{ color: C.text, fontSize: 16, fontWeight: 600, margin: "0 0 6px" }}>
                         {exercise.name}
                       </h3>
-                      <p style={{ color: COLORS.mutedText, fontSize: 13, margin: 0, lineHeight: 1.5 }}>
+                      <p style={{ color: C.textMuted, fontSize: 13, margin: 0, lineHeight: 1.5 }}>
                         {exercise.description?.length > 100
                           ? exercise.description.slice(0, 100) + "..."
                           : exercise.description}
@@ -543,24 +531,24 @@ export default function SpeechAnalysis() {
         {isRecording && selectedExercise && (
           <section style={{ animation: "fadeIn 0.3s ease" }}>
             <div style={{
-              background: COLORS.glass, border: `1px solid ${COLORS.glassBorder}`,
+              background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`,
               borderRadius: 20, padding: 28, position: "relative", overflow: "hidden",
             }}>
               {/* Header accent */}
               <div style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: 3,
                 background: isPaused
-                  ? COLORS.mutedText
-                  : `linear-gradient(90deg, ${COLORS.secondary}, ${COLORS.neon})`,
+                  ? C.textMuted
+                  : `linear-gradient(90deg, ${C.secondary}, ${C.neon})`,
                 transition: "background 0.3s",
               }} />
 
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
                 <div>
-                  <h3 style={{ color: COLORS.text, fontSize: 18, fontWeight: 700, margin: "0 0 4px" }}>
+                  <h3 style={{ color: C.text, fontSize: 18, fontWeight: 700, margin: "0 0 4px" }}>
                     {selectedExercise.name}
                   </h3>
-                  <p style={{ color: COLORS.mutedText, fontSize: 13, margin: 0 }}>
+                  <p style={{ color: C.textMuted, fontSize: 13, margin: 0 }}>
                     {isPaused ? "Paused" : "Recording in progress..."}
                   </p>
                 </div>
@@ -573,7 +561,7 @@ export default function SpeechAnalysis() {
                     animation: isPaused ? "none" : "pulse 1.5s ease-in-out infinite",
                   }} />
                   <span style={{
-                    color: COLORS.text, fontSize: 28, fontWeight: 700,
+                    color: C.text, fontSize: 28, fontWeight: 700,
                     fontFamily: "monospace",
                   }}>
                     {formatTime(recordingTime)}
@@ -601,10 +589,10 @@ export default function SpeechAnalysis() {
                   style={{
                     padding: "14px 28px", borderRadius: 12,
                     background: isPaused
-                      ? `linear-gradient(135deg, ${COLORS.secondary}, ${COLORS.neon})`
-                      : COLORS.surface,
-                    border: isPaused ? "none" : `1px solid ${COLORS.glassBorder}`,
-                    color: isPaused ? "#0F0F23" : COLORS.text,
+                      ? `linear-gradient(135deg, ${C.secondary}, ${C.neon})`
+                      : C.surface,
+                    border: isPaused ? "none" : `1px solid ${C.glassBorder}`,
+                    color: isPaused ? C.ink : C.text,
                     fontSize: 14, fontWeight: 600, cursor: "pointer",
                     display: "flex", alignItems: "center", gap: 8,
                   }}
@@ -617,7 +605,7 @@ export default function SpeechAnalysis() {
                   style={{
                     padding: "14px 32px", borderRadius: 12,
                     background: "#FF3B30", border: "none",
-                    color: COLORS.text, fontSize: 14, fontWeight: 700,
+                    color: C.text, fontSize: 14, fontWeight: 700,
                     cursor: "pointer", display: "flex", alignItems: "center", gap: 8,
                   }}
                 >
@@ -627,7 +615,7 @@ export default function SpeechAnalysis() {
 
               {/* Segments counter */}
               {segments.length > 0 && (
-                <p style={{ color: COLORS.mutedText, fontSize: 13, textAlign: "center", marginTop: 16, margin: "16px 0 0" }}>
+                <p style={{ color: C.textMuted, fontSize: 13, textAlign: "center", marginTop: 16, margin: "16px 0 0" }}>
                   {segments.length} recording{segments.length !== 1 ? "s" : ""} completed this session
                 </p>
               )}
@@ -639,19 +627,19 @@ export default function SpeechAnalysis() {
         {analyzing && !isRecording && (
           <section style={{ animation: "fadeIn 0.3s ease", marginTop: 20 }}>
             <div style={{
-              background: COLORS.glass, border: `1px solid ${COLORS.glassBorder}`,
+              background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`,
               borderRadius: 20, padding: 40, textAlign: "center",
             }}>
               <div style={{
-                width: 48, height: 48, border: `3px solid ${COLORS.glassBorder}`,
-                borderTopColor: COLORS.secondary, borderRadius: "50%",
+                width: 48, height: 48, border: `3px solid ${C.glassBorder}`,
+                borderTopColor: C.secondary, borderRadius: "50%",
                 animation: "spin 1s linear infinite",
                 margin: "0 auto 16px",
               }} />
-              <p style={{ color: COLORS.text, fontSize: 16, fontWeight: 600, margin: "0 0 4px" }}>
+              <p style={{ color: C.text, fontSize: 16, fontWeight: 600, margin: "0 0 4px" }}>
                 Analyzing your recording...
               </p>
-              <p style={{ color: COLORS.mutedText, fontSize: 13, margin: 0 }}>
+              <p style={{ color: C.textMuted, fontSize: 13, margin: 0 }}>
                 Processing pitch, volume, and scoring
               </p>
             </div>
@@ -664,15 +652,15 @@ export default function SpeechAnalysis() {
             {/* Score */}
             {scoreResult && (
               <div style={{
-                background: COLORS.glass, border: `1px solid ${COLORS.glassBorder}`,
+                background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`,
                 borderRadius: 20, padding: 28, marginBottom: 16,
                 position: "relative", overflow: "hidden",
               }}>
                 <div style={{
                   position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                  background: `linear-gradient(90deg, ${COLORS.neon}, ${COLORS.secondary})`,
+                  background: `linear-gradient(90deg, ${C.neon}, ${C.secondary})`,
                 }} />
-                <h3 style={{ color: COLORS.text, fontSize: 18, fontWeight: 700, margin: "0 0 16px" }}>
+                <h3 style={{ color: C.text, fontSize: 18, fontWeight: 700, margin: "0 0 16px" }}>
                   Performance Score
                 </h3>
                 <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
@@ -689,17 +677,17 @@ export default function SpeechAnalysis() {
                     }}>
                       {Math.round(scoreResult.score ?? 0)}
                     </span>
-                    <span style={{ color: COLORS.mutedText, fontSize: 10, fontWeight: 500 }}>/100</span>
+                    <span style={{ color: C.textMuted, fontSize: 10, fontWeight: 500 }}>/100</span>
                   </div>
                   <div style={{ flex: 1, minWidth: 200 }}>
                     {scoreResult.feedback && (
-                      <p style={{ color: COLORS.secondaryText, fontSize: 14, margin: "0 0 8px", lineHeight: 1.6 }}>
+                      <p style={{ color: C.textSecondary, fontSize: 14, margin: "0 0 8px", lineHeight: 1.6 }}>
                         {scoreResult.feedback}
                       </p>
                     )}
                     {scoreResult.target_note && (
-                      <p style={{ color: COLORS.mutedText, fontSize: 13, margin: 0 }}>
-                        Target note: <span style={{ color: COLORS.primary, fontWeight: 600 }}>{scoreResult.target_note}</span>
+                      <p style={{ color: C.textMuted, fontSize: 13, margin: 0 }}>
+                        Target note: <span style={{ color: C.primary, fontWeight: 600 }}>{scoreResult.target_note}</span>
                       </p>
                     )}
                   </div>
@@ -710,47 +698,47 @@ export default function SpeechAnalysis() {
             {/* Pitch Analysis */}
             {pitchResult && (
               <div style={{
-                background: COLORS.glass, border: `1px solid ${COLORS.glassBorder}`,
+                background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`,
                 borderRadius: 20, padding: 28, marginBottom: 16,
                 position: "relative", overflow: "hidden",
               }}>
                 <div style={{
                   position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                  background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.secondary})`,
+                  background: `linear-gradient(90deg, ${C.primary}, ${C.secondary})`,
                 }} />
-                <h3 style={{ color: COLORS.text, fontSize: 18, fontWeight: 700, margin: "0 0 16px" }}>
+                <h3 style={{ color: C.text, fontSize: 18, fontWeight: 700, margin: "0 0 16px" }}>
                   Pitch Analysis
                 </h3>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: 12 }}>
                   {pitchResult.mean_pitch != null && (
                     <div style={{ background: "rgba(0,0,0,0.2)", borderRadius: 12, padding: 14, textAlign: "center" }}>
-                      <p style={{ color: COLORS.mutedText, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Mean Pitch</p>
-                      <p style={{ color: COLORS.primary, fontSize: 22, fontWeight: 700, margin: 0 }}>
-                        {Math.round(pitchResult.mean_pitch)} <span style={{ fontSize: 12, fontWeight: 400, color: COLORS.mutedText }}>Hz</span>
+                      <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Mean Pitch</p>
+                      <p style={{ color: C.primary, fontSize: 22, fontWeight: 700, margin: 0 }}>
+                        {Math.round(pitchResult.mean_pitch)} <span style={{ fontSize: 12, fontWeight: 400, color: C.textMuted }}>Hz</span>
                       </p>
                     </div>
                   )}
                   {pitchResult.min_pitch != null && (
                     <div style={{ background: "rgba(0,0,0,0.2)", borderRadius: 12, padding: 14, textAlign: "center" }}>
-                      <p style={{ color: COLORS.mutedText, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Min Pitch</p>
-                      <p style={{ color: COLORS.secondary, fontSize: 22, fontWeight: 700, margin: 0 }}>
-                        {Math.round(pitchResult.min_pitch)} <span style={{ fontSize: 12, fontWeight: 400, color: COLORS.mutedText }}>Hz</span>
+                      <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Min Pitch</p>
+                      <p style={{ color: C.secondary, fontSize: 22, fontWeight: 700, margin: 0 }}>
+                        {Math.round(pitchResult.min_pitch)} <span style={{ fontSize: 12, fontWeight: 400, color: C.textMuted }}>Hz</span>
                       </p>
                     </div>
                   )}
                   {pitchResult.max_pitch != null && (
                     <div style={{ background: "rgba(0,0,0,0.2)", borderRadius: 12, padding: 14, textAlign: "center" }}>
-                      <p style={{ color: COLORS.mutedText, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Max Pitch</p>
-                      <p style={{ color: COLORS.neon, fontSize: 22, fontWeight: 700, margin: 0 }}>
-                        {Math.round(pitchResult.max_pitch)} <span style={{ fontSize: 12, fontWeight: 400, color: COLORS.mutedText }}>Hz</span>
+                      <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Max Pitch</p>
+                      <p style={{ color: C.neon, fontSize: 22, fontWeight: 700, margin: 0 }}>
+                        {Math.round(pitchResult.max_pitch)} <span style={{ fontSize: 12, fontWeight: 400, color: C.textMuted }}>Hz</span>
                       </p>
                     </div>
                   )}
                   {pitchResult.stability != null && (
                     <div style={{ background: "rgba(0,0,0,0.2)", borderRadius: 12, padding: 14, textAlign: "center" }}>
-                      <p style={{ color: COLORS.mutedText, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Stability</p>
+                      <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Stability</p>
                       <p style={{ color: getScoreColor(pitchResult.stability * 100), fontSize: 22, fontWeight: 700, margin: 0 }}>
-                        {Math.round(pitchResult.stability * 100)}<span style={{ fontSize: 12, fontWeight: 400, color: COLORS.mutedText }}>%</span>
+                        {Math.round(pitchResult.stability * 100)}<span style={{ fontSize: 12, fontWeight: 400, color: C.textMuted }}>%</span>
                       </p>
                     </div>
                   )}
@@ -761,39 +749,39 @@ export default function SpeechAnalysis() {
             {/* Volume Analysis */}
             {volumeResult && (
               <div style={{
-                background: COLORS.glass, border: `1px solid ${COLORS.glassBorder}`,
+                background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`,
                 borderRadius: 20, padding: 28, marginBottom: 16,
                 position: "relative", overflow: "hidden",
               }}>
                 <div style={{
                   position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                  background: `linear-gradient(90deg, ${COLORS.secondary}, ${COLORS.neon})`,
+                  background: `linear-gradient(90deg, ${C.secondary}, ${C.neon})`,
                 }} />
-                <h3 style={{ color: COLORS.text, fontSize: 18, fontWeight: 700, margin: "0 0 16px" }}>
+                <h3 style={{ color: C.text, fontSize: 18, fontWeight: 700, margin: "0 0 16px" }}>
                   Volume Analysis
                 </h3>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: 12 }}>
                   {volumeResult.mean_volume != null && (
                     <div style={{ background: "rgba(0,0,0,0.2)", borderRadius: 12, padding: 14, textAlign: "center" }}>
-                      <p style={{ color: COLORS.mutedText, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Mean Volume</p>
-                      <p style={{ color: COLORS.secondary, fontSize: 22, fontWeight: 700, margin: 0 }}>
-                        {volumeResult.mean_volume?.toFixed(1)} <span style={{ fontSize: 12, fontWeight: 400, color: COLORS.mutedText }}>dB</span>
+                      <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Mean Volume</p>
+                      <p style={{ color: C.secondary, fontSize: 22, fontWeight: 700, margin: 0 }}>
+                        {volumeResult.mean_volume?.toFixed(1)} <span style={{ fontSize: 12, fontWeight: 400, color: C.textMuted }}>dB</span>
                       </p>
                     </div>
                   )}
                   {volumeResult.peak_volume != null && (
                     <div style={{ background: "rgba(0,0,0,0.2)", borderRadius: 12, padding: 14, textAlign: "center" }}>
-                      <p style={{ color: COLORS.mutedText, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Peak Volume</p>
-                      <p style={{ color: COLORS.neon, fontSize: 22, fontWeight: 700, margin: 0 }}>
-                        {volumeResult.peak_volume?.toFixed(1)} <span style={{ fontSize: 12, fontWeight: 400, color: COLORS.mutedText }}>dB</span>
+                      <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Peak Volume</p>
+                      <p style={{ color: C.neon, fontSize: 22, fontWeight: 700, margin: 0 }}>
+                        {volumeResult.peak_volume?.toFixed(1)} <span style={{ fontSize: 12, fontWeight: 400, color: C.textMuted }}>dB</span>
                       </p>
                     </div>
                   )}
                   {volumeResult.dynamic_range != null && (
                     <div style={{ background: "rgba(0,0,0,0.2)", borderRadius: 12, padding: 14, textAlign: "center" }}>
-                      <p style={{ color: COLORS.mutedText, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Dynamic Range</p>
-                      <p style={{ color: COLORS.primary, fontSize: 22, fontWeight: 700, margin: 0 }}>
-                        {volumeResult.dynamic_range?.toFixed(1)} <span style={{ fontSize: 12, fontWeight: 400, color: COLORS.mutedText }}>dB</span>
+                      <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Dynamic Range</p>
+                      <p style={{ color: C.primary, fontSize: 22, fontWeight: 700, margin: 0 }}>
+                        {volumeResult.dynamic_range?.toFixed(1)} <span style={{ fontSize: 12, fontWeight: 400, color: C.textMuted }}>dB</span>
                       </p>
                     </div>
                   )}
@@ -804,28 +792,28 @@ export default function SpeechAnalysis() {
             {/* Session Results */}
             {sessionResult && (
               <div style={{
-                background: `linear-gradient(135deg, ${COLORS.primary}11, ${COLORS.secondary}11)`,
-                border: `1px solid ${COLORS.primary}33`,
+                background: `linear-gradient(135deg, ${C.primary}11, ${C.secondary}11)`,
+                border: `1px solid ${C.primary}33`,
                 borderRadius: 20, padding: 28, marginBottom: 16,
                 position: "relative", overflow: "hidden",
               }}>
                 <div style={{
                   position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                  background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.neon})`,
+                  background: `linear-gradient(90deg, ${C.primary}, ${C.neon})`,
                 }} />
-                <h3 style={{ color: COLORS.text, fontSize: 18, fontWeight: 700, margin: "0 0 16px" }}>
+                <h3 style={{ color: C.text, fontSize: 18, fontWeight: 700, margin: "0 0 16px" }}>
                   Session Summary
                 </h3>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: 12, marginBottom: 16 }}>
                   {sessionResult.total_segments != null && (
                     <div style={{ background: "rgba(0,0,0,0.2)", borderRadius: 12, padding: 14, textAlign: "center" }}>
-                      <p style={{ color: COLORS.mutedText, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Recordings</p>
-                      <p style={{ color: COLORS.text, fontSize: 24, fontWeight: 700, margin: 0 }}>{sessionResult.total_segments}</p>
+                      <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Recordings</p>
+                      <p style={{ color: C.text, fontSize: 24, fontWeight: 700, margin: 0 }}>{sessionResult.total_segments}</p>
                     </div>
                   )}
                   {sessionResult.overall_score != null && (
                     <div style={{ background: "rgba(0,0,0,0.2)", borderRadius: 12, padding: 14, textAlign: "center" }}>
-                      <p style={{ color: COLORS.mutedText, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Overall Score</p>
+                      <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Overall Score</p>
                       <p style={{ color: getScoreColor(sessionResult.overall_score), fontSize: 24, fontWeight: 700, margin: 0 }}>
                         {Math.round(sessionResult.overall_score)}
                       </p>
@@ -833,8 +821,8 @@ export default function SpeechAnalysis() {
                   )}
                   {sessionResult.improvement != null && (
                     <div style={{ background: "rgba(0,0,0,0.2)", borderRadius: 12, padding: 14, textAlign: "center" }}>
-                      <p style={{ color: COLORS.mutedText, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Improvement</p>
-                      <p style={{ color: sessionResult.improvement > 0 ? COLORS.success : COLORS.neon, fontSize: 24, fontWeight: 700, margin: 0 }}>
+                      <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 0.5 }}>Improvement</p>
+                      <p style={{ color: sessionResult.improvement > 0 ? C.success : C.neon, fontSize: 24, fontWeight: 700, margin: 0 }}>
                         {sessionResult.improvement > 0 ? "+" : ""}{Math.round(sessionResult.improvement)}%
                       </p>
                     </div>
@@ -844,7 +832,7 @@ export default function SpeechAnalysis() {
                   <div style={{
                     background: "rgba(0,0,0,0.15)", borderRadius: 12, padding: 16,
                   }}>
-                    <p style={{ color: COLORS.secondaryText, fontSize: 14, margin: 0, lineHeight: 1.7 }}>
+                    <p style={{ color: C.textSecondary, fontSize: 14, margin: 0, lineHeight: 1.7 }}>
                       {sessionResult.feedback}
                     </p>
                   </div>
@@ -865,8 +853,8 @@ export default function SpeechAnalysis() {
                 }}
                 style={{
                   padding: "14px 28px", borderRadius: 12,
-                  background: COLORS.surface, border: `1px solid ${COLORS.glassBorder}`,
-                  color: COLORS.text, fontSize: 14, fontWeight: 500, cursor: "pointer",
+                  background: C.surface, border: `1px solid ${C.glassBorder}`,
+                  color: C.text, fontSize: 14, fontWeight: 500, cursor: "pointer",
                 }}
               >
                 ← New Exercise
@@ -875,8 +863,8 @@ export default function SpeechAnalysis() {
                 onClick={() => startRecording(selectedExercise)}
                 style={{
                   padding: "14px 28px", borderRadius: 12,
-                  background: `linear-gradient(135deg, ${COLORS.secondary}, ${COLORS.neon})`,
-                  border: "none", color: "#0F0F23", fontSize: 14, fontWeight: 700,
+                  background: `linear-gradient(135deg, ${C.secondary}, ${C.neon})`,
+                  border: "none", color: C.ink, fontSize: 14, fontWeight: 700,
                   cursor: "pointer",
                 }}
               >
@@ -888,8 +876,8 @@ export default function SpeechAnalysis() {
                   disabled={analyzing}
                   style={{
                     padding: "14px 28px", borderRadius: 12,
-                    background: COLORS.primary, border: "none",
-                    color: COLORS.text, fontSize: 14, fontWeight: 600,
+                    background: C.primary, border: "none",
+                    color: C.text, fontSize: 14, fontWeight: 600,
                     cursor: analyzing ? "not-allowed" : "pointer",
                     opacity: analyzing ? 0.6 : 1,
                   }}
@@ -905,10 +893,10 @@ export default function SpeechAnalysis() {
         {!isRecording && !analyzing && selectedExercise && !pitchResult && !volumeResult && !scoreResult && (
           <section style={{ marginTop: 20 }}>
             <div style={{
-              background: COLORS.glass, border: `1px solid ${COLORS.glassBorder}`,
+              background: C.surfaceGlass, border: `1px solid ${C.glassBorder}`,
               borderRadius: 16, padding: "32px 24px", textAlign: "center",
             }}>
-              <p style={{ color: COLORS.secondaryText, fontSize: 15, margin: 0 }}>
+              <p style={{ color: C.textSecondary, fontSize: 15, margin: 0 }}>
                 Analysis results will appear here after recording
               </p>
             </div>

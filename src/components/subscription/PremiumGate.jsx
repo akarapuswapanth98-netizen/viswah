@@ -1,12 +1,7 @@
 import { useSubscription } from "../../hooks/useSubscription.jsx";
 import { useNavigate } from "react-router-dom";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../ui/colors";
 
 export default function PremiumGate({ feature, children, fallback }) {
   const { hasEntitlement, currentPlan, loading } = useSubscription();
@@ -43,7 +38,7 @@ export default function PremiumGate({ feature, children, fallback }) {
     }}>
       <div style={{
         width: 56, height: 56, borderRadius: "50%",
-        background: `${C.saffron}15`,
+        background: `${C.primary}15`,
         display: "flex", alignItems: "center", justifyContent: "center",
         margin: "0 auto 20px", fontSize: 24,
       }}>
@@ -65,7 +60,7 @@ export default function PremiumGate({ feature, children, fallback }) {
         onClick={() => navigate("/pricing")}
         style={{
           padding: "12px 32px", borderRadius: 12,
-          background: `linear-gradient(135deg, ${C.saffron}, ${C.saffron}CC)`,
+          background: `linear-gradient(135deg, ${C.primary}, ${C.primary}CC)`,
           color: C.ink, border: "none", fontSize: 14, fontWeight: 700,
           cursor: "pointer", transition: "all 0.2s",
         }}

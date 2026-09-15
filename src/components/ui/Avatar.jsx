@@ -1,20 +1,5 @@
 import React, { useState } from 'react';
-
-const colors = {
-  primary: '#6C63FF',
-  secondary: '#4ECDC4',
-  success: '#34C759',
-  warning: '#FF9500',
-  error: '#FF3B30',
-  neon: '#00FF88',
-  background: '#0F0F23',
-  surface: 'rgba(255,255,255,0.08)',
-  glass: 'rgba(255,255,255,0.06)',
-  glassBorder: 'rgba(255,255,255,0.12)',
-  text: '#FFFFFF',
-  secondaryText: '#B0B0CC',
-  mutedText: '#6B6B8D',
-};
+import C from './colors';
 
 const sizes = {
   xs: { width: '28px', height: '28px', fontSize: '11px' },
@@ -25,10 +10,10 @@ const sizes = {
 };
 
 const statusColors = {
-  online: colors.success,
-  offline: colors.mutedText,
-  busy: colors.error,
-  away: colors.warning,
+  online: C.success,
+  offline: C.textMuted,
+  busy: C.error,
+  away: C.warning,
 };
 
 function Avatar({
@@ -56,13 +41,13 @@ function Avatar({
   };
 
   const getGradient = (name) => {
-    if (!name) return `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`;
+    if (!name) return `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`;
     const gradients = [
-      `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-      `linear-gradient(135deg, ${colors.secondary}, ${colors.neon})`,
-      `linear-gradient(135deg, ${colors.neon}, ${colors.success})`,
-      `linear-gradient(135deg, ${colors.warning}, ${colors.error})`,
-      `linear-gradient(135deg, ${colors.error}, ${colors.primary})`,
+      `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
+      `linear-gradient(135deg, ${C.secondary}, ${C.teal})`,
+      `linear-gradient(135deg, ${C.raga}, ${C.primary})`,
+      `linear-gradient(135deg, ${C.warning}, ${C.error})`,
+      `linear-gradient(135deg, ${C.error}, ${C.primary})`,
     ];
     let hash = 0;
     for (let i = 0; i < name.length; i++) {
@@ -82,7 +67,7 @@ function Avatar({
     overflow: 'hidden',
     flexShrink: 0,
     cursor: onClick ? 'pointer' : 'default',
-    border: bordered ? `2px solid ${colors.glassBorder}` : 'none',
+    border: bordered ? `2px solid ${C.glassBorder}` : 'none',
     transition: 'all 0.2s ease',
     ...style,
   };
@@ -101,7 +86,7 @@ function Avatar({
     alignItems: 'center',
     justifyContent: 'center',
     background: getGradient(name),
-    color: colors.text,
+    color: C.ink,
     fontSize: sizeStyle.fontSize,
     fontWeight: 700,
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
@@ -115,9 +100,9 @@ function Avatar({
     width: size === 'xs' || size === 'sm' ? '10px' : '12px',
     height: size === 'xs' || size === 'sm' ? '10px' : '12px',
     borderRadius: '50%',
-    background: statusColors[status] || colors.mutedText,
-    border: `2px solid ${colors.background}`,
-    boxShadow: `0 0 0 1px ${colors.glassBorder}`,
+    background: statusColors[status] || C.textMuted,
+    border: `2px solid ${C.ink}`,
+    boxShadow: `0 0 0 1px ${C.glassBorder}`,
   };
 
   const hoverStyle = onClick ? {

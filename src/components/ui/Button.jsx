@@ -1,48 +1,39 @@
-const colors = {
-  primary: '#6C63FF',
-  secondary: '#4ECDC4',
-  success: '#34C759',
-  warning: '#FF9500',
-  error: '#FF3B30',
-  surface: 'rgba(255,255,255,0.08)',
-  glassBorder: 'rgba(255,255,255,0.12)',
-  text: '#FFFFFF',
-};
+import C from './colors';
 
 const variants = {
   primary: {
-    background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-    color: colors.text,
+    background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
+    color: C.ink,
     border: 'none',
-    boxShadow: `0 4px 15px ${colors.primary}40`,
+    boxShadow: `0 4px 15px ${C.primary}30`,
   },
   secondary: {
-    background: colors.surface,
-    color: colors.text,
-    border: `1px solid ${colors.glassBorder}`,
+    background: C.surface,
+    color: C.text,
+    border: `1px solid ${C.glassBorder}`,
   },
   ghost: {
     background: 'transparent',
-    color: colors.text,
+    color: C.textSecondary,
     border: 'none',
   },
   danger: {
-    background: `linear-gradient(135deg, ${colors.error}, #ff6b6b)`,
-    color: colors.text,
+    background: `linear-gradient(135deg, ${C.error}, #e88080)`,
+    color: '#fff',
     border: 'none',
-    boxShadow: `0 4px 15px ${colors.error}40`,
+    boxShadow: `0 4px 15px ${C.error}30`,
   },
   success: {
-    background: `linear-gradient(135deg, ${colors.success}, #66d98e)`,
-    color: colors.text,
+    background: `linear-gradient(135deg, ${C.success}, #8ad48f)`,
+    color: C.ink,
     border: 'none',
-    boxShadow: `0 4px 15px ${colors.success}40`,
+    boxShadow: `0 4px 15px ${C.success}30`,
   },
   warning: {
-    background: `linear-gradient(135deg, ${colors.warning}, #ffb340)`,
-    color: colors.text,
+    background: `linear-gradient(135deg, ${C.warning}, #e0c070)`,
+    color: C.ink,
     border: 'none',
-    boxShadow: `0 4px 15px ${colors.warning}40`,
+    boxShadow: `0 4px 15px ${C.warning}30`,
   },
 };
 
@@ -95,6 +86,7 @@ function Button({
     position: 'relative',
     overflow: 'hidden',
     outline: 'none',
+    minHeight: 44,
     ...variantStyle,
     ...sizeStyle,
     ...style,

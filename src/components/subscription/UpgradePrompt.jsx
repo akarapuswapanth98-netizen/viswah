@@ -1,11 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../ui/colors";
 
 const PLAN_FEATURES = {
   student: [
@@ -47,10 +42,10 @@ export default function UpgradePrompt({ feature, compact = false }) {
       <div style={{
         display: "flex", alignItems: "center", gap: 12,
         padding: "12px 16px", borderRadius: 12,
-        background: `${C.saffron}08`,
-        border: `1px solid ${C.saffron}20`,
+        background: `${C.primary}08`,
+        border: `1px solid ${C.primary}20`,
       }}>
-        <span style={{ color: C.saffron, fontSize: 16 }}>{"\u2B50"}</span>
+        <span style={{ color: C.primary, fontSize: 16 }}>{"\u2B50"}</span>
         <div style={{ flex: 1 }}>
           <span style={{ color: C.text, fontSize: 13, fontWeight: 600 }}>
             Upgrade to {targetPlan.charAt(0).toUpperCase() + targetPlan.slice(1)}
@@ -63,7 +58,7 @@ export default function UpgradePrompt({ feature, compact = false }) {
           onClick={() => navigate("/pricing")}
           style={{
             padding: "8px 16px", borderRadius: 8,
-            background: `linear-gradient(135deg, ${C.saffron}, ${C.saffron}CC)`,
+            background: `linear-gradient(135deg, ${C.primary}, ${C.primary}CC)`,
             color: C.ink, border: "none", fontSize: 12, fontWeight: 700,
             cursor: "pointer", transition: "all 0.2s",
           }}
@@ -107,7 +102,7 @@ export default function UpgradePrompt({ feature, compact = false }) {
             display: "flex", alignItems: "center", gap: 10,
             marginBottom: 10, fontSize: 13, color: C.textSecondary,
           }}>
-            <span style={{ color: C.teal, fontSize: 14 }}>{"\u2713"}</span>
+            <span style={{ color: C.secondary, fontSize: 14 }}>{"\u2713"}</span>
             <span>{f}</span>
           </div>
         ))}
@@ -117,7 +112,7 @@ export default function UpgradePrompt({ feature, compact = false }) {
         onClick={() => navigate("/pricing")}
         style={{
           width: "100%", padding: "14px 0", borderRadius: 12,
-          background: `linear-gradient(135deg, ${C.saffron}, ${C.saffron}CC)`,
+          background: `linear-gradient(135deg, ${C.primary}, ${C.primary}CC)`,
           color: C.ink, border: "none", fontSize: 14, fontWeight: 700,
           cursor: "pointer", transition: "all 0.2s",
         }}

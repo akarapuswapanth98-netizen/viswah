@@ -1,15 +1,6 @@
 import { useEffect, useRef, useCallback } from 'react';
 import Button from './Button';
-
-const colors = {
-  primary: '#6C63FF',
-  secondary: '#4ECDC4',
-  error: '#FF3B30',
-  warning: '#FF9500',
-  text: '#FFFFFF',
-  mutedText: '#6B6B8D',
-  glassBorder: 'rgba(255,255,255,0.12)',
-};
+import C from './colors';
 
 const dialogKeyframes = `
 @keyframes dialog-fade-in {
@@ -136,9 +127,9 @@ function ConfirmDialog({
       <div
         ref={dialogRef}
         style={{
-          background: 'linear-gradient(135deg, rgba(15, 15, 35, 0.98), rgba(20, 20, 45, 0.98))',
+          background: `linear-gradient(135deg, ${C.ink}f8, ${C.surface}f8)`,
           backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
-          border: `1px solid ${colors.glassBorder}`, borderRadius: '20px',
+          border: `1px solid ${C.glassBorder}`, borderRadius: '20px',
           boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)',
           animation: 'dialog-scale-in 0.3s ease-out', outline: 'none',
           maxWidth: '420px', width: '90%', ...style,
@@ -151,21 +142,21 @@ function ConfirmDialog({
           {icon && (
             <div style={{
               width: '64px', height: '64px', borderRadius: '50%',
-              background: variant === 'danger' ? `${colors.error}15` : variant === 'warning' ? `${colors.warning}15` : `${colors.primary}15`,
-              border: `1px solid ${variant === 'danger' ? `${colors.error}30` : variant === 'warning' ? `${colors.warning}30` : `${colors.primary}30`}`,
+              background: variant === 'danger' ? `${C.error}15` : variant === 'warning' ? `${C.warning}15` : `${C.primary}18`,
+              border: `1px solid ${variant === 'danger' ? `${C.error}30` : variant === 'warning' ? `${C.warning}30` : `${C.primary}30`}`,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               margin: '0 auto 20px', fontSize: '28px',
-              color: variant === 'danger' ? colors.error : variant === 'warning' ? colors.warning : colors.primary,
+              color: variant === 'danger' ? C.error : variant === 'warning' ? C.warning : C.primary,
             }} aria-hidden="true">
               {icon}
             </div>
           )}
           <h2 id="confirm-dialog-title" style={{
             margin: 0, marginBottom: '12px', fontSize: '18px', fontWeight: 700,
-            color: colors.text,
+            color: C.text, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
           }}>{title}</h2>
           <p id="confirm-dialog-message" style={{
-            margin: 0, fontSize: '14px', color: colors.mutedText, lineHeight: 1.6,
+            margin: 0, fontSize: '14px', color: C.textMuted, lineHeight: 1.6,
           }}>{message}</p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '24px' }}>
             <Button variant="secondary" onClick={handleCancel} disabled={loading}>

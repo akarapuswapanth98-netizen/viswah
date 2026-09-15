@@ -4,25 +4,7 @@ import { courseApi } from "../api/courseApi";
 import { onKeyDown } from "../utils/keyboard";
 import { useSubscription } from "../hooks/useSubscription";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  borderFocus: "rgba(232, 168, 56, 0.3)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const SkeletonCard = () => (
   <div style={{
@@ -72,7 +54,7 @@ const SkeletonCard = () => (
 const getDifficultyColor = (d) => {
   if (d === "beginner") return { bg: `${C.success}18`, text: C.success };
   if (d === "advanced") return { bg: `${C.warning}18`, text: C.warning };
-  return { bg: `${C.teal}18`, text: C.teal };
+  return { bg: `${C.secondary}18`, text: C.secondary };
 };
 
 export default function Courses() {
@@ -241,7 +223,7 @@ export default function Courses() {
             <p style={{ color: C.textMuted, fontSize: 14, marginBottom: 20 }}>{error}</p>
             <button onClick={fetchCourses} style={{
               padding: "12px 32px", borderRadius: 10, border: "none",
-              background: C.saffron, color: C.ink, fontSize: 15, fontWeight: 600, cursor: "pointer",
+              background: C.primary, color: C.ink, fontSize: 15, fontWeight: 600, cursor: "pointer",
               boxShadow: "0 4px 16px rgba(232, 168, 56, 0.2)",
             }}>Retry</button>
           </div>
@@ -298,8 +280,8 @@ export default function Courses() {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-6px) translateZ(8px)";
-                    e.currentTarget.style.borderColor = C.saffron + "35";
-                    e.currentTarget.style.boxShadow = `0 12px 40px rgba(0,0,0,0.35), 0 0 24px ${C.saffron}08`;
+                    e.currentTarget.style.borderColor = C.primary + "35";
+                    e.currentTarget.style.boxShadow = `0 12px 40px rgba(0,0,0,0.35), 0 0 24px ${C.primary}08`;
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateY(0) translateZ(0)";
@@ -317,7 +299,7 @@ export default function Courses() {
                   {!course.image_url && (
                     <div style={{
                       height: 160,
-                      background: `linear-gradient(135deg, ${C.saffron}12, ${C.raga}10)`,
+                      background: `linear-gradient(135deg, ${C.primary}12, ${C.raga}10)`,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -332,8 +314,8 @@ export default function Courses() {
                     <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 10 }}>
                       {course.instrument && (
                         <span style={{
-                          background: `${C.saffron}12`,
-                          color: C.saffron,
+                          background: `${C.primary}12`,
+                          color: C.primary,
                           borderRadius: 7,
                           padding: "3px 10px",
                           fontSize: 12,
@@ -358,8 +340,8 @@ export default function Courses() {
                         </p>
                         {course.stage >= 3 && !hasEntitlement("full_course_access") && (
                           <span style={{
-                            background: `${C.saffron}15`,
-                            color: C.saffron,
+                            background: `${C.primary}15`,
+                            color: C.primary,
                             borderRadius: 6,
                             padding: "2px 8px",
                             fontSize: 10,

@@ -1,14 +1,6 @@
 import { Component } from "react";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  saffron: "#E8A838",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-};
+import C from "./ui/colors";
 
 export default class ErrorBoundary extends Component {
   constructor(props) {
@@ -72,7 +64,7 @@ export default class ErrorBoundary extends Component {
               style={{
                 padding: "10px 24px",
                 borderRadius: 10,
-                background: C.saffron,
+                background: C.primary,
                 color: C.ink,
                 border: "none",
                 fontSize: 14,

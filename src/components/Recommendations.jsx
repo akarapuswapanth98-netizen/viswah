@@ -1,21 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { onKeyDown } from "../utils/keyboard";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-};
+import C from "./ui/colors";
 
 const TYPE_ICONS = {
   lesson: "📖",
@@ -26,15 +12,15 @@ const TYPE_ICONS = {
 };
 
 const TYPE_COLORS = {
-  lesson: C.saffron,
+  lesson: C.primary,
   practice: C.raga,
-  explore: C.teal,
+  explore: C.secondary,
   review: C.warning,
   quiz: C.success,
 };
 
 function RecommendationCard({ rec, index, navigate }) {
-  const typeColor = TYPE_COLORS[rec.type] || C.saffron;
+  const typeColor = TYPE_COLORS[rec.type] || C.primary;
   const typeIcon = rec.icon || TYPE_ICONS[rec.type] || "🎵";
 
   return (

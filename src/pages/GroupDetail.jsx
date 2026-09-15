@@ -2,12 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import communityApi from "../api/communityApi";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../components/ui/colors";
 
 export default function GroupDetail() {
   const { groupId } = useParams();
@@ -64,7 +59,7 @@ export default function GroupDetail() {
           textAlign: "center", color: C.textMuted, fontSize: 14,
         }}>{error || "Group not found"}</div>
         <button onClick={() => navigate(-1)} style={{
-          background: "none", border: "none", color: C.teal, fontSize: 13,
+          background: "none", border: "none", color: C.secondary, fontSize: 13,
           cursor: "pointer", marginTop: 12,
         }}>{"\u{2190}"} Back</button>
       </div>
@@ -74,7 +69,7 @@ export default function GroupDetail() {
   return (
     <div style={{ maxWidth: 600, margin: "0 auto", padding: "32px 20px" }}>
       <button onClick={() => navigate(-1)} style={{
-        background: "none", border: "none", color: C.teal, fontSize: 13,
+        background: "none", border: "none", color: C.secondary, fontSize: 13,
         cursor: "pointer", marginBottom: 20,
         }}>{"\u{2190}"} Back</button>
 
@@ -94,7 +89,7 @@ export default function GroupDetail() {
           <button
             onClick={handleJoin}
             style={{
-              background: group.is_member ? "none" : C.teal,
+              background: group.is_member ? "none" : C.secondary,
               color: group.is_member ? C.textMuted : C.ink,
               border: group.is_member ? `1px solid ${C.border}` : "none",
               borderRadius: 8, padding: "8px 16px", fontSize: 13,
@@ -138,13 +133,13 @@ export default function GroupDetail() {
               <div style={{
                 width: 32, height: 32, borderRadius: 8, background: C.elevated,
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 13, color: C.saffron,
+                fontSize: 13, color: C.primary,
               }}>{m.user_id}</div>
               <div style={{ flex: 1, color: C.textSecondary, fontSize: 13 }}>
                 User #{m.user_id}
                 {m.role === "admin" && (
                   <span style={{
-                    background: `${C.saffron}15`, color: C.saffron,
+                    background: `${C.primary}15`, color: C.primary,
                     padding: "1px 6px", borderRadius: 4, fontSize: 10,
                     marginLeft: 6, fontWeight: 600,
                   }}>Admin</span>

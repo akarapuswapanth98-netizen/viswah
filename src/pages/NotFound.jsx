@@ -1,13 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  saffron: "#E8A838",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-};
+import C from "../components/ui/colors";
 
 export default function NotFound() {
   const navigate = useNavigate();
@@ -24,7 +17,7 @@ export default function NotFound() {
         <div style={{
           fontSize: 72,
           fontWeight: 800,
-          color: C.saffron,
+          color: C.primary,
           lineHeight: 1,
           marginBottom: 16,
         }}>
@@ -68,7 +61,7 @@ export default function NotFound() {
             style={{
               padding: "10px 20px",
               borderRadius: 10,
-              background: C.saffron,
+              background: C.primary,
               color: C.ink,
               border: "none",
               fontSize: 14,

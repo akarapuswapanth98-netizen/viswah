@@ -7,12 +7,7 @@ import BillingHistory from "../components/subscription/BillingHistory";
 import UsageLimitCard from "../components/subscription/UsageLimitCard";
 import { PLANS } from "../config/plans";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../components/ui/colors";
 
 export default function Subscription() {
   const { isAuthenticated, user } = useAuth();
@@ -85,7 +80,7 @@ export default function Subscription() {
         <div style={{ textAlign: "center" }}>
           <div style={{
             width: 40, height: 40, border: `3px solid ${C.border}`,
-            borderTopColor: C.saffron, borderRadius: "50%",
+            borderTopColor: C.primary, borderRadius: "50%",
             animation: "spin 1s linear infinite", margin: "0 auto 16px",
           }} />
           <p style={{ color: C.textMuted, fontSize: 14 }}>Loading subscription...</p>
@@ -114,10 +109,10 @@ export default function Subscription() {
         {message && (
           <div style={{
             marginBottom: 20, padding: "14px 20px", borderRadius: 12,
-            background: message.type === "success" ? `${C.teal}15` : "rgba(239,68,68,0.1)",
-            color: message.type === "success" ? C.teal : "#EF4444",
+            background: message.type === "success" ? `${C.secondary}15` : "rgba(239,68,68,0.1)",
+            color: message.type === "success" ? C.secondary : "#EF4444",
             fontSize: 14, fontWeight: 600,
-            border: `1px solid ${message.type === "success" ? `${C.teal}25` : "rgba(239,68,68,0.2)"}`,
+            border: `1px solid ${message.type === "success" ? `${C.secondary}25` : "rgba(239,68,68,0.2)"}`,
           }}>
             {message.text}
           </div>
@@ -148,16 +143,16 @@ export default function Subscription() {
             ) : (
               <button onClick={handleReactivate} disabled={actionLoading === "reactivate"} style={{
                 padding: "10px 20px", borderRadius: 10, fontSize: 14, fontWeight: 600,
-                background: `${C.teal}15`, color: C.teal,
-                border: `1px solid ${C.teal}25`, cursor: "pointer",
+                background: `${C.secondary}15`, color: C.secondary,
+                border: `1px solid ${C.secondary}25`, cursor: "pointer",
               }}>
                 {actionLoading === "reactivate" ? "Reactivating..." : "Reactivate"}
               </button>
             )}
             <Link to="/pricing" style={{
               padding: "10px 20px", borderRadius: 10, fontSize: 14, fontWeight: 600,
-              background: `${C.saffron}15`, color: C.saffron,
-              border: `1px solid ${C.saffron}25`, textDecoration: "none",
+              background: `${C.primary}15`, color: C.primary,
+              border: `1px solid ${C.primary}25`, textDecoration: "none",
               display: "inline-block",
             }}>
               Change Plan

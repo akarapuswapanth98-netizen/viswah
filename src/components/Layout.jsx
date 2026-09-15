@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Toast from './ui/Toast';
 import { useToast } from '../context/ToastContext';
+import C from './ui/colors';
 
 const MOBILE_BREAKPOINT = 768;
 
@@ -22,14 +23,14 @@ function useIsMobile() {
 const layoutStyle = {
   display: 'flex',
   minHeight: '100vh',
-  background: '#0F0F23',
+  background: C.ink,
   fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   overflowX: 'hidden',
 };
 
 const hamburgerStyle = {
-  background: 'rgba(255,255,255,0.08)',
-  border: '1px solid rgba(255,255,255,0.12)',
+  background: C.surfaceTint,
+  border: `1px solid ${C.glassBorder}`,
   borderRadius: '8px',
   padding: '8px 10px',
   cursor: 'pointer',
@@ -43,7 +44,7 @@ const hamburgerStyle = {
 const hamburgerLineStyle = {
   width: '20px',
   height: '2px',
-  background: '#FFFFFF',
+  background: C.text,
   borderRadius: '1px',
   transition: 'all 0.2s ease',
 };
@@ -51,7 +52,7 @@ const hamburgerLineStyle = {
 const logoMobileStyle = {
   fontSize: '18px',
   fontWeight: 800,
-  background: 'linear-gradient(135deg, #6C63FF, #00FF88)',
+  background: `linear-gradient(135deg, ${C.primary}, ${C.teal})`,
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
@@ -132,10 +133,10 @@ export default function Layout() {
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '16px 20px',
-    background: 'linear-gradient(180deg, rgba(15,15,35,0.98), rgba(15,15,35,0.95))',
+    background: `linear-gradient(180deg, ${C.ink}f8, ${C.ink}f0)`,
     backdropFilter: 'blur(20px)',
     WebkitBackdropFilter: 'blur(20px)',
-    borderBottom: '1px solid rgba(255,255,255,0.12)',
+    borderBottom: `1px solid ${C.glassBorder}`,
     position: 'sticky',
     top: 0,
     zIndex: 50,

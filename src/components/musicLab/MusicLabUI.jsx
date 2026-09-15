@@ -1,36 +1,16 @@
 // Shared UI components for Music Lab exercises
 import { useState } from "react";
-
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  surfaceHover: "#1E1833",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.10)",
-  borderHover: "rgba(240, 235, 227, 0.20)",
-  borderAccent: "rgba(232, 168, 56, 0.40)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../ui/colors";
 
 const DIFFICULTY_COLORS = {
   beginner: C.success,
-  intermediate: C.teal,
-  advanced: C.saffron,
+  intermediate: C.secondary,
+  advanced: C.primary,
 };
 
 function ExerciseCard({ exercise, onSelect, isActive }) {
   const [hovered, setHovered] = useState(false);
-  const diffColor = DIFFICULTY_COLORS[exercise.difficulty] || C.teal;
+  const diffColor = DIFFICULTY_COLORS[exercise.difficulty] || C.secondary;
 
   return (
     <button
@@ -47,7 +27,7 @@ function ExerciseCard({ exercise, onSelect, isActive }) {
           : hovered
             ? C.surfaceHover
             : C.elevated,
-        border: `1px solid ${isActive ? C.borderAccent : hovered ? C.borderHover : C.border}`,
+        border: `1px solid ${isActive ? C.borderActive : hovered ? C.borderHover : C.border}`,
         borderRadius: 16,
         cursor: "pointer",
         transition: "all 0.25s ease-out",
@@ -101,8 +81,8 @@ function PlayButton({ onClick, isPlaying, size = 48, label = "Play" }) {
         borderRadius: "50%",
         border: "none",
         background: isPlaying
-          ? `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`
-          : `linear-gradient(135deg, ${C.teal}CC, ${C.teal})`,
+          ? `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`
+          : `linear-gradient(135deg, ${C.secondary}CC, ${C.secondary})`,
         color: C.ink,
         fontSize: size * 0.35,
         cursor: "pointer",
@@ -140,8 +120,8 @@ function AnswerOption({ answer, isSelected, isCorrect, isRevealed, onClick }) {
     }
   } else if (isSelected) {
     bg = `rgba(232, 168, 56, 0.12)`;
-    border = C.saffron;
-    color = C.saffron;
+    border = C.primary;
+    color = C.primary;
   } else if (hovered) {
     bg = C.surfaceHover;
     border = C.borderHover;
@@ -178,7 +158,7 @@ function ScoreDisplay({ score, correct, total, label }) {
   const grade = (() => {
     if (score >= 90) return { letter: "A+", color: C.success, bg: "rgba(109,191,115,0.12)" };
     if (score >= 80) return { letter: "A", color: C.success, bg: "rgba(109,191,115,0.12)" };
-    if (score >= 70) return { letter: "B", color: C.teal, bg: "rgba(91,168,160,0.12)" };
+    if (score >= 70) return { letter: "B", color: C.secondary, bg: "rgba(91,168,160,0.12)" };
     if (score >= 60) return { letter: "C", color: C.warning, bg: "rgba(212,168,74,0.12)" };
     return { letter: "D", color: C.error, bg: "rgba(212,106,106,0.12)" };
   })();
@@ -219,7 +199,7 @@ function ScoreDisplay({ score, correct, total, label }) {
   );
 }
 
-function ProgressBar({ current, total, color = C.saffron }) {
+function ProgressBar({ current, total, color = C.primary }) {
   const pct = total > 0 ? (current / total) * 100 : 0;
   return (
     <div style={{
@@ -247,9 +227,9 @@ function FeedbackToast({ feedback }) {
     <div style={{
       padding: "12px 20px",
       borderRadius: 12,
-      background: `${colors[feedback.type] || C.teal}15`,
-      border: `1px solid ${colors[feedback.type] || C.teal}40`,
-      color: colors[feedback.type] || C.teal,
+      background: `${colors[feedback.type] || C.secondary}15`,
+      border: `1px solid ${colors[feedback.type] || C.secondary}40`,
+      color: colors[feedback.type] || C.secondary,
       fontSize: 14,
       fontWeight: 600,
       textAlign: "center",
@@ -315,7 +295,7 @@ function StreakDisplay({ streak }) {
       background: streak >= 5
         ? "rgba(232, 168, 56, 0.15)"
         : "rgba(109, 191, 115, 0.12)",
-      color: streak >= 5 ? C.saffron : C.success,
+      color: streak >= 5 ? C.primary : C.success,
       fontSize: 13,
       fontWeight: 700,
     }}>

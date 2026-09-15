@@ -5,12 +5,7 @@ import subscriptionApi from "../api/subscriptionApi";
 import PricingCard from "../components/subscription/PricingCard";
 import { PLANS } from "../config/plans";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../components/ui/colors";
 
 export default function Pricing() {
   const { isAuthenticated } = useAuth();
@@ -104,10 +99,10 @@ export default function Pricing() {
           <div style={{
             maxWidth: 600, margin: "0 auto 24px",
             padding: "14px 20px", borderRadius: 12,
-            background: message.type === "success" ? `${C.teal}15` : message.type === "error" ? "rgba(239,68,68,0.1)" : `${C.saffron}15`,
-            color: message.type === "success" ? C.teal : message.type === "error" ? "#EF4444" : C.saffron,
+            background: message.type === "success" ? `${C.secondary}15` : message.type === "error" ? "rgba(239,68,68,0.1)" : `${C.primary}15`,
+            color: message.type === "success" ? C.secondary : message.type === "error" ? "#EF4444" : C.primary,
             fontSize: 14, fontWeight: 600, textAlign: "center",
-            border: `1px solid ${message.type === "success" ? `${C.teal}25` : message.type === "error" ? "rgba(239,68,68,0.2)" : `${C.saffron}25`}`,
+            border: `1px solid ${message.type === "success" ? `${C.secondary}25` : message.type === "error" ? "rgba(239,68,68,0.2)" : `${C.primary}25`}`,
           }}>
             {message.text}
           </div>

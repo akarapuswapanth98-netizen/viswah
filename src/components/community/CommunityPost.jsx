@@ -1,11 +1,6 @@
 import { useState } from "react";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../ui/colors";
 
 const POST_TYPE_ICONS = {
   achievement: "\u{1F3C6}", practice_share: "\u{1F3B9}", level_up: "\u{1F31F}",
@@ -39,7 +34,7 @@ export default function CommunityPost({ post, onLike, onComment }) {
           justifyContent: "center", fontSize: 18,
         }}>{icon}</div>
         <div style={{ flex: 1 }}>
-          <div style={{ color: C.saffron, fontSize: 14, fontWeight: 600 }}>
+          <div style={{ color: C.primary, fontSize: 14, fontWeight: 600 }}>
             {post.username}
           </div>
           <div style={{ color: C.textMuted, fontSize: 11 }}>
@@ -71,7 +66,7 @@ export default function CommunityPost({ post, onLike, onComment }) {
           onClick={handleLike}
           style={{
             background: "none", border: "none", cursor: "pointer",
-            color: post.liked_by_me ? C.saffron : C.textMuted, fontSize: 13,
+            color: post.liked_by_me ? C.primary : C.textMuted, fontSize: 13,
             display: "flex", alignItems: "center", gap: 4, padding: "4px 8px",
             borderRadius: 6,
           }}
@@ -105,7 +100,7 @@ export default function CommunityPost({ post, onLike, onComment }) {
               }}
             />
             <button onClick={handleSubmitComment} style={{
-              background: C.saffron, color: C.ink, border: "none",
+              background: C.primary, color: C.ink, border: "none",
               borderRadius: 8, padding: "8px 14px", fontSize: 12,
               fontWeight: 600, cursor: "pointer",
             }}>Post</button>

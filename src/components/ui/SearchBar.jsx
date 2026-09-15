@@ -1,20 +1,5 @@
 import React, { useState, useRef } from 'react';
-
-const colors = {
-  primary: '#6C63FF',
-  secondary: '#4ECDC4',
-  success: '#34C759',
-  warning: '#FF9500',
-  error: '#FF3B30',
-  neon: '#00FF88',
-  background: '#0F0F23',
-  surface: 'rgba(255,255,255,0.08)',
-  glass: 'rgba(255,255,255,0.06)',
-  glassBorder: 'rgba(255,255,255,0.12)',
-  text: '#FFFFFF',
-  secondaryText: '#B0B0CC',
-  mutedText: '#6B6B8D',
-};
+import C from './colors';
 
 function SearchBar({
   value,
@@ -58,15 +43,11 @@ function SearchBar({
     padding: sizeStyle.padding,
     paddingLeft: icon ? sizeStyle.height : sizeStyle.padding,
     paddingRight: value && showClearButton ? sizeStyle.height : sizeStyle.padding,
-    background: isFocused
-      ? `${colors.surface}cc`
-      : colors.surface,
-    border: `1px solid ${isFocused ? `${colors.primary}60` : colors.glassBorder}`,
+    background: isFocused ? C.surfaceHover : C.surfaceTint,
+    border: `1px solid ${isFocused ? `${C.primary}50` : C.glassBorder}`,
     borderRadius: '12px',
     transition: 'all 0.2s ease',
-    boxShadow: isFocused
-      ? `0 0 0 3px ${colors.primary}15`
-      : 'none',
+    boxShadow: isFocused ? `0 0 0 3px ${C.primary}12` : 'none',
     cursor: disabled ? 'not-allowed' : 'text',
   };
 
@@ -78,7 +59,7 @@ function SearchBar({
     justifyContent: 'center',
     width: sizeStyle.iconSize,
     height: sizeStyle.iconSize,
-    color: isFocused ? colors.primary : colors.mutedText,
+    color: isFocused ? C.primary : C.textMuted,
     transition: 'color 0.2s ease',
     pointerEvents: 'none',
     fontSize: sizeStyle.iconSize,
@@ -90,7 +71,7 @@ function SearchBar({
     background: 'transparent',
     border: 'none',
     outline: 'none',
-    color: colors.text,
+    color: C.text,
     fontSize: sizeStyle.fontSize,
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
     padding: 0,
@@ -104,10 +85,10 @@ function SearchBar({
     justifyContent: 'center',
     width: '24px',
     height: '24px',
-    background: colors.glass,
-    border: `1px solid ${colors.glassBorder}`,
+    background: C.surfaceGlass,
+    border: `1px solid ${C.glassBorder}`,
     borderRadius: '6px',
-    color: colors.mutedText,
+    color: C.textMuted,
     cursor: 'pointer',
     fontSize: '12px',
     transition: 'all 0.2s ease',
@@ -163,10 +144,10 @@ function SearchBar({
             }
           }}
           onMouseEnter={(e) => {
-            e.target.style.background = 'rgba(255,255,255,0.15)';
+            e.target.style.background = C.surfaceTint;
           }}
           onMouseLeave={(e) => {
-            e.target.style.background = colors.glass;
+            e.target.style.background = C.surfaceGlass;
           }}
         >
           ×

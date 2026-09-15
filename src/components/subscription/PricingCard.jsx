@@ -1,20 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  free: "#6B6080", student: "#5BA8A0", premium: "#E8A838", pro: "#C77DBA",
-};
+import C from "../ui/colors";
 
-const planColors = { free: C.free, student: C.teal, premium: C.saffron, pro: C.raga };
+const planColors = { free: C.textMuted, student: C.secondary, premium: C.primary, pro: C.raga };
 
 export default function PricingCard({ plan, currentPlanId, onSelect }) {
   const [hovered, setHovered] = useState(false);
   const isCurrent = plan.id === currentPlanId;
-  const color = planColors[plan.id] || C.teal;
+  const color = planColors[plan.id] || C.secondary;
 
   return (
     <div

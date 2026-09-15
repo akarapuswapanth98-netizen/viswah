@@ -1,9 +1,4 @@
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../ui/colors";
 
 const usageLabels = {
   ai_coach_daily: { label: "AI Coach", icon: "\uD83C\uDFAF" },
@@ -17,7 +12,7 @@ export default function UsageLimitCard({ usageType, current, limit, onUpgrade })
   const percentage = limit > 0 ? Math.min((current / limit) * 100, 100) : 0;
   const isNearLimit = percentage >= 80;
   const isAtLimit = percentage >= 100;
-  const barColor = isAtLimit ? "#EF4444" : isNearLimit ? C.saffron : C.teal;
+  const barColor = isAtLimit ? "#EF4444" : isNearLimit ? C.primary : C.secondary;
 
   return (
     <div style={{
@@ -52,7 +47,7 @@ export default function UsageLimitCard({ usageType, current, limit, onUpgrade })
           </span>
           {onUpgrade && (
             <button onClick={onUpgrade} style={{
-              background: `${C.saffron}15`, color: C.saffron, border: `1px solid ${C.saffron}25`,
+              background: `${C.primary}15`, color: C.primary, border: `1px solid ${C.primary}25`,
               padding: "4px 12px", borderRadius: 8, fontSize: 12, fontWeight: 600,
               cursor: "pointer",
             }}>
@@ -63,7 +58,7 @@ export default function UsageLimitCard({ usageType, current, limit, onUpgrade })
       )}
 
       {isNearLimit && !isAtLimit && (
-        <span style={{ color: C.saffron, fontSize: 12, fontWeight: 500 }}>
+        <span style={{ color: C.primary, fontSize: 12, fontWeight: 500 }}>
           Approaching daily limit
         </span>
       )}

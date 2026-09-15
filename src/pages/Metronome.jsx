@@ -2,24 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { indianMusicApi } from "../api/indianMusicApi";
 import { useToast } from "../context/ToastContext";
 
-const COLORS = {
-  primary: "#6C63FF",
-  secondary: "#4ECDC4",
-  neon: "#00FF88",
-  bg: "#0F0F23",
-  surface: "rgba(255,255,255,0.08)",
-  glass: "rgba(255,255,255,0.06)",
-  glassBorder: "rgba(255,255,255,0.12)",
-  text: "#FFFFFF",
-  secondaryText: "#B0B0CC",
-  mutedText: "#6B6B8D",
-  success: "#34C759",
-  accent: "#FF6B6B",
-};
+import C from "../components/ui/colors";
 
 const cardStyle = {
-  background: COLORS.glass,
-  border: `1px solid ${COLORS.glassBorder}`,
+  background: C.surfaceGlass,
+  border: `1px solid ${C.glassBorder}`,
   borderRadius: 16,
   padding: 24,
   marginBottom: 20,
@@ -33,7 +20,7 @@ const btnBase = {
   fontWeight: 600,
   cursor: "pointer",
   transition: "all 0.2s",
-  color: COLORS.text,
+  color: C.text,
 };
 
 const timeSignatures = [
@@ -254,15 +241,15 @@ export default function Metronome() {
   const beatDots = Array.from({ length: beatsPerMeasure }, (_, i) => i);
 
   return (
-    <div style={{ minHeight: "100vh", background: COLORS.bg, paddingBottom: 80 }}>
+    <div style={{ minHeight: "100vh", background: C.ink, paddingBottom: 80 }}>
       <style>{beatKeyframes}</style>
       <div style={{ maxWidth: 700, margin: "0 auto", padding: "40px 20px 0" }}>
         {/* Header */}
         <div style={{ marginBottom: 32 }}>
-          <h1 style={{ color: COLORS.text, fontSize: 28, fontWeight: 700, margin: "0 0 6px" }}>
+          <h1 style={{ color: C.text, fontSize: 28, fontWeight: 700, margin: "0 0 6px" }}>
             Metronome
           </h1>
-          <p style={{ color: COLORS.mutedText, fontSize: 15, margin: 0 }}>
+          <p style={{ color: C.textMuted, fontSize: 15, margin: 0 }}>
             Precise timing with Web Audio API and Indian Tala support
           </p>
         </div>
@@ -275,7 +262,7 @@ export default function Metronome() {
             padding: "40px 24px",
           }}
         >
-          <div style={{ color: COLORS.mutedText, fontSize: 13, textTransform: "uppercase", letterSpacing: 2, marginBottom: 8 }}>
+          <div style={{ color: C.textMuted, fontSize: 13, textTransform: "uppercase", letterSpacing: 2, marginBottom: 8 }}>
             Tempo
           </div>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 24 }}>
@@ -284,7 +271,7 @@ export default function Metronome() {
               aria-label="Decrease BPM"
               style={{
                 ...btnBase,
-                background: COLORS.surface,
+                background: C.surfaceGlass,
                 width: 44,
                 height: 44,
                 padding: 0,
@@ -301,21 +288,21 @@ export default function Metronome() {
                 style={{
                   fontSize: 72,
                   fontWeight: 800,
-                  color: COLORS.text,
+                  color: C.text,
                   lineHeight: 1,
                   fontFamily: "'SF Mono', 'Fira Code', monospace",
                 }}
               >
                 {bpm}
               </span>
-              <span style={{ fontSize: 20, color: COLORS.mutedText, marginLeft: 4 }}>BPM</span>
+              <span style={{ fontSize: 20, color: C.textMuted, marginLeft: 4 }}>BPM</span>
             </div>
             <button
               onClick={() => setBpm((b) => Math.min(240, b + 1))}
               aria-label="Increase BPM"
               style={{
                 ...btnBase,
-                background: COLORS.surface,
+                background: C.surfaceGlass,
                 width: 44,
                 height: 44,
                 padding: 0,
@@ -343,14 +330,14 @@ export default function Metronome() {
                 height: 6,
                 borderRadius: 3,
                 appearance: "none",
-                background: `linear-gradient(to right, ${COLORS.primary}, ${COLORS.secondary})`,
+                background: `linear-gradient(to right, ${C.primary}, ${C.secondary})`,
                 outline: "none",
                 cursor: "pointer",
               }}
             />
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
-              <span style={{ color: COLORS.mutedText, fontSize: 11 }}>40</span>
-              <span style={{ color: COLORS.mutedText, fontSize: 11 }}>240</span>
+              <span style={{ color: C.textMuted, fontSize: 11 }}>40</span>
+              <span style={{ color: C.textMuted, fontSize: 11 }}>240</span>
             </div>
           </div>
 
@@ -370,19 +357,19 @@ export default function Metronome() {
                     borderRadius: "50%",
                     background: isActive
                       ? isAccent
-                        ? COLORS.neon
-                        : COLORS.primary
-                      : `${COLORS.surface}`,
-                    border: `2px solid ${isActive ? (isAccent ? COLORS.neon : COLORS.primary) : COLORS.glassBorder}`,
+                        ? C.neon
+                        : C.primary
+                      : `${C.surfaceGlass}`,
+                    border: `2px solid ${isActive ? (isAccent ? C.neon : C.primary) : C.glassBorder}`,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     fontSize: isMobile ? (isAccent ? 14 : 11) : (isAccent ? 18 : 14),
                     fontWeight: 700,
-                    color: isActive ? COLORS.bg : COLORS.mutedText,
+                    color: isActive ? C.ink : C.textMuted,
                     transition: "all 0.05s ease-out",
                     animation: isActive ? "pulse 0.15s ease-out" : "none",
-                    boxShadow: isActive ? `0 0 20px ${isAccent ? COLORS.neon : COLORS.primary}66` : "none",
+                    boxShadow: isActive ? `0 0 20px ${isAccent ? C.neon : C.primary}66` : "none",
                   }}
                 >
                   {i + 1}
@@ -392,7 +379,7 @@ export default function Metronome() {
           </div>
 
           {/* Beat counter text */}
-          <div style={{ color: COLORS.secondaryText, fontSize: 14, marginBottom: 24 }}>
+          <div style={{ color: C.textSecondary, fontSize: 14, marginBottom: 24 }}>
             {isPlaying ? `${currentBeat} of ${beatsPerMeasure}` : `Ready — ${beatsPerMeasure} beats per measure`}
           </div>
 
@@ -402,8 +389,8 @@ export default function Metronome() {
               onClick={toggleMetronome}
               style={{
                 ...btnBase,
-                background: isPlaying ? COLORS.accent : COLORS.neon,
-                color: isPlaying ? COLORS.text : COLORS.bg,
+                background: isPlaying ? C.error : C.neon,
+                color: isPlaying ? C.text : C.ink,
                 padding: "16px 48px",
                 fontSize: 18,
               }}
@@ -414,8 +401,8 @@ export default function Metronome() {
               onClick={handleTapTempo}
               style={{
                 ...btnBase,
-                background: COLORS.surface,
-                border: `1px solid ${COLORS.glassBorder}`,
+                background: C.surfaceGlass,
+                border: `1px solid ${C.glassBorder}`,
               }}
             >
               Tap Tempo
@@ -426,7 +413,7 @@ export default function Metronome() {
         {/* Volume */}
         <div style={cardStyle}>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <span style={{ color: COLORS.secondaryText, fontSize: 14, minWidth: 60 }}>Volume</span>
+            <span style={{ color: C.textSecondary, fontSize: 14, minWidth: 60 }}>Volume</span>
             <input
               type="range"
               min={0}
@@ -440,12 +427,12 @@ export default function Metronome() {
                 height: 4,
                 borderRadius: 2,
                 appearance: "none",
-                background: `linear-gradient(to right, ${COLORS.mutedText}, ${COLORS.secondary})`,
+                background: `linear-gradient(to right, ${C.textMuted}, ${C.secondary})`,
                 outline: "none",
                 cursor: "pointer",
               }}
             />
-            <span style={{ color: COLORS.mutedText, fontSize: 13, minWidth: 36, textAlign: "right" }}>
+            <span style={{ color: C.textMuted, fontSize: 13, minWidth: 36, textAlign: "right" }}>
               {Math.round(volume * 100)}%
             </span>
           </div>
@@ -453,7 +440,7 @@ export default function Metronome() {
 
         {/* Time Signature */}
         <div style={cardStyle}>
-          <h3 style={{ color: COLORS.text, fontSize: 16, fontWeight: 600, margin: "0 0 16px" }}>Time Signature</h3>
+          <h3 style={{ color: C.text, fontSize: 16, fontWeight: 600, margin: "0 0 16px" }}>Time Signature</h3>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             {timeSignatures.map((ts) => {
               const isActive = beatsPerMeasure === ts.beats && !selectedTala;
@@ -470,8 +457,8 @@ export default function Metronome() {
                   }}
                   style={{
                     ...btnBase,
-                    background: isActive ? COLORS.primary : COLORS.surface,
-                    border: `1px solid ${isActive ? COLORS.primary : COLORS.glassBorder}`,
+                    background: isActive ? C.primary : C.surfaceGlass,
+                    border: `1px solid ${isActive ? C.primary : C.glassBorder}`,
                     minWidth: 64,
                     padding: "10px 16px",
                   }}
@@ -485,14 +472,14 @@ export default function Metronome() {
 
         {/* Indian Tala */}
         <div style={cardStyle}>
-          <h3 style={{ color: COLORS.text, fontSize: 16, fontWeight: 600, margin: "0 0 4px" }}>
+          <h3 style={{ color: C.text, fontSize: 16, fontWeight: 600, margin: "0 0 4px" }}>
             Indian Tala
           </h3>
-          <p style={{ color: COLORS.mutedText, fontSize: 13, margin: "0 0 16px" }}>
+          <p style={{ color: C.textMuted, fontSize: 13, margin: "0 0 16px" }}>
             Select a tala to set beats and tempo
           </p>
           {talas.length === 0 ? (
-            <p style={{ color: COLORS.mutedText, fontSize: 14 }}>Loading talas...</p>
+            <p style={{ color: C.textMuted, fontSize: 14 }}>Loading talas...</p>
           ) : (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 10 }}>
               {talas.map((tala, idx) => {
@@ -505,8 +492,8 @@ export default function Metronome() {
                     onClick={() => selectTala(tala)}
                     style={{
                       ...btnBase,
-                      background: isSelected ? `${COLORS.secondary}33` : COLORS.surface,
-                      border: `1px solid ${isSelected ? COLORS.secondary : COLORS.glassBorder}`,
+                      background: isSelected ? `${C.secondary}33` : C.surfaceGlass,
+                      border: `1px solid ${isSelected ? C.secondary : C.glassBorder}`,
                       textAlign: "left",
                       padding: "12px 16px",
                       display: "flex",
@@ -516,7 +503,7 @@ export default function Metronome() {
                   >
                     <span style={{ fontSize: 14, fontWeight: 600 }}>{name}</span>
                     {beats && (
-                      <span style={{ fontSize: 12, color: COLORS.mutedText }}>{beats} beats</span>
+                      <span style={{ fontSize: 12, color: C.textMuted }}>{beats} beats</span>
                     )}
                   </button>
                 );

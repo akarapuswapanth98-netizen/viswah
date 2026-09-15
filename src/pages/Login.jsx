@@ -4,22 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { useToast } from "../context/ToastContext";
 import { useAudioFeedback } from "../hooks/useAudioFeedback";
 
-const COLORS = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#8075A0",
-  border: "rgba(240, 235, 227, 0.08)",
-  borderHover: "rgba(240, 235, 227, 0.15)",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 // Floating musical notation particles
 function FloatingNotes() {
@@ -73,7 +58,7 @@ function AmbientWaveform() {
             style={{
               width: 2,
               height: h,
-              background: `linear-gradient(to top, ${COLORS.saffron}, transparent)`,
+              background: `linear-gradient(to top, ${C.primary}, transparent)`,
               borderRadius: 1,
               animation: `waveform ${2 + (i % 5) * 0.3}s ease-in-out infinite`,
               animationDelay: `${i * 0.05}s`,
@@ -140,7 +125,7 @@ export default function Login() {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      background: COLORS.ink,
+      background: C.ink,
       position: "relative",
       overflow: "hidden",
       padding: "20px",
@@ -213,7 +198,7 @@ export default function Login() {
             left: "10%",
             right: "10%",
             height: 1,
-            background: `linear-gradient(90deg, transparent, ${COLORS.saffron}40, transparent)`,
+            background: `linear-gradient(90deg, transparent, ${C.primary}40, transparent)`,
           }} />
 
           {/* Logo */}
@@ -222,8 +207,8 @@ export default function Login() {
               width: 56,
               height: 56,
               borderRadius: 16,
-              background: `linear-gradient(135deg, ${COLORS.saffron}20, ${COLORS.raga}15)`,
-              border: `1px solid ${COLORS.saffron}25`,
+              background: `linear-gradient(135deg, ${C.primary}20, ${C.raga}15)`,
+              border: `1px solid ${C.primary}25`,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -238,11 +223,11 @@ export default function Login() {
               margin: "0 0 8px",
               letterSpacing: 3,
             }}>
-              <span style={{ color: COLORS.saffron }}>VIS</span>
-              <span style={{ color: COLORS.teal }}>WAH</span>
+              <span style={{ color: C.primary }}>VIS</span>
+              <span style={{ color: C.secondary }}>WAH</span>
             </h1>
             <p style={{
-              color: COLORS.textMuted,
+              color: C.textMuted,
               fontSize: 14,
               letterSpacing: 0.5,
             }}>
@@ -257,7 +242,7 @@ export default function Login() {
               borderRadius: 10,
               padding: "10px 14px",
               marginBottom: 20,
-              color: COLORS.error,
+              color: C.error,
               fontSize: 13,
             }}>{error}</div>
           )}
@@ -266,7 +251,7 @@ export default function Login() {
             <div style={{ marginBottom: 18 }}>
               <label htmlFor="login-email" style={{
                 display: "block",
-                color: COLORS.textSecondary,
+                color: C.textSecondary,
                 fontSize: 12,
                 marginBottom: 8,
                 fontWeight: 500,
@@ -284,20 +269,20 @@ export default function Login() {
                   width: "100%",
                   padding: "13px 16px",
                   background: "rgba(255,255,255,0.04)",
-                  border: `1px solid ${COLORS.border}`,
+                  border: `1px solid ${C.border}`,
                   borderRadius: 10,
-                  color: COLORS.text,
+                  color: C.text,
                   fontSize: 14,
                   outline: "none",
                   boxSizing: "border-box",
                   transition: "border-color 0.2s, box-shadow 0.2s",
                 }}
                 onFocus={(e) => {
-                  e.target.style.borderColor = COLORS.saffron + "60";
+                  e.target.style.borderColor = C.primary + "60";
                   e.target.style.boxShadow = "0 0 0 3px rgba(232, 168, 56, 0.08)";
                 }}
                 onBlur={(e) => {
-                  e.target.style.borderColor = COLORS.border;
+                  e.target.style.borderColor = C.border;
                   e.target.style.boxShadow = "none";
                 }}
               />
@@ -306,7 +291,7 @@ export default function Login() {
             <div style={{ marginBottom: 24, position: "relative" }}>
               <label htmlFor="login-password" style={{
                 display: "block",
-                color: COLORS.textSecondary,
+                color: C.textSecondary,
                 fontSize: 12,
                 marginBottom: 8,
                 fontWeight: 500,
@@ -324,20 +309,20 @@ export default function Login() {
                   width: "100%",
                   padding: "13px 44px 13px 16px",
                   background: "rgba(255,255,255,0.04)",
-                  border: `1px solid ${COLORS.border}`,
+                  border: `1px solid ${C.border}`,
                   borderRadius: 10,
-                  color: COLORS.text,
+                  color: C.text,
                   fontSize: 14,
                   outline: "none",
                   boxSizing: "border-box",
                   transition: "border-color 0.2s, box-shadow 0.2s",
                 }}
                 onFocus={(e) => {
-                  e.target.style.borderColor = COLORS.saffron + "60";
+                  e.target.style.borderColor = C.primary + "60";
                   e.target.style.boxShadow = "0 0 0 3px rgba(232, 168, 56, 0.08)";
                 }}
                 onBlur={(e) => {
-                  e.target.style.borderColor = COLORS.border;
+                  e.target.style.borderColor = C.border;
                   e.target.style.boxShadow = "none";
                 }}
               />
@@ -351,7 +336,7 @@ export default function Login() {
                   top: 34,
                   background: "none",
                   border: "none",
-                  color: COLORS.textMuted,
+                  color: C.textMuted,
                   cursor: "pointer",
                   fontSize: 16,
                   padding: "8px",
@@ -371,9 +356,9 @@ export default function Login() {
                 width: "100%",
                 padding: "14px 0",
                 background: loading
-                  ? COLORS.saffronMuted
-                  : `linear-gradient(135deg, ${COLORS.saffron}, ${COLORS.saffronMuted})`,
-                color: COLORS.ink,
+                  ? C.primaryMuted
+                  : `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
+                color: C.ink,
                 border: "none",
                 borderRadius: 10,
                 fontSize: 15,
@@ -394,7 +379,7 @@ export default function Login() {
               padding: "12px 0",
               marginTop: 14,
               background: "transparent",
-              color: COLORS.teal,
+              color: C.secondary,
               border: `1px solid rgba(91, 168, 160, 0.25)`,
               borderRadius: 10,
               fontSize: 14,
@@ -409,12 +394,12 @@ export default function Login() {
           <p style={{
             textAlign: "center",
             marginTop: 24,
-            color: COLORS.textMuted,
+            color: C.textMuted,
             fontSize: 13,
           }}>
             Don&apos;t have an account?{" "}
             <Link to="/register" style={{
-              color: COLORS.saffron,
+              color: C.primary,
               textDecoration: "none",
               fontWeight: 500,
             }}>Sign up</Link>

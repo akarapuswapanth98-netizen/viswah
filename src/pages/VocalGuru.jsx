@@ -6,24 +6,7 @@ import { usePracticeSession } from "../hooks/usePracticeSession";
 import { useAudioRecorder } from "../hooks/useAudioRecorder";
 import { speechApi } from "../api/speechApi";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const PHASES = {
   SELECT_GURU: "select_guru",
@@ -389,7 +372,7 @@ export default function VocalGuru() {
           transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
         }}>
           <h1 style={{ color: C.text, fontSize: 28, fontWeight: 700, margin: 0 }}>
-            Vocal <span style={{ color: C.saffron }}>Guru</span>
+            Vocal <span style={{ color: C.primary }}>Guru</span>
           </h1>
           <p style={{ color: C.textMuted, fontSize: 15, marginTop: 6 }}>
             {phase === PHASES.COMPLETE
@@ -410,7 +393,7 @@ export default function VocalGuru() {
             <span style={{ fontSize: 16 }}>&#9888;</span>
             <span style={{ color: C.error, fontSize: 14, flex: 1 }}>{error}</span>
             <button onClick={() => { setError(null); fetchGurus(); fetchTopics(); }} style={{
-              background: "none", border: "none", color: C.saffron, fontSize: 14,
+              background: "none", border: "none", color: C.primary, fontSize: 14,
               fontWeight: 600, cursor: "pointer", textDecoration: "underline",
             }}>Retry</button>
           </div>
@@ -424,7 +407,7 @@ export default function VocalGuru() {
                 <div key={label} style={{
                   flex: 1, height: 4, borderRadius: 4,
                   background: i <= phaseIndex
-                    ? `linear-gradient(90deg, ${C.saffron}, ${C.raga})`
+                    ? `linear-gradient(90deg, ${C.primary}, ${C.raga})`
                     : "rgba(255,255,255,0.06)",
                   transition: "background 0.4s",
                 }} />
@@ -434,7 +417,7 @@ export default function VocalGuru() {
               {STEP_LABELS.map((label, i) => (
                 <span key={label} style={{
                   fontSize: 11, fontWeight: 500,
-                  color: i === phaseIndex ? C.saffron : i < phaseIndex ? C.success : C.textMuted,
+                  color: i === phaseIndex ? C.primary : i < phaseIndex ? C.success : C.textMuted,
                   transition: "color 0.3s",
                 }}>{label}</span>
               ))}
@@ -467,18 +450,18 @@ export default function VocalGuru() {
                         minWidth: 0, background: isSelected
                           ? `linear-gradient(135deg, rgba(232, 168, 56, 0.1), rgba(199, 125, 186, 0.06))`
                           : C.surface,
-                        border: `1px solid ${isSelected ? C.saffron + "40" : C.border}`,
+                        border: `1px solid ${isSelected ? C.primary + "40" : C.border}`,
                         borderRadius: 16, padding: 20, cursor: "pointer",
                         transition: "all 0.25s ease-out", flexShrink: 0,
                         boxShadow: isSelected ? "0 4px 24px rgba(232, 168, 56, 0.08)" : "none",
                       }}
-                      onMouseEnter={(e) => { if (!isSelected) { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.borderColor = C.saffron + "30"; } }}
+                      onMouseEnter={(e) => { if (!isSelected) { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.borderColor = C.primary + "30"; } }}
                       onMouseLeave={(e) => { if (!isSelected) { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.borderColor = C.border; } }}
                     >
                       <div style={{
                         width: 48, height: 48, borderRadius: 12,
-                        background: `linear-gradient(135deg, ${C.saffron}25, ${C.raga}18)`,
-                        border: `1px solid ${C.saffron}20`,
+                        background: `linear-gradient(135deg, ${C.primary}25, ${C.raga}18)`,
+                        border: `1px solid ${C.primary}20`,
                         display: "flex", alignItems: "center", justifyContent: "center",
                         fontSize: 24, marginBottom: 12,
                       }}>
@@ -486,7 +469,7 @@ export default function VocalGuru() {
                       </div>
                       <p style={{ color: C.text, fontWeight: 600, fontSize: 16, margin: "0 0 4px" }}>{guru.name}</p>
                       {guru.style && (
-                        <p style={{ color: C.saffron, fontSize: 13, margin: "0 0 8px", fontWeight: 500 }}>{guru.style}</p>
+                        <p style={{ color: C.primary, fontSize: 13, margin: "0 0 8px", fontWeight: 500 }}>{guru.style}</p>
                       )}
                       {guru.description && (
                         <p style={{ color: C.textMuted, fontSize: 13, margin: "0 0 8px", lineHeight: 1.5 }}>
@@ -496,7 +479,7 @@ export default function VocalGuru() {
                       {guru.specialties && (
                         <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                           {(Array.isArray(guru.specialties) ? guru.specialties : [guru.specialties]).slice(0, 3).map((s, i) => (
-                            <span key={i} style={{ padding: "2px 8px", borderRadius: 6, background: `${C.teal}12`, color: C.teal, fontSize: 11, fontWeight: 500 }}>{s}</span>
+                            <span key={i} style={{ padding: "2px 8px", borderRadius: 6, background: `${C.secondary}12`, color: C.secondary, fontSize: 11, fontWeight: 500 }}>{s}</span>
                           ))}
                         </div>
                       )}
@@ -514,15 +497,15 @@ export default function VocalGuru() {
             <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 16, padding: 24 }}>
               {loadingGreet ? (
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <div style={{ width: 20, height: 20, border: `2px solid ${C.borderHover}`, borderTopColor: C.saffron, borderRadius: "50%", animation: "spin 1s linear infinite" }} />
+                  <div style={{ width: 20, height: 20, border: `2px solid ${C.borderHover}`, borderTopColor: C.primary, borderRadius: "50%", animation: "spin 1s linear infinite" }} />
                   <span style={{ color: C.textMuted, fontSize: 14 }}>{selectedGuru.name} is greeting you...</span>
                 </div>
               ) : (
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                   <div style={{
                     width: 40, height: 40, borderRadius: 10, flexShrink: 0,
-                    background: `linear-gradient(135deg, ${C.saffron}25, ${C.raga}18)`,
-                    border: `1px solid ${C.saffron}20`,
+                    background: `linear-gradient(135deg, ${C.primary}25, ${C.raga}18)`,
+                    border: `1px solid ${C.primary}20`,
                     display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18,
                   }}>
                     {selectedGuru.name?.[0] ?? "🎤"}
@@ -564,7 +547,7 @@ export default function VocalGuru() {
                         cursor: !selectedGuru ? "not-allowed" : "pointer",
                         opacity: !selectedGuru ? 0.5 : 1, transition: "all 0.2s", color: C.text,
                       }}
-                      onMouseEnter={(e) => { if (selectedGuru) { e.currentTarget.style.borderColor = C.saffron + "30"; e.currentTarget.style.transform = "translateY(-2px)"; } }}
+                      onMouseEnter={(e) => { if (selectedGuru) { e.currentTarget.style.borderColor = C.primary + "30"; e.currentTarget.style.transform = "translateY(-2px)"; } }}
                       onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = "translateY(0)"; }}
                     >
                       <p style={{ fontSize: 14, fontWeight: 600, margin: "0 0 4px" }}>{topicName}</p>
@@ -628,7 +611,7 @@ export default function VocalGuru() {
 
               {/* Main — Learn panel */}
               <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 20, padding: 28, position: "relative", overflow: "hidden", boxShadow: "0 8px 40px rgba(0,0,0,0.2)" }}>
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${C.saffron}, ${C.raga}, ${C.teal})` }} />
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${C.primary}, ${C.raga}, ${C.secondary})` }} />
 
                 <div style={{ marginBottom: 20 }}>
                   <h3 style={{ color: C.text, fontSize: 22, fontWeight: 700, margin: "0 0 6px" }}>
@@ -640,14 +623,14 @@ export default function VocalGuru() {
                 {/* Explanation blocks */}
                 <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 28 }}>
                   {explanation.what && (
-                    <div style={{ background: `${C.saffron}08`, border: `1px solid ${C.saffron}18`, borderRadius: 12, padding: 16 }}>
-                      <p style={{ color: C.saffron, fontSize: 12, fontWeight: 700, margin: "0 0 6px", textTransform: "uppercase", letterSpacing: 0.5 }}>What It Is</p>
+                    <div style={{ background: `${C.primary}08`, border: `1px solid ${C.primary}18`, borderRadius: 12, padding: 16 }}>
+                      <p style={{ color: C.primary, fontSize: 12, fontWeight: 700, margin: "0 0 6px", textTransform: "uppercase", letterSpacing: 0.5 }}>What It Is</p>
                       <p style={{ color: C.text, fontSize: 14, margin: 0, lineHeight: 1.7 }}>{explanation.what}</p>
                     </div>
                   )}
                   {explanation.why && (
-                    <div style={{ background: `${C.teal}08`, border: `1px solid ${C.teal}18`, borderRadius: 12, padding: 16 }}>
-                      <p style={{ color: C.teal, fontSize: 12, fontWeight: 700, margin: "0 0 6px", textTransform: "uppercase", letterSpacing: 0.5 }}>Why It Matters</p>
+                    <div style={{ background: `${C.secondary}08`, border: `1px solid ${C.secondary}18`, borderRadius: 12, padding: 16 }}>
+                      <p style={{ color: C.secondary, fontSize: 12, fontWeight: 700, margin: "0 0 6px", textTransform: "uppercase", letterSpacing: 0.5 }}>Why It Matters</p>
                       <p style={{ color: C.text, fontSize: 14, margin: 0, lineHeight: 1.7 }}>{explanation.why}</p>
                     </div>
                   )}
@@ -669,7 +652,7 @@ export default function VocalGuru() {
                   onClick={handleStartExercise}
                   style={{
                     padding: "14px 32px", borderRadius: 12,
-                    background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+                    background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
                     border: "none", color: C.ink, fontSize: 15, fontWeight: 700,
                     cursor: "pointer", boxShadow: "0 4px 16px rgba(232, 168, 56, 0.2)",
                   }}
@@ -714,14 +697,14 @@ export default function VocalGuru() {
 
               {/* Main — Exercise panel */}
               <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 20, padding: 28, position: "relative", overflow: "hidden", boxShadow: "0 8px 40px rgba(0,0,0,0.2)" }}>
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${C.saffron}, ${C.raga}, ${C.teal})` }} />
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${C.primary}, ${C.raga}, ${C.secondary})` }} />
 
                 <div style={{ marginBottom: 20 }}>
                   <h3 style={{ color: C.text, fontSize: 22, fontWeight: 700, margin: "0 0 6px" }}>
                     {exercise.name ?? `Exercise: ${selectedTopic}`}
                   </h3>
                   {exercise.objective && (
-                    <p style={{ color: C.teal, fontSize: 14, margin: 0, fontWeight: 500 }}>{exercise.objective}</p>
+                    <p style={{ color: C.secondary, fontSize: 14, margin: 0, fontWeight: 500 }}>{exercise.objective}</p>
                   )}
                 </div>
 
@@ -729,7 +712,7 @@ export default function VocalGuru() {
                 <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 24 }}>
                   {exercise.instructions && exercise.instructions.length > 0 && (
                     <div style={{ background: "rgba(0,0,0,0.15)", borderRadius: 12, padding: 18 }}>
-                      <p style={{ color: C.saffron, fontSize: 12, fontWeight: 700, margin: "0 0 10px", textTransform: "uppercase", letterSpacing: 0.5 }}>Instructions</p>
+                      <p style={{ color: C.primary, fontSize: 12, fontWeight: 700, margin: "0 0 10px", textTransform: "uppercase", letterSpacing: 0.5 }}>Instructions</p>
                       <ol style={{ margin: 0, paddingLeft: 20, color: C.text, fontSize: 14, lineHeight: 2 }}>
                         {exercise.instructions.map((inst, i) => <li key={i}>{inst}</li>)}
                       </ol>
@@ -737,7 +720,7 @@ export default function VocalGuru() {
                   )}
                   {exercise.duration && (
                     <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                      <span style={{ background: `${C.teal}12`, color: C.teal, borderRadius: 8, padding: "6px 14px", fontSize: 13, fontWeight: 500 }}>
+                      <span style={{ background: `${C.secondary}12`, color: C.secondary, borderRadius: 8, padding: "6px 14px", fontSize: 13, fontWeight: 500 }}>
                         Duration: {exercise.duration}
                       </span>
                     </div>
@@ -761,7 +744,7 @@ export default function VocalGuru() {
                     onClick={handleStartPractice}
                     style={{
                       padding: "14px 32px", borderRadius: 12,
-                      background: `linear-gradient(135deg, ${C.teal}, ${C.teal}CC)`,
+                      background: `linear-gradient(135deg, ${C.secondary}, ${C.secondary}CC)`,
                       border: "none", color: C.ink, fontSize: 15, fontWeight: 700,
                       cursor: "pointer", boxShadow: "0 4px 16px rgba(91, 168, 160, 0.2)",
                     }}
@@ -812,7 +795,7 @@ export default function VocalGuru() {
 
               {/* Main — Practice / Recording panel */}
               <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 20, padding: 28, position: "relative", overflow: "hidden", boxShadow: "0 8px 40px rgba(0,0,0,0.2)" }}>
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${C.saffron}, ${C.raga}, ${C.teal})` }} />
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${C.primary}, ${C.raga}, ${C.secondary})` }} />
 
                 <div style={{ marginBottom: 24 }}>
                   <h3 style={{ color: C.text, fontSize: 22, fontWeight: 700, margin: "0 0 6px" }}>
@@ -838,7 +821,7 @@ export default function VocalGuru() {
                         return (
                           <div key={i} style={{
                             width: 4, height: isActive ? 12 + i * 2 : 4, borderRadius: 2,
-                            background: isActive ? (i < 4 ? C.teal : i < 8 ? C.saffron : C.error) : "rgba(255,255,255,0.08)",
+                            background: isActive ? (i < 4 ? C.secondary : i < 8 ? C.primary : C.error) : "rgba(255,255,255,0.08)",
                             transition: "height 0.1s, background 0.1s",
                           }} />
                         );
@@ -882,7 +865,7 @@ export default function VocalGuru() {
                           onClick={() => { recorder.stopRecording(); setPhase(PHASES.SUBMITTING); handleSubmit(); }}
                           style={{
                             padding: "14px 32px", borderRadius: 12,
-                            background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+                            background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
                             border: "none", color: C.ink, fontSize: 15, fontWeight: 700,
                             cursor: "pointer", display: "flex", alignItems: "center", gap: 8,
                           }}
@@ -912,7 +895,7 @@ export default function VocalGuru() {
                           style={{
                             padding: "14px 32px", borderRadius: 12,
                             background: (phase === PHASES.SUBMITTING || phase === PHASES.ANALYZING)
-                              ? `${C.saffron}50` : `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+                              ? `${C.primary}50` : `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
                             border: "none", color: C.ink, fontSize: 15, fontWeight: 700,
                             cursor: (phase === PHASES.SUBMITTING || phase === PHASES.ANALYZING) ? "not-allowed" : "pointer",
                             display: "flex", alignItems: "center", gap: 8,
@@ -946,8 +929,8 @@ export default function VocalGuru() {
                 </div>
 
                 {/* Quick tips */}
-                <div style={{ marginTop: 16, padding: "12px 16px", background: `${C.teal}08`, borderRadius: 10, border: `1px solid ${C.teal}15` }}>
-                  <p style={{ color: C.teal, fontSize: 12, fontWeight: 600, margin: "0 0 4px" }}>Quick Tips</p>
+                <div style={{ marginTop: 16, padding: "12px 16px", background: `${C.secondary}08`, borderRadius: 10, border: `1px solid ${C.secondary}15` }}>
+                  <p style={{ color: C.secondary, fontSize: 12, fontWeight: 600, margin: "0 0 4px" }}>Quick Tips</p>
                   <p style={{ color: C.textSecondary, fontSize: 13, margin: 0 }}>
                     {exercise.listen_for || "Focus on the quality of your sound. Take a breath before starting."}
                   </p>
@@ -963,10 +946,10 @@ export default function VocalGuru() {
             <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 20, padding: 48, textAlign: "center" }}>
               <div style={{
                 width: 64, height: 64, borderRadius: 16, margin: "0 auto 20px",
-                background: `${C.saffron}15`, border: `1px solid ${C.saffron}30`,
+                background: `${C.primary}15`, border: `1px solid ${C.primary}30`,
                 display: "flex", alignItems: "center", justifyContent: "center",
               }}>
-                <div style={{ width: 28, height: 28, border: `3px solid ${C.saffron}30`, borderTopColor: C.saffron, borderRadius: "50%", animation: "spin 1s linear infinite" }} />
+                <div style={{ width: 28, height: 28, border: `3px solid ${C.primary}30`, borderTopColor: C.primary, borderRadius: "50%", animation: "spin 1s linear infinite" }} />
               </div>
               <p style={{ color: C.text, fontSize: 18, fontWeight: 600, margin: "0 0 8px" }}>
                 {phase === PHASES.SUBMITTING ? "Submitting your recording..." : "Analyzing your performance..."}
@@ -990,14 +973,14 @@ export default function VocalGuru() {
                 <div style={{ textAlign: "center", padding: "16px 0", marginBottom: 16 }}>
                   <div style={{
                     width: 80, height: 80, borderRadius: "50%", margin: "0 auto 12px",
-                    background: `conic-gradient(${C.saffron} ${feedback.score || 0}%, rgba(255,255,255,0.06) 0%)`,
+                    background: `conic-gradient(${C.primary} ${feedback.score || 0}%, rgba(255,255,255,0.06) 0%)`,
                     display: "flex", alignItems: "center", justifyContent: "center",
                   }}>
                     <div style={{
                       width: 64, height: 64, borderRadius: "50%", background: C.surface,
                       display: "flex", alignItems: "center", justifyContent: "center",
                     }}>
-                      <span style={{ color: C.saffron, fontSize: 22, fontWeight: 700 }}>
+                      <span style={{ color: C.primary, fontSize: 22, fontWeight: 700 }}>
                         {Math.round(feedback.score || 0)}
                       </span>
                     </div>
@@ -1033,7 +1016,7 @@ export default function VocalGuru() {
 
               {/* Main — Feedback content */}
               <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 20, padding: 28, position: "relative", overflow: "hidden", boxShadow: "0 8px 40px rgba(0,0,0,0.2)" }}>
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${C.saffron}, ${C.raga}, ${C.teal})` }} />
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${C.primary}, ${C.raga}, ${C.secondary})` }} />
 
                 <h3 style={{ color: C.text, fontSize: 22, fontWeight: 700, margin: "0 0 24px" }}>
                   Coach&apos;s Feedback
@@ -1041,16 +1024,16 @@ export default function VocalGuru() {
 
                 <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 28 }}>
                   {/* WHAT I OBSERVED */}
-                  <div style={{ background: `${C.saffron}08`, border: `1px solid ${C.saffron}18`, borderRadius: 12, padding: 18 }}>
-                    <p style={{ color: C.saffron, fontSize: 12, fontWeight: 700, margin: "0 0 8px", textTransform: "uppercase", letterSpacing: 0.5 }}>
+                  <div style={{ background: `${C.primary}08`, border: `1px solid ${C.primary}18`, borderRadius: 12, padding: 18 }}>
+                    <p style={{ color: C.primary, fontSize: 12, fontWeight: 700, margin: "0 0 8px", textTransform: "uppercase", letterSpacing: 0.5 }}>
                       What I Observed
                     </p>
                     <p style={{ color: C.text, fontSize: 15, margin: 0, lineHeight: 1.7 }}>{feedback.observation}</p>
                   </div>
 
                   {/* WHY IT MATTERS */}
-                  <div style={{ background: `${C.teal}08`, border: `1px solid ${C.teal}18`, borderRadius: 12, padding: 18 }}>
-                    <p style={{ color: C.teal, fontSize: 12, fontWeight: 700, margin: "0 0 8px", textTransform: "uppercase", letterSpacing: 0.5 }}>
+                  <div style={{ background: `${C.secondary}08`, border: `1px solid ${C.secondary}18`, borderRadius: 12, padding: 18 }}>
+                    <p style={{ color: C.secondary, fontSize: 12, fontWeight: 700, margin: "0 0 8px", textTransform: "uppercase", letterSpacing: 0.5 }}>
                       Why It Matters
                     </p>
                     <p style={{ color: C.text, fontSize: 15, margin: 0, lineHeight: 1.7 }}>{feedback.why}</p>
@@ -1080,7 +1063,7 @@ export default function VocalGuru() {
                     onClick={handlePracticeAgain}
                     style={{
                       padding: "14px 32px", borderRadius: 12,
-                      background: `linear-gradient(135deg, ${C.teal}, ${C.teal}CC)`,
+                      background: `linear-gradient(135deg, ${C.secondary}, ${C.secondary}CC)`,
                       border: "none", color: C.ink, fontSize: 15, fontWeight: 700,
                       cursor: "pointer", boxShadow: "0 4px 16px rgba(91, 168, 160, 0.2)",
                     }}
@@ -1127,8 +1110,8 @@ export default function VocalGuru() {
                 Session Complete!
               </h3>
               <p style={{ color: C.textSecondary, fontSize: 15, margin: "0 0 8px" }}>
-                You practiced <span style={{ color: C.saffron, fontWeight: 600 }}>{selectedTopic}</span> with{" "}
-                <span style={{ color: C.saffron, fontWeight: 600 }}>{selectedGuru?.name}</span>
+                You practiced <span style={{ color: C.primary, fontWeight: 600 }}>{selectedTopic}</span> with{" "}
+                <span style={{ color: C.primary, fontWeight: 600 }}>{selectedGuru?.name}</span>
               </p>
               <p style={{ color: C.textMuted, fontSize: 14, margin: "0 0 28px" }}>
                 {attemptNumber} attempt{attemptNumber !== 1 ? "s" : ""} completed
@@ -1139,7 +1122,7 @@ export default function VocalGuru() {
                   onClick={handleNewTopic}
                   style={{
                     padding: "14px 32px", borderRadius: 12,
-                    background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+                    background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
                     border: "none", color: C.ink, fontSize: 15, fontWeight: 700,
                     cursor: "pointer",
                   }}

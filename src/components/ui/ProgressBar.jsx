@@ -1,16 +1,5 @@
 import { useEffect, useState } from 'react';
-
-const colors = {
-  primary: '#6C63FF',
-  secondary: '#4ECDC4',
-  success: '#34C759',
-  warning: '#FF9500',
-  error: '#FF3B30',
-  neon: '#00FF88',
-  surface: 'rgba(255,255,255,0.08)',
-  text: '#FFFFFF',
-  secondaryText: '#B0B0CC',
-};
+import C from './colors';
 
 let progressStylesInjected = false;
 function injectProgressStyles() {
@@ -48,24 +37,24 @@ function ProgressBar({
   }, [percentage, animated]);
 
   const gradientMap = {
-    primary: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
-    success: `linear-gradient(90deg, ${colors.success}, #66d98e)`,
-    warning: `linear-gradient(90deg, ${colors.warning}, #ffb340)`,
-    error: `linear-gradient(90deg, ${colors.error}, #ff6b6b)`,
-    neon: `linear-gradient(90deg, ${colors.neon}, #00cc6a)`,
-    secondary: `linear-gradient(90deg, ${colors.secondary}, ${colors.primary})`,
+    primary: `linear-gradient(90deg, ${C.primary}, ${C.primaryMuted})`,
+    success: `linear-gradient(90deg, ${C.success}, #66d98e)`,
+    warning: `linear-gradient(90deg, ${C.warning}, #ffb340)`,
+    error: `linear-gradient(90deg, ${C.error}, #ff6b6b)`,
+    raga: `linear-gradient(90deg, ${C.raga}, ${C.secondary})`,
+    secondary: `linear-gradient(90deg, ${C.secondary}, ${C.primary})`,
   };
 
   return (
     <div>
       {showLabel && (
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', fontSize: '12px', color: colors.secondaryText }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', fontSize: '12px', color: C.textSecondary }}>
           <span>Progress</span>
-          <span style={{ color: colors.text, fontWeight: 600 }}>{Math.round(displayValue)}%</span>
+          <span style={{ color: C.text, fontWeight: 600 }}>{Math.round(displayValue)}%</span>
         </div>
       )}
       <div
-        style={{ width: '100%', background: colors.surface, borderRadius: height, overflow: 'hidden', position: 'relative', ...style }}
+        style={{ width: '100%', background: C.surfaceTint, borderRadius: height, overflow: 'hidden', position: 'relative', ...style }}
         role="progressbar"
         aria-valuenow={value}
         aria-valuemin={0}

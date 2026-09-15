@@ -2,26 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { worldMusicApi } from "../api/worldMusicApi";
 import { onKeyDown } from "../utils/keyboard";
-
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  borderFocus: "rgba(232, 168, 56, 0.3)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const REGION_ICONS = {
   south_asia: "\uD83C\uDFDE\uFE0F",
@@ -35,19 +16,19 @@ const REGION_ICONS = {
 };
 
 const REGION_COLORS = {
-  south_asia: C.saffron,
+  south_asia: C.primary,
   middle_east: C.raga,
-  east_asia: C.teal,
+  east_asia: C.secondary,
   southeast_asia: "#6DBF73",
   africa: "#D4A84A",
   europe: "#5B8EC7",
-  north_america: C.saffronMuted,
+  north_america: C.primaryMuted,
   latin_america: C.error,
 };
 
 const DIFFICULTY_COLORS = {
   beginner: { bg: `${C.success}15`, text: C.success },
-  intermediate: { bg: `${C.teal}15`, text: C.teal },
+  intermediate: { bg: `${C.secondary}15`, text: C.secondary },
   advanced: { bg: `${C.warning}15`, text: C.warning },
 };
 
@@ -76,7 +57,7 @@ function SkeletonCard() {
 
 function RegionCard({ region, traditions, onClick, mounted, delay }) {
   const [hovered, setHovered] = useState(false);
-  const color = REGION_COLORS[region.id] || C.saffron;
+  const color = REGION_COLORS[region.id] || C.primary;
   const count = traditions.filter((t) => t.region === region.id).length;
 
   return (
@@ -124,7 +105,7 @@ function RegionCard({ region, traditions, onClick, mounted, delay }) {
 
 function TraditionCard({ tradition, onClick, mounted, delay }) {
   const [hovered, setHovered] = useState(false);
-  const regionColor = REGION_COLORS[tradition.region] || C.saffron;
+  const regionColor = REGION_COLORS[tradition.region] || C.primary;
   const dc = DIFFICULTY_COLORS[tradition.difficulty] || DIFFICULTY_COLORS.beginner;
 
   return (
@@ -197,7 +178,7 @@ function TraditionCard({ tradition, onClick, mounted, delay }) {
 
 function InstrumentCard({ instrument, mounted, delay }) {
   const [hovered, setHovered] = useState(false);
-  const regionColor = REGION_COLORS[instrument.region] || C.saffron;
+  const regionColor = REGION_COLORS[instrument.region] || C.primary;
 
   return (
     <div
@@ -353,7 +334,7 @@ export default function WorldMusic() {
               transition: "border-color 0.2s, box-shadow 0.2s",
             }}
             onFocus={(e) => {
-              e.target.style.borderColor = C.borderFocus;
+              e.target.style.borderColor = C.borderActive;
               e.target.style.boxShadow = "0 0 0 3px rgba(232, 168, 56, 0.06)";
             }}
             onBlur={(e) => {
@@ -418,9 +399,9 @@ export default function WorldMusic() {
               style={{
                 padding: "8px 16px",
                 borderRadius: 10,
-                border: `1px solid ${activeTab === tab.id ? C.saffron + "40" : C.border}`,
-                background: activeTab === tab.id ? `${C.saffron}15` : C.surface,
-                color: activeTab === tab.id ? C.saffron : C.textSecondary,
+                border: `1px solid ${activeTab === tab.id ? C.primary + "40" : C.border}`,
+                background: activeTab === tab.id ? `${C.primary}15` : C.surface,
+                color: activeTab === tab.id ? C.primary : C.textSecondary,
                 fontSize: 13,
                 fontWeight: 600,
                 cursor: "pointer",
@@ -450,7 +431,7 @@ export default function WorldMusic() {
             <p style={{ margin: "0 0 12px" }}>{error}</p>
             <button onClick={fetchData} style={{
               padding: "8px 20px", borderRadius: 8, border: "none",
-              background: C.saffron, color: C.ink, cursor: "pointer", fontWeight: 600, fontSize: 13,
+              background: C.primary, color: C.ink, cursor: "pointer", fontWeight: 600, fontSize: 13,
             }}>Retry</button>
           </div>
         )}
@@ -481,7 +462,7 @@ export default function WorldMusic() {
             {(search || regionFilter || difficultyFilter) && (
               <button onClick={() => { setSearch(""); setRegionFilter(""); setDifficultyFilter(""); }} style={{
                 padding: "8px 20px", borderRadius: 8, border: "none",
-                background: C.saffron, color: C.ink, cursor: "pointer", fontWeight: 600, fontSize: 13,
+                background: C.primary, color: C.ink, cursor: "pointer", fontWeight: 600, fontSize: 13,
               }}>Clear Search</button>
             )}
           </div>

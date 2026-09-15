@@ -10,24 +10,7 @@ import SkillMap from "../components/SkillMap";
 import DailyMission from "../components/DailyMission";
 import Recommendations from "../components/Recommendations";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#8075A0",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const ACTIVITY_ICONS = {
   vocal_guru: "🎤",
@@ -78,8 +61,8 @@ const COACHING_STATE_LABELS = {
 
 const COACHING_STATE_COLORS = {
   beginner: C.textMuted,
-  building_consistency: C.saffron,
-  improving: C.teal,
+  building_consistency: C.primary,
+  improving: C.secondary,
   needs_focus: C.warning,
   strong_progress: C.success,
   returning_after_gap: C.raga,
@@ -210,7 +193,7 @@ export default function Home() {
           <p style={{ color: C.textMuted, marginBottom: 24, fontSize: 14 }}>{error}</p>
           <button onClick={fetchData} style={{
             padding: "12px 32px", borderRadius: 10, border: "none",
-            background: C.saffron, color: C.ink, fontSize: 15, fontWeight: 600, cursor: "pointer",
+            background: C.primary, color: C.ink, fontSize: 15, fontWeight: 600, cursor: "pointer",
           }}>Retry</button>
         </div>
       </div>
@@ -221,7 +204,7 @@ export default function Home() {
     <div style={{ minHeight: "100vh", background: C.ink, paddingBottom: 80 }}>
       <div style={{
         position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0,
-        background: `radial-gradient(ellipse 80% 40% at 50% -10%, rgba(232, 168, 56, 0.05), transparent 70%), radial-gradient(ellipse 40% 30% at 85% 20%, rgba(199, 125, 186, 0.03), transparent 70%)`,
+        background: `radial-gradient(ellipse 80% 40% at 50% -10%, ${C.primary}0a, transparent 70%), radial-gradient(ellipse 40% 30% at 85% 20%, ${C.raga}08, transparent 70%)`,
       }} />
 
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 20px 0", position: "relative", zIndex: 1 }}>
@@ -234,7 +217,7 @@ export default function Home() {
           transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
         }}>
           <h1 style={{ color: C.text, fontSize: 32, fontWeight: 700, margin: 0, lineHeight: 1.3, overflowWrap: "break-word", wordBreak: "break-word" }}>
-            {getGreeting()}, <span style={{ color: C.saffron }}>{username}</span>
+            {getGreeting()}, <span style={{ color: C.primary }}>{username}</span>
           </h1>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 8 }}>
             <p style={{ color: C.textMuted, fontSize: 15, margin: 0 }}>
@@ -268,10 +251,10 @@ export default function Home() {
             marginBottom: 32,
           }}>
             {[
-              { label: "Practice Streak", value: `${(pStats || stats).current_streak ?? (pStats || stats).streak_days ?? 0}d`, sub: "days", icon: "🔥", color: C.saffron },
-              { label: "Today", value: `${(pStats || stats).today_minutes ?? 0}m`, sub: "minutes", icon: "⏱", color: C.teal },
+              { label: "Practice Streak", value: `${(pStats || stats).current_streak ?? (pStats || stats).streak_days ?? 0}d`, sub: "days", icon: "🔥", color: C.primary },
+              { label: "Today", value: `${(pStats || stats).today_minutes ?? 0}m`, sub: "minutes", icon: "⏱", color: C.secondary },
               { label: "Total Practice", value: `${(pStats || stats).total_minutes ?? stats?.total_minutes ?? 0}m`, sub: `${(pStats || stats).total_sessions ?? stats?.total_sessions ?? 0} sessions`, icon: "🎵", color: C.raga },
-              { label: "Courses", value: enrolled.length, sub: "enrolled", icon: "📚", color: C.saffron },
+              { label: "Courses", value: enrolled.length, sub: "enrolled", icon: "📚", color: C.primary },
             ].map((s, i) => (
               <div key={s.label} style={{
                 background: C.surface,
@@ -311,8 +294,8 @@ export default function Home() {
               <button
                 onClick={() => navigate("/ai-coach")}
                 style={{
-                  background: "transparent", border: `1px solid ${C.teal}30`, borderRadius: 8,
-                  color: C.teal, fontSize: 12, fontWeight: 600, padding: "6px 12px", cursor: "pointer",
+                  background: "transparent", border: `1px solid ${C.secondary}30`, borderRadius: 8,
+                  color: C.secondary, fontSize: 12, fontWeight: 600, padding: "6px 12px", cursor: "pointer",
                 }}
               >
                 View Details →
@@ -340,7 +323,7 @@ export default function Home() {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-3px)";
-                    e.currentTarget.style.borderColor = C.saffron + "40";
+                    e.currentTarget.style.borderColor = C.primary + "40";
                     e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.3)";
                   }}
                   onMouseLeave={(e) => {
@@ -352,21 +335,21 @@ export default function Home() {
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
                     <p style={{ color: C.text, fontWeight: 600, fontSize: 15, margin: 0 }}>{course.title}</p>
                     <span style={{
-                      fontSize: 12, fontWeight: 600, color: course.progress_pct === 100 ? C.success : C.saffron,
+                      fontSize: 12, fontWeight: 600, color: course.progress_pct === 100 ? C.success : C.primary,
                     }}>{course.progress_pct}%</span>
                   </div>
-                  <div style={{ background: "rgba(255,255,255,0.06)", borderRadius: 6, height: 5, overflow: "hidden", marginBottom: 8 }}>
+                  <div style={{ background: C.surfaceTint, borderRadius: 6, height: 5, overflow: "hidden", marginBottom: 8 }}>
                     <div style={{
                       width: `${course.progress_pct}%`, height: "100%",
                       background: course.progress_pct === 100
                         ? `linear-gradient(90deg, ${C.success}AA, ${C.success})`
-                        : `linear-gradient(90deg, ${C.saffronMuted}, ${C.saffron})`,
+                        : `linear-gradient(90deg, ${C.primaryMuted}, ${C.primary})`,
                       borderRadius: 6, transition: "width 0.6s ease",
                     }} />
                   </div>
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                     <span style={{ fontSize: 11, color: C.textMuted }}>{course.completed_lessons}/{course.total_lessons} lessons</span>
-                    {course.instrument && <span style={{ fontSize: 11, color: C.saffron }}>{course.instrument}</span>}
+                    {course.instrument && <span style={{ fontSize: 11, color: C.primary }}>{course.instrument}</span>}
                   </div>
                 </div>
               ))}
@@ -448,7 +431,7 @@ export default function Home() {
                 display: "flex", alignItems: "center", justifyContent: "space-between",
                 transition: "all 0.2s",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.saffron + "30"; }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.primary + "30"; }}
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.border; }}
             >
               <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -471,9 +454,9 @@ export default function Home() {
             </p>
             <button onClick={() => navigate("/login")} style={{
               padding: "12px 32px", borderRadius: 10, border: "none",
-              background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+              background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
               color: C.ink, fontSize: 15, fontWeight: 600, cursor: "pointer",
-              boxShadow: "0 4px 16px rgba(232, 168, 56, 0.2)",
+              boxShadow: `0 4px 16px ${C.primary}30`,
             }}>Sign In</button>
           </div>
         )}
@@ -488,32 +471,32 @@ export default function Home() {
             onKeyDown={(e) => onKeyDown(e, () => navigate("/practice"))}
             style={{
               background: `linear-gradient(135deg, ${C.elevated}, ${C.surface})`,
-              border: `1px solid ${C.saffron}25`,
+              border: `1px solid ${C.primary}25`,
               borderRadius: 16, padding: 24, cursor: "pointer",
               transition: "all 0.25s ease-out",
               display: "flex", alignItems: "center", gap: 16, marginBottom: 14,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = C.saffron + "50";
+              e.currentTarget.style.borderColor = C.primary + "50";
               e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow = "0 8px 32px rgba(232, 168, 56, 0.08)";
+              e.currentTarget.style.boxShadow = `0 8px 32px ${C.primary}12`;
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = C.saffron + "25";
+              e.currentTarget.style.borderColor = C.primary + "25";
               e.currentTarget.style.transform = "translateY(0)";
               e.currentTarget.style.boxShadow = "none";
             }}
           >
             <div style={{
               width: 48, height: 48, borderRadius: 12,
-              background: `${C.saffron}15`, display: "flex", alignItems: "center", justifyContent: "center",
+              background: `${C.primary}15`, display: "flex", alignItems: "center", justifyContent: "center",
               fontSize: 24, flexShrink: 0,
             }}>🎵</div>
             <div style={{ flex: 1 }}>
               <p style={{ color: C.text, fontSize: 15, fontWeight: 600, margin: "0 0 2px" }}>Open Practice Studio</p>
               <p style={{ color: C.textMuted, fontSize: 13, margin: 0 }}>Choose skills, track progress, and practice smarter</p>
             </div>
-            <span style={{ color: C.saffron, fontSize: 14, fontWeight: 600 }}>Open →</span>
+            <span style={{ color: C.primary, fontSize: 14, fontWeight: 600 }}>Open →</span>
           </div>
 
           {/* AI Coach CTA */}
@@ -524,32 +507,32 @@ export default function Home() {
             onKeyDown={(e) => onKeyDown(e, () => navigate("/ai-coach"))}
             style={{
               background: `linear-gradient(135deg, ${C.elevated}, ${C.surface})`,
-              border: `1px solid ${C.teal}25`,
+              border: `1px solid ${C.secondary}25`,
               borderRadius: 16, padding: 20, cursor: "pointer",
               transition: "all 0.25s ease-out",
               display: "flex", alignItems: "center", gap: 14, marginBottom: 14,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = C.teal + "50";
+              e.currentTarget.style.borderColor = C.secondary + "50";
               e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow = "0 8px 32px rgba(91, 168, 160, 0.08)";
+              e.currentTarget.style.boxShadow = `0 8px 32px ${C.secondary}12`;
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = C.teal + "25";
+              e.currentTarget.style.borderColor = C.secondary + "25";
               e.currentTarget.style.transform = "translateY(0)";
               e.currentTarget.style.boxShadow = "none";
             }}
           >
             <div style={{
               width: 44, height: 44, borderRadius: 12,
-              background: `${C.teal}15`, display: "flex", alignItems: "center", justifyContent: "center",
+              background: `${C.secondary}15`, display: "flex", alignItems: "center", justifyContent: "center",
               fontSize: 22, flexShrink: 0,
             }}>🎯</div>
             <div style={{ flex: 1 }}>
               <p style={{ color: C.text, fontSize: 14, fontWeight: 600, margin: "0 0 2px" }}>AI Music Coach</p>
               <p style={{ color: C.textMuted, fontSize: 12, margin: 0 }}>Personalized guidance based on your practice</p>
             </div>
-            <span style={{ color: C.teal, fontSize: 13, fontWeight: 600 }}>Open →</span>
+            <span style={{ color: C.secondary, fontSize: 13, fontWeight: 600 }}>Open →</span>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 10 }}>
@@ -577,7 +560,7 @@ export default function Home() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-3px)";
-                  e.currentTarget.style.borderColor = C.saffron + "35";
+                  e.currentTarget.style.borderColor = C.primary + "35";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
@@ -612,7 +595,7 @@ export default function Home() {
                   borderRadius: 10, padding: "12px 18px", display: "flex", alignItems: "center", gap: 8,
                   cursor: "pointer", transition: "all 0.2s ease-out", flex: "1 1 auto", minWidth: 130,
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.saffron + "30"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.primary + "30"; e.currentTarget.style.transform = "translateY(-2px)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = "translateY(0)"; }}
               >
                 <span style={{ fontSize: 18 }}>{item.icon}</span>
@@ -631,32 +614,32 @@ export default function Home() {
             onKeyDown={(e) => onKeyDown(e, () => navigate("/world-music"))}
             style={{
               background: `linear-gradient(135deg, ${C.elevated}, ${C.surface})`,
-              border: `1px solid ${C.teal}25`,
+              border: `1px solid ${C.secondary}25`,
               borderRadius: 16, padding: 20, cursor: "pointer",
               transition: "all 0.25s ease-out",
               display: "flex", alignItems: "center", gap: 14,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = C.teal + "50";
+              e.currentTarget.style.borderColor = C.secondary + "50";
               e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow = "0 8px 32px rgba(91, 168, 160, 0.08)";
+              e.currentTarget.style.boxShadow = `0 8px 32px ${C.secondary}12`;
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = C.teal + "25";
+              e.currentTarget.style.borderColor = C.secondary + "25";
               e.currentTarget.style.transform = "translateY(0)";
               e.currentTarget.style.boxShadow = "none";
             }}
           >
             <div style={{
               width: 44, height: 44, borderRadius: 12,
-              background: `${C.teal}15`, display: "flex", alignItems: "center", justifyContent: "center",
+              background: `${C.secondary}15`, display: "flex", alignItems: "center", justifyContent: "center",
               fontSize: 22, flexShrink: 0,
             }}>🌍</div>
             <div style={{ flex: 1 }}>
               <p style={{ color: C.text, fontSize: 14, fontWeight: 600, margin: "0 0 2px" }}>World Music</p>
               <p style={{ color: C.textMuted, fontSize: 12, margin: 0 }}>Explore musical traditions from around the globe</p>
             </div>
-            <span style={{ color: C.teal, fontSize: 13, fontWeight: 600 }}>Explore →</span>
+            <span style={{ color: C.secondary, fontSize: 13, fontWeight: 600 }}>Explore →</span>
           </div>
         </section>
 
@@ -676,7 +659,7 @@ export default function Home() {
                 {instruments.map((i) => <option key={i} value={i}>{i}</option>)}
               </select>
               <button onClick={() => navigate("/courses")} style={{
-                background: C.saffron, border: "none", borderRadius: 8,
+                background: C.primary, border: "none", borderRadius: 8,
                 color: C.ink, padding: "6px 16px", fontSize: 12, fontWeight: 600, cursor: "pointer",
               }}>View All</button>
             </div>
@@ -701,7 +684,7 @@ export default function Home() {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-3px)";
-                    e.currentTarget.style.borderColor = C.saffron + "30";
+                    e.currentTarget.style.borderColor = C.primary + "30";
                     e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.3)";
                   }}
                   onMouseLeave={(e) => {
@@ -719,12 +702,12 @@ export default function Home() {
                     <p style={{ color: C.text, fontWeight: 600, fontSize: 14, margin: "0 0 8px" }}>{course.title}</p>
                     <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 6 }}>
                       {course.instrument && (
-                        <span style={{ background: `${C.saffron}12`, color: C.saffron, borderRadius: 6, padding: "2px 8px", fontSize: 11, fontWeight: 500 }}>{course.instrument}</span>
+                        <span style={{ background: `${C.primary}12`, color: C.primary, borderRadius: 6, padding: "2px 8px", fontSize: 11, fontWeight: 500 }}>{course.instrument}</span>
                       )}
                       {course.difficulty && (
                         <span style={{
-                          background: course.difficulty === "beginner" ? `${C.success}15` : course.difficulty === "advanced" ? `${C.warning}15` : `${C.teal}15`,
-                          color: course.difficulty === "beginner" ? C.success : course.difficulty === "advanced" ? C.warning : C.teal,
+                          background: course.difficulty === "beginner" ? `${C.success}15` : course.difficulty === "advanced" ? `${C.warning}15` : `${C.secondary}15`,
+                          color: course.difficulty === "beginner" ? C.success : course.difficulty === "advanced" ? C.warning : C.secondary,
                           borderRadius: 6, padding: "2px 8px", fontSize: 11, fontWeight: 500,
                         }}>{course.difficulty}</span>
                       )}

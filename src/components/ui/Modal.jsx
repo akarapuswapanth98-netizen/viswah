@@ -1,11 +1,5 @@
 import { useEffect, useRef, useCallback } from 'react';
-
-const colors = {
-  surface: 'rgba(255,255,255,0.08)',
-  glassBorder: 'rgba(255,255,255,0.12)',
-  text: '#FFFFFF',
-  secondaryText: '#B0B0CC',
-};
+import C from './colors';
 
 let modalStylesInjected = false;
 function injectModalStyles() {
@@ -104,15 +98,15 @@ function Modal({
     >
       <div
         ref={modalRef}
-        style={{ background: 'linear-gradient(135deg, rgba(15, 15, 35, 0.98), rgba(20, 20, 45, 0.98))', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: `1px solid ${colors.glassBorder}`, borderRadius: '20px', boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5)', animation: 'modal-slide-in 0.3s ease-out', outline: 'none', maxHeight: '90vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', ...sizes[size], ...style }}
+        style={{ background: `linear-gradient(135deg, ${C.ink}f8, ${C.surface}f8)`, backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: `1px solid ${C.glassBorder}`, borderRadius: '20px', boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5)', animation: 'modal-slide-in 0.3s ease-out', outline: 'none', maxHeight: '90vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', ...sizes[size], ...style }}
         onClick={(e) => e.stopPropagation()}
         {...props}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 24px', borderBottom: `1px solid ${colors.glassBorder}`, flexShrink: 0 }}>
-          {title && <h2 id="modal-title" style={{ margin: 0, fontSize: '18px', fontWeight: 700, color: colors.text }}>{title}</h2>}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 24px', borderBottom: `1px solid ${C.glassBorder}`, flexShrink: 0 }}>
+          {title && <h2 id="modal-title" style={{ margin: 0, fontSize: '18px', fontWeight: 700, color: C.text, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>{title}</h2>}
           {showCloseButton && (
             <button
-              style={{ background: colors.surface, border: `1px solid ${colors.glassBorder}`, borderRadius: '8px', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: colors.text, fontSize: '18px', transition: 'all 0.2s ease', flexShrink: 0 }}
+              style={{ background: C.surfaceTint, border: `1px solid ${C.glassBorder}`, borderRadius: '8px', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: C.text, fontSize: '18px', transition: 'all 0.2s ease', flexShrink: 0 }}
               onClick={onClose}
               aria-label="Close modal"
             >
@@ -120,7 +114,7 @@ function Modal({
             </button>
           )}
         </div>
-        <div style={{ padding: '24px', overflowY: 'auto', flex: 1, color: colors.secondaryText, fontSize: '14px', lineHeight: 1.6 }}>
+        <div style={{ padding: '24px', overflowY: 'auto', flex: 1, color: C.textSecondary, fontSize: '14px', lineHeight: 1.6 }}>
           {children}
         </div>
       </div>

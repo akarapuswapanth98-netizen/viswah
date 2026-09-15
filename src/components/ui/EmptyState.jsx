@@ -1,12 +1,4 @@
-const colors = {
-  primary: '#6C63FF',
-  secondary: '#4ECDC4',
-  surface: 'rgba(255,255,255,0.08)',
-  glass: 'rgba(255,255,255,0.06)',
-  glassBorder: 'rgba(255,255,255,0.12)',
-  text: '#FFFFFF',
-  mutedText: '#6B6B8D',
-};
+import C from './colors';
 
 let emptyStylesInjected = false;
 function injectEmptyStyles() {
@@ -41,16 +33,16 @@ function EmptyState({
       {icon && (
         <div style={{
           width: compact ? '64px' : '80px', height: compact ? '64px' : '80px', borderRadius: '20px',
-          background: `linear-gradient(135deg, ${colors.surface}, ${colors.glass})`, border: `1px solid ${colors.glassBorder}`,
+          background: `linear-gradient(135deg, ${C.surfaceTint}, ${C.surfaceGlass})`, border: `1px solid ${C.glassBorder}`,
           display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '24px',
-          animation: 'empty-float 3s ease-in-out infinite', fontSize: compact ? '28px' : '36px', color: colors.mutedText,
+          animation: 'empty-float 3s ease-in-out infinite', fontSize: compact ? '28px' : '36px', color: C.textMuted,
         }}>{icon}</div>
       )}
-      <h3 style={{ margin: 0, marginBottom: '8px', fontSize: compact ? '16px' : '18px', fontWeight: 700, color: colors.text }}>{title}</h3>
-      {description && <p style={{ margin: 0, marginBottom: action || actionLabel ? '24px' : '0', fontSize: '14px', color: colors.mutedText, maxWidth: '320px', lineHeight: 1.6 }}>{description}</p>}
+      <h3 style={{ margin: 0, marginBottom: '8px', fontSize: compact ? '16px' : '18px', fontWeight: 700, color: C.text }}>{title}</h3>
+      {description && <p style={{ margin: 0, marginBottom: action || actionLabel ? '24px' : '0', fontSize: '14px', color: C.textMuted, maxWidth: '320px', lineHeight: 1.6 }}>{description}</p>}
       {(action || actionLabel) && (
         <button
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 24px', background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`, color: colors.text, border: 'none', borderRadius: '10px', fontSize: '14px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s ease', boxShadow: `0 4px 15px ${colors.primary}40` }}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 24px', background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`, color: C.ink, border: 'none', borderRadius: '10px', fontSize: '14px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s ease', boxShadow: `0 4px 15px ${C.primary}25` }}
           onClick={onAction || action}
         >
           {actionLabel || 'Get Started'}

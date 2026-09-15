@@ -1,9 +1,4 @@
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-};
+import C from "../ui/colors";
 
 export default function BillingHistory({ transactions }) {
   if (!transactions || transactions.length === 0) {
@@ -62,8 +57,8 @@ export default function BillingHistory({ transactions }) {
                   <span style={{
                     display: "inline-block", padding: "3px 10px", borderRadius: 8,
                     fontSize: 12, fontWeight: 600,
-                    background: tx.status === "completed" ? `${C.teal}15` : tx.status === "failed" ? "rgba(239,68,68,0.1)" : `${C.saffron}15`,
-                    color: tx.status === "completed" ? C.teal : tx.status === "failed" ? "#EF4444" : C.saffron,
+                    background: tx.status === "completed" ? `${C.secondary}15` : tx.status === "failed" ? "rgba(239,68,68,0.1)" : `${C.primary}15`,
+                    color: tx.status === "completed" ? C.secondary : tx.status === "failed" ? "#EF4444" : C.primary,
                   }}>
                     {tx.status}
                   </span>

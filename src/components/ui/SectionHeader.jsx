@@ -1,20 +1,5 @@
 import React from 'react';
-
-const colors = {
-  primary: '#6C63FF',
-  secondary: '#4ECDC4',
-  success: '#34C759',
-  warning: '#FF9500',
-  error: '#FF3B30',
-  neon: '#00FF88',
-  background: '#0F0F23',
-  surface: 'rgba(255,255,255,0.08)',
-  glass: 'rgba(255,255,255,0.06)',
-  glassBorder: 'rgba(255,255,255,0.12)',
-  text: '#FFFFFF',
-  secondaryText: '#B0B0CC',
-  mutedText: '#6B6B8D',
-};
+import C from './colors';
 
 function SectionHeader({
   title,
@@ -35,7 +20,7 @@ function SectionHeader({
     gap: '16px',
     marginBottom: divider ? '20px' : '0',
     paddingBottom: divider ? '16px' : '0',
-    borderBottom: divider ? `1px solid ${colors.glassBorder}` : 'none',
+    borderBottom: divider ? `1px solid ${C.glassBorder}` : 'none',
     ...style,
   };
 
@@ -51,14 +36,14 @@ function SectionHeader({
     width: '36px',
     height: '36px',
     borderRadius: '10px',
-    background: `linear-gradient(135deg, ${colors.primary}20, ${colors.secondary}20)`,
-    border: `1px solid ${colors.glassBorder}`,
+    background: `linear-gradient(135deg, ${C.primary}18, ${C.raga}18)`,
+    border: `1px solid ${C.glassBorder}`,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: '16px',
     flexShrink: 0,
-    color: colors.primary,
+    color: C.primary,
   };
 
   const textContainerStyle = {
@@ -69,7 +54,7 @@ function SectionHeader({
     margin: 0,
     fontSize: '18px',
     fontWeight: 700,
-    color: colors.text,
+    color: C.text,
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
     whiteSpace: 'nowrap',
     overflow: 'hidden',
@@ -79,7 +64,7 @@ function SectionHeader({
   const subtitleStyle = {
     margin: '4px 0 0',
     fontSize: '13px',
-    color: colors.mutedText,
+    color: C.textMuted,
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
     whiteSpace: 'nowrap',
     overflow: 'hidden',
@@ -91,9 +76,9 @@ function SectionHeader({
     alignItems: 'center',
     gap: '6px',
     padding: '8px 16px',
-    background: colors.surface,
-    color: colors.text,
-    border: `1px solid ${colors.glassBorder}`,
+    background: C.surfaceTint,
+    color: C.text,
+    border: `1px solid ${C.glassBorder}`,
     borderRadius: '8px',
     fontSize: '13px',
     fontWeight: 600,
@@ -129,12 +114,12 @@ function SectionHeader({
             }
           }}
           onMouseEnter={(e) => {
-            e.target.style.background = `${colors.surface}cc`;
-            e.target.style.borderColor = `${colors.primary}60`;
+            e.target.style.background = C.surfaceHover;
+            e.target.style.borderColor = `${C.primary}50`;
           }}
           onMouseLeave={(e) => {
-            e.target.style.background = colors.surface;
-            e.target.style.borderColor = colors.glassBorder;
+            e.target.style.background = C.surfaceTint;
+            e.target.style.borderColor = C.glassBorder;
           }}
         >
           {actionLabel || 'View All'}

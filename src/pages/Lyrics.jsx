@@ -2,25 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { lyricsApi } from "../api/lyricsApi";
 import { useToast } from "../context/ToastContext";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  borderFocus: "rgba(232, 168, 56, 0.3)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const inputStyle = {
   background: C.ink,
@@ -95,7 +77,7 @@ const Spinner = () => (
 );
 
 const focusProps = (e) => {
-  e.target.style.borderColor = C.borderFocus;
+  e.target.style.borderColor = C.borderActive;
   e.target.style.boxShadow = "0 0 0 3px rgba(232, 168, 56, 0.06)";
 };
 const blurProps = (e) => {
@@ -308,7 +290,7 @@ export default function Lyrics() {
               disabled={loadingGen}
               style={{
                 ...btnBase,
-                background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+                background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
                 color: C.ink,
                 opacity: loadingGen ? 0.7 : 1,
                 display: "flex",
@@ -354,8 +336,8 @@ export default function Lyrics() {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 8 }}>
                 {generatedLyrics.rhyme_scheme && <MetaTag label="Rhyme Scheme" value={generatedLyrics.rhyme_scheme} />}
                 {generatedLyrics.word_count != null && <MetaTag label="Word Count" value={generatedLyrics.word_count} />}
-                {generatedLyrics.suggested_tempo && <MetaTag label="Suggested Tempo" value={`${generatedLyrics.suggested_tempo} BPM`} color={C.teal} />}
-                {generatedLyrics.suggested_key && <MetaTag label="Suggested Key" value={generatedLyrics.suggested_key} color={C.teal} />}
+                {generatedLyrics.suggested_tempo && <MetaTag label="Suggested Tempo" value={`${generatedLyrics.suggested_tempo} BPM`} color={C.secondary} />}
+                {generatedLyrics.suggested_key && <MetaTag label="Suggested Key" value={generatedLyrics.suggested_key} color={C.secondary} />}
               </div>
             </div>
 
@@ -376,7 +358,7 @@ export default function Lyrics() {
                 disabled={loadingImprove}
                 style={{
                   ...btnBase,
-                  background: `linear-gradient(135deg, ${C.teal}, ${C.teal}CC)`,
+                  background: `linear-gradient(135deg, ${C.secondary}, ${C.secondary}CC)`,
                   color: C.ink,
                   opacity: loadingImprove ? 0.7 : 1,
                   display: "flex",
@@ -448,9 +430,9 @@ export default function Lyrics() {
                   disabled={loadingFormat}
                   style={{
                     ...btnBase,
-                    background: `${C.saffron}15`,
-                    color: C.saffron,
-                    border: `1px solid ${C.saffron}25`,
+                    background: `${C.primary}15`,
+                    color: C.primary,
+                    border: `1px solid ${C.primary}25`,
                     display: "flex",
                     alignItems: "center",
                   }}

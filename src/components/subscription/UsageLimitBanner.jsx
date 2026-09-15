@@ -1,13 +1,7 @@
 import { useSubscription } from "../../hooks/useSubscription.jsx";
 import { useNavigate } from "react-router-dom";
 
-const C = {
-  ink: "#0C0A14", surface: "#161222", elevated: "#241E38",
-  saffron: "#E8A838", teal: "#5BA8A0", text: "#F0EBE3",
-  textSecondary: "#A89FB8", textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  error: "#EF4444", warning: "#F59E0B",
-};
+import C from "../ui/colors";
 
 const USAGE_LABELS = {
   ai_coach_daily: "AI Coach",
@@ -39,7 +33,7 @@ export default function UsageLimitBanner({ usageType, showUpgrade = true }) {
     ? C.error
     : isApproaching
       ? C.warning
-      : C.teal;
+      : C.secondary;
 
   return (
     <div style={{
@@ -47,8 +41,8 @@ export default function UsageLimitBanner({ usageType, showUpgrade = true }) {
         ? "rgba(239, 68, 68, 0.08)"
         : isApproaching
           ? "rgba(245, 158, 11, 0.08)"
-          : `${C.teal}08`,
-      border: `1px solid ${isLimitReached ? "rgba(239, 68, 68, 0.2)" : isApproaching ? "rgba(245, 158, 11, 0.2)" : `${C.teal}20`}`,
+          : `${C.secondary}08`,
+      border: `1px solid ${isLimitReached ? "rgba(239, 68, 68, 0.2)" : isApproaching ? "rgba(245, 158, 11, 0.2)" : `${C.secondary}20`}`,
       borderRadius: 12,
       padding: "12px 16px",
       marginBottom: 16,
@@ -63,7 +57,7 @@ export default function UsageLimitBanner({ usageType, showUpgrade = true }) {
           {label} today
         </span>
         <span style={{
-          color: isLimitReached ? C.error : isApproaching ? C.warning : C.teal,
+          color: isLimitReached ? C.error : isApproaching ? C.warning : C.secondary,
           fontSize: 13, fontWeight: 600,
         }}>
           {usage.current}/{usage.limit}
@@ -98,13 +92,13 @@ export default function UsageLimitBanner({ usageType, showUpgrade = true }) {
               onClick={() => navigate("/pricing")}
               style={{
                 padding: "6px 16px", borderRadius: 8,
-                background: `${C.saffron}15`,
-                color: C.saffron, border: `1px solid ${C.saffron}30`,
+                background: `${C.primary}15`,
+                color: C.primary, border: `1px solid ${C.primary}30`,
                 fontSize: 12, fontWeight: 600, cursor: "pointer",
                 transition: "all 0.2s",
               }}
-              onMouseEnter={(e) => e.target.style.background = `${C.saffron}25`}
-              onMouseLeave={(e) => e.target.style.background = `${C.saffron}15`}
+              onMouseEnter={(e) => e.target.style.background = `${C.primary}25`}
+              onMouseLeave={(e) => e.target.style.background = `${C.primary}15`}
             >
               View plans
             </button>

@@ -3,24 +3,12 @@ import { indianMusicApi } from "../api/indianMusicApi";
 import { useToast } from "../context/ToastContext";
 import { onKeyDown } from "../utils/keyboard";
 
-const COLORS = {
-  primary: "#6C63FF",
-  secondary: "#4ECDC4",
-  neon: "#00FF88",
-  background: "#0F0F23",
-  surface: "rgba(255,255,255,0.08)",
-  glass: "rgba(255,255,255,0.06)",
-  glassBorder: "rgba(255,255,255,0.12)",
-  text: "#FFFFFF",
-  secondaryText: "#B0B0CC",
-  mutedText: "#6B6B8D",
-  success: "#34C759",
-};
+import C from "../components/ui/colors";
 
 const styles = {
   page: {
     minHeight: "100vh",
-    background: COLORS.background,
+    background: C.ink,
     padding: "20px",
     fontFamily: "system-ui, sans-serif",
   },
@@ -29,22 +17,22 @@ const styles = {
     margin: "0 auto",
   },
   title: {
-    color: COLORS.text,
+    color: C.text,
     fontSize: "2rem",
     marginBottom: "4px",
     fontWeight: 700,
   },
   subtitle: {
-    color: COLORS.secondaryText,
+    color: C.textSecondary,
     marginBottom: "24px",
     fontSize: "0.95rem",
   },
   backBtn: {
     padding: "10px 18px",
     borderRadius: "10px",
-    border: `1px solid ${COLORS.glassBorder}`,
-    background: COLORS.glass,
-    color: COLORS.secondaryText,
+    border: `1px solid ${C.glassBorder}`,
+    background: C.surfaceGlass,
+    color: C.textSecondary,
     cursor: "pointer",
     fontSize: "0.85rem",
     fontWeight: 600,
@@ -57,8 +45,8 @@ const styles = {
     gap: "16px",
   },
   card: {
-    background: COLORS.glass,
-    border: `1px solid ${COLORS.glassBorder}`,
+    background: C.surfaceGlass,
+    border: `1px solid ${C.glassBorder}`,
     borderRadius: "14px",
     padding: "20px",
     cursor: "pointer",
@@ -67,11 +55,11 @@ const styles = {
   },
   cardHover: {
     transform: "translateY(-3px)",
-    boxShadow: "0 8px 32px rgba(108,99,255,0.2)",
-    borderColor: COLORS.primary,
+    boxShadow: "0 8px 32px rgba(232,168,56,0.2)",
+    borderColor: C.primary,
   },
   cardName: {
-    color: COLORS.text,
+    color: C.text,
     fontSize: "1.2rem",
     fontWeight: 700,
     marginBottom: "10px",
@@ -83,36 +71,36 @@ const styles = {
     marginBottom: "6px",
   },
   cardLabel: {
-    color: COLORS.mutedText,
+    color: C.textMuted,
     fontSize: "0.8rem",
   },
   cardValue: {
-    color: COLORS.secondaryText,
+    color: C.textSecondary,
     fontSize: "0.85rem",
     fontWeight: 600,
   },
   cardDesc: {
     marginTop: "8px",
-    color: COLORS.secondaryText,
+    color: C.textSecondary,
     fontSize: "0.82rem",
     lineHeight: "1.4",
   },
   detailPanel: {
-    background: COLORS.glass,
-    border: `1px solid ${COLORS.glassBorder}`,
+    background: C.surfaceGlass,
+    border: `1px solid ${C.glassBorder}`,
     borderRadius: "16px",
     padding: "28px",
     marginBottom: "24px",
     boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
   },
   detailName: {
-    color: COLORS.text,
+    color: C.text,
     fontSize: "1.8rem",
     fontWeight: 700,
     marginBottom: "4px",
   },
   detailMeta: {
-    color: COLORS.secondaryText,
+    color: C.textSecondary,
     fontSize: "0.95rem",
     marginBottom: "24px",
   },
@@ -124,26 +112,26 @@ const styles = {
   },
   statCard: {
     flex: "1 1 120px",
-    background: COLORS.surface,
-    border: `1px solid ${COLORS.glassBorder}`,
+    background: C.surface,
+    border: `1px solid ${C.glassBorder}`,
     borderRadius: "12px",
     padding: "16px",
     textAlign: "center",
   },
   statNumber: {
-    color: COLORS.neon,
+    color: C.neon,
     fontSize: "1.6rem",
     fontWeight: 700,
     marginBottom: "4px",
   },
   statLabel: {
-    color: COLORS.mutedText,
+    color: C.textMuted,
     fontSize: "0.78rem",
     textTransform: "uppercase",
     letterSpacing: "0.5px",
   },
   sectionTitle: {
-    color: COLORS.neon,
+    color: C.neon,
     fontSize: "0.85rem",
     fontWeight: 700,
     textTransform: "uppercase",
@@ -160,24 +148,24 @@ const styles = {
   bolChip: {
     padding: "6px 14px",
     borderRadius: "8px",
-    background: COLORS.surface,
-    border: `1px solid ${COLORS.glassBorder}`,
-    color: COLORS.text,
+    background: C.surface,
+    border: `1px solid ${C.glassBorder}`,
+    color: C.text,
     fontSize: "0.85rem",
     fontWeight: 600,
     minWidth: "36px",
     textAlign: "center",
   },
   bolSam: {
-    background: `${COLORS.primary}33`,
-    border: `2px solid ${COLORS.primary}`,
-    color: COLORS.primary,
+    background: `${C.primary}33`,
+    border: `2px solid ${C.primary}`,
+    color: C.primary,
     fontWeight: 700,
   },
   bolKhali: {
-    background: `${COLORS.secondary}22`,
-    border: `1px dashed ${COLORS.secondary}`,
-    color: COLORS.secondary,
+    background: `${C.secondary}22`,
+    border: `1px dashed ${C.secondary}`,
+    color: C.secondary,
   },
   cycleContainer: {
     display: "flex",
@@ -201,29 +189,29 @@ const styles = {
     justifyContent: "center",
     fontSize: "0.8rem",
     fontWeight: 700,
-    border: `2px solid ${COLORS.glassBorder}`,
-    background: COLORS.surface,
-    color: COLORS.secondaryText,
+    border: `2px solid ${C.glassBorder}`,
+    background: C.surface,
+    color: C.textSecondary,
     transition: "all 0.2s",
   },
   beatSam: {
-    background: `${COLORS.primary}44`,
-    borderColor: COLORS.primary,
-    color: COLORS.primary,
-    boxShadow: `0 0 16px ${COLORS.primary}44`,
+    background: `${C.primary}44`,
+    borderColor: C.primary,
+    color: C.primary,
+    boxShadow: `0 0 16px ${C.primary}44`,
     width: "52px",
     height: "52px",
   },
   beatKhali: {
     background: "transparent",
-    borderColor: COLORS.mutedText,
-    color: COLORS.mutedText,
+    borderColor: C.textMuted,
+    color: C.textMuted,
     borderStyle: "dashed",
   },
   beatStress: {
-    background: `${COLORS.neon}22`,
-    borderColor: COLORS.neon,
-    color: COLORS.neon,
+    background: `${C.neon}22`,
+    borderColor: C.neon,
+    color: C.neon,
   },
   cycleLegend: {
     display: "flex",
@@ -236,7 +224,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     gap: "6px",
-    color: COLORS.secondaryText,
+    color: C.textSecondary,
     fontSize: "0.8rem",
   },
   legendDot: {
@@ -245,12 +233,12 @@ const styles = {
     borderRadius: "50%",
   },
   usageText: {
-    color: COLORS.secondaryText,
+    color: C.textSecondary,
     fontSize: "0.9rem",
     lineHeight: "1.6",
   },
   skeleton: {
-    background: `linear-gradient(90deg, ${COLORS.surface} 25%, ${COLORS.glass} 50%, ${COLORS.surface} 75%)`,
+    background: `linear-gradient(90deg, ${C.surface} 25%, ${C.surfaceGlass} 50%, ${C.surface} 75%)`,
     backgroundSize: "200% 100%",
     borderRadius: "10px",
     animation: "shimmer 1.5s infinite",
@@ -258,7 +246,7 @@ const styles = {
   emptyState: {
     textAlign: "center",
     padding: "60px 20px",
-    color: COLORS.mutedText,
+    color: C.textMuted,
   },
   emptyIcon: {
     fontSize: "3rem",
@@ -266,7 +254,7 @@ const styles = {
   },
   emptyText: {
     fontSize: "1rem",
-    color: COLORS.secondaryText,
+    color: C.textSecondary,
   },
   errorBox: {
     background: "rgba(255,69,58,0.1)",
@@ -281,8 +269,8 @@ const styles = {
     padding: "8px 20px",
     borderRadius: "8px",
     border: "none",
-    background: COLORS.primary,
-    color: COLORS.text,
+    background: C.primary,
+    color: C.text,
     cursor: "pointer",
     fontWeight: 600,
     fontSize: "0.85rem",
@@ -324,15 +312,15 @@ function TalaCycle({ beats, samPosition, khaliPosition, bolPattern }) {
       </div>
       <div style={styles.cycleLegend}>
         <div style={styles.legendItem}>
-          <div style={{ ...styles.legendDot, background: COLORS.primary }} />
+          <div style={{ ...styles.legendDot, background: C.primary }} />
           <span>Sam (downbeat)</span>
         </div>
         <div style={styles.legendItem}>
-          <div style={{ ...styles.legendDot, background: "transparent", border: `2px dashed ${COLORS.mutedText}` }} />
+          <div style={{ ...styles.legendDot, background: "transparent", border: `2px dashed ${C.textMuted}` }} />
           <span>Khali (empty)</span>
         </div>
         <div style={styles.legendItem}>
-          <div style={{ ...styles.legendDot, background: COLORS.neon }} />
+          <div style={{ ...styles.legendDot, background: C.neon }} />
           <span>Stressed beat</span>
         </div>
       </div>
@@ -521,7 +509,7 @@ export default function Talas() {
                       <div style={styles.cardName}>{tala.name}</div>
                       <div style={styles.cardRow}>
                         <span style={styles.cardLabel}>Beats</span>
-                        <span style={{ color: COLORS.neon, fontWeight: 700, fontSize: "0.9rem" }}>
+                        <span style={{ color: C.neon, fontWeight: 700, fontSize: "0.9rem" }}>
                           {tala.beats || tala.matras || "?"}
                         </span>
                       </div>

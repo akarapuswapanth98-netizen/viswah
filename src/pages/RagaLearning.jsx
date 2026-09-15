@@ -7,24 +7,7 @@ import { useAudioFeedback } from "../hooks/useAudioFeedback";
 import { useToast } from "../context/ToastContext";
 import { onKeyDown } from "../utils/keyboard";
 
-const C = {
-  ink: "#0C0A14",
-  surface: "#161222",
-  elevated: "#241E38",
-  floating: "#2A2344",
-  saffron: "#E8A838",
-  saffronMuted: "#C4893A",
-  raga: "#C77DBA",
-  teal: "#5BA8A0",
-  text: "#F0EBE3",
-  textSecondary: "#A89FB8",
-  textMuted: "#6B6080",
-  border: "rgba(240, 235, 227, 0.06)",
-  borderHover: "rgba(240, 235, 227, 0.12)",
-  success: "#6DBF73",
-  warning: "#D4A84A",
-  error: "#D46A6A",
-};
+import C from "../components/ui/colors";
 
 const PHASES = {
   OVERVIEW: "overview",
@@ -99,7 +82,7 @@ function normalizeRagaNotes(arohana) {
 function scoreToGrade(score) {
   if (score >= 90) return { letter: "A+", color: C.success, label: "Excellent" };
   if (score >= 80) return { letter: "A", color: C.success, label: "Great" };
-  if (score >= 70) return { letter: "B", color: C.teal, label: "Good" };
+  if (score >= 70) return { letter: "B", color: C.secondary, label: "Good" };
   if (score >= 60) return { letter: "C", color: C.warning, label: "Fair" };
   return { letter: "D", color: C.error, label: "Needs Practice" };
 }
@@ -324,8 +307,8 @@ export default function RagaLearning() {
       const barHeight = (dataArray[i] / 255) * height;
       const gradient = ctx.createLinearGradient(0, height, 0, height - barHeight);
       gradient.addColorStop(0, C.raga);
-      gradient.addColorStop(0.5, C.saffron);
-      gradient.addColorStop(1, C.teal);
+      gradient.addColorStop(0.5, C.primary);
+      gradient.addColorStop(1, C.secondary);
       ctx.fillStyle = gradient;
       ctx.fillRect(x, height - barHeight, barWidth, barHeight);
       x += barWidth + 1;
@@ -546,7 +529,7 @@ export default function RagaLearning() {
             onClick={() => navigate("/ragas")}
             style={{
               padding: "12px 28px", borderRadius: 10,
-              background: C.saffron, color: C.ink, border: "none",
+              background: C.primary, color: C.ink, border: "none",
               fontWeight: 700, fontSize: "0.9rem", cursor: "pointer",
             }}
           >
@@ -615,7 +598,7 @@ export default function RagaLearning() {
         }}>
           <div style={{
             height: "100%", borderRadius: 2,
-            background: `linear-gradient(90deg, ${C.raga}, ${C.saffron})`,
+            background: `linear-gradient(90deg, ${C.raga}, ${C.primary})`,
             width: `${getPhaseProgress()}%`,
             transition: "width 0.4s ease",
           }} />
@@ -664,7 +647,7 @@ export default function RagaLearning() {
             }}>
               <div style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                background: `linear-gradient(90deg, ${C.raga}, ${C.saffron})`,
+                background: `linear-gradient(90deg, ${C.raga}, ${C.primary})`,
               }} />
 
               <h2 style={{ color: C.text, fontSize: "1.8rem", fontWeight: 700, margin: "0 0 4px" }}>
@@ -679,7 +662,7 @@ export default function RagaLearning() {
                 {raga.thaat && (
                   <div style={{ background: C.elevated, borderRadius: 12, padding: 16 }}>
                     <p style={{ color: C.textMuted, fontSize: 11, fontWeight: 600, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 1 }}>Thaat</p>
-                    <p style={{ color: C.saffron, fontSize: "1.1rem", fontWeight: 700, margin: 0 }}>{raga.thaat}</p>
+                    <p style={{ color: C.primary, fontSize: "1.1rem", fontWeight: 700, margin: 0 }}>{raga.thaat}</p>
                   </div>
                 )}
                 {raga.vadi && (
@@ -691,7 +674,7 @@ export default function RagaLearning() {
                 {raga.samvadi && (
                   <div style={{ background: C.elevated, borderRadius: 12, padding: 16 }}>
                     <p style={{ color: C.textMuted, fontSize: 11, fontWeight: 600, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 1 }}>Samvadi</p>
-                    <p style={{ color: C.teal, fontSize: "1.1rem", fontWeight: 700, margin: 0 }}>{raga.samvadi}</p>
+                    <p style={{ color: C.secondary, fontSize: "1.1rem", fontWeight: 700, margin: 0 }}>{raga.samvadi}</p>
                   </div>
                 )}
                 {raga.time && (
@@ -710,7 +693,7 @@ export default function RagaLearning() {
 
               {/* What you'll learn */}
               <div style={{ marginBottom: 28 }}>
-                <h3 style={{ color: C.saffron, fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, margin: "0 0 12px" }}>
+                <h3 style={{ color: C.primary, fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, margin: "0 0 12px" }}>
                   What You'll Learn
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -745,16 +728,16 @@ export default function RagaLearning() {
               {/* Arohana preview */}
               {arohana.length > 0 && (
                 <div style={{ marginBottom: 20 }}>
-                  <h3 style={{ color: C.saffron, fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, margin: "0 0 10px" }}>
+                  <h3 style={{ color: C.primary, fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, margin: "0 0 10px" }}>
                     Arohana Preview
                   </h3>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                     {arohana.map((n, i) => (
                       <span key={i} style={{
                         padding: "6px 14px", borderRadius: 8,
-                        background: i === 0 ? `${C.saffron}18` : C.elevated,
-                        border: `1px solid ${i === 0 ? C.saffron + "35" : C.border}`,
-                        color: i === 0 ? C.saffron : C.text,
+                        background: i === 0 ? `${C.primary}18` : C.elevated,
+                        border: `1px solid ${i === 0 ? C.primary + "35" : C.border}`,
+                        color: i === 0 ? C.primary : C.text,
                         fontSize: "0.9rem", fontWeight: i === 0 ? 700 : 600,
                       }}>
                         {getSargamLabel(n)}
@@ -767,7 +750,7 @@ export default function RagaLearning() {
               {/* Avarohana preview */}
               {avarohana.length > 0 && (
                 <div style={{ marginBottom: 28 }}>
-                  <h3 style={{ color: C.saffron, fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, margin: "0 0 10px" }}>
+                  <h3 style={{ color: C.primary, fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, margin: "0 0 10px" }}>
                     Avarohana Preview
                   </h3>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -790,7 +773,7 @@ export default function RagaLearning() {
                 onClick={startNextPhase}
                 style={{
                   padding: "14px 32px", borderRadius: 12,
-                  background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+                  background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
                   border: "none", color: C.ink, fontSize: "1rem", fontWeight: 700,
                   cursor: "pointer", boxShadow: "0 4px 16px rgba(232, 168, 56, 0.2)",
                 }}
@@ -811,7 +794,7 @@ export default function RagaLearning() {
             }}>
               <div style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                background: `linear-gradient(90deg, ${C.raga}, ${C.teal})`,
+                background: `linear-gradient(90deg, ${C.raga}, ${C.secondary})`,
               }} />
 
               <h2 style={{ color: C.text, fontSize: "1.5rem", fontWeight: 700, margin: "0 0 8px" }}>
@@ -824,7 +807,7 @@ export default function RagaLearning() {
               {/* Arohana visualization */}
               {arohana.length > 0 && (
                 <div style={{ marginBottom: 28 }}>
-                  <h3 style={{ color: C.saffron, fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, margin: "0 0 12px" }}>
+                  <h3 style={{ color: C.primary, fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, margin: "0 0 12px" }}>
                     Ascending (Arohana)
                   </h3>
                   <div style={{
@@ -835,9 +818,9 @@ export default function RagaLearning() {
                       <span key={i} style={{ display: "flex", alignItems: "center", gap: 4 }}>
                         <span style={{
                           padding: "10px 18px", borderRadius: 10,
-                          background: currentNoteIndex === i ? `${C.saffron}25` : "transparent",
-                          border: `1px solid ${currentNoteIndex === i ? C.saffron + "50" : "transparent"}`,
-                          color: currentNoteIndex === i ? C.saffron : C.text,
+                          background: currentNoteIndex === i ? `${C.primary}25` : "transparent",
+                          border: `1px solid ${currentNoteIndex === i ? C.primary + "50" : "transparent"}`,
+                          color: currentNoteIndex === i ? C.primary : C.text,
                           fontSize: "1rem", fontWeight: currentNoteIndex === i ? 700 : 600,
                           transition: "all 0.3s ease",
                         }}>
@@ -865,8 +848,8 @@ export default function RagaLearning() {
                     }}
                     style={{
                       marginTop: 12, padding: "10px 20px", borderRadius: 10,
-                      background: `${C.saffron}15`, border: `1px solid ${C.saffron}30`,
-                      color: C.saffron, fontWeight: 600, fontSize: "0.85rem",
+                      background: `${C.primary}15`, border: `1px solid ${C.primary}30`,
+                      color: C.primary, fontWeight: 600, fontSize: "0.85rem",
                       cursor: "pointer",
                     }}
                     onKeyDown={(e) => onKeyDown(e, () => {})}
@@ -936,7 +919,7 @@ export default function RagaLearning() {
                   onClick={startNextPhase}
                   style={{
                     padding: "14px 28px", borderRadius: 12,
-                    background: `linear-gradient(135deg, ${C.teal}, ${C.teal}CC)`,
+                    background: `linear-gradient(135deg, ${C.secondary}, ${C.secondary}CC)`,
                     border: "none", color: C.ink, fontSize: "0.95rem", fontWeight: 700,
                     cursor: "pointer",
                   }}
@@ -969,7 +952,7 @@ export default function RagaLearning() {
             }}>
               <div style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                background: `linear-gradient(90deg, ${C.saffron}, ${C.saffron}AA)`,
+                background: `linear-gradient(90deg, ${C.primary}, ${C.primary}AA)`,
               }} />
 
               <h2 style={{ color: C.text, fontSize: "1.5rem", fontWeight: 700, margin: "0 0 8px" }}>
@@ -991,9 +974,9 @@ export default function RagaLearning() {
                       style={{
                         width: 64, height: 64, borderRadius: 12,
                         background: currentNoteIndex === i
-                          ? `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`
+                          ? `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`
                           : "rgba(255,255,255,0.04)",
-                        border: `2px solid ${currentNoteIndex === i ? C.saffron : C.border}`,
+                        border: `2px solid ${currentNoteIndex === i ? C.primary : C.border}`,
                         color: currentNoteIndex === i ? C.ink : C.text,
                         fontSize: "1.1rem", fontWeight: 700,
                         cursor: "pointer", transition: "all 0.2s ease",
@@ -1014,10 +997,10 @@ export default function RagaLearning() {
               {/* Current note detail */}
               {currentNoteIndex >= 0 && currentNoteIndex < arohana.length && (
                 <div style={{
-                  background: `${C.saffron}08`, border: `1px solid ${C.saffron}18`,
+                  background: `${C.primary}08`, border: `1px solid ${C.primary}18`,
                   borderRadius: 12, padding: 16, marginBottom: 24, textAlign: "center",
                 }}>
-                  <p style={{ color: C.saffron, fontSize: "0.8rem", fontWeight: 600, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 1 }}>
+                  <p style={{ color: C.primary, fontSize: "0.8rem", fontWeight: 600, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: 1 }}>
                     Note {currentNoteIndex + 1} of {arohana.length}
                   </p>
                   <p style={{ color: C.text, fontSize: "2rem", fontWeight: 700, margin: "0 0 4px" }}>
@@ -1034,7 +1017,7 @@ export default function RagaLearning() {
                   onClick={() => { markPhaseComplete(PHASES.AROHANA); startNextPhase(); }}
                   style={{
                     padding: "14px 28px", borderRadius: 12,
-                    background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+                    background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
                     border: "none", color: C.ink, fontSize: "0.95rem", fontWeight: 700,
                     cursor: "pointer",
                   }}
@@ -1163,7 +1146,7 @@ export default function RagaLearning() {
             }}>
               <div style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                background: `linear-gradient(90deg, ${C.teal}, ${C.teal}AA)`,
+                background: `linear-gradient(90deg, ${C.secondary}, ${C.secondary}AA)`,
               }} />
 
               <h2 style={{ color: C.text, fontSize: "1.5rem", fontWeight: 700, margin: "0 0 8px" }}>
@@ -1187,14 +1170,14 @@ export default function RagaLearning() {
                   {phrases.map((phrase, i) => (
                     <div key={i} style={{
                       background: C.elevated, borderRadius: 12, padding: 18,
-                      border: `1px solid ${currentNoteIndex === i ? C.teal + "40" : C.border}`,
+                      border: `1px solid ${currentNoteIndex === i ? C.secondary + "40" : C.border}`,
                       transition: "all 0.2s",
                     }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
                         <span style={{
                           width: 28, height: 28, borderRadius: "50%",
                           display: "flex", alignItems: "center", justifyContent: "center",
-                          background: `${C.teal}15`, color: C.teal,
+                          background: `${C.secondary}15`, color: C.secondary,
                           fontSize: 12, fontWeight: 700, flexShrink: 0,
                         }}>{i + 1}</span>
                         <span style={{
@@ -1217,7 +1200,7 @@ export default function RagaLearning() {
                   onClick={() => { markPhaseComplete(PHASES.PHRASES); startNextPhase(); }}
                   style={{
                     padding: "14px 28px", borderRadius: 12,
-                    background: `linear-gradient(135deg, ${C.teal}, ${C.teal}CC)`,
+                    background: `linear-gradient(135deg, ${C.secondary}, ${C.secondary}CC)`,
                     border: "none", color: C.ink, fontSize: "0.95rem", fontWeight: 700,
                     cursor: "pointer",
                   }}
@@ -1250,7 +1233,7 @@ export default function RagaLearning() {
             }}>
               <div style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                background: `linear-gradient(90deg, ${C.teal}, ${C.saffron})`,
+                background: `linear-gradient(90deg, ${C.secondary}, ${C.primary})`,
               }} />
 
               <h2 style={{ color: C.text, fontSize: "1.5rem", fontWeight: 700, margin: "0 0 8px" }}>
@@ -1274,7 +1257,7 @@ export default function RagaLearning() {
                       }}
                       onKeyDown={(e) => onKeyDown(e, () => startPractice("arohana"))}
                     >
-                      <p style={{ color: C.saffron, fontSize: "1.1rem", fontWeight: 700, margin: "0 0 4px" }}>Arohana</p>
+                      <p style={{ color: C.primary, fontSize: "1.1rem", fontWeight: 700, margin: "0 0 4px" }}>Arohana</p>
                       <p style={{ color: C.textMuted, fontSize: "0.8rem", margin: 0 }}>Practice ascending</p>
                     </button>
                   )}
@@ -1301,7 +1284,7 @@ export default function RagaLearning() {
                     }}
                     onKeyDown={(e) => onKeyDown(e, () => startPractice("arohana"))}
                   >
-                    <p style={{ color: C.teal, fontSize: "1.1rem", fontWeight: 700, margin: "0 0 4px" }}>Full Raga</p>
+                    <p style={{ color: C.secondary, fontSize: "1.1rem", fontWeight: 700, margin: "0 0 4px" }}>Full Raga</p>
                     <p style={{ color: C.textMuted, fontSize: "0.8rem", margin: 0 }}>Practice both</p>
                   </button>
                 </div>
@@ -1423,13 +1406,13 @@ export default function RagaLearning() {
                     {analysisResult.detectedNote && analysisResult.detectedNote !== "Unknown" && (
                       <div style={{ background: C.elevated, borderRadius: 10, padding: 14, textAlign: "center" }}>
                         <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase" }}>Detected</p>
-                        <p style={{ color: C.saffron, fontSize: "1.3rem", fontWeight: 700, margin: 0 }}>{analysisResult.detectedNote}</p>
+                        <p style={{ color: C.primary, fontSize: "1.3rem", fontWeight: 700, margin: 0 }}>{analysisResult.detectedNote}</p>
                       </div>
                     )}
                     {analysisResult.stability > 0 && (
                       <div style={{ background: C.elevated, borderRadius: 10, padding: 14, textAlign: "center" }}>
                         <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase" }}>Stability</p>
-                        <p style={{ color: C.teal, fontSize: "1.3rem", fontWeight: 700, margin: 0 }}>{Math.round(analysisResult.stability)}%</p>
+                        <p style={{ color: C.secondary, fontSize: "1.3rem", fontWeight: 700, margin: 0 }}>{Math.round(analysisResult.stability)}%</p>
                       </div>
                     )}
                     {analysisResult.cents !== 0 && (
@@ -1446,10 +1429,10 @@ export default function RagaLearning() {
                   {/* Feedback */}
                   {analysisResult.feedback && (
                     <div style={{
-                      background: `${C.teal}08`, border: `1px solid ${C.teal}18`,
+                      background: `${C.secondary}08`, border: `1px solid ${C.secondary}18`,
                       borderRadius: 12, padding: 16, marginBottom: 20,
                     }}>
-                      <p style={{ color: C.teal, fontSize: "0.8rem", fontWeight: 600, margin: "0 0 8px", textTransform: "uppercase", letterSpacing: 1 }}>
+                      <p style={{ color: C.secondary, fontSize: "0.8rem", fontWeight: 600, margin: "0 0 8px", textTransform: "uppercase", letterSpacing: 1 }}>
                         Feedback
                       </p>
                       {analysisResult.feedback.map((f, i) => (
@@ -1465,8 +1448,8 @@ export default function RagaLearning() {
                       onClick={() => { setAnalysisResult(null); setPracticeScore(null); }}
                       style={{
                         padding: "12px 24px", borderRadius: 10,
-                        background: `${C.saffron}15`, border: `1px solid ${C.saffron}30`,
-                        color: C.saffron, fontWeight: 600, fontSize: "0.9rem", cursor: "pointer",
+                        background: `${C.primary}15`, border: `1px solid ${C.primary}30`,
+                        color: C.primary, fontWeight: 600, fontSize: "0.9rem", cursor: "pointer",
                       }}
                       onKeyDown={(e) => onKeyDown(e, () => { setAnalysisResult(null); setPracticeScore(null); })}
                     >
@@ -1476,7 +1459,7 @@ export default function RagaLearning() {
                       onClick={handleEndPracticeSession}
                       style={{
                         padding: "12px 24px", borderRadius: 10,
-                        background: `linear-gradient(135deg, ${C.teal}, ${C.teal}CC)`,
+                        background: `linear-gradient(135deg, ${C.secondary}, ${C.secondary}CC)`,
                         border: "none", color: C.ink, fontWeight: 700, fontSize: "0.9rem", cursor: "pointer",
                       }}
                       onKeyDown={(e) => onKeyDown(e, handleEndPracticeSession)}
@@ -1515,7 +1498,7 @@ export default function RagaLearning() {
             }}>
               <div style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                background: `linear-gradient(90deg, ${C.saffron}, ${C.raga})`,
+                background: `linear-gradient(90deg, ${C.primary}, ${C.raga})`,
               }} />
 
               {!quizSubmitted ? (
@@ -1532,9 +1515,9 @@ export default function RagaLearning() {
                     <div style={{
                       width: 48, height: 48, borderRadius: "50%",
                       background: C.elevated, display: "flex", alignItems: "center", justifyContent: "center",
-                      border: `2px solid ${C.saffron}40`,
+                      border: `2px solid ${C.primary}40`,
                     }}>
-                      <span style={{ color: C.saffron, fontSize: "1rem", fontWeight: 700 }}>
+                      <span style={{ color: C.primary, fontSize: "1rem", fontWeight: 700 }}>
                         {quizQuestions.length > 0 ? Math.round(((quizIndex + 1) / quizQuestions.length) * 100) : 0}%
                       </span>
                     </div>
@@ -1605,7 +1588,7 @@ export default function RagaLearning() {
                             onClick={handleQuizSubmit}
                             style={{
                               padding: "12px 28px", borderRadius: 10,
-                              background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+                              background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
                               border: "none", color: C.ink, fontWeight: 700, fontSize: "0.9rem", cursor: "pointer",
                             }}
                             onKeyDown={(e) => onKeyDown(e, handleQuizSubmit)}
@@ -1645,7 +1628,7 @@ export default function RagaLearning() {
 
                   {/* Review */}
                   <div style={{ textAlign: "left", marginBottom: 28 }}>
-                    <h3 style={{ color: C.saffron, fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, margin: "0 0 16px" }}>
+                    <h3 style={{ color: C.primary, fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, margin: "0 0 16px" }}>
                       Review
                     </h3>
                     {quizQuestions.map((q, i) => {
@@ -1678,7 +1661,7 @@ export default function RagaLearning() {
                     onClick={handleCompleteRaga}
                     style={{
                       padding: "14px 32px", borderRadius: 12,
-                      background: `linear-gradient(135deg, ${C.saffron}, ${C.saffronMuted})`,
+                      background: `linear-gradient(135deg, ${C.primary}, ${C.primaryMuted})`,
                       border: "none", color: C.ink, fontSize: "1rem", fontWeight: 700,
                       cursor: "pointer", boxShadow: "0 4px 16px rgba(232, 168, 56, 0.2)",
                     }}
@@ -1702,7 +1685,7 @@ export default function RagaLearning() {
             }}>
               <div style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                background: `linear-gradient(90deg, ${C.success}, ${C.teal})`,
+                background: `linear-gradient(90deg, ${C.success}, ${C.secondary})`,
               }} />
 
               <div style={{
@@ -1735,7 +1718,7 @@ export default function RagaLearning() {
                 {sessionScores.length > 0 && (
                   <div style={{ background: C.elevated, borderRadius: 12, padding: 16 }}>
                     <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase" }}>Attempts</p>
-                    <p style={{ color: C.saffron, fontSize: "1.5rem", fontWeight: 700, margin: 0 }}>{sessionScores.length}</p>
+                    <p style={{ color: C.primary, fontSize: "1.5rem", fontWeight: 700, margin: 0 }}>{sessionScores.length}</p>
                   </div>
                 )}
                 {quizResult && (
@@ -1746,7 +1729,7 @@ export default function RagaLearning() {
                 )}
                 <div style={{ background: C.elevated, borderRadius: 12, padding: 16 }}>
                   <p style={{ color: C.textMuted, fontSize: 11, margin: "0 0 4px", textTransform: "uppercase" }}>Phases</p>
-                  <p style={{ color: C.teal, fontSize: "1.5rem", fontWeight: 700, margin: 0 }}>{completedPhases.size}/{PHASE_ORDER.length}</p>
+                  <p style={{ color: C.secondary, fontSize: "1.5rem", fontWeight: 700, margin: 0 }}>{completedPhases.size}/{PHASE_ORDER.length}</p>
                 </div>
               </div>
 
@@ -1760,7 +1743,7 @@ export default function RagaLearning() {
                   }}
                   style={{
                     padding: "14px 28px", borderRadius: 12,
-                    background: `linear-gradient(135deg, ${C.teal}, ${C.teal}CC)`,
+                    background: `linear-gradient(135deg, ${C.secondary}, ${C.secondary}CC)`,
                     border: "none", color: C.ink, fontWeight: 700, fontSize: "0.95rem", cursor: "pointer",
                   }}
                   onKeyDown={(e) => onKeyDown(e, () => {
